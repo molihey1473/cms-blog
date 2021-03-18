@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { NextPage } from "next";
+import { TwitterIcon } from "@src/components/icons/TwitterIcon";
 import styles from "@src/styles/pages/Home.module.scss";
 
 const Home: NextPage = () => {
@@ -23,6 +24,7 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
+        <TwitterIcon />
 
         <p className={styles.description}>
           Get started by editing{" "}
