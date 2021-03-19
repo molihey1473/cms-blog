@@ -1,7 +1,13 @@
 export const TwitterIcon: React.FC = () => {
   return (
-    <svg viewBox="328 355 335 276" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      viewBox="328 355 335 276"
+      width="30"
+      height="30"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
+        fill="#3BA9EE"
         d="
     M 630, 425
     A 195, 195 0 0 1 331, 600
