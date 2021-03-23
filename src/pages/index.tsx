@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { NextPage } from "next";
 import { TwitterIcon } from "@src/components/icons/TwitterIcon";
-import { Layout } from "@src/components/layout";
+import { Wrapper } from "@src/components/Wrapper";
 import styles from "@src/styles/pages/Home.module.scss";
 
 const Home: NextPage = () => {

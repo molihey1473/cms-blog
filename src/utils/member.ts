@@ -1,4 +1,4 @@
-import { Member } from "types";
+import { Member } from "@src/types";
 //blog user information
 export const member: Member = {
   name: "morihey",
