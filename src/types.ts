@@ -4,4 +4,5 @@ export interface Member {
   source: string[];
   twitterName: string;
   githubName: string;
+  bio: string;
 }
