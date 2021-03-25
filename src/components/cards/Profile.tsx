@@ -8,6 +8,8 @@ export const Profile: React.FC<{ member: Member }> = ({ member }) => {
         <div>
           <img src={member.avatar} alt={member.name} width={250} />
         </div>
+        <h1>{member.name}</h1>
+        <p>{member.bio}</p>
         <div className={styles.profile_description}></div>
       </div>
     </div>
