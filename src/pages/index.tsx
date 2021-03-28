@@ -21,6 +21,7 @@ const Home: NextPage = () => {
             <Profile member={member} />
           </Wrapper>
         </section>
+        <section className={styles.home_posts}></section>
       </main>
     </>
   );
