@@ -6,3 +6,11 @@ export interface Member {
   githubName: string;
   bio: string;
 }
+export interface PostItem {
+  authorName: string;
+  title: string;
+  link: string;
+  contentSnippet?: string;
+  isoDate?: string;
+  dateMiliSeconds: number;
+}
