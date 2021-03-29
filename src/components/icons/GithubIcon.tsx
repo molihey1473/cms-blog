@@ -1,3 +1,3 @@
 export const GithubIcon: React.FC = () => {
-    return();
+  return <h1>GitHub</h1>;
 };
