@@ -1,7 +1,7 @@
 export interface Member {
   name: string;
   avatar: string;
-  source: string[];
+  sources: string[];
   twitterName: string;
   githubName: string;
   bio: string;
@@ -13,4 +13,11 @@ export interface PostItem {
   contentSnippet?: string;
   isoDate?: string;
   dateMiliSeconds: number;
+}
+export interface FeedItem {
+  title: string;
+  link: string;
+  contentSnippet?: string;
+  isoDate?: string;
+  dateMiliSeconds?: number;
 }
