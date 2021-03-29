@@ -1,4 +1,5 @@
 import Parser from "rss-parser";
+import fs from "fs-extra";
 import { member } from "@src/utils/member";
 import { Member, PostItem, FeedItem } from "@src/types";
 const parser = new Parser();
@@ -34,4 +35,6 @@ async function getFeedItemsFromSources(sources: undefined | string[]) {
   items.sort((a, b) => {
     return b.dateMiliSeconds - a.dateMiliSeconds;
   });
+  fs.ensureDirSync(".contents");
+  fs.writeJsonSync("contents/posts.json", items);
 })();
