@@ -5,6 +5,6 @@
     "outDir": "dist",
     "noEmit": false
   },
-  "include": ["./src/builder/*.ts"],
+  "include": ["src/builder/*.ts"],
   "exclude": ["node_modules"]
 }

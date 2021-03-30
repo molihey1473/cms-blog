@@ -2,8 +2,9 @@ import Parser from "rss-parser";
 import fs from "fs-extra";
 import { member } from "@src/utils/member";
 import { PostItem, FeedItem } from "@src/types";
+export default {};
 const parser = new Parser();
-let feed: PostItem[] = [];
+//let allPostItems: PostItem[] = [];
 async function fetchFeedItems(url: string) {
   const feed = await parser.parseURL(url);
   if (!feed?.items?.length) return [];
@@ -15,7 +16,7 @@ async function fetchFeedItems(url: string) {
         contentSnippet: contentSnippet?.replace(/\n/g, ""),
         link,
         isoDate,
-        dateMileSeconds: isoDate ? new Date(isoDate).getTime() : 0,
+        dateMiliSeconds: isoDate ? new Date(isoDate).getTime() : 0,
       };
     })
     .filter(({ title, link }) => title && link) as FeedItem[];
@@ -31,10 +32,7 @@ async function getFeedItemsFromSources(sources: undefined | string[]) {
 }
 (async function () {
   const items = await getFeedItemsFromSources(member.sources);
-  if (!items) return [];
-  items.sort((a, b) => {
-    return b.dateMiliSeconds - a.dateMiliSeconds;
-  });
+  items.sort((a, b) => b.dateMiliSeconds - a.dateMiliSeconds);
   fs.ensureDirSync(".contents");
-  fs.writeJsonSync("contents/posts.json", items);
+  fs.writeJsonSync(".contents/posts.json", items);
 })();
