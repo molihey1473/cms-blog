@@ -1,10 +1,9 @@
 import Parser from "rss-parser";
 import fs from "fs-extra";
 import { member } from "@src/utils/member";
-
-import { Member, PostItem, FeedItem } from "@src/types";
+import { PostItem, FeedItem } from "@src/types";
 const parser = new Parser();
-let allPostItem: PostItem[] = [];
+let feed: PostItem[] = [];
 async function fetchFeedItems(url: string) {
   const feed = await parser.parseURL(url);
   if (!feed?.items?.length) return [];
