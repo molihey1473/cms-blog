@@ -1,6 +1,6 @@
 import Parser from "rss-parser";
 import fs from "fs-extra";
-import { member } from "@src/utils/member";
+import { member } from "../utils/member";
 import { PostItem, FeedItem } from "@src/types";
 export default {};
 const parser = new Parser();
@@ -31,7 +31,7 @@ async function getFeedItemsFromSources(sources: undefined | string[]) {
   return feedItems;
 }
 (async function () {
-  const items = await getFeedItemsFromSources(member.sources);
+  const items = (await getFeedItemsFromSources(member.sources)) ?? [];
   items.sort((a, b) => b.dateMiliSeconds - a.dateMiliSeconds);
   fs.ensureDirSync(".contents");
   fs.writeJsonSync(".contents/posts.json", items);

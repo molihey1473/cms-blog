@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { NextPage } from "next";
 //import post from "@.contents/posts.json";
-import { TwitterIcon } from "@src/components/icons/TwitterIcon";
+//import { TwitterIcon } from "@src/components/icons/TwitterIcon";
 import { Header } from "@src/components/Header";
 import { Wrapper } from "@src/components/Wrapper";
 import { Profile } from "@src/components/cards/Profile";
