@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { NextPage } from "next";
+import posts from ".contents/posts.json";
 //import post from "@.contents/posts.json";
 //import { TwitterIcon } from "@src/components/icons/TwitterIcon";
 import { Header } from "@src/components/Header";
@@ -25,7 +26,9 @@ const Home: NextPage = () => {
           </Wrapper>
         </section>
         <section className={styles.home_posts}>
-          <PostList />
+          <Wrapper>
+            <PostList items={posts as PostItem[]} />
+          </Wrapper>
         </section>
       </main>
     </>
