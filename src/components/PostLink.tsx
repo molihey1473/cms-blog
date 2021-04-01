@@ -4,7 +4,6 @@ export const PostLink: React.FC<{ item: PostItem }> = (props) => {
   const { title, contentSnippet, link, isoDate, dateMiliSeconds } = props.item;
   return (
     <article className={styles.post_link}>
-      <h1>テスト</h1>
       <h1>{title}</h1>
     </article>
   );
