@@ -10,7 +10,9 @@ export const PostLink: React.FC<{ item: PostItem }> = (props) => {
       <a className={styles.post_link_content} href={link}>
         <Image src="/icon/qiita.png" width="30" height="30" alt="qiita" />
         <h2 className={styles.post_link_title}>{title}</h2>
-        <time></time>
+        <time className={styles.post_link_at} dateTime={isoDate}>
+          {dayjs(isoDate).format("YYYY-MM-DD")}
+        </time>
       </a>
     </li>
   );
