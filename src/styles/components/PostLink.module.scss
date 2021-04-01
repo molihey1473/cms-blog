@@ -1,3 +1,17 @@
+@import "../responsive";
 .post_link {
+  display: flex;
   padding: 1rem;
+  flex-flow: column;
+  width: 45%;
+  @include mq(sm) {
+    width: 100%;
+  }
+}
+.post_link_content {
+  padding: 1rem;
+}
+.post_linl_title {
+  font-size: 1.1rem;
+  flex: 1;
 }
