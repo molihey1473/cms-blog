@@ -10,3 +10,11 @@
   align-items: center;
   justify-content: space-between;
 }
+.header_links {
+  display: flex;
+  align-items: center;
+}
+.header_links_item {
+  margin-left: 1.2rem;
+  font-size: 1rem;
+}

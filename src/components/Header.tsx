@@ -19,12 +19,14 @@ export const Header: React.FC = () => {
               </svg>
             </a>
           </Link>
-          <Link href="/about">
-            <a>about</a>
-          </Link>
-          <Link href="/blog">
-            <a>blog</a>
-          </Link>
+          <div className={styles.header_links}>
+            <Link href="/about">
+              <a className={styles.header_links_item}>about</a>
+            </Link>
+            <Link href="/blog">
+              <a className={styles.header_links_item}>blog</a>
+            </Link>
+          </div>
         </div>
       </Wrapper>
     </header>
