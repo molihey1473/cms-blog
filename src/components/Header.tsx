@@ -22,6 +22,9 @@ export const Header: React.FC = () => {
           <Link href="/about">
             <a>about</a>
           </Link>
+          <Link href="/blog">
+            <a>blog</a>
+          </Link>
         </div>
       </Wrapper>
     </header>
