@@ -27,6 +27,9 @@ const Home: NextPage = () => {
         </section>
         <section className={styles.home_posts}>
           <Wrapper>
+            <div className={styles.home_section_title_content}>
+              <h2 className={styles.home_section_title}>関連記事</h2>
+            </div>
             <PostList items={posts as PostItem[]} />
           </Wrapper>
         </section>

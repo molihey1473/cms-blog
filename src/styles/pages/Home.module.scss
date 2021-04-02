@@ -127,5 +127,13 @@
 }
 .home_posts {
   padding-top: 1rem;
-  border-top: 1px solid #000;
+}
+.home_section_title_content {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-bottom: 2px solid #000;
+}
+.home_section_title {
+  font-size: 1.2rem;
 }
