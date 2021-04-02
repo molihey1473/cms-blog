@@ -1,4 +1,5 @@
 import { NextPage } from "next";
-export const Blog: NextPage = () => {
+const Blog: NextPage = () => {
   return <h1>ブログ</h1>;
 };
+export default Blog;
