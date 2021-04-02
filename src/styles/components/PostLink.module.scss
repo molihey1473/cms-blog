@@ -7,6 +7,10 @@
   width: 40%;
   margin-top: 5%;
   border-radius: 8px;
+  background-color: #fff;
+  &:hover {
+    opacity: 0.6;
+  }
   @include mq(sm) {
     width: 100%;
   }

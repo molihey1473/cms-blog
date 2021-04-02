@@ -8,12 +8,15 @@ export const Profile: React.FC<{ member: Member }> = (props) => {
   return (
     <div className={styles.profile_layout}>
       <div className={styles.profile_content}>
-        <div>
-          <img src={avatar} alt={name} width={250} />
-        </div>
+        <img
+          src={avatar}
+          alt={name}
+          width={250}
+          className={styles.profile_avatar}
+        />
         <div className={styles.profile_description}>
-          <h1>{name}</h1>
-          <p>{bio}</p>
+          <h1 className={styles.profile_member_name}>{name}</h1>
+          <p className={styles.profile_member_bio}>{bio}</p>
           <div className={styles.profile_links}>
             <a href={`https://twitter.com/${twitterName}`}>
               <TwitterIcon />
