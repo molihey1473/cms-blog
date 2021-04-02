@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import dayjs from "dayjs";
 import styles from "@src/styles/components/PostLink.module.scss";
+
 export const PostLink: React.FC<{ item: PostItem }> = (props) => {
   const { title, contentSnippet, link, isoDate, dateMiliSeconds } = props.item;
   return (
