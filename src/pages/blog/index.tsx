@@ -1,10 +1,12 @@
 import { NextPage, GetStaticProps } from "next";
+import { getBlog } from "@src/lib/blog";
+import { BlogContent } from "@src/types";
 import Link from "next/link";
-const BlogItems: NextPage = ({ blog }) => {
+const BlogItems: NextPage<{ blogs: BlogContent[] }> = (props) => {
   return (
     <div>
       <ul>
-        {blog.map((blog) => (
+        {props.blogs.map((blog) => (
           <li key={blog.id}>
             <Link href={`blog/${blog.id}`}>
               <a>{blog.title}</a>
@@ -17,15 +19,13 @@ const BlogItems: NextPage = ({ blog }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const key = {
-    headers: { "X-API-KEY": process.env.API_KEY },
-  };
-  const data = await fetch("https://roy1473.microcms.io/api/v1/blog", key)
-    .then((res) => res.json())
-    .catch(() => null);
+  const data: {
+    contents: BlogContent[];
+  } = await getBlog();
+  console.log(data);
   return {
     props: {
-      blog: data.contents,
+      blogs: data.contents,
     },
   };
 };

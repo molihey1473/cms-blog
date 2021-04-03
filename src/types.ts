@@ -21,10 +21,10 @@ export interface FeedItem {
   isoDate?: string;
   dateMiliSeconds?: number;
 }
-export interface BlogItem {
+export interface BlogContent {
   id: string;
   title: string;
   body: string;
   publishedAt: string;
-  category: string;
+  category?: string;
 }

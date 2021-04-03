@@ -4,7 +4,8 @@ const Blog: NextPage = ({ blog }) => {
   return (
     <div>
       <h1>{blog.title}</h1>
-      <p>{blog.publishedAt}</p>
+      <p>{dayjs(blog.publishedAt).format("YYYY/MM/DD")}</p>
+      <span>{blog.category}</span>
       <div
         dangerouslySetInnerHTML={{
           __html: `${blog.body}`,
