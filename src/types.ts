@@ -21,3 +21,10 @@ export interface FeedItem {
   isoDate?: string;
   dateMiliSeconds?: number;
 }
+export interface BlogItem {
+  id: string;
+  title: string;
+  body: string;
+  publishedAt: string;
+  category: string;
+}

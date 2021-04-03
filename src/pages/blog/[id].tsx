@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 const Blog: NextPage = ({ blog }) => {
   return (
@@ -12,6 +13,8 @@ const Blog: NextPage = ({ blog }) => {
     </div>
   );
 };
+
+//[id].tsx 静的生成用パス
 export const getStaticPaths: GetStaticPaths = async () => {
   const key = {
     headers: { "X-API-KEY": process.env.API_KEY },
@@ -25,6 +28,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: false,
   };
 };
+//静的生成用props
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const id = params.id;
   const key = {
