@@ -1,23 +1,20 @@
 import { NextPage, GetStaticProps } from "next";
 import { getBlog } from "@src/lib/blog";
-import { BlogContent } from "@src/types";
+import { Blog } from "@src/types";
 import Link from "next/link";
 import { Wrapper } from "@src/components/Wrapper";
-import styles from "@src/styles/pages/BlogList.module.scss";
-const BlogItems: NextPage<{ blogs: BlogContent[] }> = (props) => {
+import { BlogLink } from "@src/components/BlogLink";
+import styles from "@src/styles/pages/blog/BlogList.module.scss";
+const BlogItems: NextPage<{ blogs: Blog[] }> = (props) => {
   return (
     <>
       <head></head>
       <main>
         <section className={styles.blog_list_layout}>
           <Wrapper>
-            <ul>
-              {props.blogs.map((blog) => (
-                <li key={blog.id}>
-                  <Link href={`blog/${blog.id}`}>
-                    <a>{blog.title}</a>
-                  </Link>
-                </li>
+            <ul className={styles.blog_list}>
+              {props.blogs.map((blog, i) => (
+                <BlogLink key={`blog-link-${i}`} item={blog} />
               ))}
             </ul>
           </Wrapper>
@@ -29,7 +26,7 @@ const BlogItems: NextPage<{ blogs: BlogContent[] }> = (props) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const data: {
-    contents: BlogContent[];
+    contents: Blog[];
   } = await getBlog();
   return {
     props: {

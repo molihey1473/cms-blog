@@ -21,7 +21,7 @@ export interface FeedItem {
   isoDate?: string;
   dateMiliSeconds?: number;
 }
-export interface BlogContent {
+export interface Blog {
   id: string;
   title: string;
   body: string;
