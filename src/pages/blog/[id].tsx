@@ -1,6 +1,8 @@
+import { Wrapper } from "@src/components/Wrapper";
 import dayjs from "dayjs";
+import { BlogContent } from "@src/types";
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
-const Blog: NextPage = ({ blog }) => {
+const Blog: NextPage<{ blog: BlogContent }> = ({ blog }) => {
   return (
     <div>
       <h1>{blog.title}</h1>
