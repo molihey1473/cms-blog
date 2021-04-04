@@ -3,12 +3,13 @@ import { getBlog } from "@src/lib/blog";
 import { BlogContent } from "@src/types";
 import Link from "next/link";
 import { Wrapper } from "@src/components/Wrapper";
+import styles from "@src/styles/pages/BlogList.module.scss";
 const BlogItems: NextPage<{ blogs: BlogContent[] }> = (props) => {
   return (
     <>
       <head></head>
       <main>
-        <section>
+        <section className={styles.blog_list_layout}>
           <Wrapper>
             <ul>
               {props.blogs.map((blog) => (
