@@ -18,7 +18,6 @@ const Home: NextPage = () => {
         <title>Home</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
       <main className={styles.main}>
         <section className={styles.home_profile}>
           <Wrapper>
