@@ -1,11 +1,11 @@
 import { NextPage, GetStaticProps } from "next";
 import { getBlog } from "@src/lib/blog";
-import { Blog } from "@src/types";
+import { BlogItem } from "@src/types";
 import Link from "next/link";
 import { Wrapper } from "@src/components/Wrapper";
 import { BlogLink } from "@src/components/BlogLink";
 import styles from "@src/styles/pages/blog/BlogList.module.scss";
-const BlogItems: NextPage<{ blogs: Blog[] }> = (props) => {
+const BlogList: NextPage<{ blogs: BlogItem[] }> = (props) => {
   return (
     <>
       <head></head>
@@ -26,7 +26,7 @@ const BlogItems: NextPage<{ blogs: Blog[] }> = (props) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const data: {
-    contents: Blog[];
+    contents: BlogItem[];
   } = await getBlog();
   return {
     props: {
@@ -34,4 +34,4 @@ export const getStaticProps: GetStaticProps = async () => {
     },
   };
 };
-export default BlogItems;
+export default BlogList;

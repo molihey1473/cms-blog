@@ -9,3 +9,4 @@ export const getBlog = async () => {
     .then((res) => res.json())
     .catch(() => null);
 };
+export const getBlogContent = () => {};
