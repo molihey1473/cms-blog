@@ -1,5 +1,5 @@
 import { Wrapper } from "@src/components/Wrapper";
-import { getBlog } from "@src/lib/blog";
+import { getBlog, getBlogContent } from "@src/lib/blog";
 import dayjs from "dayjs";
 import { BlogItem } from "@src/types";
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
@@ -31,15 +31,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 //静的生成用props
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  console.log(params);
-  const id = params.id;
-  const key = {
-    headers: { "X-API-KEY": process.env.API_KEY },
-  };
-  const data = await fetch("https://roy1473.microcms.io/api/v1/blog/" + id, key)
-    .then((res) => res.json())
-    .catch(() => null);
+export const getStaticProps: GetStaticProps = async (context) => {
+  const draftKey = context.params?.slug;
+  console.log(draftKey);
+  const id = context.params?.id;
+  const data =
+    typeof id === "string" ? await getBlogContent(id, draftKey) : null;
   return {
     props: {
       blog: data,
