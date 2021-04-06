@@ -8,16 +8,16 @@ export const BlogLink: React.FC<{ item: BlogItem }> = (props) => {
   return (
     <li className={styles.blog_link}>
       <Link href={`blog/${id}`}>
-        <a>
+        <a className={styles.blog_link_area}>
           <time dateTime={publishedAt}>
             {dayjs(publishedAt).format("YYYY/MM/DD")}
           </time>
           <h2 className={styles.blog_link_title}>{title}</h2>
+          <div className={styles.blog_tags}>
+            <span className={styles.blog_tag}>{category}</span>
+          </div>
         </a>
       </Link>
-      <div className={styles.blog_tags}>
-        <span className={styles.blog_tag}>{category}</span>
-      </div>
     </li>
   );
 };
