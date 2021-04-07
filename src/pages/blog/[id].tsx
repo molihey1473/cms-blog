@@ -34,9 +34,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   //const draftKey = context.params?.slug;
   //console.log(draftKey);
-  //const id = context.params?.id;
-  const data =
-    typeof id === "string" ? await getBlogContent(id, draftKey) : null;
+  const id = params.id as string;
+  const data = await getBlog(id);
   return {
     props: {
       blog: data,
