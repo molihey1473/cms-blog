@@ -4,11 +4,8 @@ const key = {
     "X-API-KEY": process.env.API_KEY ?? "",
   },
 };
-export const getBlog = async (id?: string) => {
-  const cmsAPI = id
-    ? `https://roy1473.microcms.io/api/v1/blog/${id}`
-    : `https://roy1473.microcms.io/api/v1/blog`;
-  return await fetch(cmsAPI, key)
+export const getBlog = async () => {
+  return await fetch("https://roy1473.microcms.io/api/v1/blog", key)
     .then((res) => res.json())
     .catch(() => null);
 };
@@ -18,7 +15,7 @@ export const getBlogContent = async (
 ) => {
   const query = draftKey ? `?draftKey=${draftKey}` : "";
   return await fetch(
-    `https://roy1473.microcms.io/api/v1/blog/${id}?${draftKey}`,
+    `https://roy1473.microcms.io/api/v1/blog/${id}${draftKey}`,
     key
   )
     .then((res) => res.json())

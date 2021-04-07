@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-const Page: NextPage = () => {
+const Error: NextPage = () => {
   return <h1>404</h1>;
 };
-export default Page;
+export default Error;

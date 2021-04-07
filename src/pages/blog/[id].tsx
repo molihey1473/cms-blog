@@ -31,13 +31,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 //静的生成用props
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  //const draftKey = context.params?.slug;
-  //console.log(draftKey);
-  const id = params.id as string;
-  //const data =
-  //  typeof id === "string" ? await getBlogContent(id, draftKey) : null;
-  const data = await getBlog(id);
+export const getStaticProps: GetStaticProps = async (context) => {
+  const draftKey = context.params?.slug;
+  console.log(draftKey);
+  const id = context.params?.id;
+  const data =
+    typeof id === "string" ? await getBlogContent(id, draftKey) : null;
   return {
     props: {
       blog: data,
