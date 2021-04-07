@@ -8,7 +8,7 @@ export const BlogLink: React.FC<{ item: BlogItem }> = (props) => {
   return (
     <li className={styles.blog_link}>
       <Link href={`blog/${id}`}>
-        <a>
+        <a className={styles.blog_link_content}>
           <time dateTime={publishedAt}>
             {dayjs(publishedAt).format("YYYY/MM/DD")}
           </time>
