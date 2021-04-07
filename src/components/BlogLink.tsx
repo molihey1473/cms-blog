@@ -13,11 +13,11 @@ export const BlogLink: React.FC<{ item: BlogItem }> = (props) => {
             {dayjs(publishedAt).format("YYYY/MM/DD")}
           </time>
           <h2 className={styles.blog_link_title}>{title}</h2>
+          <div className={styles.blog_tags}>
+            <span className={styles.blog_tag}>{category}</span>
+          </div>
         </a>
       </Link>
-      <div className={styles.blog_tags}>
-        <span className={styles.blog_tag}>{category}</span>
-      </div>
     </li>
   );
 };

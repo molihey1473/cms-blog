@@ -4,7 +4,7 @@ const key = {
     "X-API-KEY": process.env.API_KEY ?? "",
   },
 };
-export const getBlog = async () => {
+export const getBlog = async (id: string) => {
   return await fetch("https://roy1473.microcms.io/api/v1/blog", key)
     .then((res) => res.json())
     .catch(() => null);
