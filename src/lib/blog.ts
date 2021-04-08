@@ -15,7 +15,7 @@ export const getBlog = async (id?: string) => {
 export const getPreview = async (id: string, draftKey?: string) => {
   const params = draftKey ? `?draftKey=${draftKey}` : "";
   return await fetch(
-    `https://roy1473.microcms.io/api/v1/blog/${id}${draftKey}`,
+    `https://roy1473.microcms.io/api/v1/blog/${id}${params}`,
     key
   )
     .then((res) => res.json())
