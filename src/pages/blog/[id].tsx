@@ -1,5 +1,5 @@
 import { Wrapper } from "@src/components/Wrapper";
-import { getBlog, getBlogContent } from "@src/lib/blog";
+import { getBlog, getPreview } from "@src/lib/blog";
 import dayjs from "dayjs";
 import { BlogItem } from "@src/types";
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
@@ -31,11 +31,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 //静的生成用props
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  //const draftKey = context.params?.slug;
-  //console.log(draftKey);
-  const id = params.id as string;
-  const data = await getBlog(id);
+export const getStaticProps: GetStaticProps = async (context) => {
+  const draftKey = context.params?.slug as string;
+  const id = context.params?.id as string;
+  const data = await getPreview(id, draftKey);
   return {
     props: {
       blog: data,
