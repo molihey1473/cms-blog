@@ -6,6 +6,8 @@ export default async function preview(
 ) {
   if (!req.query.slug) {
     return res.status(404).end();
+  } else {
+    console.log(req.query.slug);
   }
   const content = await fetch(
     `https://roy1473.microcms.io/api/v1/blog/${req.query.slug}?fields=id&draftKey=${req.query.draftKey}`,
