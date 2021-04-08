@@ -1,6 +1,9 @@
 import fetch from "node-fetch";
 import { NextApiRequest, NextApiResponse } from "next";
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async function preview(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   if (!req.query.slug) {
     return res.status(404).end();
   }
@@ -21,4 +24,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   });
   res.writeHead(307, { Location: `/blog/${content.id}` });
   res.end("Preview mode enabled");
-};
+}
