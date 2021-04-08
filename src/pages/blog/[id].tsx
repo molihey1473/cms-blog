@@ -2,11 +2,16 @@ import { Wrapper } from "@src/components/Wrapper";
 import { getBlog, getPreview } from "@src/lib/blog";
 import dayjs from "dayjs";
 import { BlogItem } from "@src/types";
+interface Props {
+  blog: BlogItem;
+  preview: boolean;
+}
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
-const Blog: NextPage<{ blog: BlogItem }> = (props) => {
+const Blog: NextPage<Props> = (props) => {
   const { title, publishedAt, category, body } = props.blog;
   return (
     <div>
+      {props.preview && <h1>preview content .......</h1>}
       <h1>{title}</h1>
       <p>{dayjs(publishedAt).format("YYYY/MM/DD")}</p>
       <span>{category}</span>
@@ -38,6 +43,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       blog: data,
+      preview: context.preview || false,
     },
   };
 };
