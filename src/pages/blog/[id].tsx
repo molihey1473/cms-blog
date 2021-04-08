@@ -33,6 +33,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 //静的生成用props
 export const getStaticProps: GetStaticProps = async (context) => {
   const draftKey = context.params?.slug as string;
+  console.log(draftKey);
   const id = context.params?.id as string;
   const data = await getPreview(id, draftKey);
   return {
