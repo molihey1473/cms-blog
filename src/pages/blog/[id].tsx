@@ -9,7 +9,7 @@ import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 const Blog: NextPage<Props> = (props) => {
   const { title, publishedAt, category, body } = props.blog;
   return (
-    <div>
+    <>
       <h1>{title}</h1>
       <p>{dayjs(publishedAt).format("YYYY/MM/DD")}</p>
       <span>{category}</span>
@@ -18,13 +18,13 @@ const Blog: NextPage<Props> = (props) => {
           __html: `${body}`,
         }}
       />
-    </div>
+    </>
   );
 };
 
 //[id].tsx 静的生成用パス
 export const getStaticPaths: GetStaticPaths = async () => {
-  const data = await getBlog();
+  const data: { contents: BlogItem[] } = await getBlog();
   const paths = data.contents.map(
     (content: { id: string }) => `/blog/${content.id}`
   );

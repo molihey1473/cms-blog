@@ -8,7 +8,6 @@ import styles from "@src/styles/pages/blog/BlogList.module.scss";
 const BlogList: NextPage<{ blogs: BlogItem[] }> = (props) => {
   return (
     <>
-      <head></head>
       <main>
         <section className={styles.blog_list_layout}>
           <Wrapper>
