@@ -43,7 +43,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       blog: data,
-      preview: context.preview || false,
+      preview: context.params?.preview || false,
     },
   };
 };
