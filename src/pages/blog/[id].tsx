@@ -4,6 +4,7 @@ import dayjs from "dayjs";
 import { BlogItem } from "@src/types";
 interface Props {
   blog: BlogItem;
+  preview: boolean;
 }
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 const Blog: NextPage<Props> = (props) => {
@@ -11,6 +12,7 @@ const Blog: NextPage<Props> = (props) => {
   return (
     <>
       <h1>{title}</h1>
+      {props.preview && <h1>プレビューモード</h1>}
       <p>{dayjs(publishedAt).format("YYYY/MM/DD")}</p>
       <span>{category}</span>
       <div
@@ -41,6 +43,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       blog: data,
+      preview: context.preview,
     },
   };
 };
