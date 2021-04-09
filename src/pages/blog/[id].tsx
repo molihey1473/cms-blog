@@ -32,7 +32,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   );
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 };
 //静的生成用props
@@ -43,7 +43,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       blog: data,
-      preview: context.params?.preview || false,
+      preview: context.preview || false,
     },
   };
 };
