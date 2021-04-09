@@ -12,8 +12,13 @@ const Blog: NextPage<Props> = (props) => {
   const preview = props.preview;
   return (
     <>
+      {preview && <h1>プレビューモード。。。。。。</h1>}
       <h1>{title}</h1>
-      <p>{dayjs(publishedAt).format("YYYY/MM/DD")}</p>
+      {preview ? (
+        <p>下書き！！</p>
+      ) : (
+        <p>{dayjs(publishedAt).format("YYYY/MM/DD")}</p>
+      )}
       <span>{category}</span>
       <div
         dangerouslySetInnerHTML={{
