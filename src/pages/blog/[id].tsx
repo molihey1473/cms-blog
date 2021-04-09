@@ -9,10 +9,12 @@ interface Props {
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 const Blog: NextPage<Props> = (props) => {
   const { title, publishedAt, category, body } = props.blog;
+  const preview = props.preview;
   return (
     <>
       <h1>{title}</h1>
-      {props.preview && <h1>プレビューモード</h1>}
+      {preview && <p>プレビューモード</p>}
+
       <p>{dayjs(publishedAt).format("YYYY/MM/DD")}</p>
       <span>{category}</span>
       <div
@@ -43,7 +45,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       blog: data,
-      preview: context.preview,
+      preview: context.preview || false,
     },
   };
 };
