@@ -36,7 +36,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     data.contents.map((content: { id: string }) => `/blog/${content.id}`) ?? [];
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 };
 //静的生成用props
