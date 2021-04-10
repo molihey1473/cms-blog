@@ -32,12 +32,11 @@ const Blog: NextPage<Props> = (props) => {
 //[id].tsx 静的生成用パス
 export const getStaticPaths: GetStaticPaths = async () => {
   const data: { contents: BlogItem[] } = await getBlog();
-  const paths = data.contents.map(
-    (content: { id: string }) => `/blog/${content.id}`
-  );
+  const paths =
+    data.contents.map((content: { id: string }) => `/blog/${content.id}`) ?? [];
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 };
 //静的生成用props
