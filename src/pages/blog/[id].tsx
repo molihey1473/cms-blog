@@ -1,4 +1,6 @@
 import { Wrapper } from "@src/components/Wrapper";
+import { useRouter } from "next/router";
+import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { getBlog, getPreview } from "@src/lib/blog";
 import dayjs from "dayjs";
 import { BlogItem } from "@src/types";
@@ -6,10 +8,14 @@ interface Props {
   blog: BlogItem;
   preview: boolean;
 }
-import { NextPage, GetStaticPaths, GetStaticProps } from "next";
+
 const Blog: NextPage<Props> = (props) => {
   const { title, publishedAt, category, body } = props.blog;
   const preview = props.preview;
+  const router = useRouter();
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
       {preview && <a href="/api/clearPreview">preview mode　解除</a>}
@@ -36,7 +42,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     data.contents.map((content: { id: string }) => `/blog/${content.id}`) ?? [];
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 };
 //静的生成用props
