@@ -12,7 +12,7 @@ const Blog: NextPage<Props> = (props) => {
   const preview = props.preview;
   return (
     <>
-      {preview && <h1>プレビューモード。。。。。。</h1>}
+      {preview && <a href="/api/clearPreview">preview mode　解除</a>}
       <h1>{title}</h1>
       {preview ? (
         <p>下書き！！</p>
