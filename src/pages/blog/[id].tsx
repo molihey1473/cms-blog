@@ -8,13 +8,16 @@ interface Props {
   blog: BlogItem;
   preview: boolean;
 }
-
 const Blog: NextPage<Props> = (props) => {
   const { title, publishedAt, category, body } = props.blog;
   const preview = props.preview;
   const router = useRouter();
   if (router.isFallback) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <h1>Loading...</h1>
+      </div>
+    );
   }
   return (
     <>
