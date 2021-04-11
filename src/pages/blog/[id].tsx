@@ -21,19 +21,27 @@ const Blog: NextPage<Props> = (props) => {
   }
   return (
     <>
-      {preview && <a href="/api/clearPreview">preview mode　解除</a>}
-      <h1>{title}</h1>
-      {preview ? (
-        <p>下書き！！</p>
+      {router.isFallback ? (
+        <div>
+          <h1>Loading...</h1>
+        </div>
       ) : (
-        <p>{dayjs(publishedAt).format("YYYY/MM/DD")}</p>
+        <>
+          {preview && <a href="/api/clearPreview">preview mode　解除</a>}
+          <h1>{title}</h1>
+          {preview ? (
+            <p>下書き！！</p>
+          ) : (
+            <p>{dayjs(publishedAt).format("YYYY/MM/DD")}</p>
+          )}
+          <span>{category}</span>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: `${body}`,
+            }}
+          />
+        </>
       )}
-      <span>{category}</span>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: `${body}`,
-        }}
-      />
     </>
   );
 };
