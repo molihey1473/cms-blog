@@ -27,4 +27,6 @@ export interface BlogItem {
   body: string;
   publishedAt: string;
   category: string;
+  createdAt?: string;
+  updatedAt?: string;
 }

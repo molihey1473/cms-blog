@@ -3,38 +3,48 @@ import { useRouter } from "next/router";
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { getBlog, getPreview } from "@src/lib/blog";
 import dayjs from "dayjs";
+import styles from "@src/styles/pages/blog/BlogContent.module.scss";
 import { BlogItem } from "@src/types";
 interface Props {
   blog: BlogItem;
   preview: boolean;
 }
 const Blog: NextPage<Props> = (props) => {
-  const { title, publishedAt, category, body } = props.blog;
+  const {
+    title,
+    publishedAt,
+    category,
+    body,
+    createdAt,
+    updatedAt,
+  } = props.blog;
   const preview = props.preview;
   const router = useRouter();
   return (
     <>
-      {router.isFallback ? (
-        <div>
-          <h1>Loading...</h1>
-        </div>
-      ) : (
-        <>
-          {preview && <a href="/api/clearPreview">preview mode　解除</a>}
-          <h1>{title}</h1>
-          {preview ? (
-            <p>下書き！！</p>
-          ) : (
-            <p>{dayjs(publishedAt).format("YYYY/MM/DD")}</p>
-          )}
-          <span>{category}</span>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: `${body}`,
-            }}
-          />
-        </>
-      )}
+      <section className={styles.blog_content_layout}>
+        <Wrapper>
+          <div className={styles.blog_content_article}>
+            {preview && <a href="/api/clearPreview">preview mode　解除</a>}
+            <h1 className={styles.blog_content_title}>{title}</h1>
+            {preview ? (
+              <div className={styles.blog_content_article_at}>
+                <span>作成日：{dayjs(createdAt).format("YYYY/MM/DD")}</span>
+              </div>
+            ) : (
+              <div className={styles.blog_content_article_at}>
+                <span>公開日{dayjs(publishedAt).format("YYYY/MM/DD")}</span>
+              </div>
+            )}
+            <span>{category}</span>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: `${body}`,
+              }}
+            />
+          </div>
+        </Wrapper>
+      </section>
     </>
   );
 };
