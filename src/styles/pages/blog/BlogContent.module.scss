@@ -4,13 +4,65 @@
 .blog_content_title {
   text-align: center;
   padding: 2rem 0;
+  font-size: 2.5rem;
 }
 .blog_content_article {
   background-color: #fff;
-  padding: 1.5rem;
+  padding: 1.5rem 2rem;
   border-radius: 8px;
 }
 .blog_content_article_at {
   display: flex;
   justify-content: center;
+}
+.blog_content_article_at_list {
+  padding: 0.5rem 1rem;
+  margin-left: 1rem;
+  background-color: #e4e4e4;
+  border-radius: 11px;
+}
+.blog_content_tags {
+  background-color: #e4e4e4;
+  padding: 0.5rem 1rem;
+  border-radius: 7px;
+}
+
+//microCMS記事情報
+.blog_content_body {
+  margin-top: 2.5rem;
+  h1 {
+    border-bottom: 1px solid #e4e4e4;
+    margin-bottom: 2rem;
+    padding: 0.5rem 0;
+  }
+  span {
+    color: #000;
+  }
+  pre {
+    border-radius: 7px;
+    background-color: #23241f;
+    padding: 1rem;
+    margin: 1.5rem 0;
+  }
+  code {
+    color: #f8f8f2;
+    line-height: 1.5;
+  }
+  ul {
+    padding-left: 1.5rem;
+    list-style-type: disc;
+  }
+  li {
+    line-height: 2;
+    opacity: 0.8;
+  }
+}
+
+//clear preview mode
+.clear_preview_mode {
+  font-weight: 700;
+  color: red;
+  &:hover {
+    opacity: 1;
+  }
 }

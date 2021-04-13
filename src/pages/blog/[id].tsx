@@ -4,9 +4,9 @@ import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { getBlog, getPreview } from "@src/lib/blog";
 import dayjs from "dayjs";
 import styles from "@src/styles/pages/blog/BlogContent.module.scss";
-import { BlogItem } from "@src/types";
+import { BlogItem, BlogTags } from "@src/types";
 interface Props {
-  blog: BlogItem;
+  blog: BlogItem & BlogTags;
   preview: boolean;
 }
 const Blog: NextPage<Props> = (props) => {
@@ -17,6 +17,7 @@ const Blog: NextPage<Props> = (props) => {
     body,
     createdAt,
     updatedAt,
+    tags,
   } = props.blog;
   const preview = props.preview;
   const router = useRouter();
@@ -25,22 +26,36 @@ const Blog: NextPage<Props> = (props) => {
       <section className={styles.blog_content_layout}>
         <Wrapper>
           <div className={styles.blog_content_article}>
-            {preview && <a href="/api/clearPreview">preview mode　解除</a>}
+            {preview && (
+              <a href="/api/clearPreview" className={styles.clear_preview_mode}>
+                ** preview mode　解除 **
+              </a>
+            )}
             <h1 className={styles.blog_content_title}>{title}</h1>
             {preview ? (
               <div className={styles.blog_content_article_at}>
-                <span>作成日：{dayjs(createdAt).format("YYYY/MM/DD")}</span>
+                <span className={styles.blog_content_article_at_list}>
+                  作成日：{dayjs(createdAt).format("YYYY/MM/DD")}
+                </span>
+                <span className={styles.blog_content_article_at_list}>
+                  更新日:{dayjs(updatedAt).format("YYYY/MM/DD")}
+                </span>
               </div>
             ) : (
               <div className={styles.blog_content_article_at}>
                 <span>公開日{dayjs(publishedAt).format("YYYY/MM/DD")}</span>
               </div>
             )}
-            <span>{category}</span>
+            <span className={styles.blog_content_tags}>{category}</span>
+            {tags.map((tag) => (
+              <span>{tag.name}</span>
+            ))}
+
             <div
               dangerouslySetInnerHTML={{
                 __html: `${body}`,
               }}
+              className={styles.blog_content_body}
             />
           </div>
         </Wrapper>

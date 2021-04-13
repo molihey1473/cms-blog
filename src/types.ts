@@ -30,3 +30,6 @@ export interface BlogItem {
   createdAt?: string;
   updatedAt?: string;
 }
+export interface BlogTags {
+  tags: { name: string }[];
+}
