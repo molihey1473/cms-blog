@@ -1,7 +1,10 @@
-export const Tags: React.FC = (props) => {
+interface Props {
+  tagItem: string[];
+}
+export const Tags: React.FC<Props> = ({ tagItem }) => {
   return (
     <>
-      <h1>tags</h1>
+      <span>{tagItem}</span>
     </>
   );
 };

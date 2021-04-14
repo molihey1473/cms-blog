@@ -1,5 +1,12 @@
+.blog_article {
+  background-color: #fafafa;
+}
+.styles.blog_content_main {
+  display: flex;
+  justify-content: space-between;
+}
 .blog_content_layout {
-  margin-top: 3.5rem;
+  padding-top: 3.5rem;
 }
 .blog_content_title {
   text-align: center;
@@ -40,20 +47,21 @@
   }
   pre {
     border-radius: 7px;
-    background-color: #23241f;
+    background-color: #292a33;
     padding: 1rem;
     margin: 1.5rem 0;
   }
   code {
-    color: #f8f8f2;
+    background-color: transparent;
+    color: #fff;
     line-height: 1.5;
   }
   ul {
+    line-height: 1.7;
     padding-left: 1.5rem;
     list-style-type: disc;
   }
   li {
-    line-height: 2;
     opacity: 0.8;
   }
 }

@@ -2,6 +2,7 @@ import { Wrapper } from "@src/components/Wrapper";
 import { useRouter } from "next/router";
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { getBlog, getPreview } from "@src/lib/blog";
+import { Tags } from "@src/components/tags/tags";
 import dayjs from "dayjs";
 import styles from "@src/styles/pages/blog/BlogContent.module.scss";
 import { BlogItem, BlogTags } from "@src/types";
@@ -23,43 +24,51 @@ const Blog: NextPage<Props> = (props) => {
   const router = useRouter();
   return (
     <>
-      <section className={styles.blog_content_layout}>
+      <article className={styles.blog_article}>
         <Wrapper>
-          <div className={styles.blog_content_article}>
-            {preview && (
-              <a href="/api/clearPreview" className={styles.clear_preview_mode}>
-                ** preview mode　解除 **
-              </a>
-            )}
-            <h1 className={styles.blog_content_title}>{title}</h1>
-            {preview ? (
-              <div className={styles.blog_content_article_at}>
-                <span className={styles.blog_content_article_at_list}>
-                  作成日：{dayjs(createdAt).format("YYYY/MM/DD")}
-                </span>
-                <span className={styles.blog_content_article_at_list}>
-                  更新日:{dayjs(updatedAt).format("YYYY/MM/DD")}
-                </span>
-              </div>
-            ) : (
-              <div className={styles.blog_content_article_at}>
-                <span>公開日{dayjs(publishedAt).format("YYYY/MM/DD")}</span>
-              </div>
-            )}
-            <span className={styles.blog_content_tags}>{category}</span>
-            {tags.map((tag) => (
-              <span>{tag.name}</span>
-            ))}
+          <div className={styles.blog_content_main}>
+            <section className={styles.blog_content_layout}>
+              <div className={styles.blog_content_article}>
+                {preview && (
+                  <a
+                    href="/api/clearPreview"
+                    className={styles.clear_preview_mode}
+                  >
+                    ** preview mode　解除 **
+                  </a>
+                )}
+                <h1 className={styles.blog_content_title}>{title}</h1>
+                {preview ? (
+                  <div className={styles.blog_content_article_at}>
+                    <span className={styles.blog_content_article_at_list}>
+                      作成日：{dayjs(createdAt).format("YYYY/MM/DD")}
+                    </span>
+                    <span className={styles.blog_content_article_at_list}>
+                      更新日:{dayjs(updatedAt).format("YYYY/MM/DD")}
+                    </span>
+                  </div>
+                ) : (
+                  <div className={styles.blog_content_article_at}>
+                    <span>公開日{dayjs(publishedAt).format("YYYY/MM/DD")}</span>
+                  </div>
+                )}
+                <span className={styles.blog_content_tags}>{category}</span>
+                {tags.map((tag, i) => (
+                  <Tags key={i} tagItem={tag.name} />
+                ))}
 
-            <div
-              dangerouslySetInnerHTML={{
-                __html: `${body}`,
-              }}
-              className={styles.blog_content_body}
-            />
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: `${body}`,
+                  }}
+                  className={styles.blog_content_body}
+                />
+              </div>
+            </section>
+            <aside></aside>
           </div>
         </Wrapper>
-      </section>
+      </article>
     </>
   );
 };
