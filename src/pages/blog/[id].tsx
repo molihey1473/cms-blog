@@ -21,6 +21,7 @@ const Blog: NextPage<Props> = (props) => {
     tags,
   } = props.blog;
   const preview = props.preview;
+  console.log(tags);
   const router = useRouter();
   return (
     <>
@@ -53,10 +54,6 @@ const Blog: NextPage<Props> = (props) => {
                   </div>
                 )}
                 <span className={styles.blog_content_tags}>{category}</span>
-                {tags.map((tag, i) => (
-                  <Tags key={i} tagItem={tag.name} />
-                ))}
-
                 <div
                   dangerouslySetInnerHTML={{
                     __html: `${body}`,
@@ -65,7 +62,18 @@ const Blog: NextPage<Props> = (props) => {
                 />
               </div>
             </section>
-            <aside></aside>
+            <aside className={styles.blog_sidebar_layout}>
+              <div className={styles.blog_sidebar_content}>
+                <div className={styles.blog_sidebar_tags}>
+                  <div className={styles.blog_sidebar_topic_title}>Tags</div>
+                  <div className={styles.blog_sidebar_topic_links}>
+                    {tags.map((tag, i) => (
+                      <Tags key={i} tagLink={tag} />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </aside>
           </div>
         </Wrapper>
       </article>

@@ -1,10 +1,13 @@
+import Link from "next/link";
 interface Props {
-  tagItem: string[];
+  name: string;
 }
-export const Tags: React.FC<Props> = ({ tagItem }) => {
+export const Tags: React.FC<{ tagLink: Props }> = (props) => {
   return (
     <>
-      <span>{tagItem}</span>
+      <Link href={"/"}>
+        <a aria-label={props.tagLink.name}>{props.tagLink.name}</a>
+      </Link>
     </>
   );
 };
