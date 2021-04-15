@@ -21,7 +21,6 @@ const Blog: NextPage<Props> = (props) => {
     tags,
   } = props.blog;
   const preview = props.preview;
-  console.log(tags);
   const router = useRouter();
   return (
     <>
