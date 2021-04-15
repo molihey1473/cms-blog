@@ -1,5 +1,4 @@
-import preview from "@src/pages/api/preview";
-
+import { BLOG_API } from "@src/utils/blogInfo";
 // microCMS API KEY
 const key = {
   headers: {
@@ -28,3 +27,4 @@ export const getPreview = async (id: string, draftKey?: string) => {
 };
 
 //get data for [name].tsx
+export const getTag = async (params: type) => {};
