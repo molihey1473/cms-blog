@@ -1,4 +1,5 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
+import { getTags } from "@src/lib/blog";
 const Page: NextPage = (props) => {
   return (
     <>
@@ -7,7 +8,13 @@ const Page: NextPage = (props) => {
   );
 };
 export const getStaticPaths: GetStaticPaths = async () => {
-  return {};
+  const data = await getTags();
+  const paths =
+    data.contents.map(
+      (content) => `tags/${content.name.replace(/\./g, "").toLowerCase()}`
+    ) || [];
+  console.log(paths);
+  return { paths, fallback: false };
 };
 export const getStaticProps: GetStaticProps = async (context) => {
   return {
