@@ -21,6 +21,7 @@ export interface FeedItem {
   isoDate?: string;
   dateMiliSeconds?: number;
 }
+// /blog/[id].tsx 記事データ
 export interface BlogItem {
   id: string;
   title: string;
@@ -30,6 +31,9 @@ export interface BlogItem {
   createdAt?: string;
   updatedAt?: string;
 }
-export interface BlogTags {
+// 記事内関連記事リンク
+export interface TagItems {
   tags: { name: string; id: string }[];
 }
+//　/tags/[id].tsx
+export interface 

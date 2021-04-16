@@ -5,9 +5,9 @@ import { getBlog, getPreview } from "@src/lib/blog";
 import { Tags } from "@src/components/tags/tags";
 import dayjs from "dayjs";
 import styles from "@src/styles/pages/blog/BlogContent.module.scss";
-import { BlogItem, BlogTags } from "@src/types";
+import { BlogItem, TagItems } from "@src/types";
 interface Props {
-  blog: BlogItem & BlogTags;
+  blog: BlogItem & TagItems;
   preview: boolean;
 }
 const Blog: NextPage<Props> = (props) => {

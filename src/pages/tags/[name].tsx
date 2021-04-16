@@ -17,10 +17,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
     }) || [];
   return { paths, fallback: true };
 };
-export const getStaticProps: GetStaticProps = async (context) => {
-  console.log(context);
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const id = params.id as string;
+  const data = await getTags(id);
   return {
-    props: {},
+    props: {
+      tagItem: data,
+    },
   };
 };
 export default Page;
