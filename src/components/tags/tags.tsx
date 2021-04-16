@@ -7,7 +7,7 @@ export const Tags: React.FC<{ tagLink: Props }> = (props) => {
   const { id, name } = props.tagLink;
   return (
     <>
-      <Link href={`/tags/${id}`} as={`/tags/${name}`}>
+      <Link href={`/tags/${id}`}>
         <a aria-label={props.tagLink.name}>{props.tagLink.name}</a>
       </Link>
     </>

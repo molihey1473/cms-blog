@@ -36,4 +36,7 @@ export interface TagItems {
   tags: { name: string; id: string }[];
 }
 //　/tags/[id].tsx
-export interface 
+export interface TaggedBlogs {
+  publishedAt: string;
+  title: string;
+}
