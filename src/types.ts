@@ -31,5 +31,5 @@ export interface BlogItem {
   updatedAt?: string;
 }
 export interface BlogTags {
-  tags: { name: string }[];
+  tags: { name: string; id: string }[];
 }

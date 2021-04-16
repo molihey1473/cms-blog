@@ -9,14 +9,16 @@ const Page: NextPage = (props) => {
 };
 export const getStaticPaths: GetStaticPaths = async () => {
   const data = await getTags();
+  //paths [name]tsx意外
   const paths =
-    data.contents.map(
-      (content) => `/tags/${content.name.replace(/\./g, "").toLowerCase()}`
-    ) || [];
-  console.log(paths);
-  return { paths, fallback: false };
+    data.contents.map((content: { name: string; id: string }) => {
+      return `/tags/${content.id}`;
+      //return `/tags/${content.name.replace(/\./, "").toLowerCase()}`;
+    }) || [];
+  return { paths, fallback: true };
 };
 export const getStaticProps: GetStaticProps = async (context) => {
+  console.log(context);
   return {
     props: {},
   };

@@ -1,14 +1,13 @@
 import Link from "next/link";
 interface Props {
+  id: string;
   name: string;
 }
 export const Tags: React.FC<{ tagLink: Props }> = (props) => {
-  const name = props.tagLink.name;
+  const { id, name } = props.tagLink;
   return (
     <>
-      <Link
-        href={`/tags/${props.tagLink.name.replace(/\./g, "").toLowerCase()}`}
-      >
+      <Link href={`/tags/${id}`} as={`/tags/${name}`}>
         <a aria-label={props.tagLink.name}>{props.tagLink.name}</a>
       </Link>
     </>
