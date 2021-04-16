@@ -11,7 +11,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const data = await getTags();
   const paths =
     data.contents.map(
-      (content) => `tags/${content.name.replace(/\./g, "").toLowerCase()}`
+      (content) => `/tags/${content.name.replace(/\./g, "").toLowerCase()}`
     ) || [];
   console.log(paths);
   return { paths, fallback: false };
