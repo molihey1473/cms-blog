@@ -22,7 +22,7 @@ export const getPreview = async (id: string, draftKey?: string) => {
 };
 
 //get data for [name].tsx
-export const getTags = async (id?: string) => {
+export const getTags = async (id?: string, name?: string) => {
   const url = id ? `${TAG_API}${id}` : `${TAG_API}`;
   return await fetch(url, key)
     .then((res) => res.json())
