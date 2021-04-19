@@ -1,4 +1,5 @@
 import { BLOG_API, TAG_API } from "@src/utils/blogInfo";
+import { Console } from "console";
 // microCMS API KEY
 const key = {
   headers: {
@@ -22,8 +23,11 @@ export const getPreview = async (id: string, draftKey?: string) => {
 };
 
 //get data for [name].tsx
-export const getTags = async (id?: string, name?: string) => {
-  const url = id ? `${TAG_API}${id}` : `${TAG_API}`;
+export const getTags = async (name?: string) => {
+  const nameSlug = name
+    ? `?filters=name${encodeURIComponent(`[contains]${name}`)}`
+    : "";
+  const url = name ? `${TAG_API}${nameSlug}` : `${TAG_API}`;
   return await fetch(url, key)
     .then((res) => res.json())
     .catch((error) => null);
