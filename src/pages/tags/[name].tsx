@@ -1,18 +1,21 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
+import { Wrapper } from "@src/components/Wrapper";
 import { getTags } from "@src/lib/blog";
+import { TaggedBlogList } from "@src/components/tags/TaggedBlogLIst";
 import { TaggedBlogs } from "@src/types";
-import { BlogLink } from "@src/components/BlogLink";
-const Page: NextPage<{ taggedBlogs: TaggedBlogs[] }> = (props) => {
+import styles from "@src/styles/pages/blog/BlogList.module.scss";
+const Page: NextPage<{ taggedBlogs: TaggedBlogs }> = (props) => {
   return (
     <>
-      <h1>テスト</h1>
-      <div>
-        <ul>
-          {props.taggedBlogs.map((taggedBlog, i) => (
-            <li key={i}>{taggedBlog.content[i].title}</li>
-          ))}
-        </ul>
-      </div>
+      <section className={styles.blog_list_layout}>
+        <Wrapper>
+          <ul className={styles.blog_list}>
+            {props.taggedBlogs.content.map((item, i) => (
+              <TaggedBlogList key={i} taggedList={item} />
+            ))}
+          </ul>
+        </Wrapper>
+      </section>
     </>
   );
 };
@@ -33,13 +36,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const name = params.name as string;
   //tags CMSに関連した記事を抽出するため、再度、頭文字を大文字化
   const rename = name.charAt(0).toUpperCase();
+  //idで抽出したデータではなく/tags/reactのようにnameで表示させる
   const data = await getTags(rename);
-  const content = data.contents.map((item, i) => {
-    console.log(item.content[0].title);
-  });
+  console.log(data.contents[0].content);
+  //const preData = data.contents[0].content.map((item, i) => {
+  //  console.log(item.title, item.publishedAt);
+  //});
   return {
     props: {
-      taggedBlogs: data.contents,
+      taggedBlogs: data.contents[0],
     },
   };
 };

@@ -37,6 +37,16 @@ export interface TagItems {
 }
 //　/tags/[id].tsx
 export interface TaggedBlogs {
-  publishedAt: string;
+  id: string;
+  createdAt?: string;
+  updatedAt?: string;
+  publishedAt?: string;
+  revisedAt?: string;
+  name?: string;
+  content: TaggedList[];
+}
+export interface TaggedList {
+  id: string;
   title: string;
+  publishedAt: string;
 }
