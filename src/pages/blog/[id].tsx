@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { getBlog, getPreview } from "@src/lib/blog";
 import { Tags } from "@src/components/tags/tags";
+import cheerio from "cheerio";
 import dayjs from "dayjs";
 import styles from "@src/styles/pages/blog/BlogContent.module.scss";
 import { BlogItem, TagItems } from "@src/types";
@@ -20,6 +21,9 @@ const Blog: NextPage<Props> = (props) => {
     updatedAt,
     tags,
   } = props.blog;
+  const $ = cheerio.load(body);
+  const headinds = $("h1").toArray();
+  console.log(headinds);
   const preview = props.preview;
   const router = useRouter();
   return (
@@ -69,6 +73,11 @@ const Blog: NextPage<Props> = (props) => {
                     {tags.map((tag, i) => (
                       <Tags key={i} tagLink={tag} />
                     ))}
+                  </div>
+                </div>
+                <div className={styles.blog_sidebar_sticky}>
+                  <div className={styles.blog_sidebar_toc_content}>
+                    <div className={styles.blog_sidebar_toc_title}>目次</div>
                   </div>
                 </div>
               </div>

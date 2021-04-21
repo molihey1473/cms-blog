@@ -75,9 +75,10 @@
   height: 100%;
 }
 .blog_sidebar_tags {
-  padding: 1rem;
+  padding: 1rem 1.5rem;
   background-color: #fff;
   border-radius: 12px;
+  margin-bottom: 30px;
 }
 .blog_sidebar_topic_title {
   font-size: 16px;
@@ -88,6 +89,24 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+
+/*----------topic-list---------*/
+.blog_sidebar_sticky {
+  position: sticky;
+  top: 100px;
+  overflow: auto;
+  min-height: 100vh;
+}
+.blog_sidebar_toc_content {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+}
+.blog_sidebar_toc_title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
 }
 
 //clear preview mode
