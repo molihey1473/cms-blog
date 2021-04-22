@@ -5,11 +5,20 @@ import { getBlog, getPreview } from "@src/lib/blog";
 import { Tags } from "@src/components/tags/tags";
 import cheerio from "cheerio";
 import dayjs from "dayjs";
+// scss modules
 import styles from "@src/styles/pages/blog/BlogContent.module.scss";
+//　props型
 import { BlogItem, TagItems } from "@src/types";
+// react hooks
+import { useRef, useCallback } from "react";
 interface Props {
   blog: BlogItem & TagItems;
   preview: boolean;
+}
+interface TocList {
+  text: string;
+  id: string;
+  name: string;
 }
 const Blog: NextPage<Props> = (props) => {
   const {
@@ -21,19 +30,17 @@ const Blog: NextPage<Props> = (props) => {
     updatedAt,
     tags,
   } = props.blog;
+  //<h1>タグを目次用に抽出
   const $ = cheerio.load(body);
   const headings = $("h1").toArray();
-  const toc = headings.map((data) => ({
+  const toc: TocList[] = headings.map((data) => ({
     text: data.children[0].data,
     id: data.attribs.id,
     name: data.name,
   }));
-  const text = toc.map((item) => {
-    return item.text;
-  });
-  console.log(text);
+  //公開前、下書き記事用props
   const preview = props.preview;
-  //const router = useRouter();
+  const scrollBottomRef = useRef<HTMLElement>(null);
   return (
     <>
       <article className={styles.blog_article}>
