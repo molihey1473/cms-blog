@@ -22,10 +22,18 @@ const Blog: NextPage<Props> = (props) => {
     tags,
   } = props.blog;
   const $ = cheerio.load(body);
-  const headinds = $("h1").toArray();
-  console.log(headinds);
+  const headings = $("h1").toArray();
+  const toc = headings.map((data) => ({
+    text: data.children[0].data,
+    id: data.attribs.id,
+    name: data.name,
+  }));
+  const text = toc.map((item) => {
+    return item.text;
+  });
+  console.log(text);
   const preview = props.preview;
-  const router = useRouter();
+  //const router = useRouter();
   return (
     <>
       <article className={styles.blog_article}>
@@ -76,8 +84,17 @@ const Blog: NextPage<Props> = (props) => {
                   </div>
                 </div>
                 <div className={styles.blog_sidebar_sticky}>
-                  <div className={styles.blog_sidebar_toc_content}>
+                  <div className={styles.blog_sidebar_toc}>
                     <div className={styles.blog_sidebar_toc_title}>目次</div>
+                    <div className={styles.blog_sidebar_toc_area}>
+                      <ol className={styles.blog_sidebar_toc_list}>
+                        {toc.map((item, i) => (
+                          <li className={styles.blog_sidebar_toc_list_item}>
+                            {item.text}
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
                   </div>
                 </div>
               </div>

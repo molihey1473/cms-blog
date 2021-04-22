@@ -98,7 +98,7 @@
   overflow: auto;
   min-height: 100vh;
 }
-.blog_sidebar_toc_content {
+.blog_sidebar_toc {
   background-color: #fff;
   border-radius: 12px;
   padding: 1rem 1.5rem;
@@ -107,6 +107,18 @@
   font-size: 16px;
   font-weight: 700;
   margin-bottom: 10px;
+}
+.blog_sidebar_toc_area {
+  line-height: 1.7;
+  font-size: 16px;
+}
+.blog_sidebar_toc_list {
+  position: relative;
+}
+.blog_sidebar_toc_list_item {
+  position: relative;
+  font-weight: 700;
+  margin-top: 5px;
 }
 
 //clear preview mode
