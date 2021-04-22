@@ -97,7 +97,7 @@ const Blog: NextPage<Props> = (props) => {
                       <ol className={styles.blog_sidebar_toc_list}>
                         {toc.map((item, i) => (
                           <li className={styles.blog_sidebar_toc_list_item}>
-                            {item.text}
+                            <a href={`#${item.id}`}>{item.text}</a>
                           </li>
                         ))}
                       </ol>
