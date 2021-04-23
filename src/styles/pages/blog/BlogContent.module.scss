@@ -37,14 +37,40 @@
 
 //microCMS記事情報
 .blog_content_body {
+  line-height: 1.9;
   margin-top: 2.5rem;
-  h1 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 1.7rem;
+    font-weight: 700;
     border-bottom: 1px solid #e4e4e4;
+    margin-top: 2.5rem;
     margin-bottom: 2rem;
     padding: 0.5rem 0;
+    //&::before {
+    //  display: block;
+    //  content: " ";
+    //  margin-top: -60px;
+    //  height: 60px;
+    //  visibility: hidden;
+    //  pointer-events: none;
+    //}
+  }
+  a {
+    color: #0f83fd;
+  }
+  p {
+    margin-top: 1rem;
   }
   span {
     color: #000;
+  }
+  strong {
+    font-weight: 700;
   }
   pre {
     border-radius: 7px;
@@ -104,7 +130,7 @@
   padding: 1rem 1.5rem;
 }
 .blog_sidebar_toc_title {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 700;
   margin-bottom: 10px;
 }
@@ -119,6 +145,7 @@
   position: relative;
   font-weight: 700;
   margin-top: 5px;
+  font-size: 14px;
 }
 
 //clear preview mode
