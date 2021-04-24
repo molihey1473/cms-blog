@@ -38,7 +38,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const rename = name.charAt(0).toUpperCase();
   //idで抽出したデータではなく/tags/reactのようにnameで表示させる
   const data = await getTags(rename);
-  console.log(data.contents[0].content);
   //const preData = data.contents[0].content.map((item, i) => {
   //  console.log(item.title, item.publishedAt);
   //});

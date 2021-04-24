@@ -1,4 +1,5 @@
 import Link from "next/link";
+import styles from "@src/styles/pages/blog/BlogContent.module.scss";
 interface Props {
   id: string;
   name: string;
@@ -8,7 +9,12 @@ export const Tags: React.FC<{ tagLink: Props }> = (props) => {
   return (
     <>
       <Link href={`/tags/${name.replace(/\./g, "").toLowerCase()}`}>
-        <a aria-label={props.tagLink.name}>{props.tagLink.name}</a>
+        <a
+          className={styles.blog_sidebar_topic_link}
+          aria-label={props.tagLink.name}
+        >
+          {props.tagLink.name}
+        </a>
       </Link>
     </>
   );

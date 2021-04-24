@@ -1,5 +1,5 @@
 .blog_article {
-  background-color: #fafafa;
+  background-color: #d3f3ff;
 }
 .blog_content_main {
   padding-top: 3.5rem;
@@ -116,6 +116,11 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+.blog_sidebar_topic_link {
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 /*----------topic-list---------*/

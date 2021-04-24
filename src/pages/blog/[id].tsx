@@ -3,16 +3,19 @@ import { useRouter } from "next/router";
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { getBlog, getPreview } from "@src/lib/blog";
 import { Tags } from "@src/components/tags/tags";
+//toc, シンタックスハイライト用
 import cheerio from "cheerio";
+//日付表示
 import dayjs from "dayjs";
 // scss modules
 import styles from "@src/styles/pages/blog/BlogContent.module.scss";
 //　props型
 import { BlogItem, TagItems } from "@src/types";
 // react hooks
-import { useRef, useCallback } from "react";
+//import { useRef, useCallback } from "react";
 interface Props {
   blog: BlogItem & TagItems;
+  toc: TocList[];
   preview: boolean;
 }
 interface TocList {
@@ -30,17 +33,9 @@ const Blog: NextPage<Props> = (props) => {
     updatedAt,
     tags,
   } = props.blog;
-  //<h1>タグを目次用に抽出
-  const $ = cheerio.load(body);
-  const headings = $("h1").toArray();
-  const toc: TocList[] = headings.map((data) => ({
-    text: data.children[0].data,
-    id: data.attribs.id,
-    name: data.name,
-  }));
+  const toc = props.toc;
   //公開前、下書き記事用props
   const preview = props.preview;
-  const scrollBottomRef = useRef<HTMLElement>(null);
   return (
     <>
       <article className={styles.blog_article}>
@@ -74,7 +69,7 @@ const Blog: NextPage<Props> = (props) => {
                 <span className={styles.blog_content_tags}>{category}</span>
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: `${body}`,
+                    __html: body,
                   }}
                   className={styles.blog_content_body}
                 />
@@ -96,7 +91,10 @@ const Blog: NextPage<Props> = (props) => {
                     <div className={styles.blog_sidebar_toc_area}>
                       <ol className={styles.blog_sidebar_toc_list}>
                         {toc.map((item, i) => (
-                          <li className={styles.blog_sidebar_toc_list_item}>
+                          <li
+                            key={i}
+                            className={styles.blog_sidebar_toc_list_item}
+                          >
                             <a href={`#${item.id}`}>{item.text}</a>
                           </li>
                         ))}
@@ -128,9 +126,19 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const draftKey = context.previewData?.draftKey as string;
   const id = context.params?.id as string;
   const data = await getPreview(id, draftKey);
+  //<h1>タグを目次用に抽出
+  const $ = cheerio.load(data.body);
+  //table of content
+  const headings = $("h1").toArray();
+  const tocData = headings.map((data) => ({
+    text: data.children[0].data,
+    id: data.attribs.id,
+    name: data.name,
+  }));
   return {
     props: {
       blog: data,
+      toc: tocData,
       preview: context.preview || false,
     },
   };
