@@ -22,7 +22,7 @@ export const Profile: React.FC<{ member: Member }> = (props) => {
             <a href={`https://twitter.com/${twitterName}`}>
               <TwitterIcon />
             </a>
-            <a href="/">
+            <a href="https://github.com/Roy1473">
               <GithubIcon />
             </a>
           </div>
