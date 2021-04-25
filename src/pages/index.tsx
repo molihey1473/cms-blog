@@ -15,7 +15,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Home</title>
+        <title>Blog</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
