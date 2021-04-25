@@ -10,6 +10,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "canvas": "^2.7.0",
     "cheerio": "^1.0.0-rc.6",
     "dayjs": "^1.10.4",
     "next": "10.0.8",
