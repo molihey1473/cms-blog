@@ -1,6 +1,7 @@
 //import { member } from "@src/utils/member";
 import { Member } from "@src/types";
 import { TwitterIcon } from "@src/components/icons/TwitterIcon";
+import { GithubIcon } from "@src/components/icons/GithubIcon";
 import styles from "@src/styles/components/profile.module.scss";
 
 export const Profile: React.FC<{ member: Member }> = (props) => {
@@ -20,6 +21,9 @@ export const Profile: React.FC<{ member: Member }> = (props) => {
           <div className={styles.profile_links}>
             <a href={`https://twitter.com/${twitterName}`}>
               <TwitterIcon />
+            </a>
+            <a href="/">
+              <GithubIcon />
             </a>
           </div>
         </div>
