@@ -118,6 +118,8 @@
   flex-wrap: wrap;
 }
 .blog_sidebar_topic_link {
+  margin-top: 11px;
+  min-width: 49%;
   &:hover {
     text-decoration: underline;
   }
@@ -152,6 +154,17 @@
   font-weight: 700;
   margin-top: 5px;
   font-size: 14px;
+  padding-left: 21px;
+  &::before {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    left: 0;
+    top: 9px;
+    width: 6px;
+    height: 6px;
+    background: #000;
+  }
 }
 
 //clear preview mode
