@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { getBlog, getPreview } from "@src/lib/blog";
 import { Tags } from "@src/components/tags/tags";
+import { SidebarProfile } from "@src/components/SidebarProfile";
 //toc, シンタックスハイライト用
 import cheerio from "cheerio";
 //日付表示
@@ -101,6 +102,7 @@ const Blog: NextPage<Props> = (props) => {
                   </div>
                 </div>
                 <div className={styles.blog_sidebar_sticky}>
+                  <SidebarProfile />
                   <div className={styles.blog_sidebar_toc}>
                     <div className={styles.blog_sidebar_toc_title}>目次</div>
                     <div className={styles.blog_sidebar_toc_area}>

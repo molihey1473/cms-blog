@@ -126,16 +126,33 @@
 }
 
 /*----------aside-topic-list---------*/
+
 .blog_sidebar_sticky {
   position: sticky;
   top: 100px;
   overflow: auto;
   min-height: 100vh;
 }
+//aside-profile
+.blog_sidebar_aside_profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+}
+.blog_sidebar_aside_profile_description {
+  line-height: 1.4;
+}
+
+//toc-list
 .blog_sidebar_toc {
   background-color: #fff;
   border-radius: 12px;
   padding: 1rem 1.5rem;
+  margin-top: 25px;
 }
 .blog_sidebar_toc_title {
   font-size: 17px;
