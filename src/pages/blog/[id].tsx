@@ -11,6 +11,7 @@ import dayjs from "dayjs";
 import styles from "@src/styles/pages/blog/BlogContent.module.scss";
 //　props型
 import { BlogItem, TagItems } from "@src/types";
+import { time } from "console";
 // react hooks
 //import { useRef, useCallback } from "react";
 interface Props {
@@ -61,15 +62,23 @@ const Blog: NextPage<Props> = (props) => {
                 {preview ? (
                   <div className={styles.blog_content_article_at}>
                     <span className={styles.blog_content_article_at_list}>
-                      作成日：{dayjs(createdAt).format("YYYY/MM/DD")}
+                      <time>
+                        作成日：{dayjs(createdAt).format("YYYY/MM/DD")}
+                      </time>
                     </span>
                     <span className={styles.blog_content_article_at_list}>
-                      更新日:{dayjs(updatedAt).format("YYYY/MM/DD")}
+                      <time>
+                        更新日:{dayjs(updatedAt).format("YYYY/MM/DD")}
+                      </time>
                     </span>
                   </div>
                 ) : (
                   <div className={styles.blog_content_article_at}>
-                    <span>公開日{dayjs(publishedAt).format("YYYY/MM/DD")}</span>
+                    <time>
+                      <span>
+                        公開日{dayjs(publishedAt).format("YYYY/MM/DD")}
+                      </span>
+                    </time>
                   </div>
                 )}
                 <span className={styles.blog_content_tags}>{category}</span>
@@ -101,7 +110,7 @@ const Blog: NextPage<Props> = (props) => {
                             key={i}
                             className={styles.blog_sidebar_toc_list_item}
                           >
-                            <a href={`#${item.id}`}>{item.text}</a>
+                            <a href={encodeURI(`#${item.id}`)}>{item.text}</a>
                           </li>
                         ))}
                       </ol>
