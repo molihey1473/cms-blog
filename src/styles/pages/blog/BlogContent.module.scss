@@ -143,7 +143,15 @@
   border-radius: 12px;
   padding: 1rem 1.5rem;
 }
+.blog_sidebar_author {
+  font-weight: 700;
+}
+.blog_sidebar_profile_icon_links {
+  display: flex;
+  align-items: center;
+}
 .blog_sidebar_aside_profile_description {
+  margin-top: 10px;
   line-height: 1.4;
 }
 
