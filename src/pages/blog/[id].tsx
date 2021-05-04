@@ -4,6 +4,7 @@ import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { getBlog, getPreview } from "@src/lib/blog";
 import { Tags } from "@src/components/tags/tags";
 import { SidebarProfile } from "@src/components/SidebarProfile";
+import { LatestBlogLink } from "@src/components/latestBlogLink";
 //toc, シンタックスハイライト用
 import cheerio from "cheerio";
 //日付表示
@@ -19,6 +20,7 @@ interface Props {
   blog: BlogItem & TagItems;
   toc: TocList[];
   preview: boolean;
+  latestArticles: BlogItem[];
 }
 interface TocList {
   text: string;
@@ -38,6 +40,8 @@ const Blog: NextPage<Props> = (props) => {
   const toc = props.toc;
   //公開前、下書き記事用props
   const preview = props.preview;
+  //最新記事
+  const latestArticles = props.latestArticles;
   return (
     <>
       <article className={styles.blog_article}>
@@ -122,6 +126,13 @@ const Blog: NextPage<Props> = (props) => {
               </div>
             </aside>
           </div>
+          <div className={styles.latestArticles_layout}>
+            <ul>
+              {latestArticles.slice(0, 4).map((item, i) => (
+                <LatestBlogLink key={i} item={item} />
+              ))}
+            </ul>
+          </div>
         </Wrapper>
       </article>
     </>
@@ -142,7 +153,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const draftKey = context.previewData?.draftKey as string;
   const id = context.params?.id as string;
+  //下書きpreview記事表示メソッド
   const data = await getPreview(id, draftKey);
+  //最新記事表示data取得(0-5)
+  const latestData = await getBlog();
   //<h1>タグを目次用に抽出
   const $ = cheerio.load(data.body);
   //table of content
@@ -157,6 +171,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       blog: data,
       toc: tocData,
       preview: context.preview || false,
+      latestArticles: latestData.contents,
     },
   };
 };

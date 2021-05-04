@@ -11,11 +11,11 @@ const BlogList: NextPage<{ blogs: BlogItem[] }> = (props) => {
       <main>
         <section className={styles.blog_list_layout}>
           <Wrapper>
-            <ul className={styles.blog_list}>
+            <div className={styles.blog_list}>
               {props.blogs.map((blog, i) => (
                 <BlogLink key={`blog-link-${i}`} item={blog} />
               ))}
-            </ul>
+            </div>
           </Wrapper>
         </section>
       </main>

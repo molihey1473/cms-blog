@@ -149,6 +149,9 @@
 .blog_sidebar_profile_icon_links {
   display: flex;
   align-items: center;
+  a {
+    padding: 0.4rem;
+  }
 }
 .blog_sidebar_aside_profile_description {
   margin-top: 10px;
@@ -199,4 +202,9 @@
   &:hover {
     opacity: 1;
   }
+}
+
+//latest articles
+.latestArticles_layout {
+  padding: 2rem;
 }

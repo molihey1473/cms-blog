@@ -3,7 +3,10 @@
   min-height: 100vh;
 }
 .blog_list {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2em 1.8em;
+  //display: flex;
+  //justify-content: space-between;
+  //flex-wrap: wrap;
 }

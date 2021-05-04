@@ -6,18 +6,28 @@ import styles from "@src/styles/components/BlogLink.module.scss";
 export const BlogLink: React.FC<{ item: BlogItem }> = (props) => {
   const { id, title, publishedAt, category } = props.item;
   return (
-    <li className={styles.blog_link}>
+    <article className={styles.blog_link}>
       <Link href={`/blog/${id}`}>
         <a className={styles.blog_link_content}>
-          <time dateTime={publishedAt}>
-            {dayjs(publishedAt).format("YYYY/MM/DD")}
-          </time>
-          <h2 className={styles.blog_link_title}>{title}</h2>
-          <div className={styles.blog_tags}>
-            <span className={styles.blog_tag}>{category}</span>
+          <div className={styles.blog_main_image}>
+            <img
+              src="https://images.microcms-assets.io/assets/f94653ed008f4b178eaa8ae1659f31fe/7af338a3f4da4d6398ddc5ec8105b6a0/morihey2.png"
+              alt="profileCard"
+            />
+          </div>
+          <div className={styles.blog_main_title}>
+            <h3 className={styles.blog_link_title}>{title}</h3>
+          </div>
+          <div className={styles.blog_user}>
+            <time dateTime={publishedAt}>
+              {dayjs(publishedAt).format("YYYY/MM/DD")}
+            </time>
           </div>
         </a>
       </Link>
-    </li>
+      <div className={styles.blog_tags}>
+        <span className={styles.blog_tag}>{category}</span>
+      </div>
+    </article>
   );
 };
