@@ -4,7 +4,6 @@ import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { getBlog, getPreview } from "@src/lib/blog";
 import { Tags } from "@src/components/tags/tags";
 import { SidebarProfile } from "@src/components/SidebarProfile";
-import { LatestBlogLink } from "@src/components/latestBlogLink";
 //toc, シンタックスハイライト用
 import cheerio from "cheerio";
 //日付表示
@@ -126,13 +125,7 @@ const Blog: NextPage<Props> = (props) => {
               </div>
             </aside>
           </div>
-          <div className={styles.latestArticles_layout}>
-            <ul>
-              {latestArticles.slice(0, 4).map((item, i) => (
-                <LatestBlogLink key={i} item={item} />
-              ))}
-            </ul>
-          </div>
+          <div className={styles.latestArticles_layout}></div>
         </Wrapper>
       </article>
     </>
