@@ -12,7 +12,6 @@ import dayjs from "dayjs";
 import styles from "@src/styles/pages/blog/BlogContent.module.scss";
 //　props型
 import { BlogItem, TagItems } from "@src/types";
-import { time } from "console";
 // react hooks
 //import { useRef, useCallback } from "react";
 interface Props {
