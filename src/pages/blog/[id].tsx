@@ -15,7 +15,7 @@ import { BlogItem, TagItems } from "@src/types";
 // react hooks
 //import { useRef, useCallback } from "react";
 interface Props {
-  blog: BlogItem & TagItems;
+  blog: BlogItem;
   toc: TocList[];
   preview: boolean;
   latestArticles: BlogItem[];

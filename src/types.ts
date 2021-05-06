@@ -22,6 +22,7 @@ export interface FeedItem {
   dateMiliSeconds?: number;
 }
 // /blog/[id].tsx 記事データ
+// tags:TagItemsだとcomponents内で反応しないため。tags:TagItems -> tags?: { name: string; id: string }[];に変更
 export interface BlogItem {
   id: string;
   title: string;
@@ -30,6 +31,8 @@ export interface BlogItem {
   category: string;
   createdAt?: string;
   updatedAt?: string;
+  tags?: { name: string; id: string }[];
+  //tags?: TagItems;
 }
 // 記事内関連記事リンク
 export interface TagItems {

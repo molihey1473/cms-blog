@@ -3,9 +3,8 @@ import { BlogItem, TagItems } from "@src/types";
 import Link from "next/link";
 import dayjs from "dayjs";
 import styles from "@src/styles/components/BlogLink.module.scss";
-import { link } from "fs";
 interface Props {
-  item: BlogItem & TagItems;
+  item: BlogItem;
 }
 export const BlogLink: React.FC<Props> = (props) => {
   const { id, title, publishedAt, category, tags } = props.item;
@@ -32,7 +31,9 @@ export const BlogLink: React.FC<Props> = (props) => {
       <div className={styles.blog_tags}>
         {tags.map((item, i) => (
           <Link href={`/tags/${item.name.toLowerCase()}`}>
-            <a className={styles.blog_tag}>{item.name}</a>
+            <a key={i} className={styles.blog_tag_list}>
+              {item.name}
+            </a>
           </Link>
         ))}
       </div>
