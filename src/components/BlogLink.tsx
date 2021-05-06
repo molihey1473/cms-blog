@@ -3,6 +3,7 @@ import { BlogItem, TagItems } from "@src/types";
 import Link from "next/link";
 import dayjs from "dayjs";
 import styles from "@src/styles/components/BlogLink.module.scss";
+import { link } from "fs";
 interface Props {
   item: BlogItem & TagItems;
 }
@@ -18,18 +19,22 @@ export const BlogLink: React.FC<Props> = (props) => {
               alt="profileCard"
             />
           </div>
-          <div className={styles.blog_main_title}>
-            <h3 className={styles.blog_link_title}>{title}</h3>
-          </div>
-          <div className={styles.blog_user}>
+          <div className={styles.blog_at}>
             <time dateTime={publishedAt}>
               {dayjs(publishedAt).format("YYYY/MM/DD")}
             </time>
           </div>
+          <div className={styles.blog_main_title}>
+            <h3 className={styles.blog_link_title}>{title}</h3>
+          </div>
         </a>
       </Link>
       <div className={styles.blog_tags}>
-        <span className={styles.blog_tag}>{category}</span>
+        {tags.map((item, i) => (
+          <Link href={`/tags/${item.name.toLowerCase()}`}>
+            <a className={styles.blog_tag}>{item.name}</a>
+          </Link>
+        ))}
       </div>
     </article>
   );
