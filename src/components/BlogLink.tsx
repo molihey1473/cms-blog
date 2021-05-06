@@ -7,7 +7,7 @@ interface Props {
   item: BlogItem;
 }
 export const BlogLink: React.FC<Props> = (props) => {
-  const { id, title, publishedAt, category, tags } = props.item;
+  const { id, title, publishedAt, tags } = props.item;
   return (
     <article className={styles.blog_link}>
       <Link href={`/blog/${id}`}>
@@ -30,10 +30,8 @@ export const BlogLink: React.FC<Props> = (props) => {
       </Link>
       <div className={styles.blog_tags}>
         {tags.map((item, i) => (
-          <Link href={`/tags/${item.name.toLowerCase()}`}>
-            <a key={i} className={styles.blog_tag_list}>
-              {item.name}
-            </a>
+          <Link key={`tags-${i}`} href={`/tags/${item.name.toLowerCase()}`}>
+            <a className={styles.blog_tag_list}>{item.name}</a>
           </Link>
         ))}
       </div>

@@ -1,7 +1,7 @@
 import { NextPage, GetStaticProps } from "next";
 import { getBlog } from "@src/lib/blog";
 import { BlogItem, TagItems } from "@src/types";
-import Link from "next/link";
+//import Link from "next/link";
 import { Wrapper } from "@src/components/Wrapper";
 import { BlogLink } from "@src/components/BlogLink";
 import styles from "@src/styles/pages/blog/BlogList.module.scss";

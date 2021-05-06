@@ -1,7 +1,8 @@
 import { Wrapper } from "@src/components/Wrapper";
-import { useRouter } from "next/router";
+//import { useRouter } from "next/router";
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { getBlog, getPreview } from "@src/lib/blog";
+import { BlogLink } from "@src/components/BlogLink";
 import { Tags } from "@src/components/tags/tags";
 import { SidebarProfile } from "@src/components/SidebarProfile";
 //toc, シンタックスハイライト用
