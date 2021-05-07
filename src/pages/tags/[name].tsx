@@ -1,5 +1,6 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { Wrapper } from "@src/components/Wrapper";
+import { BlogLink } from "@src/components/BlogLink";
 import { getTags } from "@src/lib/blog";
 import { TaggedBlogList } from "@src/components/tags/TaggedBlogLIst";
 import { TaggedBlogs } from "@src/types";
@@ -14,6 +15,11 @@ const Page: NextPage<{ taggedBlogs: TaggedBlogs }> = (props) => {
               <TaggedBlogList key={i} taggedList={item} />
             ))}
           </ul>
+          <div>
+            {props.taggedBlogs.content.map((taggedBlog, i) => (
+              <BlogLink key={`taggedBlog-${i}`} item={taggedBlog} />
+            ))}
+          </div>
         </Wrapper>
       </section>
     </>

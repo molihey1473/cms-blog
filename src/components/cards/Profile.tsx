@@ -1,4 +1,5 @@
 //import { member } from "@src/utils/member";
+import Image from "next/image";
 import { Member } from "@src/types";
 import { TwitterIcon } from "@src/components/icons/TwitterIcon";
 import { GithubIcon } from "@src/components/icons/GithubIcon";
@@ -12,7 +13,7 @@ export const Profile: React.FC<{ member: Member }> = (props) => {
         <img
           src={avatar}
           alt={name}
-          width={250}
+          width={200}
           className={styles.profile_avatar}
         />
         <div className={styles.profile_description}>

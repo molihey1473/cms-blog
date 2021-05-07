@@ -125,13 +125,18 @@ const Blog: NextPage<Props> = (props) => {
               </div>
             </aside>
           </div>
-          <div className={styles.latestArticles_list}>
-            {latestArticles &&
-              latestArticles
-                .slice(0, 5)
-                .map((latestBlog, i) => (
-                  <BlogLink key={`latest-blog-${i}`} item={latestBlog} />
-                ))}
+          <div>
+            <section className={styles.latestArticles_layout}>
+              <div className={styles.latestArticles_title}>最近の記事</div>
+              <div className={styles.latestArticles_list}>
+                {latestArticles &&
+                  latestArticles
+                    .slice(0, 5)
+                    .map((latestBlog, i) => (
+                      <BlogLink key={`latest-blog-${i}`} item={latestBlog} />
+                    ))}
+              </div>
+            </section>
           </div>
         </Wrapper>
       </article>

@@ -16,7 +16,7 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>Blog</title>
-        <link rel="icon" href="avatar/profile.png" />
+        <link rel="icon" href="avatar/profileIcon.png" />
       </Head>
       <main className={styles.main}>
         <section className={styles.home_profile}>

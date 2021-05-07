@@ -9,7 +9,6 @@ export const Header: React.FC = () => {
         <div className={styles.header_content}>
           <Link href="/">
             <a>
-              <img src="/avatar/profile.jpeg" alt="icon" width="40" />
               <svg
                 width="180"
                 height="25"

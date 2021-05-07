@@ -205,6 +205,14 @@
 }
 
 //latest articles
+.latestArticles_layout {
+  padding: 2rem;
+}
+.latestArticles_title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  padding: 1.2rem 0;
+}
 .latestArticles_list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
