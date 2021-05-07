@@ -129,9 +129,9 @@
 
 .blog_sidebar_sticky {
   position: sticky;
-  top: 100px;
+  top: 50px;
   overflow: auto;
-  min-height: 100vh;
+  max-height: 100vh;
 }
 //aside-profile
 .blog_sidebar_aside_profile {
@@ -205,6 +205,8 @@
 }
 
 //latest articles
-.latestArticles_layout {
-  padding: 2rem;
+.latestArticles_list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2em 1.8em;
 }

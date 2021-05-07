@@ -125,7 +125,14 @@ const Blog: NextPage<Props> = (props) => {
               </div>
             </aside>
           </div>
-          <div className={styles.latestArticles_layout}></div>
+          <div className={styles.latestArticles_list}>
+            {latestArticles &&
+              latestArticles
+                .slice(0, 5)
+                .map((latestBlog, i) => (
+                  <BlogLink key={`latest-blog-${i}`} item={latestBlog} />
+                ))}
+          </div>
         </Wrapper>
       </article>
     </>
