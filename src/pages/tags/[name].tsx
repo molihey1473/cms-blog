@@ -15,7 +15,7 @@ const Page: NextPage<{ taggedBlogs: TaggedBlogs }> = (props) => {
               <TaggedBlogList key={i} taggedList={item} />
             ))}
           </ul>
-          <div>
+          <div className={styles.blog_list}>
             {props.taggedBlogs.content.map((taggedBlog, i) => (
               <BlogLink key={`taggedBlog-${i}`} item={taggedBlog} />
             ))}
