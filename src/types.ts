@@ -28,15 +28,16 @@ export interface BlogItem {
   title: string;
   body: string;
   publishedAt: string;
-  category: string;
+  category?: string;
   createdAt?: string;
   updatedAt?: string;
   tags?: { name: string; id: string }[];
-  //tags?: TagItems;
+  //tags?: TagItems[];
 }
 // 記事内関連記事リンク
 export interface TagItems {
-  tags: { name: string; id: string }[];
+  name: string;
+  id: string;
 }
 //　/tags/[id].tsx
 export interface TaggedBlogs {
