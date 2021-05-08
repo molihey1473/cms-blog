@@ -1,8 +1,18 @@
-.blog_list_layout {
+.tagged_blog_list_layout {
   padding: 3rem;
   min-height: 100vh;
 }
-.blog_list {
+.tagged_blog_content {
+}
+.tag_name {
+  display: block;
+  text-align: center;
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+.tagged_blog_list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 2em 1.8em;

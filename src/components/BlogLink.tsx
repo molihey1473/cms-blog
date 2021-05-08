@@ -1,10 +1,10 @@
 //import {NextPage} from 'next'
-import { BlogItem, TagItems } from "@src/types";
+import { BlogItem, TagItems, ArticleList } from "@src/types";
 import Link from "next/link";
 import dayjs from "dayjs";
 import styles from "@src/styles/components/BlogLink.module.scss";
 interface Props {
-  item: BlogItem;
+  item: ArticleList;
 }
 export const BlogLink: React.FC<Props> = (props) => {
   const { id, title, publishedAt, tags } = props.item;

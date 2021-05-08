@@ -54,3 +54,10 @@ export interface TaggedList {
   title: string;
   publishedAt: string;
 }
+/* 記事一覧Article List */
+export interface ArticleList {
+  id: string;
+  title: string;
+  publishedAt: string;
+  tags?: { name: string }[];
+}

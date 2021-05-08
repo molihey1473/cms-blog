@@ -5,20 +5,28 @@ import { getTags } from "@src/lib/blog";
 import { TaggedBlogList } from "@src/components/tags/TaggedBlogLIst";
 import { TaggedBlogs } from "@src/types";
 import styles from "@src/styles/pages/blog/BlogList.module.scss";
-const Page: NextPage<{ taggedBlogs: TaggedBlogs }> = (props) => {
+interface Props {
+  name: string;
+  content: {
+    id: string;
+    title: string;
+    publishedAt: string;
+  }[];
+}
+const Page: NextPage<{ taggedBlogs: Props }> = (props) => {
   return (
     <>
-      <section className={styles.blog_list_layout}>
+      <section className={styles.tagged_blog_list_layout}>
         <Wrapper>
-          <ul className={styles.blog_list}>
-            {props.taggedBlogs.content.map((item, i) => (
-              <TaggedBlogList key={i} taggedList={item} />
-            ))}
-          </ul>
-          <div className={styles.blog_list}>
-            {props.taggedBlogs.content.map((taggedBlog, i) => (
-              <BlogLink key={`taggedBlog-${i}`} item={taggedBlog} />
-            ))}
+          <div className={styles.tagged_blog_content}>
+            <div
+              className={styles.tag_name}
+            >{`#${props.taggedBlogs.name}`}</div>
+            <div className={styles.tagged_blog_list}>
+              {props.taggedBlogs.content.map((taggedBlog, i) => (
+                <BlogLink key={`taggedBlog-${i}`} item={taggedBlog} />
+              ))}
+            </div>
           </div>
         </Wrapper>
       </section>
