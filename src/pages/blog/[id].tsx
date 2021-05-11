@@ -5,8 +5,11 @@ import { getBlog, getPreview } from "@src/lib/blog";
 import { BlogLink } from "@src/components/BlogLink";
 import { Tags } from "@src/components/tags/tags";
 import { SidebarProfile } from "@src/components/SidebarProfile";
-//toc, シンタックスハイライト用
+//toc
 import cheerio from "cheerio";
+//シンタックスハイライト　heighlight.js
+import hljs from "highlight.js";
+import "highlight.js/styles/vs2015.css";
 //日付表示
 import dayjs from "dayjs";
 // scss modules
@@ -50,7 +53,7 @@ const Blog: NextPage<Props> = (props) => {
               <div className={styles.blog_content_article}>
                 <div>
                   <img
-                    src="https://images.microcms-assets.io/assets/f94653ed008f4b178eaa8ae1659f31fe/7af338a3f4da4d6398ddc5ec8105b6a0/morihey2.png"
+                    src="https://images.microcms-assets.io/assets/f94653ed008f4b178eaa8ae1659f31fe/b76bebf3e1ee41f69266c82bb713f989/MORIHEY%E3%81%AE%E3%83%95%E3%82%99%E3%83%AD%E3%82%AF%E3%82%99.png"
                     alt={`${title}-image`}
                   />
                 </div>
@@ -88,7 +91,7 @@ const Blog: NextPage<Props> = (props) => {
                 <span className={styles.blog_content_tags}>{category}</span>
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: body,
+                    __html: props.body,
                   }}
                   className={styles.blog_content_body}
                 />
@@ -164,6 +167,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const latestData = await getBlog();
   //<h1>タグを目次用に抽出
   const $ = cheerio.load(data.body);
+  $("pre code").each((_, elm) => {
+    const result = hljs.highlightAuto($(elm).text());
+    $(elm).html(result.value);
+    $(elm).addClass("hljs");
+  });
   //table of content
   const headings = $("h1").toArray();
   const tocData = headings.map((data) => ({
@@ -174,6 +182,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       blog: data,
+      body: $.html(),
       toc: tocData,
       preview: context.preview || false,
       latestArticles: latestData.contents,
