@@ -20,6 +20,7 @@ import { BlogItem, TagItems } from "@src/types";
 //import { useRef, useCallback } from "react";
 interface Props {
   blog: BlogItem;
+  body: string;
   toc: TocList[];
   preview: boolean;
   latestArticles: BlogItem[];
@@ -30,15 +31,8 @@ interface TocList {
   name: string;
 }
 const Blog: NextPage<Props> = (props) => {
-  const {
-    title,
-    publishedAt,
-    category,
-    body,
-    createdAt,
-    updatedAt,
-    tags,
-  } = props.blog;
+  const { title, publishedAt, category, body, createdAt, updatedAt, tags } =
+    props.blog;
   const toc = props.toc;
   //公開前、下書き記事用props
   const preview = props.preview;
