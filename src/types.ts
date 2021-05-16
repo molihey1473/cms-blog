@@ -26,7 +26,7 @@ export interface FeedItem {
 export interface BlogItem {
   id: string;
   title: string;
-  body: string;
+  body?: string;
   publishedAt: string;
   category?: string;
   createdAt?: string;
