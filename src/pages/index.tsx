@@ -3,7 +3,7 @@ import { NextPage } from "next";
 import posts from ".contents/posts.json";
 //import post from "@.contents/posts.json";
 //import { TwitterIcon } from "@src/components/icons/TwitterIcon";
-import { Header } from "@src/components/Header";
+//import { Header } from "@src/components/Header";
 import { Wrapper } from "@src/components/Wrapper";
 import { Profile } from "@src/components/cards/Profile";
 import { PostList } from "@src/components/PostList";
@@ -16,7 +16,7 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>Blog</title>
-        <link rel="icon" href="avatar/profileIcon.png" />
+        <link rel="icon" href="avatar/molihey.png" />
       </Head>
       <main className={styles.main}>
         <section className={styles.home_profile}>

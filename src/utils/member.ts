@@ -1,7 +1,7 @@
 import { Member } from "@src/types";
 //blog user information
 export const member: Member = {
-  name: "Morihey",
+  name: "Molihey",
   avatar: "/avatar/molihey.png",
   sources: ["https://qiita.com/Roy1473/feed.atom"],
   githubName: "Roy1473",
