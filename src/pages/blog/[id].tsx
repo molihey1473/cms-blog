@@ -6,7 +6,7 @@ import { BlogLink } from "@src/components/BlogLink";
 import { Tags } from "@src/components/tags/tags";
 import { SidebarProfile } from "@src/components/SidebarProfile";
 //toc
-import cheerio from "cheerio";
+import cheerio, { CheerioParserOptions } from "cheerio";
 //シンタックスハイライト　heighlight.js
 import hljs from "highlight.js";
 import "highlight.js/styles/vs2015.css";
@@ -168,12 +168,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
   });
   //table of content
   const headings = $("h1").toArray();
-  console.log(headings);
-  const tocData = headings.map((data) => ({
-    text: data.children[0].data,
-    id: data.attribs.id,
-    name: data.name,
-  }));
+  const tocData: TocList[] = headings.map((element: any): TocList => {
+    const a: string = element.children[0].data;
+    const b: string = element.attribs.id;
+    const c: string = element.name;
+    console.log(a);
+    return {
+      text: element.children[0].data,
+      id: element.attribs.id,
+      name: element.name,
+    };
+  });
   return {
     props: {
       blog: data,

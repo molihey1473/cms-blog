@@ -44,7 +44,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       return `/tags/${lowScaleName}`;
       //return `/tags/${content.name.replace(/\./, "").toLowerCase()}`;
     }) || [];
-  return { paths, fallback: true };
+  return { paths, fallback: false };
 };
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const name = params.name as string;
