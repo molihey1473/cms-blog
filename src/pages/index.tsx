@@ -17,6 +17,11 @@ const Home: NextPage = () => {
       <Head>
         <title>Blog</title>
         <link rel="icon" href="avatar/molihey.png" />
+        <meta property="og:title=" content="MoliHey" />
+        <meta property="og:url" content="" />
+        <meta property="og:image" content="" />
+        <meta property="og:site_name" content="Morihey" />
+        <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <main className={styles.main}>
         <section className={styles.home_profile}>

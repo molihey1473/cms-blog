@@ -168,6 +168,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   });
   //table of content
   const headings = $("h1").toArray();
+  console.log(headings);
   const tocData = headings.map((data) => ({
     text: data.children[0].data,
     id: data.attribs.id,
