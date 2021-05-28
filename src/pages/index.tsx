@@ -21,9 +21,9 @@ const Home: NextPage = () => {
         <meta property="og:url" content="https://blog-sage-nine.vercel.app/" />
         <meta
           property="og:image"
-          content="https://blog-sage-nine.vercel.app/public/ogp/home-ogp.png"
+          content="https://blog-sage-nine.vercel.app/ogp/home-ogp.png"
         />
-        <meta property="og:site_name" content="MoriHey" />
+        <meta property="og:site_name" content="MoliHey" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <main className={styles.main}>
