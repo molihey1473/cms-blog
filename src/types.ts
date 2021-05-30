@@ -7,7 +7,7 @@ export interface Member {
   bio: string;
 }
 export interface PostItem {
-  authorName: string;
+  authorName?: string;
   title: string;
   link: string;
   contentSnippet?: string;

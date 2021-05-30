@@ -21,7 +21,7 @@ const Home: NextPage = () => {
         <meta property="og:url" content="https://blog-sage-nine.vercel.app/" />
         <meta
           property="og:image"
-          content="https://blog-sage-nine.vercel.app/ogp/home-ogp.png"
+          content={`https://res.cloudinary.com/dusfum3ze/image/upload/l_text:${}/v1621920274/blog-ogp_ua0qa3.png`}
         />
         <meta property="og:site_name" content="MoliHey" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -37,7 +37,7 @@ const Home: NextPage = () => {
             <div className={styles.home_section_title_content}>
               <h2 className={styles.home_section_title}>関連記事</h2>
             </div>
-            <PostList items={posts as PostItem[]} />
+            <PostList items={posts} />
           </Wrapper>
         </section>
       </main>
