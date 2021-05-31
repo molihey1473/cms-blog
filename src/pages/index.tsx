@@ -16,7 +16,6 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>Blog</title>
-        <link rel="icon" href="avatar/molihey.png" />
         <meta property="og:title" content="MoliHey" />
         <meta property="og:url" content="https://blog-sage-nine.vercel.app/" />
         <meta
