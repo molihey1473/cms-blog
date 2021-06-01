@@ -5,6 +5,7 @@ import { getBlog, getPreview } from "@src/lib/blog";
 import { BlogLink } from "@src/components/BlogLink";
 import { Tags } from "@src/components/tags/tags";
 import { SidebarProfile } from "@src/components/SidebarProfile";
+import { clOverlay } from "@src/lib/cl";
 //toc
 import cheerio, { CheerioParserOptions } from "cheerio";
 //シンタックスハイライト　heighlight.js
@@ -161,6 +162,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const latestData = await getBlog();
   //<h1>タグを目次用に抽出
   const $ = cheerio.load(data.body);
+  const url = await clOverlay(data.title);
+  console.log(url);
   $("pre code").each((_, elm) => {
     const result = hljs.highlightAuto($(elm).text());
     $(elm).html(result.value);
@@ -172,7 +175,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const a: string = element.children[0].data;
     const b: string = element.attribs.id;
     const c: string = element.name;
-    console.log(a);
+
     return {
       text: element.children[0].data,
       id: element.attribs.id,

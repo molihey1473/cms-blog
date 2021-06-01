@@ -18,10 +18,7 @@ const Home: NextPage = () => {
         <title>Blog</title>
         <meta property="og:title" content="MoliHey" />
         <meta property="og:url" content="https://blog-sage-nine.vercel.app/" />
-        <meta
-          property="og:image"
-          content={`https://res.cloudinary.com/dusfum3ze/image/upload/l_text:${}/v1621920274/blog-ogp_ua0qa3.png`}
-        />
+        <meta property="og:image" content="ogp/home-ogp.png" />
         <meta property="og:site_name" content="MoliHey" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
