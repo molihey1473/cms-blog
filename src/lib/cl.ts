@@ -3,7 +3,7 @@ import Cloudinary from "cloudinary";
 Cloudinary.v2.config({
   cloud_name: "dusfum3ze",
   api_key: process.env.CL_API_KEY,
-  api_secret: process.env.SECRET_KEY,
+  api_secret: process.env.CL_SECRET_KEY,
 });
 //cloudinary textパラメータ用メソッド
 export const clOverlay = async (title: string) => {
@@ -15,8 +15,8 @@ export const clOverlay = async (title: string) => {
     transformation: [
       {
         overlay: {
-          font_family: "Sawarabi Gothic",
-          font_size: 70,
+          font_family: "notosansjp-medium.otf",
+          font_size: 85,
           font_weight: "bold",
           text: text,
         },
