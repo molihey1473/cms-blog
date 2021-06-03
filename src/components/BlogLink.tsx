@@ -32,7 +32,10 @@ export const BlogLink: React.FC<Props> = (props) => {
         {tags.map((item, i) => {
           if (item.name) {
             return (
-              <Link key={`tags-${i}`} href={`/tags/${item.name.toLowerCase()}`}>
+              <Link
+                key={`tags-${i}`}
+                href={`/tags/${item.name.replace(/\./g, "").toLowerCase()}`}
+              >
                 <a className={styles.blog_tag_list}>{item.name}</a>
               </Link>
             );
