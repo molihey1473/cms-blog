@@ -1,10 +1,15 @@
 import { Wrapper } from "@src/components/Wrapper";
 //import { useRouter } from "next/router";
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
+//blog config
+//import { config } from "@blog.config";
 import { getBlog, getPreview } from "@src/lib/blog";
 import { BlogLink } from "@src/components/BlogLink";
 import { Tags } from "@src/components/tags/tags";
 import { SidebarProfile } from "@src/components/SidebarProfile";
+//SEOコンポーネント
+import { BlogSEO } from "@src/components/BlogSEO";
+//OGP画像生成メソッド
 import { clOverlay } from "@src/lib/cl";
 //toc
 import cheerio, { CheerioParserOptions } from "cheerio";
@@ -25,6 +30,8 @@ interface Props {
   toc: TocList[];
   preview: boolean;
   latestArticles: BlogItem[];
+  cl: string;
+  path?: string;
 }
 interface TocList {
   text: string;
@@ -32,8 +39,11 @@ interface TocList {
   name: string;
 }
 const Blog: NextPage<Props> = (props) => {
-  const { title, publishedAt, category, body, createdAt, updatedAt, tags } =
+  const { title, publishedAt, category, body, createdAt, updatedAt, tags, id } =
     props.blog;
+  //cloudinry で生成したOGPデータ
+  const cl = props.cl;
+  //目次データ
   const toc = props.toc;
   //公開前、下書き記事用props
   const preview = props.preview;
@@ -41,6 +51,7 @@ const Blog: NextPage<Props> = (props) => {
   const latestArticles = props.latestArticles;
   return (
     <>
+      <BlogSEO title={title} id={id} image={cl} path="/blog" />
       <article className={styles.blog_article}>
         <Wrapper>
           <div className={styles.blog_content_main}>
@@ -162,8 +173,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const latestData = await getBlog();
   //<h1>タグを目次用に抽出
   const $ = cheerio.load(data.body);
-  const url = await clOverlay(data.title);
-  console.log(url);
+  const clContent = await clOverlay(data.title);
   $("pre code").each((_, elm) => {
     const result = hljs.highlightAuto($(elm).text());
     $(elm).html(result.value);
@@ -189,6 +199,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       toc: tocData,
       preview: context.preview || false,
       latestArticles: latestData.contents,
+      cl: clContent,
     },
   };
 };
