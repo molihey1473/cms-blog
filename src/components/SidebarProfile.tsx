@@ -5,7 +5,7 @@ export const SidebarProfile: React.FC = () => {
     <div className={styles.blog_sidebar_aside_profile}>
       <Link href="/">
         <a>
-          <img src="/avatar/molihey.png" alt="profile" width="60" />
+          <img src="/avatar/molihey.png" alt="profile" width="100" />
         </a>
       </Link>
       <Link href="/">
