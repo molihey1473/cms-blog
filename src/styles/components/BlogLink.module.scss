@@ -6,7 +6,7 @@
   border-radius: 8px;
   background-color: #fff;
   overflow: hidden;
-  @include mq(sm) {
+  @include mq(md) {
     width: 100%;
   }
 }
