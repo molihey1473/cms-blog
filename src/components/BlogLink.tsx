@@ -15,13 +15,13 @@ export const BlogLink: React.FC<Props> = (props) => {
           <div className={styles.blog_main_image}>
             <img src="ogp/home-ogp.png" alt="profileCard" />
           </div>
+          <div className={styles.blog_main_title}>
+            <h3 className={styles.blog_link_title}>{title}</h3>
+          </div>
           <div className={styles.blog_at}>
             <time dateTime={publishedAt}>
               {dayjs(publishedAt).format("YYYY/MM/DD")}
             </time>
-          </div>
-          <div className={styles.blog_main_title}>
-            <h3 className={styles.blog_link_title}>{title}</h3>
           </div>
         </a>
       </Link>
