@@ -12,9 +12,9 @@ const BlogList: NextPage<Props> = (props) => {
   return (
     <>
       <main>
-        <section className={styles.tagged_blog_list_layout}>
+        <section className={styles.blog_list_layout}>
           <Wrapper>
-            <div className={styles.tagged_blog_list}>
+            <div className={styles.blog_list}>
               {props.blogs.map((blog, i) => (
                 <BlogLink key={`blog-link-${i}`} item={blog} />
               ))}

@@ -13,10 +13,7 @@ export const BlogLink: React.FC<Props> = (props) => {
       <Link href={`/blog/${id}`}>
         <a className={styles.blog_link_content}>
           <div className={styles.blog_main_image}>
-            <img
-              src="https://images.microcms-assets.io/assets/f94653ed008f4b178eaa8ae1659f31fe/7af338a3f4da4d6398ddc5ec8105b6a0/morihey2.png"
-              alt="profileCard"
-            />
+            <img src="ogp/home-ogp.png" alt="profileCard" />
           </div>
           <div className={styles.blog_at}>
             <time dateTime={publishedAt}>
@@ -28,7 +25,7 @@ export const BlogLink: React.FC<Props> = (props) => {
           </div>
         </a>
       </Link>
-      <div className={styles.blog_tags}>
+      {/* <div className={styles.blog_tags}>
         {tags.map((item, i) => {
           if (item.name) {
             return (
@@ -41,7 +38,7 @@ export const BlogLink: React.FC<Props> = (props) => {
             );
           }
         })}
-      </div>
+      </div> */}
     </article>
   );
 };
