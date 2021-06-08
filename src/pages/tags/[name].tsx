@@ -11,6 +11,7 @@ interface Props {
     id: string;
     title: string;
     publishedAt: string;
+    meta?: { image: { url: string } };
   }[];
 }
 const Page: NextPage<{ taggedBlogs: Props }> = (props) => {

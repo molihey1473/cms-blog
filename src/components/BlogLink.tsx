@@ -7,21 +7,25 @@ interface Props {
   item: ArticleList;
 }
 export const BlogLink: React.FC<Props> = (props) => {
-  const { id, title, publishedAt, tags } = props.item;
+  const { id, title, publishedAt, tags, meta } = props.item;
+  //console.log(meta.image);
   return (
     <article className={styles.blog_link}>
       <Link href={`/blog/${id}`}>
         <a className={styles.blog_link_content}>
           <div className={styles.blog_main_image}>
-            <img src="ogp/home-ogp.png" alt="profileCard" />
-          </div>
-          <div className={styles.blog_main_title}>
-            <h3 className={styles.blog_link_title}>{title}</h3>
+            <img
+              src={meta.image?.url || "ogp/home-ogp.png"}
+              alt="profileCard"
+            />
           </div>
           <div className={styles.blog_at}>
             <time dateTime={publishedAt}>
               {dayjs(publishedAt).format("YYYY/MM/DD")}
             </time>
+          </div>
+          <div className={styles.blog_main_title}>
+            <h3 className={styles.blog_link_title}>{title}</h3>
           </div>
         </a>
       </Link>
