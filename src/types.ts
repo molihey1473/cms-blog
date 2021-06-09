@@ -33,7 +33,7 @@ export interface BlogItem {
   updatedAt?: string;
   tags?: { name: string; id: string }[];
   //tags?: TagItems[];
-  meta?: { image: { url: string } };
+  meta?: { image: { url: string } } | null;
 }
 // 記事内関連記事リンク
 export interface TagItems {
@@ -61,5 +61,5 @@ export interface ArticleList {
   title: string;
   publishedAt: string;
   tags?: { name: string }[];
-  meta?: { image: { url: string } };
+  meta?: { image: { url: string } } | null;
 }
