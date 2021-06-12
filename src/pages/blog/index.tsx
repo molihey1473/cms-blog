@@ -30,7 +30,6 @@ export const getStaticProps: GetStaticProps = async () => {
   const data: {
     contents: BlogItem[];
   } = await getBlog();
-  console.log(data);
   return {
     props: {
       blogs: data.contents,
