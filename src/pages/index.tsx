@@ -7,7 +7,7 @@ import posts from ".contents/posts.json";
 import { Wrapper } from "@src/components/Wrapper";
 import { Profile } from "@src/components/cards/Profile";
 import { PostList } from "@src/components/PostList";
-import { Nav } from "@src/components/Navigation";
+import { CategoryList } from "@src/components/Navigation";
 import { member } from "@src/utils/member";
 import { PostItem } from "@src/types";
 import styles from "@src/styles/pages/Home.module.scss";
@@ -25,7 +25,7 @@ const Home: NextPage = () => {
       </Head>
       <main className={styles.main}>
         <Wrapper>
-          <Nav />
+          <CategoryList />
         </Wrapper>
         <section className={styles.home_profile}>
           <Wrapper>

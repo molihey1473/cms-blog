@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 import style from "@src/styles/components/Navigation.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
-export const Nav: React.FC = () => {
+export const CategoryList: React.FC = () => {
   const router = useRouter();
   return (
     <nav>
