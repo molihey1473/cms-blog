@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { NextPage } from "next";
 import { BlogSEO } from "@src/components/BlogSEO";
-import { CategoryList } from "@src/components/Navigation";
+import { CategoryList } from "@src/components/CategoryList";
 
 const About: NextPage = () => {
   return (

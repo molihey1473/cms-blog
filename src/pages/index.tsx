@@ -7,7 +7,7 @@ import posts from ".contents/posts.json";
 import { Wrapper } from "@src/components/Wrapper";
 import { Profile } from "@src/components/cards/Profile";
 import { PostList } from "@src/components/PostList";
-import { CategoryList } from "@src/components/Navigation";
+import { CategoryList } from "@src/components/CategoryList";
 import { member } from "@src/utils/member";
 import { PostItem } from "@src/types";
 import styles from "@src/styles/pages/Home.module.scss";
