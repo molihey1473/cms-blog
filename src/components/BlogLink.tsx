@@ -15,7 +15,7 @@ export const BlogLink: React.FC<Props> = (props) => {
         <a className={styles.blog_link_content}>
           <div className={styles.blog_main_image}>
             <img
-              src={meta.image?.url || "/ogp/home-ogp.png"}
+              src={meta?.image?.url || "/ogp/home-ogp.png"}
               alt="profileCard"
             />
           </div>
