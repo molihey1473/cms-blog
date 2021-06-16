@@ -35,6 +35,7 @@ export const CategoryList: React.FC = () => {
       <ul>
         <CategoryItem path="/" title="home" />
         <CategoryItem path="/about" title="about" />
+        <CategoryItem path="/category/others" title="others" />
       </ul>
     </nav>
   );
