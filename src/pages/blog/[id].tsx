@@ -94,7 +94,7 @@ const Blog: NextPage<Props> = (props) => {
                     </time>
                   </div>
                 )}
-                <span className={styles.blog_content_tags}>{category}</span>
+                <span className={styles.blog_content_tags}>カテゴリー</span>
                 <div
                   dangerouslySetInnerHTML={{
                     __html: props.body,
