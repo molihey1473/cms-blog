@@ -1,5 +1,5 @@
 import { NextPage, GetStaticProps } from "next";
-import { getBlog } from "@src/lib/blog";
+import { getBlogs } from "@src/lib/blog";
 import { BlogItem, TagItems } from "@src/types";
 //import Link from "next/link";
 import { Wrapper } from "@src/components/Wrapper";
@@ -29,7 +29,7 @@ const BlogList: NextPage<Props> = (props) => {
 export const getStaticProps: GetStaticProps = async () => {
   const data: {
     contents: BlogItem[];
-  } = await getBlog();
+  } = await getBlogs();
   return {
     props: {
       blogs: data.contents,
