@@ -3,8 +3,16 @@ import { getCategory } from "@src/lib/blog";
 import { Wrapper } from "@src/components/Wrapper";
 import { BlogLink } from "@src/components/BlogLink";
 import { CategoryList } from "@src/components/CategoryList";
-interface Props {}
-const page: NextPage = (props) => {
+interface Props {
+  name: string;
+  content: {
+    id: string;
+    title: string;
+    publishedAt: string;
+    meta?: { image: { url: string } };
+  }[];
+}
+const page: NextPage<{ sortedDatas: Props }> = (props) => {
   return (
     <>
       <Wrapper>
