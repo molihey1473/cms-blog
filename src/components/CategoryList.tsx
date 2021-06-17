@@ -13,7 +13,13 @@ export const CategoryItem: React.FC<Props> = (props) => {
   return (
     <li>
       <Link href={path}>
-        <a className={router.pathname === path ? style.is_active : ""}>
+        <a
+          className={
+            router.pathname === path || router.query.name === title
+              ? style.is_active
+              : ""
+          }
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -36,6 +42,7 @@ export const CategoryList: React.FC = () => {
         <CategoryItem path="/" title="home" />
         <CategoryItem path="/about" title="about" />
         <CategoryItem path="/category/others" title="others" />
+        <CategoryItem path="/category/tech" title="tech" />
       </ul>
     </nav>
   );
