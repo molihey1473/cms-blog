@@ -22,7 +22,7 @@ export const getPreview = async (id: string, draftKey?: string) => {
     .catch((error) => null);
 };
 
-//get data for [name].tsx
+//get data for [name].tsx (getCategoryとほぼ同一メソッドなので修正検討中)
 export const getTags = async (name?: string) => {
   const nameSlug = name
     ? `?filters=name${encodeURIComponent(`[contains]${name}`)}`
@@ -32,7 +32,13 @@ export const getTags = async (name?: string) => {
     .then((res) => res.json())
     .catch((error) => null);
 };
-//記事カテゴリー用メソッド
-//export const getCategoryData = async (name?:string) => {
-//  const url =
-//};
+// get data for /category/[name].tsx (getTagとほぼ同一メソッドなので修正検討中)
+export const getCategory = async (name?: string) => {
+  const nameSlug = name
+    ? `?filters=name${encodeURIComponent(`[contains]${name}`)}`
+    : "";
+  const url = name ? `${CATEGORY_API}${nameSlug}` : `${CATEGORY_API}`;
+  return await fetch(url, key)
+    .then((res) => res.json())
+    .catch((error) => null);
+};
