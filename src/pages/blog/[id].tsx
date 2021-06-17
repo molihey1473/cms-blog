@@ -3,7 +3,7 @@ import { Wrapper } from "@src/components/Wrapper";
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 //blog config
 //import { config } from "@blog.config";
-import { getBlog, getPreview } from "@src/lib/blog";
+import { getBlogs, getPreview } from "@src/lib/blog";
 import { BlogLink } from "@src/components/BlogLink";
 import { Tags } from "@src/components/tags/tags";
 import { SidebarProfile } from "@src/components/SidebarProfile";
@@ -155,7 +155,7 @@ const Blog: NextPage<Props> = (props) => {
 
 //[id].tsx 静的生成用パス
 export const getStaticPaths: GetStaticPaths = async () => {
-  const data: { contents: BlogItem[] } = await getBlog();
+  const data: { contents: BlogItem[] } = await getBlogs();
   const paths =
     data.contents.map((content: { id: string }) => `/blog/${content.id}`) ?? [];
   return {
@@ -170,7 +170,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   //下書きpreview記事表示メソッド
   const data = await getPreview(id, draftKey);
   //最新記事表示data取得(0-5)
-  const latestData = await getBlog();
+  const latestData = await getBlogs();
   //<h1>タグを目次用に抽出
   const $ = cheerio.load(data.body);
   const clContent = await clOverlay(data.title);
