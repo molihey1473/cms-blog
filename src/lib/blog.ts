@@ -1,4 +1,4 @@
-import { BLOG_API, TAG_API } from "@src/utils/blogInfo";
+import { BLOG_API, TAG_API, CATEGORY_API } from "@src/utils/blogInfo";
 import { Console } from "console";
 // microCMS API KEY
 const key = {
@@ -7,8 +7,8 @@ const key = {
   },
 };
 
-//get data for [id].tsx
-export const getBlog = async (id?: string) => {
+//get data for [id].tsx 記事一覧data
+export const getBlogs = async (id?: string) => {
   const url = id ? `${BLOG_API}blog/${id}` : `${BLOG_API}`;
   return await fetch(url, key)
     .then((res) => res.json())
@@ -32,3 +32,7 @@ export const getTags = async (name?: string) => {
     .then((res) => res.json())
     .catch((error) => null);
 };
+//記事カテゴリー用メソッド
+//export const getCategoryData = async (name?:string) => {
+//  const url =
+//};
