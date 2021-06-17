@@ -185,7 +185,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const a: string = element.children[0].data;
     const b: string = element.attribs.id;
     const c: string = element.name;
-
     return {
       text: element.children[0].data,
       id: element.attribs.id,
