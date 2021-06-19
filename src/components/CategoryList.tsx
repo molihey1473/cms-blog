@@ -5,21 +5,17 @@ import { useRouter } from "next/router";
 interface Props {
   path: string;
   title: string;
+  query?: string | undefined;
 }
 
 export const CategoryItem: React.FC<Props> = (props) => {
-  const { path, title } = props;
+  const { path, query, title } = props;
   const router = useRouter();
+  console.log("path", router.pathname);
   return (
     <li>
       <Link href={path}>
-        <a
-          className={
-            router.pathname === path || router.query.name === title
-              ? style.is_active
-              : ""
-          }
-        >
+        <a className={router.pathname === path ? style.is_active : ""}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -39,10 +35,11 @@ export const CategoryList: React.FC = () => {
   return (
     <nav>
       <ul>
-        <CategoryItem path="/" title="home" />
-        <CategoryItem path="/about" title="about" />
-        <CategoryItem path="/category/others" title="others" />
-        <CategoryItem path="/category/tech" title="tech" />
+        <CategoryItem path="/" title="Home" />
+        <CategoryItem path="/about" title="About" />
+        <CategoryItem path="/category/others" title="Others" />
+        <CategoryItem path="/category/tech" query="tech" title="Tech" />
+        <CategoryItem path="/category/diary" query="diary" title="Diary" />
       </ul>
     </nav>
   );
