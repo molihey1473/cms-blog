@@ -4,7 +4,7 @@ import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 //blog config
 //import { config } from "@blog.config";
 import { getBlogs, getPreview } from "@src/lib/blog";
-import { BlogLink } from "@src/components/BlogLink";
+import { BlogLink } from "@src/components/BlogList";
 import { Tags } from "@src/components/tags/tags";
 import { SidebarProfile } from "@src/components/SidebarProfile";
 //SEOコンポーネント
