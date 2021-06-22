@@ -46,7 +46,7 @@ export const BlogLink: React.FC<Props> = (props) => {
     </article>
   );
 };
-export const BlogList: React.FC<{ items: Props[] }> = (props) => {
+export const BlogList: React.FC<{ items: BlogItem[] }> = (props) => {
   return (
     <div>
       {props.items.map((data, i) => (
