@@ -1,3 +1,14 @@
 .is_active {
   color: red;
 }
+.navigation_content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: solid 2px #ecedf8;
+}
+.navigation_item {
+  padding: 0.5rem 0;
+  font-weight: 600;
+  border-top: solid 2px #ebf3fb;
+}
