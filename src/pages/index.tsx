@@ -23,24 +23,22 @@ const Home: NextPage = () => {
         <meta property="og:site_name" content="MoliHey" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <main className={styles.main}>
+      <section className={styles.home_profile}>
         <Wrapper>
-          <CategoryList />
+          <Profile member={member} />
         </Wrapper>
-        <section className={styles.home_profile}>
-          <Wrapper>
-            <Profile member={member} />
-          </Wrapper>
-        </section>
-        <section className={styles.home_posts}>
-          <Wrapper>
-            <div className={styles.home_section_title_content}>
-              <h2 className={styles.home_section_title}>関連記事</h2>
-            </div>
-            <PostList items={posts} />
-          </Wrapper>
-        </section>
-      </main>
+      </section>
+      <Wrapper>
+        <CategoryList />
+      </Wrapper>
+      <section className={styles.home_posts}>
+        <Wrapper>
+          <div className={styles.home_section_title_content}>
+            <h2 className={styles.home_section_title}>関連記事</h2>
+          </div>
+          <PostList items={posts} />
+        </Wrapper>
+      </section>
     </>
   );
 };
