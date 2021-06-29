@@ -33,10 +33,10 @@ export const Header: React.FC = () => {
           </Link>
           <div className={styles.header_links}>
             <Link href="/about">
-              <a className={styles.header_links_item}>about</a>
+              <a className={styles.header_links_item}>About</a>
             </Link>
             <Link href="/blog">
-              <a className={styles.header_links_item}>blog</a>
+              <a className={styles.header_links_item}>Blog</a>
             </Link>
           </div>
         </div>
