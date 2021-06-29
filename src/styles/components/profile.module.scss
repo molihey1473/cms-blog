@@ -9,6 +9,8 @@
   //box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);
 }
 .profile_avatar {
+  border-radius: 50%;
+  box-shadow: 0px 5px 8px 0 rgba(0, 0, 0, 0.2);
 }
 .profile_description {
   padding: 1rem 0;
@@ -19,6 +21,8 @@
 }
 .profile_member_name {
   margin-top: 0.5rem;
+  color: var(--second-text);
+  font-size: 50px;
 }
 .profile_member_bio {
   margin-top: 0.5rem;
