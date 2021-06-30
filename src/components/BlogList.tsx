@@ -2,7 +2,7 @@
 import { BlogItem, TagItems, ArticleList } from "@src/types";
 import Link from "next/link";
 import dayjs from "dayjs";
-import styles from "@src/styles/components/BlogLink.module.scss";
+import styles from "@src/styles/pages/blog/BlogList.module.scss";
 interface Props {
   item: ArticleList;
 }
@@ -48,7 +48,7 @@ export const BlogLink: React.FC<Props> = (props) => {
 };
 export const BlogList: React.FC<{ items: BlogItem[] }> = (props) => {
   return (
-    <div>
+    <div className={styles.blog_list}>
       {props.items.map((data, i) => (
         <BlogLink key={`BlogLink-${i}`} item={data} />
       ))}
