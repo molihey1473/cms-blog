@@ -11,7 +11,7 @@ export const TwitterIcon: React.FC = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        fill="#3BA9EE"
+        fill="currentColor"
         d="
 M 630, 425
 A 195, 195 0 0 1 331, 600
