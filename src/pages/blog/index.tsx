@@ -2,7 +2,7 @@ import { NextPage, GetStaticProps } from "next";
 import { getBlogs } from "@src/lib/blog";
 import { BlogItem, TagItems } from "@src/types";
 //import Link from "next/link";
-import { WideWrapper } from "@src/components/WideWrapper";
+import { Wrapper } from "@src/components/Wrapper";
 import { BlogList } from "@src/components/BlogList";
 import { CategoryList } from "@src/components/CategoryList";
 import styles from "@src/styles/pages/blog/BlogList.module.scss";
@@ -13,13 +13,13 @@ const page: NextPage<Props> = (props) => {
   return (
     <>
       <main>
-        <WideWrapper>
+        <Wrapper>
           <CategoryList />
-        </WideWrapper>
+        </Wrapper>
         <section className={styles.blog_list_layout}>
-          <WideWrapper>
+          <Wrapper>
             <BlogList items={props.blogs} />
-          </WideWrapper>
+          </Wrapper>
         </section>
       </main>
     </>

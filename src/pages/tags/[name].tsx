@@ -1,5 +1,5 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
-import { WideWrapper } from "@src/components/WideWrapper";
+import { Wrapper } from "@src/components/Wrapper";
 import { BlogLink } from "@src/components/BlogList";
 import { getTags } from "@src/lib/blog";
 import { TaggedBlogList } from "@src/components/tags/TaggedBlogLIst";
@@ -18,7 +18,7 @@ const Page: NextPage<{ taggedBlogs: Props }> = (props) => {
   return (
     <>
       <section className={styles.tagged_blog_list_layout}>
-        <WideWrapper>
+        <Wrapper>
           <div className={styles.tagged_blog_content}>
             <div
               className={styles.tag_name}
@@ -29,7 +29,7 @@ const Page: NextPage<{ taggedBlogs: Props }> = (props) => {
               ))}
             </div>
           </div>
-        </WideWrapper>
+        </Wrapper>
       </section>
     </>
   );

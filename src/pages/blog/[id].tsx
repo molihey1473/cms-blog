@@ -1,4 +1,4 @@
-import { WideWrapper } from "@src/components/WideWrapper";
+import { Wrapper } from "@src/components/Wrapper";
 //import { useRouter } from "next/router";
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 //blog config
@@ -53,7 +53,7 @@ const Blog: NextPage<Props> = (props) => {
     <>
       <BlogSEO title={title} id={id} image={cl} path="/blog" />
       <article className={styles.blog_article}>
-        <WideWrapper>
+        <Wrapper>
           <div className={styles.blog_content_main}>
             <section className={styles.blog_content_layout}>
               <div className={styles.blog_content_article}>
@@ -147,7 +147,7 @@ const Blog: NextPage<Props> = (props) => {
               </div>
             </section>
           </div>
-        </WideWrapper>
+        </Wrapper>
       </article>
     </>
   );
