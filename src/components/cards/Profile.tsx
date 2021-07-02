@@ -10,12 +10,7 @@ export const Profile: React.FC<{ member: Member }> = (props) => {
   return (
     <div className={styles.profile_layout}>
       <div className={styles.profile_content}>
-        <img
-          src={avatar}
-          alt={name}
-          width={200}
-          className={styles.profile_avatar}
-        />
+        <img src={avatar} alt={name} className={styles.profile_avatar} />
         <div className={styles.profile_description}>
           <h1 className={styles.profile_member_name}>{name}</h1>
           <p className={styles.profile_member_bio}>{bio}</p>
