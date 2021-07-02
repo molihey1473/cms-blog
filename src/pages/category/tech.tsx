@@ -1,6 +1,6 @@
 import { NextPage, GetStaticProps } from "next";
 import { getCategory } from "@src/lib/blog";
-import { Wrapper } from "@src/components/Wrapper";
+import { WideWrapper } from "@src/components/WideWrapper";
 import { BlogLink } from "@src/components/BlogList";
 import { CategoryList } from "@src/components/CategoryList";
 import styles from "@src/styles/pages/blog/BlogList.module.scss";
@@ -18,11 +18,11 @@ const page: NextPage<{ sortedDatas: Props }> = (props) => {
   const pageTitle = "Tech";
   return (
     <>
-      <Wrapper>
+      <WideWrapper>
         <CategoryList />
-      </Wrapper>
+      </WideWrapper>
       <section className={styles.blog_list_layout}>
-        <Wrapper>
+        <WideWrapper>
           <div>
             <h1>{pageTitle}</h1>
           </div>
@@ -31,7 +31,7 @@ const page: NextPage<{ sortedDatas: Props }> = (props) => {
               <BlogLink key={`blog-link-${i}`} item={blog} />
             ))}
           </div>
-        </Wrapper>
+        </WideWrapper>
       </section>
     </>
   );

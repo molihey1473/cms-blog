@@ -2,19 +2,19 @@ import Link from "next/link";
 import { NextPage } from "next";
 import { BlogSEO } from "@src/components/BlogSEO";
 import { CategoryList } from "@src/components/CategoryList";
-import { Wrapper } from "@src/components/Wrapper";
+import { WideWrapper } from "@src/components/WideWrapper";
 
 const About: NextPage = () => {
   return (
     <>
       <BlogSEO title="About" path="/about" />
-      <Wrapper>
+      <WideWrapper>
         <CategoryList />
         <h1>about</h1>
         <Link href="/">
           <a>back to home</a>
         </Link>
-      </Wrapper>
+      </WideWrapper>
     </>
   );
 };

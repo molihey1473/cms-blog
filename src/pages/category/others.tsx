@@ -1,22 +1,22 @@
 import { NextPage } from "next";
 import posts from ".contents/posts.json";
-import { Wrapper } from "@src/components/Wrapper";
+import { WideWrapper } from "@src/components/WideWrapper";
 import { CategoryList } from "@src/components/CategoryList";
 
 import { PostList } from "@src/components/PostList";
 const Page: NextPage = () => {
   return (
     <>
-      <Wrapper>
+      <WideWrapper>
         <div>otherのpage</div>
-      </Wrapper>
-      <Wrapper>
+      </WideWrapper>
+      <WideWrapper>
         <CategoryList />
-      </Wrapper>
+      </WideWrapper>
 
-      <Wrapper>
+      <WideWrapper>
         <PostList items={posts} />
-      </Wrapper>
+      </WideWrapper>
     </>
   );
 };

@@ -1,6 +1,6 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { getCategory } from "@src/lib/blog";
-import { Wrapper } from "@src/components/Wrapper";
+import { WideWrapper } from "@src/components/WideWrapper";
 import { BlogLink } from "@src/components/BlogList";
 import { CategoryList } from "@src/components/CategoryList";
 interface Props {
@@ -19,14 +19,14 @@ const page: NextPage<{ sortedDatas: Props }> = (props) => {
   return (
     <>
       <section>
-        <Wrapper>
+        <WideWrapper>
           <CategoryList />
-        </Wrapper>
-        <Wrapper>
+        </WideWrapper>
+        <WideWrapper>
           <div>
             <h1>{pageTitle}</h1>
           </div>
-        </Wrapper>
+        </WideWrapper>
       </section>
     </>
   );
