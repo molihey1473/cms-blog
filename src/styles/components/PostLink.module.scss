@@ -16,10 +16,20 @@
   }
 }
 .post_link_content {
-  padding: 1rem;
+  display: flex;
+  align-items: center;
+  padding: 0.3rem;
+}
+.post_link_details {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
 }
 .post_link_title {
   font-size: 1.1rem;
   flex: 1;
-  padding-top: 0.5rem;
+  padding: 0.5rem 0;
+}
+.post_link_at {
+  font-size: 15px;
 }
