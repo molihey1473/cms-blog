@@ -5,6 +5,7 @@ import posts from ".contents/posts.json";
 //import { TwitterIcon } from "@src/components/icons/TwitterIcon";
 //import { Header } from "@src/components/Header";
 import { WideWrapper } from "@src/components/WideWrapper";
+import { Wrapper } from "@src/components/Wrapper";
 import { Profile } from "@src/components/cards/Profile";
 import { PostList } from "@src/components/PostList";
 import { CategoryList } from "@src/components/CategoryList";
@@ -24,20 +25,20 @@ const Home: NextPage = () => {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <section className={styles.home_profile}>
-        <WideWrapper>
+        <Wrapper>
           <Profile member={member} />
-        </WideWrapper>
+        </Wrapper>
       </section>
-      <WideWrapper>
+      <Wrapper>
         <CategoryList />
-      </WideWrapper>
+      </Wrapper>
       <section className={styles.home_posts}>
-        <WideWrapper>
+        <Wrapper>
           <div className={styles.home_section_title_content}>
             <h2 className={styles.home_section_title}>関連記事</h2>
           </div>
           <PostList items={posts} />
-        </WideWrapper>
+        </Wrapper>
       </section>
     </>
   );
