@@ -1,5 +1,10 @@
-.layout {
+.wide_wrapper {
   max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.2rem;
+}
+.wrapper {
+  max-width: 960px;
   margin: 0 auto;
   padding: 0 1.2rem;
 }
