@@ -3,7 +3,7 @@
 }
 .profile_content {
   display: flex;
-  flex-direction: column;
+  //flex-direction: column;
   justify-content: center;
   align-items: center;
   //box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);
@@ -13,11 +13,10 @@
   width: 120px;
 }
 .profile_description {
-  padding: 1rem 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  padding: 1rem 1.2rem;
+  //display: flex;
+  //flex-direction: column;
+  //align-items: center;
 }
 .profile_member_name {
   margin-top: 0.5rem;
