@@ -36,7 +36,6 @@ export const CategoryList: React.FC = () => {
   return (
     <nav className={style.navigation_content}>
       <CategoryItem path="/" title="All" />
-      <CategoryItem path="/about" title="About" />
       <CategoryItem path="/category/others" title="Others" />
       <CategoryItem path="/category/tech" query="tech" title="Tech" />
       <CategoryItem path="/category/diary" query="diary" title="Diary" />
