@@ -4,7 +4,7 @@
 .profile_content {
   display: flex;
   //flex-direction: column;
-  justify-content: center;
+  //justify-content: center;
   align-items: center;
   //box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);
 }
@@ -21,7 +21,7 @@
 .profile_member_name {
   margin-top: 0.5rem;
   color: var(--second-text);
-  font-size: 50px;
+  font-size: 40px;
 }
 .profile_member_bio {
   margin-top: 0.5rem;
@@ -33,5 +33,5 @@
   display: flex;
 }
 .profile_link_item {
-  margin: 0 0.5rem;
+  margin-right: 0.5rem;
 }
