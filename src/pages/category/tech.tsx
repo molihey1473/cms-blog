@@ -1,6 +1,8 @@
 import { NextPage, GetStaticProps } from "next";
 import { getCategory } from "@src/lib/blog";
 import { Wrapper } from "@src/components/Wrapper";
+import { Profile } from "@src/components/cards/Profile";
+import { member } from "@src/utils/member";
 import { BlogLink } from "@src/components/BlogList";
 import { CategoryList } from "@src/components/CategoryList";
 import styles from "@src/styles/pages/blog/BlogList.module.scss";
@@ -18,6 +20,9 @@ const page: NextPage<{ sortedDatas: Props }> = (props) => {
   const pageTitle = "Tech";
   return (
     <>
+      <Wrapper>
+        <Profile member={member} />
+      </Wrapper>
       <Wrapper>
         <CategoryList />
       </Wrapper>
