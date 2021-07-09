@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import tewmoji from "twemoji";
 import style from "@src/styles/components/Navigation.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -6,10 +7,11 @@ interface Props {
   path: string;
   title: string;
   query?: string | undefined;
+  emoji?: string;
 }
 
 export const CategoryItem: React.FC<Props> = (props) => {
-  const { path, query, title } = props;
+  const { path, query, title, emoji } = props;
   const router = useRouter();
   return (
     <Link href={path}>
@@ -27,6 +29,7 @@ export const CategoryItem: React.FC<Props> = (props) => {
         >
           <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" />
         </svg>
+        <div dangerouslySetInnerHTML={{ __html: emoji }}></div>
         {title}
       </a>
     </Link>
@@ -36,7 +39,11 @@ export const CategoryList: React.FC = () => {
   return (
     <nav className={style.navigation_content}>
       <CategoryItem path="/" title="All" />
-      <CategoryItem path="/category/others" title="Others" />
+      <CategoryItem
+        path="/category/others"
+        title="Others"
+        emoji={tewmoji.parse("✌️")}
+      />
       <CategoryItem path="/category/tech" query="tech" title="Tech" />
       <CategoryItem path="/category/diary" query="diary" title="Diary" />
     </nav>
