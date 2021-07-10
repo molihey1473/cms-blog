@@ -21,7 +21,7 @@ export const CategoryItem: React.FC<Props> = (props) => {
         }`}
       >
         <div dangerouslySetInnerHTML={{ __html: emoji }}></div>
-        {title}
+        <div>{title}</div>
       </a>
     </Link>
   );
