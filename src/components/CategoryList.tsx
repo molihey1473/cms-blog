@@ -32,23 +32,24 @@ export const CategoryItem: React.FC<Props> = (props) => {
 export const CategoryList: React.FC = () => {
   return (
     <nav className={style.navigation_content}>
-      <CategoryItem path="/" title="All" emoji={twemoji.parse("☀️")} />
-      <CategoryItem
-        path="/category/others"
-        title="Others"
-        emoji={twemoji.parse("✌️")}
-      />
+      <CategoryItem path="/" title="All" emoji={twemoji.parse("📚")} />
+
       <CategoryItem
         path="/category/tech"
         query="tech"
         title="Tech"
-        emoji={twemoji.parse("🤖")}
+        emoji={twemoji.parse("🧬")}
       />
       <CategoryItem
         path="/category/diary"
         query="diary"
         title="Diary"
-        emoji={twemoji.parse("✊")}
+        emoji={twemoji.parse("🗞")}
+      />
+      <CategoryItem
+        path="/category/others"
+        title="Others"
+        emoji={twemoji.parse("🚀")}
       />
     </nav>
   );
