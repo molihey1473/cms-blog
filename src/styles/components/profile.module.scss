@@ -13,23 +13,21 @@
   width: 120px;
 }
 .profile_description {
-  padding: 1rem 1.2rem;
+  padding-left: 1.2rem;
   //display: flex;
   //flex-direction: column;
   //align-items: center;
 }
 .profile_member_name {
-  margin-top: 0.5rem;
   color: var(--second-text);
   font-size: 40px;
 }
 .profile_member_bio {
-  margin-top: 0.5rem;
   font-size: 0.9rem;
   opacity: 0.7;
 }
 .profile_links {
-  margin-top: 1.2rem;
+  margin-top: 0.5rem;
   display: flex;
 }
 .profile_link_item {
