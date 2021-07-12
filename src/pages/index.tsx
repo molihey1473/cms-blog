@@ -1,16 +1,18 @@
 import Head from "next/head";
 import { NextPage } from "next";
 import posts from ".contents/posts.json";
+import twemoji from "twemoji";
 //import post from "@.contents/posts.json";
 //import { TwitterIcon } from "@src/components/icons/TwitterIcon";
 //import { Header } from "@src/components/Header";
 import { Wrapper } from "@src/components/Wrapper";
 //import { Wrapper } from "@src/components/Wrapper";
 import { Profile } from "@src/components/cards/Profile";
+import { BlogList } from "@src/components/BlogList";
 import { PostList } from "@src/components/PostList";
 import { CategoryList } from "@src/components/CategoryList";
 import { member } from "@src/utils/member";
-import { PostItem } from "@src/types";
+//import { PostItem } from "@src/types";
 import styles from "@src/styles/pages/Home.module.scss";
 
 const Home: NextPage = () => {
@@ -35,7 +37,7 @@ const Home: NextPage = () => {
       <section className={styles.home_posts}>
         <Wrapper>
           <div className={styles.home_section_title_content}>
-            <h2 className={styles.home_section_title}>関連記事</h2>
+            <h2 className={styles.home_section_title}>✌関連記事</h2>
           </div>
           <PostList items={posts} />
         </Wrapper>
