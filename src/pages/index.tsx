@@ -2,9 +2,6 @@ import Head from "next/head";
 import { NextPage } from "next";
 import posts from ".contents/posts.json";
 import twemoji from "twemoji";
-//import post from "@.contents/posts.json";
-//import { TwitterIcon } from "@src/components/icons/TwitterIcon";
-//import { Header } from "@src/components/Header";
 import { Wrapper } from "@src/components/Wrapper";
 //import { Wrapper } from "@src/components/Wrapper";
 import { Profile } from "@src/components/cards/Profile";
@@ -26,22 +23,20 @@ const Home: NextPage = () => {
         <meta property="og:site_name" content="MoliHey" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <section className={styles.home_profile}>
-        <Wrapper>
-          <Profile member={member} />
-        </Wrapper>
-      </section>
+      <Wrapper>
+        <Profile member={member} />
+      </Wrapper>
       <Wrapper>
         <CategoryList />
       </Wrapper>
-      <section className={styles.home_posts}>
+      <div className={styles.all_container}>
         <Wrapper>
-          <div className={styles.home_section_title_content}>
-            <h2 className={styles.home_section_title}>✌関連記事</h2>
+          <h2 className={styles.all_title}>ALL</h2>
+          <div className={styles.all_item_container}>
+            <PostList items={posts} />
           </div>
-          <PostList items={posts} />
         </Wrapper>
-      </section>
+      </div>
     </>
   );
 };
