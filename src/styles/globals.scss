@@ -1,5 +1,6 @@
 @import "./responsive.scss";
 @import "./variables.scss";
+@import "./Layout.scss";
 //@import "./components/BlogLink.module.scss";
 //@import "./components//Wrapper.module.scss";
 html {
@@ -21,7 +22,7 @@ body {
   font-family: var(--font-base);
   //background: var(--light-blue--bg);
   color: var(--second-text);
-  background: var(--light-blue--bg);
+  //background: #f3f4f9;
 }
 
 img {
