@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { NextPage, GetStaticProps } from "next";
 import { getCategory } from "@src/lib/blog";
 import { Wrapper } from "@src/components/Wrapper";
@@ -18,6 +19,17 @@ const page: NextPage<{ sortedDatas: Props }> = (props) => {
   const pageTitle = "Diary";
   return (
     <>
+      <Head>
+        <title>Blog</title>
+        <meta property="og:title" content="MoliHey" />
+        <meta
+          property="og:url"
+          content="https://blog-sage-nine.vercel.app/category/diary"
+        />
+        <meta property="og:image" content="ogp/home-ogp.png" />
+        <meta property="og:site_name" content="MoliHey" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Head>
       <Wrapper>
         <CategoryList />
       </Wrapper>

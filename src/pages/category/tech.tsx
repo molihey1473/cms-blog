@@ -24,7 +24,10 @@ const page: NextPage<{ sortedDatas: Props }> = (props) => {
       <Head>
         <title>Blog</title>
         <meta property="og:title" content="MoliHey" />
-        <meta property="og:url" content="https://blog-sage-nine.vercel.app/" />
+        <meta
+          property="og:url"
+          content="https://blog-sage-nine.vercel.app/category/tech"
+        />
         <meta property="og:image" content="ogp/home-ogp.png" />
         <meta property="og:site_name" content="MoliHey" />
         <meta name="twitter:card" content="summary_large_image" />
