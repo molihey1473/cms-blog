@@ -1,7 +1,6 @@
 import Head from "next/head";
-import { NextPage } from "next";
+import { NextPage, GetStaticProps } from "next";
 import posts from ".contents/posts.json";
-import twemoji from "twemoji";
 import { Wrapper } from "@src/components/Wrapper";
 //import { Wrapper } from "@src/components/Wrapper";
 import { Profile } from "@src/components/cards/Profile";
@@ -9,10 +8,16 @@ import { BlogList } from "@src/components/BlogList";
 import { PostList } from "@src/components/PostList";
 import { CategoryList } from "@src/components/CategoryList";
 import { member } from "@src/utils/member";
-//import { PostItem } from "@src/types";
-import styles from "@src/styles/pages/Home.module.scss";
+// get data methods
+import { getBlogs } from "@src/lib/blog";
 
-const Home: NextPage = () => {
+//types
+import { BlogItem } from "@src/types";
+
+interface Props {
+  allArticlesData: BlogItem[];
+}
+const Home: NextPage<Props> = (props) => {
   return (
     <>
       <Head>
@@ -29,15 +34,23 @@ const Home: NextPage = () => {
       <Wrapper>
         <CategoryList />
       </Wrapper>
-      <div className={styles.all_container}>
+      <div className="all_container">
         <Wrapper>
-          <h2 className={styles.all_title}>ALL</h2>
-          <div className={styles.all_item_container}>
-            <PostList items={posts} />
+          <h2 className="all_title">ALL</h2>
+          <div className="all_items_container">
+            <BlogList items={props.allArticlesData} />
           </div>
         </Wrapper>
       </div>
     </>
   );
+};
+export const getStaticProps: GetStaticProps = async () => {
+  const data: { contents: BlogItem[] } = await getBlogs();
+  return {
+    props: {
+      allArticlesData: data.contents,
+    },
+  };
 };
 export default Home;
