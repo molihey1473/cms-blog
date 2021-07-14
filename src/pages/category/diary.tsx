@@ -1,9 +1,9 @@
 import { NextPage, GetStaticProps } from "next";
 import { getCategory } from "@src/lib/blog";
 import { Wrapper } from "@src/components/Wrapper";
-import { BlogLink } from "@src/components/BlogList";
+import { BlogList } from "@src/components/BlogList";
 import { CategoryList } from "@src/components/CategoryList";
-import styles from "@src/styles/pages/blog/BlogList.module.scss";
+//import styles from "@src/styles/pages/blog/BlogList.module.scss";
 
 interface Props {
   name: string;
@@ -21,18 +21,14 @@ const page: NextPage<{ sortedDatas: Props }> = (props) => {
       <Wrapper>
         <CategoryList />
       </Wrapper>
-      <section className={styles.blog_list_layout}>
+      <div className="diary_container">
         <Wrapper>
-          <div>
-            <h1>{pageTitle}</h1>
-          </div>
-          <div className={styles.blog_list}>
-            {props.sortedDatas.content.map((blog, i) => (
-              <BlogLink key={`blog-link-${i}`} item={blog} />
-            ))}
+          <h1 className="diary_title">{pageTitle}</h1>
+          <div className="diary_items_container">
+            <BlogList items={props.sortedDatas.content} />
           </div>
         </Wrapper>
-      </section>
+      </div>
     </>
   );
 };
