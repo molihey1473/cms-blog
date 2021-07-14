@@ -17,7 +17,7 @@ interface Props {
     meta?: { image: { url: string } };
   }[];
 }
-const page: NextPage<{ sortedData: Props }> = (props) => {
+const page: NextPage<{ sortedArticlesData: Props }> = (props) => {
   const pageTitle = "Tech";
   return (
     <>
@@ -42,7 +42,7 @@ const page: NextPage<{ sortedData: Props }> = (props) => {
         <Wrapper>
           <h2 className="tech_title">{pageTitle}</h2>
           <div className="tech_items_container">
-            <BlogList items={props.sortedData.content} />
+            <BlogList items={props.sortedArticlesData.content} />
           </div>
         </Wrapper>
       </div>
@@ -54,7 +54,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const data = await getCategory(path);
   return {
     props: {
-      sortedData: data.contents[0],
+      sortedArticlesData: data.contents[0],
     },
   };
 };
