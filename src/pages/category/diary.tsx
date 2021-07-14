@@ -17,7 +17,7 @@ interface Props {
     meta?: { image: { url: string } };
   }[];
 }
-const page: NextPage<{ sortedDatas: Props }> = (props) => {
+const page: NextPage<{ sortedData: Props }> = (props) => {
   const pageTitle = "Diary";
   return (
     <>
@@ -42,7 +42,7 @@ const page: NextPage<{ sortedDatas: Props }> = (props) => {
         <Wrapper>
           <h1 className="diary_title">{pageTitle}</h1>
           <div className="diary_items_container">
-            <BlogList items={props.sortedDatas.content} />
+            <BlogList items={props.sortedData.content} />
           </div>
         </Wrapper>
       </div>
