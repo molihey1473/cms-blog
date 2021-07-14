@@ -1,5 +1,7 @@
 import Head from "next/head";
 import { NextPage, GetStaticProps } from "next";
+import { Profile } from "@src/components/cards/Profile";
+import { member } from "@src/utils/member";
 import { getCategory } from "@src/lib/blog";
 import { Wrapper } from "@src/components/Wrapper";
 import { BlogList } from "@src/components/BlogList";
@@ -30,6 +32,9 @@ const page: NextPage<{ sortedDatas: Props }> = (props) => {
         <meta property="og:site_name" content="MoliHey" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
+      <Wrapper>
+        <Profile member={member} />
+      </Wrapper>
       <Wrapper>
         <CategoryList />
       </Wrapper>
