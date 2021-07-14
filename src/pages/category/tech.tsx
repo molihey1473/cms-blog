@@ -1,11 +1,12 @@
+import Head from "next/head";
 import { NextPage, GetStaticProps } from "next";
 import { getCategory } from "@src/lib/blog";
 import { Wrapper } from "@src/components/Wrapper";
 import { Profile } from "@src/components/cards/Profile";
 import { member } from "@src/utils/member";
-import { BlogLink } from "@src/components/BlogList";
+import { BlogList } from "@src/components/BlogList";
 import { CategoryList } from "@src/components/CategoryList";
-import styles from "@src/styles/pages/blog/BlogList.module.scss";
+//import styles from "@src/styles/pages/blog/BlogList.module.scss";
 
 interface Props {
   name: string;
@@ -20,24 +21,28 @@ const page: NextPage<{ sortedDatas: Props }> = (props) => {
   const pageTitle = "Tech";
   return (
     <>
+      <Head>
+        <title>Blog</title>
+        <meta property="og:title" content="MoliHey" />
+        <meta property="og:url" content="https://blog-sage-nine.vercel.app/" />
+        <meta property="og:image" content="ogp/home-ogp.png" />
+        <meta property="og:site_name" content="MoliHey" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Head>
       <Wrapper>
         <Profile member={member} />
       </Wrapper>
       <Wrapper>
         <CategoryList />
       </Wrapper>
-      <section className={styles.blog_list_layout}>
+      <div className="tech_container">
         <Wrapper>
-          <div>
-            <h1>{pageTitle}</h1>
-          </div>
-          <div className={styles.blog_list}>
-            {props.sortedDatas.content.map((blog, i) => (
-              <BlogLink key={`blog-link-${i}`} item={blog} />
-            ))}
+          <h2 className="tech_title">{pageTitle}</h2>
+          <div className="tech_items_container">
+            <BlogList items={props.sortedDatas.content} />
           </div>
         </Wrapper>
-      </section>
+      </div>
     </>
   );
 };
