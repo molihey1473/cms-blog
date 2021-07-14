@@ -1,0 +1,23 @@
+//page layout
+
+//index.tsx (all items page)
+
+.all_container,
+.tech_container,
+.diary_container,
+.others_container {
+  margin-top: 1rem;
+}
+.all_title,
+.tech_title,
+.diary_title,
+.others_title {
+  font-size: 2rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+}
+.all_items_container,
+.tech_items_container,
+.diary_items_container,
+.others_items_container {
+  padding: 3.5rem 0;
+}
