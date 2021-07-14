@@ -54,7 +54,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const data = await getCategory(path);
   return {
     props: {
-      sortedDatas: data.contents[0],
+      sortedData: data.contents[0],
     },
   };
 };
