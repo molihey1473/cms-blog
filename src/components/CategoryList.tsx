@@ -15,15 +15,13 @@ export const CategoryItem: React.FC<Props> = (props) => {
   const router = useRouter();
   return (
     <Link href={path}>
-      <a
-        className={`${style.navigation_item} ${
-          router.pathname === path ? style.is_active : ""
-        }`}
-      >
+      <a className={`${style.navigation_item}`}>
         <div
-          className={style.category_list_emoji}
+          className={`${style.category_list_emoji} ${
+            router.pathname === path ? style.is_active : ""
+          }`}
           dangerouslySetInnerHTML={{ __html: emoji }}
-        ></div>
+        />
         <div className={style.link_name}>{title}</div>
       </a>
     </Link>
