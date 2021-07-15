@@ -1,14 +1,32 @@
 .is_active {
-  color: red;
+  //background: #f8f8fa;
+  background: #ebebee;
 }
 .navigation_content {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  border-bottom: solid 2px #ecedf8;
+  color: var(--second-text);
 }
 .navigation_item {
-  padding: 0.5rem 0;
+  padding: 0.5rem 1rem;
   font-weight: 600;
-  border-top: solid 2px #ebf3fb;
+  margin-right: 10px;
+  border-radius: 4px;
+  text-align: center;
+}
+.category_list_emoji {
+  //display: flex;
+  //align-items: center;
+  //justify-content: center;
+  //width: 40px;
+  padding: 15px;
+  border-radius: 10%;
+  box-shadow: 0 3px 6px -2px rgba(0, 0, 0, 0.2);
+  img {
+    width: 50px;
+    height: 50px;
+  }
+}
+.link_name {
+  margin-top: 10px;
 }
