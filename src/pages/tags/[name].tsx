@@ -2,7 +2,7 @@ import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { Wrapper } from "@src/components/Wrapper";
 import { BlogLink } from "@src/components/BlogList";
 import { getTags } from "@src/lib/blog";
-import { TaggedBlogList } from "@src/components/tags/TaggedBlogLIst";
+//import { TagList } from "@src/components/tags/TagList";
 import { TaggedBlogs } from "@src/types";
 import styles from "@src/styles/pages/blog/BlogList.module.scss";
 interface Props {
