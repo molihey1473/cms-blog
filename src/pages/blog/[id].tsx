@@ -5,7 +5,7 @@ import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 //import { config } from "@blog.config";
 import { getBlogs, getPreview } from "@src/lib/blog";
 import { BlogLink } from "@src/components/BlogList";
-import { Tags } from "@src/components/tags/tags";
+import { Tags, TaggedList } from "@src/components/tags/tagItems";
 import { SidebarProfile } from "@src/components/SidebarProfile";
 //SEOコンポーネント
 import { BlogSEO } from "@src/components/BlogSEO";
@@ -26,6 +26,7 @@ import { BlogItem, TagItems } from "@src/types";
 //import { useRef, useCallback } from "react";
 interface Props {
   blog: BlogItem;
+  category: string;
   body: string;
   toc: TocList[];
   preview: boolean;
@@ -39,8 +40,9 @@ interface TocList {
   name: string;
 }
 const Blog: NextPage<Props> = (props) => {
-  const { title, publishedAt, category, body, createdAt, updatedAt, tags, id } =
+  const { title, publishedAt, body, createdAt, updatedAt, tags, id } =
     props.blog;
+  const category = props.category;
   //cloudinry で生成したOGPデータ
   const cl = props.cl;
   //目次データ
@@ -59,7 +61,10 @@ const Blog: NextPage<Props> = (props) => {
               <div className={styles.blog_content_article}>
                 <div>
                   <img
-                    src="https://images.microcms-assets.io/assets/f94653ed008f4b178eaa8ae1659f31fe/b76bebf3e1ee41f69266c82bb713f989/MORIHEY%E3%81%AE%E3%83%95%E3%82%99%E3%83%AD%E3%82%AF%E3%82%99.png"
+                    src={
+                      props.blog.meta.image.url ||
+                      "https://images.microcms-assets.io/assets/f94653ed008f4b178eaa8ae1659f31fe/b76bebf3e1ee41f69266c82bb713f989/MORIHEY%E3%81%AE%E3%83%95%E3%82%99%E3%83%AD%E3%82%AF%E3%82%99.png"
+                    }
                     alt={`${title}-image`}
                   />
                 </div>
@@ -94,10 +99,11 @@ const Blog: NextPage<Props> = (props) => {
                     </time>
                   </div>
                 )}
-                <span className={styles.blog_content_tags}>カテゴリー</span>
+                <div>{category}</div>
+                <TaggedList tags={tags} />
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: props.body,
+                    __html: body,
                   }}
                   className={styles.blog_content_body}
                 />
@@ -140,7 +146,7 @@ const Blog: NextPage<Props> = (props) => {
               <div className={styles.latestArticles_list}>
                 {latestArticles &&
                   latestArticles
-                    .slice(0, 5)
+                    .slice(0, 3)
                     .map((latestBlog, i) => (
                       <BlogLink key={`latest-blog-${i}`} item={latestBlog} />
                     ))}
@@ -182,9 +188,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   //table of content
   const headings = $("h1").toArray();
   const tocData: TocList[] = headings.map((element: any): TocList => {
-    const a: string = element.children[0].data;
-    const b: string = element.attribs.id;
-    const c: string = element.name;
     return {
       text: element.children[0].data,
       id: element.attribs.id,
@@ -194,6 +197,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       blog: data,
+      category: data.category[0].name[0],
       body: $.html(),
       toc: tocData,
       preview: context.preview || false,
