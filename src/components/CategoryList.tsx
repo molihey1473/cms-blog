@@ -36,18 +36,27 @@ export const CategoryList: React.FC = () => {
         path="/category/tech"
         query="tech"
         title="Tech"
-        emoji={twemoji.parse("🧬")}
+        emoji={twemoji.parse("🧬", {
+          folder: "svg",
+          ext: ".svg",
+        })}
       />
       <CategoryItem
         path="/category/diary"
         query="diary"
         title="Diary"
-        emoji={twemoji.parse("🗞")}
+        emoji={twemoji.parse("🗞", {
+          folder: "svg",
+          ext: ".svg",
+        })}
       />
       <CategoryItem
         path="/category/others"
         title="Others"
-        emoji={twemoji.parse("🚀")}
+        emoji={twemoji.parse("🚀", {
+          folder: "svg",
+          ext: ".svg",
+        })}
       />
     </nav>
   );
