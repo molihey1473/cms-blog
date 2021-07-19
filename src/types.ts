@@ -63,3 +63,12 @@ export interface ArticleList {
   tags?: { name: string }[];
   meta?: { image: { url: string } } | null;
 }
+/* 記事投稿日 */
+export interface PublishDate {
+  publishedAt: string;
+}
+/* 記事投稿前プレビュー*/
+export interface PreviewDate {
+  createdAt: string;
+  updatedAt: string;
+}
