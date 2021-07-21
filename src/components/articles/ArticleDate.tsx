@@ -1,16 +1,16 @@
 import dayjs from "dayjs";
 import { PublishDate, PreviewDate } from "@src/types";
-import styles from "@src/styles/pages/blog/BlogContent.module.scss";
+import styles from "@src/styles/pages/blog/ArticleDate.module.scss";
 
 export const PreDate: React.FC<PreviewDate> = (props) => {
   const { createdAt, updatedAt } = props;
   return (
     <>
-      <div className={styles.blog_content_article_at}>
-        <span className={styles.blog_content_article_at_list}>
+      <div className={styles.container}>
+        <span className={styles.items}>
           <time>作成日：{dayjs(createdAt).format("YYYY/MM/DD")}</time>
         </span>
-        <span className={styles.blog_content_article_at_list}>
+        <span className={styles.items}>
           <time>更新日:{dayjs(updatedAt).format("YYYY/MM/DD")}</time>
         </span>
       </div>
@@ -21,12 +21,12 @@ export const PubDate: React.FC<PublishDate> = (props) => {
   const { publishedAt } = props;
   return (
     <>
-      <div className={styles.blog_content_article_at}>
-        <span>
+      <div className={styles.container}>
+        <span className={styles.pub_date}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="25"
-            height="25"
+            width="15"
+            height="15"
             fill="currentColor"
             viewBox="0 0 16 16"
           >
