@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "@src/styles/pages/blog/TocList.module.scss";
 interface TocList {
   text: string;
@@ -25,7 +26,9 @@ export const TocItem: React.FC<{ item: TocList }> = (props) => {
   const { id, name, text } = props.item;
   return (
     <li className={styles.list_item}>
-      <a href={encodeURI(`#${id}`)}>{text}</a>
+      <Link href={encodeURI(`#${id}`)}>
+        <a>{text}</a>
+      </Link>
     </li>
   );
 };
