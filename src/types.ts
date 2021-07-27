@@ -66,6 +66,7 @@ export interface ArticleList {
 /* 記事投稿日 */
 export interface PublishDate {
   publishedAt: string;
+  updatedAt: string;
 }
 /* 記事投稿前プレビュー*/
 export interface PreviewDate {
