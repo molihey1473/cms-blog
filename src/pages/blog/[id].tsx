@@ -3,12 +3,12 @@ import { WideWrapper } from "@src/components/Wrapper";
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 //blog config
 //import { config } from "@blog.config";
-import { PubDate, PreDate } from "@src/components/articles/ArticleDate";
+import { PubDate, PreDate } from "@src/components/articles/header/ArticleDate";
 //目次　toc
 import { TocList } from "@src/components/articles/Toc";
 import { getBlogs, getPreview } from "@src/lib/blog";
 import { BlogLink } from "@src/components/BlogList";
-import { Tags, TaggedList } from "@src/components/tags/tagItems";
+import { HeaderTags } from "@src/components/articles/header/HeaderTag";
 //SEOコンポーネント
 import { BlogSEO } from "@src/components/BlogSEO";
 //OGP画像生成メソッド
@@ -23,6 +23,7 @@ import styles from "@src/styles/pages/blog/BlogContent.module.scss";
 //　props型
 import { BlogItem, TagItems } from "@src/types";
 //記事内ヘッダー
+import { ArticleHeader } from "@src/components/articles/header/HeaderLayout";
 //header画像コンポーンネント
 import { HeaderImage } from "@src/components/articles/header/HeaderImage";
 //header 記事タイトルコンポーネント
@@ -69,28 +70,30 @@ const Blog: NextPage<Props> = (props) => {
   //const latestArticles = props.latestArticles;
   return (
     <>
-      <BlogSEO title={title} id={id} image={cl} path="/blog" />
+      <BlogSEO title={title} id={id} image={cl} path={"/blog"} />
       <article className={styles.blog_article}>
         <WideWrapper>
           <div className={styles.blog_content_main}>
             <div className={styles.blog_content_layout}>
               <div className={styles.blog_content_article}>
-                <HeaderImage imageUrl={meta.image.url} id={id} />
-                {preview && (
-                  <a
-                    href="/api/clearPreview"
-                    className={styles.clear_preview_mode}
-                  >
-                    ** preview mode　解除 **
-                  </a>
-                )}
-                {preview ? (
-                  <PreDate createdAt={createdAt} updatedAt={updatedAt} />
-                ) : (
-                  <PubDate publishedAt={publishedAt} updatedAt={updatedAt} />
-                )}
-                <h1 className={styles.blog_content_title}>{title}</h1>
-                <TaggedList tags={tags} />
+                <ArticleHeader>
+                  <HeaderImage imageUrl={meta.image.url} id={id} />
+                  {preview && (
+                    <a
+                      href="/api/clearPreview"
+                      className={styles.clear_preview_mode}
+                    >
+                      ** preview mode　解除 **
+                    </a>
+                  )}
+                  {preview ? (
+                    <PreDate createdAt={createdAt} updatedAt={updatedAt} />
+                  ) : (
+                    <PubDate publishedAt={publishedAt} updatedAt={updatedAt} />
+                  )}
+                  <HeaderTitle title={title} />
+                  <HeaderTags tags={tags} />
+                </ArticleHeader>
                 <TocList toc={toc} />
                 <ArticleBody body={body} />
               </div>
@@ -150,6 +153,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   //table of content
   const headings = $("h1, h2, h3").toArray();
   const tocData: TocList[] = headings.map((element: any): TocList => {
+    console.log(element.name);
     return {
       text: element.children[0].data,
       id: element.attribs.id,
