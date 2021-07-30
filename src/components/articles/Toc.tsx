@@ -1,12 +1,12 @@
 import Link from "next/link";
-import styles from "@src/styles/pages/blog/TocList.module.scss";
+import styles from "@src/styles/components/articles/Toc.module.scss";
 interface TocList {
   text: string;
   id: string;
   name: string;
 }
 export const TocList: React.FC<{ toc: TocList[] }> = (props) => {
-  const toc = props.toc;
+  const { toc } = props;
   return (
     <>
       <div className={styles.container}>
@@ -25,10 +25,8 @@ export const TocList: React.FC<{ toc: TocList[] }> = (props) => {
 export const TocItem: React.FC<{ item: TocList }> = (props) => {
   const { id, name, text } = props.item;
   return (
-    <li className={styles.list_item}>
-      <Link href={encodeURI(`#${id}`)}>
-        <a>{text}</a>
-      </Link>
+    <li className={name === "h1" ? styles.heading : styles.second_heading}>
+      <a href={encodeURI(`#${id}`)}>{text}</a>
     </li>
   );
 };
