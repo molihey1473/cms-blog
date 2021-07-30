@@ -26,7 +26,9 @@ export const TocItem: React.FC<{ item: TocList }> = (props) => {
   const { id, name, text } = props.item;
   return (
     <li className={name === "h1" ? styles.heading : styles.second_heading}>
-      <a href={encodeURI(`#${id}`)}>{text}</a>
+      <a className={styles.heading_item} href={encodeURI(`#${id}`)}>
+        {text}
+      </a>
     </li>
   );
 };
