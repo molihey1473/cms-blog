@@ -1,6 +1,8 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { Wrapper } from "@src/components/Wrapper";
 import { BlogLink } from "@src/components/BlogList";
+//twemoji
+import twemoji from "twemoji";
 import { getTags } from "@src/lib/blog";
 //import { TagList } from "@src/components/tags/TagList";
 import { TaggedBlogs } from "@src/types";
@@ -20,9 +22,19 @@ const Page: NextPage<{ taggedBlogs: Props }> = (props) => {
       <section className={styles.tagged_blog_list_layout}>
         <Wrapper>
           <div className={styles.tagged_blog_content}>
-            <div
-              className={styles.tag_name}
-            >{`#${props.taggedBlogs.name}`}</div>
+            <div className={styles.tag_name_container}>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: twemoji.parse("🏷", {
+                    folder: "svg",
+                    ext: ".svg",
+                  }),
+                }}
+              />
+              <div
+                className={styles.tag_name}
+              >{`#${props.taggedBlogs.name}`}</div>
+            </div>
             <div className={styles.tagged_blog_list}>
               {props.taggedBlogs.content.map((taggedBlog, i) => (
                 <BlogLink key={`taggedBlog-${i}`} item={taggedBlog} />
