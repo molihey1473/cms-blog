@@ -35,9 +35,6 @@ export const Header: React.FC = () => {
             <Link href="/about">
               <a className={styles.header_links_item}>About</a>
             </Link>
-            <Link href="/blog">
-              <a className={styles.header_links_item}>Blog</a>
-            </Link>
           </div>
         </div>
       </WideWrapper>
