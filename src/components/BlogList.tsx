@@ -1,14 +1,13 @@
 //import {NextPage} from 'next'
-import { BlogItem, TagItems, ArticleList } from "@src/types";
+import { BlogItem, ArticleList } from "@src/types";
 import Link from "next/link";
 import dayjs from "dayjs";
 import styles from "@src/styles/pages/blog/BlogList.module.scss";
-interface Props {
-  item: ArticleList;
-}
-export const BlogLink: React.FC<Props> = (props) => {
+//interface Props {
+//  item: ArticleList;
+//}
+export const BlogLink: React.FC<{ item: ArticleList }> = (props) => {
   const { id, title, publishedAt, tags, meta } = props.item;
-  //console.log(meta.image);
   return (
     <article className={styles.blog_link}>
       <Link href={`/blog/${id}`}>
@@ -29,20 +28,6 @@ export const BlogLink: React.FC<Props> = (props) => {
           </div>
         </a>
       </Link>
-      {/* <div className={styles.blog_tags}>
-        {tags.map((item, i) => {
-          if (item.name) {
-            return (
-              <Link
-                key={`tags-${i}`}
-                href={`/tags/${item.name.replace(/\./g, "").toLowerCase()}`}
-              >
-                <a className={styles.blog_tag_list}>{item.name}</a>
-              </Link>
-            );
-          }
-        })}
-      </div> */}
     </article>
   );
 };
