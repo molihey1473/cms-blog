@@ -153,7 +153,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   //table of content
   const headings = $("h1, h2, h3").toArray();
   const tocData: TocList[] = headings.map((element: any): TocList => {
-    console.log(element.name);
     return {
       text: element.children[0].data,
       id: element.attribs.id,
