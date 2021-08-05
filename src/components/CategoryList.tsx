@@ -61,3 +61,10 @@ export const CategoryList: React.FC = () => {
     </nav>
   );
 };
+export const CategoryFlat: React.FC<Props> = (props) => {
+  return (
+    <>
+      <div></div>
+    </>
+  );
+};
