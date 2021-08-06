@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import twemoji from "twemoji";
-import style from "@src/styles/components/Navigation.module.scss";
+import styles from "@src/styles/components/Navigation.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
 interface Props {
@@ -15,21 +15,21 @@ export const CategoryItem: React.FC<Props> = (props) => {
   const router = useRouter();
   return (
     <Link href={path}>
-      <a className={`${style.navigation_item}`}>
+      <a className={`${styles.navigation_item}`}>
         <div
-          className={`${style.category_list_emoji} ${
-            router.pathname === path ? style.is_active : ""
+          className={`${styles.category_list_emoji} ${
+            router.pathname === path ? styles.is_active : ""
           }`}
           dangerouslySetInnerHTML={{ __html: emoji }}
         />
-        <div className={style.link_name}>{title}</div>
+        <div className={styles.link_name}>{title}</div>
       </a>
     </Link>
   );
 };
 export const CategoryList: React.FC = () => {
   return (
-    <nav className={style.navigation_content}>
+    <nav className={styles.navigation_content}>
       <CategoryItem path="/" title="All" emoji={twemoji.parse("📚")} />
 
       <CategoryItem
@@ -61,10 +61,55 @@ export const CategoryList: React.FC = () => {
     </nav>
   );
 };
-export const CategoryFlat: React.FC<Props> = (props) => {
+export const CategoryFlatList: React.FC = () => {
   return (
     <>
-      <div></div>
+      <nav className={styles.navigation_content}>
+        <CategoryFlatItem path="/" title="All" emoji={twemoji.parse("📚")} />
+
+        <CategoryFlatItem
+          path="/category/tech"
+          query="tech"
+          title="Tech"
+          emoji={twemoji.parse("🧬", {
+            folder: "svg",
+            ext: ".svg",
+          })}
+        />
+        <CategoryFlatItem
+          path="/category/diary"
+          query="diary"
+          title="Diary"
+          emoji={twemoji.parse("🗞", {
+            folder: "svg",
+            ext: ".svg",
+          })}
+        />
+        <CategoryFlatItem
+          path="/category/others"
+          title="Others"
+          emoji={twemoji.parse("🚀", {
+            folder: "svg",
+            ext: ".svg",
+          })}
+        />
+      </nav>
+    </>
+  );
+};
+export const CategoryFlatItem: React.FC<Props> = (props) => {
+  const { path, query, title, emoji } = props;
+  return (
+    <>
+      <Link href={path}>
+        <a className={styles.flat_name}>
+          <div
+            className={styles.categoryFlat_emoji}
+            dangerouslySetInnerHTML={{ __html: emoji }}
+          />
+          {title}
+        </a>
+      </Link>
     </>
   );
 };
