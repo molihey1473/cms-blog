@@ -30,3 +30,18 @@
 .link_name {
   margin-top: 10px;
 }
+
+//CategoryFlat components
+
+//CategoryFlatItem components
+.categoryFlat_emoji {
+  img {
+    width: 25px;
+  }
+}
+.flat_name {
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+  font-weight: 500;
+}
