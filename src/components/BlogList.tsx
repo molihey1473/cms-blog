@@ -40,3 +40,37 @@ export const BlogList: React.FC<{ items: BlogItem[] }> = (props) => {
     </div>
   );
 };
+
+export const BlogFlatList: React.FC<{ items: BlogItem[] }> = (props) => {
+  return (
+    <>
+      <div className={styles.flat_list}>
+        {props.items.map((data, i) => {
+          <BlogFlatItem key={`BlogFlat-${i}`} item={data} />;
+        })}
+      </div>
+    </>
+  );
+};
+export const BlogFlatItem: React.FC<{ item: ArticleList }> = (props) => {
+  const { id, title, publishedAt, tags, meta } = props.item;
+  return (
+    <>
+      <article className={styles.flat_link}>
+        <Link href={`/blog/${id}`}>
+          <a>
+            <div>
+              <img src={meta?.image?.url || "/ogp/home-ogp.png"} alt={title} />
+            </div>
+            <div>
+              <time dateTime={publishedAt}>
+                {dayjs(publishedAt).format("YYYY/MM/DD")}
+              </time>
+              <h3>{title}</h3>
+            </div>
+          </a>
+        </Link>
+      </article>
+    </>
+  );
+};
