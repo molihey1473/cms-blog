@@ -45,9 +45,9 @@ export const BlogFlatList: React.FC<{ items: BlogItem[] }> = (props) => {
   return (
     <>
       <div className={styles.flat_list}>
-        {props.items.map((data, i) => {
-          <BlogFlatItem key={`BlogFlat-${i}`} item={data} />;
-        })}
+        {props.items.map((data, i) => (
+          <BlogFlatItem key={`BlogFlat-${i}`} item={data} />
+        ))}
       </div>
     </>
   );
@@ -58,15 +58,15 @@ export const BlogFlatItem: React.FC<{ item: ArticleList }> = (props) => {
     <>
       <article className={styles.flat_link}>
         <Link href={`/blog/${id}`}>
-          <a>
-            <div>
+          <a className={styles.flat_link_contents}>
+            <div className={styles.flat_link_image_content}>
               <img src={meta?.image?.url || "/ogp/home-ogp.png"} alt={title} />
             </div>
-            <div>
+            <div className={styles.flat_link_bio}>
               <time dateTime={publishedAt}>
                 {dayjs(publishedAt).format("YYYY/MM/DD")}
               </time>
-              <h3>{title}</h3>
+              <h3 className={styles.flat_link_title}>{title}</h3>
             </div>
           </a>
         </Link>
