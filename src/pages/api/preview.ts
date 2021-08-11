@@ -17,7 +17,7 @@ export default async function preview(
   if (!content) {
     return res.status(401).json({ message: "Invalid slug" });
   }
-
+  // Next.js独自のヘッドレスCMS用プレビュー機能
   res.setPreviewData({
     slug: content.id,
     draftKey: req.query.draftKey,
