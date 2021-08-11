@@ -7,7 +7,7 @@ interface Props {
   items: PostItem[];
 }
 export const PostLink: React.FC<{ item: PostItem }> = (props) => {
-  const { title, contentSnippet, link, isoDate, dateMiliSeconds } = props.item;
+  const { title, link, isoDate } = props.item;
   return (
     <article className={styles.post_link}>
       <a className={styles.post_link_content} href={link}>
