@@ -11,7 +11,6 @@ async function fetchFeedItems(url: string) {
   if (!feed?.items?.length) return [];
   return feed.items
     .map(({ title, link, contentSnippet, isoDate }) => {
-      console.log(contentSnippet);
       return {
         title,
         contentSnippet: contentSnippet?.replace(/\n/g, ""),
