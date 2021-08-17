@@ -99,10 +99,15 @@ export const CategoryFlatList: React.FC = () => {
 };
 export const CategoryFlatItem: React.FC<Props> = (props) => {
   const { path, query, title, emoji } = props;
+  const router = useRouter();
   return (
     <>
       <Link href={path}>
-        <a className={styles.flat_name}>
+        <a
+          className={`${styles.flat_name} ${
+            router.pathname === path ? styles.flat_active : ""
+          }`}
+        >
           <div
             className={styles.categoryFlat_emoji}
             dangerouslySetInnerHTML={{ __html: emoji }}
