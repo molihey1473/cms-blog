@@ -4,12 +4,13 @@ import posts from ".contents/posts.json";
 import { Wrapper } from "@src/components/Wrapper";
 //import { Wrapper } from "@src/components/Wrapper";
 import { Profile } from "@src/components/cards/Profile";
-import { BlogList } from "@src/components/BlogList";
-import { PostList } from "@src/components/PostList";
-import { CategoryList } from "@src/components/CategoryList";
+import { BlogList, BlogFlatList } from "@src/components/BlogList";
+import { CategoryList, CategoryFlatList } from "@src/components/CategoryList";
 import { member } from "@src/utils/member";
 // get data methods
 import { getBlogs } from "@src/lib/blog";
+// SEO component
+import { BlogSEO } from "@src/components/BlogSEO";
 
 //types
 import { BlogItem } from "@src/types";
@@ -28,11 +29,12 @@ const Home: NextPage<Props> = (props) => {
         <meta property="og:site_name" content="MoliHey" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
+      <BlogSEO title={"MoliHey"} />
       <Wrapper>
         <Profile member={member} />
       </Wrapper>
       <Wrapper>
-        <CategoryList />
+        <CategoryFlatList />
       </Wrapper>
       <div className="all_container">
         <Wrapper>
