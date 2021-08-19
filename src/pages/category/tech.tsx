@@ -5,7 +5,7 @@ import { Wrapper } from "@src/components/Wrapper";
 import { Profile } from "@src/components/cards/Profile";
 import { member } from "@src/utils/member";
 import { BlogList } from "@src/components/BlogList";
-import { CategoryList } from "@src/components/CategoryList";
+import { CategoryFlatList } from "@src/components/CategoryList";
 //import styles from "@src/styles/pages/blog/BlogList.module.scss";
 
 interface Props {
@@ -36,7 +36,7 @@ const page: NextPage<{ sortedArticlesData: Props }> = (props) => {
         <Profile member={member} />
       </Wrapper>
       <Wrapper>
-        <CategoryList />
+        <CategoryFlatList />
       </Wrapper>
       <div className="tech_container">
         <Wrapper>
