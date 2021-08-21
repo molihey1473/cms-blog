@@ -3,6 +3,8 @@ import { BlogItem, ArticleList } from "@src/types";
 import Link from "next/link";
 import dayjs from "dayjs";
 import styles from "@src/styles/pages/blog/BlogList.module.scss";
+import twemoji from "twemoji";
+
 //interface Props {
 //  item: ArticleList;
 //}
@@ -53,23 +55,31 @@ export const BlogFlatList: React.FC<{ items: BlogItem[] }> = (props) => {
   );
 };
 export const BlogFlatItem: React.FC<{ item: ArticleList }> = (props) => {
-  const { id, title, publishedAt, tags, meta } = props.item;
+  const { id, title, publishedAt, tags, meta, emoji } = props.item;
   return (
     <>
       <article className={styles.flat_link}>
-        <Link href={`/blog/${id}`}>
-          <a className={styles.flat_link_contents}>
-            <div className={styles.flat_link_image_content}>
-              <img src={meta?.image?.url || "/ogp/home-ogp.png"} alt={title} />
-            </div>
-            <div className={styles.flat_link_bio}>
-              <time dateTime={publishedAt}>
-                {dayjs(publishedAt).format("YYYY/MM/DD")}
-              </time>
-              <h3 className={styles.flat_link_title}>{title}</h3>
-            </div>
-          </a>
-        </Link>
+        <div className={styles.flat_link_contents}>
+          <div
+            className={styles.flat_link_image_content}
+            dangerouslySetInnerHTML={{
+              __html: twemoji.parse(emoji[0], { folder: "svg", ext: ".svg" }),
+            }}
+          />
+          <div className={styles.flat_link_bio}>
+            <Link href={`/blog/${id}`}>
+              <a className={styles.flat_link_title}>{title}</a>
+            </Link>
+            <time dateTime={publishedAt}>
+              {dayjs(publishedAt).format("YYYY/MM/DD")}
+            </time>
+            {tags.map((item, i) => (
+              <Link href={`/tags/${item.name.toLowerCase()}`}>
+                <a key={i}>{item.name.toLowerCase()}</a>
+              </Link>
+            ))}
+          </div>
+        </div>
       </article>
     </>
   );
