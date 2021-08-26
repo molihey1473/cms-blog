@@ -55,27 +55,22 @@ export const BlogFlatList: React.FC<{ items: BlogItem[] }> = (props) => {
   );
 };
 export const BlogFlatItem: React.FC<{ item: ArticleList }> = (props) => {
-  const { id, title, publishedAt, tags, meta, emoji } = props.item;
+  const { id, title, publishedAt, tags, meta } = props.item;
   return (
     <>
       <article className={styles.flat_link}>
         <div className={styles.flat_link_contents}>
-          <div
-            className={styles.flat_link_image_content}
-            dangerouslySetInnerHTML={{
-              __html: twemoji.parse(emoji[0], { folder: "svg", ext: ".svg" }),
-            }}
-          />
           <div className={styles.flat_link_bio}>
+            <time className={styles.flat_link_date} dateTime={publishedAt}>
+              {dayjs(publishedAt).format("YYYY/MM/DD")}
+            </time>
             <Link href={`/blog/${id}`}>
               <a className={styles.flat_link_title}>{title}</a>
             </Link>
-            <time dateTime={publishedAt}>
-              {dayjs(publishedAt).format("YYYY/MM/DD")}
-            </time>
+
             {tags.map((item, i) => (
-              <Link href={`/tags/${item.name.toLowerCase()}`}>
-                <a key={i}>{item.name.toLowerCase()}</a>
+              <Link key={i} href={`/tags/${item.name.toLowerCase()}`}>
+                <a className={styles.flat_items_tags}>{item.name}</a>
               </Link>
             ))}
           </div>
