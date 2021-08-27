@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import twemoji from "twemoji";
-import styles from "@src/styles/components/Navigation.module.scss";
+import styles from "@src/styles/components/CategoryList.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
 interface Props {
