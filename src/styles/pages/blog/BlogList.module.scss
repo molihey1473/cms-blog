@@ -100,33 +100,57 @@
 
 //flatList components
 .flat_list {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  width: 100%;
+  //display: flex;
+  //flex-direction: column;
+  //justify-content: space-evenly;
+  //width: 100%;
+  border-left: 2px solid #e4e4e4;
 }
 //flatItem components
 .flat_link {
+  display: block;
+  position: relative;
+  margin-top: 1.5rem;
+  padding-left: 1rem;
   border-radius: 10px;
-  padding: 0 0.5rem;
-  box-shadow: 0 3px 6px -2px rgba(0, 0, 0, 0.2);
+  //padding: 0 0.5rem;
+  //box-shadow: 0 3px 6px -2px rgba(0, 0, 0, 0.2);
 }
-.flat_link_contents {
-  display: flex;
-  align-items: center;
-}
+
 .flat_link_title {
-  font-size: 1em;
+  display: block;
+  margin-top: 10px;
+  font-size: 19px;
+  font-weight: 700;
   line-height: 1.5;
-  padding: 0 1rem;
 }
 .flat_link_image_content {
   padding: 1rem;
   width: 80px;
   box-shadow: 0 3px 6px -2px rgba(0, 0, 0, 0.2);
 }
+//blog補足情報
 .flat_link_bio {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.flat_link_date {
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 12px;
+  font-weight: 600;
+}
+//bloglist タグ情報
+.flat_link_tags {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+.flat_items_tags {
+  font-size: 14px;
+  font-weight: 600;
+  margin-right: 10px;
+  padding: 0.2rem 0.4rem;
+  background-color: #d0e4f3;
+  border-radius: 8px;
 }
