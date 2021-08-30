@@ -100,6 +100,7 @@
 
 //flatList components
 .flat_list {
+  //position: relative;
   //display: flex;
   //flex-direction: column;
   //justify-content: space-evenly;
@@ -108,11 +109,21 @@
 }
 //flatItem components
 .flat_link {
-  display: block;
   position: relative;
+  display: block;
   padding-left: 1rem;
   &:not(:first-child) {
     margin-top: 1.5rem;
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: -6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #d0e4f3;
   }
 }
 
