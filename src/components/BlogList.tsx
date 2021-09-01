@@ -59,21 +59,18 @@ export const BlogFlatItem: React.FC<{ item: ArticleList }> = (props) => {
   return (
     <>
       <article className={styles.flat_link}>
-        <div className={styles.flat_link_contents}>
-          <div className={styles.flat_link_bio}>
-            <time className={styles.flat_link_date} dateTime={publishedAt}>
-              {dayjs(publishedAt).format("YYYY/MM/DD")}
-            </time>
-            <Link href={`/blog/${id}`}>
-              <a className={styles.flat_link_title}>{title}</a>
+        <time className={styles.flat_link_date} dateTime={publishedAt}>
+          {dayjs(publishedAt).format("YYYY/MM/DD")}
+        </time>
+        <Link href={`/blog/${id}`}>
+          <a className={styles.flat_link_title}>{title}</a>
+        </Link>
+        <div className={styles.flat_link_tags}>
+          {tags.map((item, i) => (
+            <Link key={i} href={`/tags/${item.name.toLowerCase()}`}>
+              <a className={styles.flat_items_tags}>{item.name}</a>
             </Link>
-
-            {tags.map((item, i) => (
-              <Link key={i} href={`/tags/${item.name.toLowerCase()}`}>
-                <a className={styles.flat_items_tags}>{item.name}</a>
-              </Link>
-            ))}
-          </div>
+          ))}
         </div>
       </article>
     </>
