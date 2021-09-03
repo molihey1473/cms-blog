@@ -63,6 +63,14 @@ export interface ArticleList {
   tags?: { name: string }[];
   meta?: { image: { url: string } } | null;
 }
+/* カテゴリー分けされた記事一覧*/
+export interface sortedArticleList {
+  id: string;
+  title: string;
+  publishedAt: string;
+  category: { name: string[] };
+  tags: string[];
+}
 /* 記事投稿日 */
 export interface PublishDate {
   publishedAt: string;
