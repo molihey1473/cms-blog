@@ -1,5 +1,5 @@
 //import {NextPage} from 'next'
-import { BlogItem, ArticleList, sortedArticleList } from "@src/types";
+import { BlogItem, ArticleList, SortedArticleList } from "@src/types";
 import Link from "next/link";
 import dayjs from "dayjs";
 import styles from "@src/styles/pages/blog/BlogList.module.scss";
@@ -44,7 +44,7 @@ export const BlogList: React.FC<{ items: BlogItem[] }> = (props) => {
 };
 
 export const BlogFlatList: React.FC<{
-  items: BlogItem[] | sortedArticleList[];
+  items: BlogItem[] | SortedArticleList[];
 }> = (props) => {
   return (
     <>
@@ -56,7 +56,7 @@ export const BlogFlatList: React.FC<{
     </>
   );
 };
-export const BlogFlatItem: React.FC<{ item: ArticleList | sortedArticleList }> =
+export const BlogFlatItem: React.FC<{ item: ArticleList | SortedArticleList }> =
   (props) => {
     const { id, title, publishedAt, tags } = props.item;
     return (

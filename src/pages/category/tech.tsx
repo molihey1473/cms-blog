@@ -6,7 +6,7 @@ import { Profile } from "@src/components/cards/Profile";
 import { member } from "@src/utils/member";
 import { BlogList, BlogFlatList } from "@src/components/BlogList";
 import { CategoryFlatList } from "@src/components/CategoryList";
-import { BlogItem, sortedArticleList } from "@src/types";
+import { BlogItem, SortedArticleList } from "@src/types";
 
 //import styles from "@src/styles/pages/blog/BlogList.module.scss";
 
@@ -19,7 +19,7 @@ interface Props {
     meta?: { image: { url: string } };
   }[];
 }
-const page: NextPage<{ sortedArticlesData: sortedArticleList[] }> = (props) => {
+const page: NextPage<{ sortedArticlesData: SortedArticleList[] }> = (props) => {
   const pageTitle = "Tech";
   return (
     <>
@@ -54,9 +54,9 @@ const page: NextPage<{ sortedArticlesData: sortedArticleList[] }> = (props) => {
 export const getStaticProps: GetStaticProps = async () => {
   const path: string = "tech";
   //const data = await getCategory(path);
-  const preData: { contents: sortedArticleList[] } = await getBlogs();
-  const data: sortedArticleList[] = preData.contents.filter(
-    (item: sortedArticleList) => {
+  const preData: { contents: SortedArticleList[] } = await getBlogs();
+  const data: SortedArticleList[] = preData.contents.filter(
+    (item: SortedArticleList) => {
       return item.category.name[0] === path;
     }
   );
