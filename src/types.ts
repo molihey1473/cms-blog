@@ -64,7 +64,7 @@ export interface ArticleList {
   meta?: { image: { url: string } } | null;
 }
 /* カテゴリー分けされた記事一覧*/
-export interface sortedArticleList {
+export interface SortedArticleList {
   id: string;
   title: string;
   publishedAt: string;
