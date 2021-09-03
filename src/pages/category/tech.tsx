@@ -1,11 +1,13 @@
 import Head from "next/head";
 import { NextPage, GetStaticProps } from "next";
-import { getCategory } from "@src/lib/blog";
+import { getCategory, getBlogs } from "@src/lib/blog";
 import { Wrapper } from "@src/components/Wrapper";
 import { Profile } from "@src/components/cards/Profile";
 import { member } from "@src/utils/member";
-import { BlogList } from "@src/components/BlogList";
+import { BlogList, BlogFlatList } from "@src/components/BlogList";
 import { CategoryFlatList } from "@src/components/CategoryList";
+import { BlogItem, sortedArticleList } from "@src/types";
+
 //import styles from "@src/styles/pages/blog/BlogList.module.scss";
 
 interface Props {
@@ -17,7 +19,7 @@ interface Props {
     meta?: { image: { url: string } };
   }[];
 }
-const page: NextPage<{ sortedArticlesData: Props }> = (props) => {
+const page: NextPage<{ sortedArticlesData: sortedArticleList[] }> = (props) => {
   const pageTitle = "Tech";
   return (
     <>
@@ -42,7 +44,7 @@ const page: NextPage<{ sortedArticlesData: Props }> = (props) => {
         <Wrapper>
           <h2 className="tech_title">{pageTitle}</h2>
           <div className="tech_items_container">
-            <BlogList items={props.sortedArticlesData.content} />
+            <BlogFlatList items={props.sortedArticlesData} />
           </div>
         </Wrapper>
       </div>
@@ -51,10 +53,17 @@ const page: NextPage<{ sortedArticlesData: Props }> = (props) => {
 };
 export const getStaticProps: GetStaticProps = async () => {
   const path: string = "tech";
-  const data = await getCategory(path);
+  //const data = await getCategory(path);
+  const preData: { contents: sortedArticleList[] } = await getBlogs();
+  const data: sortedArticleList[] = preData.contents.filter(
+    (item: sortedArticleList) => {
+      return item.category.name[0] === path;
+    }
+  );
+
   return {
     props: {
-      sortedArticlesData: data.contents[0],
+      sortedArticlesData: data,
     },
   };
 };
