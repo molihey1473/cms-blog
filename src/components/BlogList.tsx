@@ -1,5 +1,5 @@
 //import {NextPage} from 'next'
-import { BlogItem, ArticleList } from "@src/types";
+import { BlogItem, ArticleList, sortedArticleList } from "@src/types";
 import Link from "next/link";
 import dayjs from "dayjs";
 import styles from "@src/styles/pages/blog/BlogList.module.scss";
@@ -43,7 +43,9 @@ export const BlogList: React.FC<{ items: BlogItem[] }> = (props) => {
   );
 };
 
-export const BlogFlatList: React.FC<{ items: BlogItem[] }> = (props) => {
+export const BlogFlatList: React.FC<{
+  items: BlogItem[] | sortedArticleList[];
+}> = (props) => {
   return (
     <>
       <div className={styles.flat_list}>
@@ -54,25 +56,26 @@ export const BlogFlatList: React.FC<{ items: BlogItem[] }> = (props) => {
     </>
   );
 };
-export const BlogFlatItem: React.FC<{ item: ArticleList }> = (props) => {
-  const { id, title, publishedAt, tags, meta } = props.item;
-  return (
-    <>
-      <article className={styles.flat_link}>
-        <time className={styles.flat_link_date} dateTime={publishedAt}>
-          {dayjs(publishedAt).format("YYYY/MM/DD")}
-        </time>
-        <Link href={`/blog/${id}`}>
-          <a className={styles.flat_link_title}>{title}</a>
-        </Link>
-        <div className={styles.flat_link_tags}>
-          {tags.map((item, i) => (
-            <Link key={i} href={`/tags/${item.name.toLowerCase()}`}>
-              <a className={styles.flat_items_tags}>{item.name}</a>
-            </Link>
-          ))}
-        </div>
-      </article>
-    </>
-  );
-};
+export const BlogFlatItem: React.FC<{ item: ArticleList | sortedArticleList }> =
+  (props) => {
+    const { id, title, publishedAt, tags } = props.item;
+    return (
+      <>
+        <article className={styles.flat_link}>
+          <time className={styles.flat_link_date} dateTime={publishedAt}>
+            {dayjs(publishedAt).format("YYYY/MM/DD")}
+          </time>
+          <Link href={`/blog/${id}`}>
+            <a className={styles.flat_link_title}>{title}</a>
+          </Link>
+          <div className={styles.flat_link_tags}>
+            {tags.map((item, i) => (
+              <Link key={i} href={`/tags/${item.name.toLowerCase()}`}>
+                <a className={styles.flat_items_tags}>{item.name}</a>
+              </Link>
+            ))}
+          </div>
+        </article>
+      </>
+    );
+  };
