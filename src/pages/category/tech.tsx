@@ -52,14 +52,12 @@ const page: NextPage<{ sortedArticlesData: SortedArticleList[] }> = (props) => {
   );
 };
 export const getStaticProps: GetStaticProps = async () => {
-  const path: string = "tech";
+  const path = "tech";
   //const data = await getCategory(path);
   const preData: { contents: SortedArticleList[] } = await getBlogs();
-  const data: SortedArticleList[] = preData.contents.filter(
-    (item: SortedArticleList) => {
-      return item.category.name[0] === path;
-    }
-  );
+  const data = preData.contents.filter((item: SortedArticleList) => {
+    return item.category.name[0] === path;
+  });
 
   return {
     props: {
