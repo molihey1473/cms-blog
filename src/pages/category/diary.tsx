@@ -2,22 +2,14 @@ import Head from "next/head";
 import { NextPage, GetStaticProps } from "next";
 import { Profile } from "@src/components/cards/Profile";
 import { member } from "@src/utils/member";
-import { getCategory } from "@src/lib/blog";
+import { getCategory, getBlogs } from "@src/lib/blog";
 import { Wrapper } from "@src/components/Wrapper";
-import { BlogList } from "@src/components/BlogList";
+import { BlogList, BlogFlatList } from "@src/components/BlogList";
 import { CategoryFlatList } from "@src/components/CategoryList";
+import { SortedArticleList } from "@src/types";
 //import styles from "@src/styles/pages/blog/BlogList.module.scss";
 
-interface Props {
-  name: string;
-  content: {
-    id: string;
-    title: string;
-    publishedAt: string;
-    meta?: { image: { url: string } };
-  }[];
-}
-const page: NextPage<{ sortedArticlesData: Props }> = (props) => {
+const page: NextPage<{ sortedArticlesData: SortedArticleList[] }> = (props) => {
   const pageTitle = "Diary";
   return (
     <>
@@ -40,9 +32,9 @@ const page: NextPage<{ sortedArticlesData: Props }> = (props) => {
       </Wrapper>
       <div className="diary_container">
         <Wrapper>
-          <h1 className="diary_title">{pageTitle}</h1>
+          <h2 className="diary_title">{pageTitle}</h2>
           <div className="diary_items_container">
-            <BlogList items={props.sortedArticlesData.content} />
+            <BlogFlatList items={props.sortedArticlesData} />
           </div>
         </Wrapper>
       </div>
@@ -51,10 +43,14 @@ const page: NextPage<{ sortedArticlesData: Props }> = (props) => {
 };
 export const getStaticProps: GetStaticProps = async () => {
   const path: string = "diary";
-  const data = await getCategory(path);
+  const preData: { contents: SortedArticleList[] } = await getBlogs();
+  const data = preData.contents.filter((item: SortedArticleList) => {
+    return item.category.name[0] === path;
+  });
+
   return {
     props: {
-      sortedArticlesData: data.contents[0],
+      sortedArticlesData: data,
     },
   };
 };
