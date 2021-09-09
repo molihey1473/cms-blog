@@ -40,6 +40,12 @@ const Home: NextPage<Props> = (props) => {
         <Wrapper>
           <h2 className="all_title">ALL</h2>
           <div className="all_items_container">
+            {props.allArticlesData ? (
+              <BlogFlatList items={props.allArticlesData} />
+            ) : (
+              <BlogList items={props.allArticlesData} />
+            )}
+            <BlogFlatList items={props.allArticlesData} />
             <BlogList items={props.allArticlesData} />
           </div>
         </Wrapper>
