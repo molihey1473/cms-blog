@@ -54,10 +54,7 @@ const page: NextPage<{ sortedArticlesData: SortedArticleList[] }> = (props) => {
 export const getStaticProps: GetStaticProps = async () => {
   const path = "tech";
   //const data = await getCategory(path);
-  const preData: { contents: SortedArticleList[] } = await getBlogs();
-  const data = preData.contents.filter((item: SortedArticleList) => {
-    return item.category.name[0] === path;
-  });
+  const data = await getBlogs(path);
 
   return {
     props: {
