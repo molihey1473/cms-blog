@@ -23,7 +23,7 @@ export interface FeedItem {
 }
 // /blog/[id].tsx 記事データ
 // tags:TagItemsだとcomponents内で反応しないため。tags:TagItems -> tags?: { name: string; id: string }[];に変更
-export interface BlogItem {
+export interface ArticleItems {
   id: string;
   title: string;
   body?: string;
@@ -35,6 +35,14 @@ export interface BlogItem {
   //tags?: TagItems[];
   meta?: { image: { url: string } } | null;
 }
+/* カテゴリー分けされた記事一覧*/
+//export interface SortedArticleList {
+//  id: string;
+//  title: string;
+//  publishedAt: string;
+//  category: { name: string[] };
+//  tags: string[];
+//}
 // 記事内関連記事リンク
 export interface TagItems {
   name: string;
@@ -63,14 +71,7 @@ export interface ArticleList {
   tags?: { name: string }[];
   meta?: { image: { url: string } } | null;
 }
-/* カテゴリー分けされた記事一覧*/
-export interface SortedArticleList {
-  id: string;
-  title: string;
-  publishedAt: string;
-  category: { name: string[] };
-  tags: string[];
-}
+
 /* 記事投稿日 */
 export interface PublishDate {
   publishedAt: string;
