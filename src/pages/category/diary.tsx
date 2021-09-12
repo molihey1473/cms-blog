@@ -6,10 +6,10 @@ import { getCategory, getBlogs } from "@src/lib/blog";
 import { Wrapper } from "@src/components/Wrapper";
 import { BlogList, BlogFlatList } from "@src/components/BlogList";
 import { CategoryFlatList } from "@src/components/CategoryList";
-import { SortedArticleList } from "@src/types";
+import { ArticleItems } from "@src/types";
 //import styles from "@src/styles/pages/blog/BlogList.module.scss";
 
-const page: NextPage<{ sortedArticlesData: SortedArticleList[] }> = (props) => {
+const page: NextPage<{ sortedArticlesData: ArticleItems[] }> = (props) => {
   const pageTitle = "Diary";
   return (
     <>

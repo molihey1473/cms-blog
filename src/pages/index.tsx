@@ -13,10 +13,10 @@ import { getBlogs } from "@src/lib/blog";
 import { BlogSEO } from "@src/components/BlogSEO";
 
 //types
-import { BlogItem } from "@src/types";
+import { ArticleItems } from "@src/types";
 
 interface Props {
-  allArticlesData: BlogItem[];
+  allArticlesData: ArticleItems[];
 }
 const Home: NextPage<Props> = (props) => {
   return (
@@ -54,7 +54,7 @@ const Home: NextPage<Props> = (props) => {
   );
 };
 export const getStaticProps: GetStaticProps = async () => {
-  const data: { contents: BlogItem[] } = await getBlogs();
+  const data: { contents: ArticleItems[] } = await getBlogs();
   return {
     props: {
       allArticlesData: data.contents,

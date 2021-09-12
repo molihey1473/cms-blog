@@ -6,7 +6,7 @@ import { Profile } from "@src/components/cards/Profile";
 import { member } from "@src/utils/member";
 import { BlogList, BlogFlatList } from "@src/components/BlogList";
 import { CategoryFlatList } from "@src/components/CategoryList";
-import { BlogItem, SortedArticleList } from "@src/types";
+import { ArticleItems } from "@src/types";
 
 //import styles from "@src/styles/pages/blog/BlogList.module.scss";
 
@@ -19,7 +19,7 @@ interface Props {
     meta?: { image: { url: string } };
   }[];
 }
-const page: NextPage<{ sortedArticlesData: SortedArticleList[] }> = (props) => {
+const page: NextPage<{ sortedArticlesData: ArticleItems[] }> = (props) => {
   const pageTitle = "Tech";
   return (
     <>
