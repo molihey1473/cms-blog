@@ -1,5 +1,5 @@
 import { BLOG_API, TAG_API, CATEGORY_API } from "@src/utils/blogInfo";
-import { Console } from "console";
+import { ArticleItems } from "@src//types";
 // microCMS API KEY
 const key = {
   headers: {
@@ -8,11 +8,22 @@ const key = {
 };
 
 //get data for [id].tsx 記事一覧data
-export const getBlogs = async (id?: string) => {
-  const url = id ? `${BLOG_API}blog/${id}` : `${BLOG_API}`;
-  return await fetch(url, key)
+export const getBlogs = async (
+  path?: string
+): Promise<{ contents: ArticleItems[] }> => {
+  //const url = path ? `${BLOG_API}blog/${path}` : `${BLOG_API}`;
+  const allArticle = await fetch(BLOG_API, key)
     .then((res) => res.json())
     .catch(() => null);
+  return path ? await getSortedData(path, allArticle) : allArticle;
+};
+export const getSortedData = async (
+  path: string,
+  allArticle: { contents: ArticleItems[] }
+) => {
+  return allArticle.contents.filter((items): boolean => {
+    return items.category.name[0] === path;
+  });
 };
 // preview for [id].tsx
 export const getPreview = async (id: string, draftKey?: string) => {
@@ -33,12 +44,12 @@ export const getTags = async (name?: string) => {
     .catch((error) => null);
 };
 // get data for /category/[name].tsx (getTagとほぼ同一メソッドなので修正検討中)
-export const getCategory = async (name?: string) => {
-  const nameSlug = name
-    ? `?filters=name${encodeURIComponent(`[contains]${name}`)}`
-    : "";
-  const url = name ? `${CATEGORY_API}${nameSlug}` : `${CATEGORY_API}`;
-  return await fetch(url, key)
+export const getCategory = async (): Promise<string[]> => {
+  const path = CATEGORY_API;
+  const data = await fetch(path, key)
     .then((res) => res.json())
     .catch((error) => null);
+  return data.contents.map((item, i) => {
+    return `/category/${item.name[0]}`;
+  });
 };
