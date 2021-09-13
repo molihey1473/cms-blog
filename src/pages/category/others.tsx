@@ -5,7 +5,7 @@ import posts from ".contents/posts.json";
 import { Wrapper } from "@src/components/Wrapper";
 import { Profile } from "@src/components/cards/Profile";
 import { member } from "@src/utils/member";
-import { CategoryFlatList } from "@src/components/CategoryList";
+import { CategoryList } from "@src/components/CategoryList";
 
 import { PostList } from "@src/components/PostList";
 const Page: NextPage = () => {
@@ -26,7 +26,7 @@ const Page: NextPage = () => {
         <Profile member={member} />
       </Wrapper>
       <Wrapper>
-        <CategoryFlatList />
+        <CategoryList />
       </Wrapper>
       <div className="others_container">
         <Wrapper>

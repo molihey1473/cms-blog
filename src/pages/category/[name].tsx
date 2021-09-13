@@ -6,7 +6,7 @@ import { member } from "@src/utils/member";
 import { getCategory, getBlogs } from "@src/lib/blog";
 import { Wrapper } from "@src/components/Wrapper";
 import { BlogList, BlogFlatList } from "@src/components/BlogList";
-import { CategoryFlatList } from "@src/components/CategoryList";
+import { CategoryList } from "@src/components/CategoryList";
 import { ArticleItems } from "@src/types";
 
 const page: NextPage<{
@@ -31,7 +31,7 @@ const page: NextPage<{
         <Profile member={member} />
       </Wrapper>
       <Wrapper>
-        <CategoryFlatList />
+        <CategoryList />
       </Wrapper>
       <div className="diary_container">
         <Wrapper>
