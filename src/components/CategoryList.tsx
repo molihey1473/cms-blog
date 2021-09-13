@@ -82,8 +82,8 @@ export const CategoryFlatItem: React.FC<Props> = (props) => {
       <Link href={path}>
         <a
           className={`${styles.flat_name} ${
-            router.pathname === path ? styles.flat_active : ""
-          }`}
+            router.asPath === path ? styles.flat_active : ""
+          } `}
         >
           {title}
         </a>
