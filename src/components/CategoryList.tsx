@@ -25,8 +25,8 @@ export const CategoryItems: React.FC<Props> = (props) => {
     <>
       <Link href={path}>
         <a
-          className={`${styles.flat_name} ${
-            router.asPath === path ? styles.flat_active : ""
+          className={`${styles.item_name} ${
+            router.asPath === path ? styles.is_active : ""
           } `}
         >
           {title}
