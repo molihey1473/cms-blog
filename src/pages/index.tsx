@@ -5,7 +5,7 @@ import { Wrapper } from "@src/components/Wrapper";
 //import { Wrapper } from "@src/components/Wrapper";
 import { Profile } from "@src/components/cards/Profile";
 import { BlogList, BlogFlatList } from "@src/components/BlogList";
-import { CategoryList, CategoryFlatList } from "@src/components/CategoryList";
+import { CategoryList } from "@src/components/CategoryList";
 import { member } from "@src/utils/member";
 // get data methods
 import { getBlogs } from "@src/lib/blog";
@@ -34,7 +34,7 @@ const Home: NextPage<Props> = (props) => {
         <Profile member={member} />
       </Wrapper>
       <Wrapper>
-        <CategoryFlatList />
+        <CategoryList />
       </Wrapper>
       <div className="all_container">
         <Wrapper>
