@@ -1,13 +1,13 @@
 import { NextPage, GetStaticProps } from "next";
 import { getBlogs } from "@src/lib/blog";
-import { BlogItem, TagItems } from "@src/types";
+import { ArticleItems, TagItems } from "@src/types";
 //import Link from "next/link";
 import { Wrapper } from "@src/components/Wrapper";
 import { BlogList } from "@src/components/BlogList";
 import { CategoryList } from "@src/components/CategoryList";
 import styles from "@src/styles/pages/blog/BlogList.module.scss";
 interface Props {
-  blogs: BlogItem[];
+  blogs: ArticleItems[];
 }
 const page: NextPage<Props> = (props) => {
   return (
@@ -28,7 +28,7 @@ const page: NextPage<Props> = (props) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const data: {
-    contents: BlogItem[];
+    contents: ArticleItems[];
   } = await getBlogs();
   return {
     props: {

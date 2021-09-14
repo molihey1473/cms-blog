@@ -21,7 +21,7 @@ import "highlight.js/styles/vs2015.css";
 // scss modules
 import styles from "@src/styles/pages/blog/BlogContent.module.scss";
 //　props型
-import { BlogItem, TagItems } from "@src/types";
+import { ArticleItems, TagItems } from "@src/types";
 //記事内ヘッダー
 import { ArticleHeader } from "@src/components/articles/header/HeaderLayout";
 //header画像コンポーンネント
@@ -40,12 +40,12 @@ import { ArticleSidebar } from "@src/components/articles/sidebar/SidebarLayout";
 //aside内sticky要素コンポーネントwrapper
 import { SidebarSticky } from "@src/components/articles/sidebar/SidebarSticky";
 interface Props {
-  blog: BlogItem;
+  blog: ArticleItems;
   category: string;
   body: string;
   toc: TocList[];
   preview: boolean;
-  latestArticles: BlogItem[];
+  latestArticles: ArticleItems[];
   cl: string;
   path?: string;
 }
@@ -126,7 +126,7 @@ const Blog: NextPage<Props> = (props) => {
 
 //[id].tsx 静的生成用パス
 export const getStaticPaths: GetStaticPaths = async () => {
-  const data: { contents: BlogItem[] } = await getBlogs();
+  const data: { contents: ArticleItems[] } = await getBlogs();
   const paths =
     data.contents.map((content: { id: string }) => `/blog/${content.id}`) ?? [];
   return {
@@ -162,7 +162,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       blog: data,
-      category: data.category[0].name[0],
+      category: data.category.name[0],
       body: $.html(),
       toc: tocData,
       preview: context.preview || false,
