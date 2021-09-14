@@ -128,7 +128,8 @@ const Blog: NextPage<Props> = (props) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const data: { contents: ArticleItems[] } = await getBlogs();
   const paths =
-    data.contents.map((content: { id: string }) => `/blog/${content.id}`) ?? [];
+    data.contents.map((content: { id: string }) => `/articles/${content.id}`) ??
+    [];
   return {
     paths,
     fallback: "blocking",
