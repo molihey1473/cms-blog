@@ -15,10 +15,12 @@ import { BlogSEO } from "@src/components/BlogSEO";
 //types
 import { ArticleItems } from "@src/types";
 
-interface Props {
-  allArticlesData: ArticleItems[];
-}
-const Home: NextPage<Props> = (props) => {
+//interface Props {
+//  allArticlesData: ArticleItems[];
+//}
+const Home: NextPage<{ allArticlesData: ArticleItems[]; category: string }> = (
+  props
+) => {
   return (
     <>
       <Head>
@@ -45,8 +47,6 @@ const Home: NextPage<Props> = (props) => {
             ) : (
               <BlogList items={props.allArticlesData} />
             )}
-            <BlogFlatList items={props.allArticlesData} />
-            <BlogList items={props.allArticlesData} />
           </div>
         </Wrapper>
       </div>
