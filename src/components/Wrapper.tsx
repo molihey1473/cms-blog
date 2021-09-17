@@ -5,3 +5,8 @@ export const Wrapper: React.FC<{ children: React.ReactNode }> = (props) => {
 export const WideWrapper: React.FC<{ children: React.ReactNode }> = (props) => {
   return <div className={styles.wide}>{props.children}</div>;
 };
+export const ArticleWrapper: React.FC<{ children: React.ReactNode }> = (
+  props
+) => {
+  return <div className={styles.article}>{props.children}</div>;
+};
