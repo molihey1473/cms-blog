@@ -112,10 +112,11 @@
   position: relative;
   display: block;
   padding-left: 1rem;
+
   &:not(:first-child) {
     margin-top: 1.5rem;
   }
-  &:before {
+  &::before {
     content: "";
     position: absolute;
     top: 5px;
@@ -123,7 +124,11 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
+    transition: 1s;
     background-color: #d0e4f3;
+  }
+  &:hover::before {
+    background-color: var(--c-primary);
   }
 }
 
@@ -133,6 +138,9 @@
   font-size: 19px;
   font-weight: 700;
   line-height: 1.5;
+  &:hover {
+    color: #e4e4e4;
+  }
 }
 .flat_link_image_content {
   padding: 1rem;
@@ -158,9 +166,16 @@
 }
 .flat_items_tags {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   margin-right: 10px;
   padding: 0.2rem 0.4rem;
-  background-color: #d0e4f3;
+  background-color: var(--text-emphathize);
   border-radius: 8px;
+  border: 1px solid #d0e4f3;
+  @include mq(xl) {
+    &:hover {
+      color: #fff;
+      background-color: #d0e4f3;
+    }
+  }
 }
