@@ -98,9 +98,10 @@ const Blog: NextPage<Props> = (props) => {
                 <TocList toc={toc} />
                 <ArticleBody body={body} />
                 <div className={styles.article_share_container}>
-                  <div>Share</div>
+                  <div className={styles.share_title}>Share</div>
                   <div className={styles.share_button_container}>
                     <a
+                      className={styles.share_button}
                       href={`http://twitter.com/share?url=https://blog-sage-nine.vercel.app/articles/${id}.tsx&text=${encodeURI(
                         title
                       )}`}
