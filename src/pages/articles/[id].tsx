@@ -1,7 +1,6 @@
-import { WideWrapper } from "@src/components/Wrapper";
+//blog config
 //import { useRouter } from "next/router";
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
-//blog config
 //import { config } from "@blog.config";
 import { PubDate, PreDate } from "@src/components/articles/header/ArticleDate";
 //目次　toc
@@ -37,8 +36,11 @@ import { SidebarTagList } from "@src/components/articles/sidebar/Tag";
 import { ArticleBody } from "@src/components/articles/ArticleBody";
 //aside用レイアウトコンポーネント
 import { ArticleSidebar } from "@src/components/articles/sidebar/SidebarLayout";
-//aside内sticky要素コンポーネントwrapper
+//aside内sticky要素コンポーネントArticleWrapper
 import { SidebarSticky } from "@src/components/articles/sidebar/SidebarSticky";
+import { ArticleWrapper } from "@src/components/Wrapper";
+//sns icon.svg
+import { TwitterIcon } from "@src/components/icons/TwitterIcon";
 interface Props {
   blog: ArticleItems;
   category: string;
@@ -70,14 +72,13 @@ const Blog: NextPage<Props> = (props) => {
   //const latestArticles = props.latestArticles;
   return (
     <>
-      <BlogSEO title={title} id={id} image={cl} path={"/blog"} />
+      <BlogSEO title={title} id={id} image={cl} path={"/articles"} />
       <article className={styles.blog_article}>
-        <WideWrapper>
+        <ArticleWrapper>
           <div className={styles.blog_content_main}>
             <div className={styles.blog_content_layout}>
               <div className={styles.blog_content_article}>
                 <ArticleHeader>
-                  <HeaderImage imageUrl={meta.image.url} id={id} />
                   {preview && (
                     <a
                       href="/api/clearPreview"
@@ -96,6 +97,18 @@ const Blog: NextPage<Props> = (props) => {
                 </ArticleHeader>
                 <TocList toc={toc} />
                 <ArticleBody body={body} />
+                <div className={styles.article_share_container}>
+                  <div>Share</div>
+                  <div className={styles.share_button_container}>
+                    <a
+                      href={`http://twitter.com/share?url=https://blog-sage-nine.vercel.app/articles/${id}.tsx&text=${encodeURI(
+                        title
+                      )}`}
+                    >
+                      <TwitterIcon />
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
             <ArticleSidebar>
@@ -118,7 +131,7 @@ const Blog: NextPage<Props> = (props) => {
               </div>
             </section>
           </div>
-        </WideWrapper>
+        </ArticleWrapper>
       </article>
     </>
   );
