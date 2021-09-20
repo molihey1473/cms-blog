@@ -5,11 +5,12 @@
 .blog_content_main {
   padding-top: 3.5rem;
   display: flex;
-  justify-content: space-between;
+  //justify-content: space-between;
   padding-bottom: 3.5rem;
 }
 .blog_content_layout {
-  width: calc(100% - 330px);
+  flex: 2;
+  //width: calc(100% - 330px);
 }
 .blog_content_title {
   padding: 0.3rem 0;
@@ -17,10 +18,8 @@
 }
 .blog_content_article {
   background-color: #fff;
-  padding: 1.5rem 2rem;
+  //padding: 1.5rem 2rem;
   border-radius: 12px;
-  //box-shadow: 0px 5px 20px 0px rgb(69 67 96 / 10%);
-  box-shadow: 0px 3px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
 .blog_content_tags {
@@ -74,16 +73,28 @@
   margin-right: 5px;
 }
 
-//clear preview mode
-.clear_preview_mode {
-  font-weight: 700;
-  color: red;
-  &:hover {
-    opacity: 1;
-  }
+//share buttom section
+.article_share_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.share_title {
+  font-weight: 600;
+  font-size: 35px;
+}
+.share_button_content {
+  display: flex;
+}
+.share_button {
+  display: inline-block;
+  background: var(--c-primary);
+  color: #fff;
+  width: 30px;
+  height: 30px;
 }
 
-//latest articles
+//latest articles 関連記事
 .latestArticles_layout {
   padding: 2rem;
 }
@@ -96,4 +107,14 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 2em 1.8em;
+}
+
+//clear preview mode
+//microCMSからの投稿前プレビュー
+.clear_preview_mode {
+  font-weight: 700;
+  color: red;
+  &:hover {
+    opacity: 1;
+  }
 }
