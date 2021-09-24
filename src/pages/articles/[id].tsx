@@ -1,5 +1,4 @@
-//blog config
-//import { useRouter } from "next/router";
+import useWindowDimentions from "@src/hooks/useWindowDimensions";
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 //import { config } from "@blog.config";
 import { PubDate, PreDate } from "@src/components/articles/header/ArticleDate";
@@ -56,20 +55,13 @@ interface TocList {
   id: string;
   name: string;
 }
+
 const Blog: NextPage<Props> = (props) => {
   const { title, publishedAt, createdAt, updatedAt, tags, id, meta } =
     props.blog;
   const { body, category, cl, toc, preview, latestArticles } = props;
-  //const body = props.body;
-  //const category = props.category;
-  ////cloudinry で生成したOGPデータ
-  //const cl = props.cl;
-  ////目次データ
-  //const toc = props.toc;
-  ////公開前、下書き記事用props
-  //const preview = props.preview;
-  ////最新記事
-  //const latestArticles = props.latestArticles;
+  //windowのサイズ用custom hook
+  const { width, height } = useWindowDimentions();
   return (
     <>
       <BlogSEO title={title} id={id} image={cl} path={"/articles"} />
@@ -112,12 +104,16 @@ const Blog: NextPage<Props> = (props) => {
                 </div>
               </div>
             </div>
-            <ArticleSidebar>
-              <SidebarTagList tags={tags} />
-              <SidebarSticky>
-                <SidebarTocList toc={toc} />
-              </SidebarSticky>
-            </ArticleSidebar>
+            {width <= 860 ? (
+              <ArticleSidebar>
+                <SidebarTagList tags={tags} />
+                <SidebarSticky>
+                  <SidebarTocList toc={toc} />
+                </SidebarSticky>
+              </ArticleSidebar>
+            ) : (
+              ""
+            )}
           </div>
           <div>
             <section className={styles.latestArticles_layout}>
