@@ -1,3 +1,4 @@
+@import "../../responsive.scss";
 .blog_article {
   //background-color: var(--light-blue--bg);
   font-size: 16px;
@@ -5,12 +6,17 @@
 .blog_content_main {
   padding-top: 3.5rem;
   display: flex;
-  //justify-content: space-between;
+  justify-content: space-between;
   padding-bottom: 3.5rem;
+  @include mq(lg) {
+    display: block;
+  }
 }
 .blog_content_layout {
-  flex: 2;
-  //width: calc(100% - 330px);
+  width: calc(100% - 330px);
+  @include mq(lg) {
+    width: 100%;
+  }
 }
 .blog_content_title {
   padding: 0.3rem 0;
