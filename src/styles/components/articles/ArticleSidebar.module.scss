@@ -1,0 +1,17 @@
+//SidebarLayout component
+.container {
+  width: 300px;
+  padding: 0 1.5rem;
+}
+.contents {
+  height: 100%;
+}
+
+//SidebarSticky component
+.sticky_container {
+  position: sticky;
+  top: 50px;
+  overflow: auto;
+  max-height: 100vh;
+  padding: 0.2rem;
+}
