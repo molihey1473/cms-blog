@@ -2,7 +2,7 @@
   background-color: #fff;
   border-radius: 12px;
   padding: 1rem 1.5rem;
-  box-shadow: 0px 3px 4px 0 rgba(0, 0, 0, 0.2);
+  //box-shadow: 0px 3px 4px 0 rgba(0, 0, 0, 0.2);
 }
 .blog_sidebar_toc_title {
   font-size: 17px;
@@ -21,7 +21,7 @@
   font-weight: 700;
   margin-top: 5px;
   font-size: 14px;
-  padding-left: 21px;
+  padding-left: 15px;
   &::before {
     content: "";
     position: absolute;
@@ -32,4 +32,12 @@
     height: 6px;
     background: #000;
   }
+}
+.sub_toc {
+  font-size: 12.5px;
+  padding-left: 10px;
+  margin-left: 25px;
+  border-left: 2px solid var(--border-base);
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
 }
