@@ -27,7 +27,11 @@ export const SidebarTocItem: React.FC<{ item: TocList }> = (props) => {
   const { id, name, text } = props.item;
   return (
     <>
-      <li className={styles.blog_sidebar_toc_list_item}>
+      <li
+        className={
+          name === "h1" ? styles.blog_sidebar_toc_list_item : styles.sub_toc
+        }
+      >
         <a href={encodeURI(`#${id}`)}>{text}</a>
       </li>
     </>
