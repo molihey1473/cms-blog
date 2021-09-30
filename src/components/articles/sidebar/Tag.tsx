@@ -11,7 +11,7 @@ export const SidebarTagItem: React.FC<{ tagItem: Props }> = (props) => {
     <>
       <Link href={`/tags/${name.replace(/\./g, "").toLowerCase()}`}>
         <a className={styles.blog_sidebar_topic_link} aria-label={name}>
-          {name}
+          {`#${name}`}
         </a>
       </Link>
     </>
