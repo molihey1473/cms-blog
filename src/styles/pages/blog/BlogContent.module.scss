@@ -5,15 +5,18 @@
 }
 .blog_content_main {
   padding-top: 3.5rem;
+  //サイドバーをつけた場合
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  //justify-content: space-between;
   padding-bottom: 3.5rem;
   @include mq(lg) {
     display: block;
   }
 }
 .blog_content_layout {
-  width: calc(100% - 330px);
+  //サイドバーがある場合
+  //width: calc(100% - 330px);
   @include mq(lg) {
     width: 100%;
   }
@@ -77,6 +80,10 @@
   padding: 0.3rem;
   background: #f8f8fa;
   margin-right: 5px;
+  border: 1px solid var(--border-base);
+  border-radius: 10px;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 //share buttom section
