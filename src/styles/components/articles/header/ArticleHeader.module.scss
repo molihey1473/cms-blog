@@ -1,19 +1,16 @@
 /* ArticleTitle component　（記事のタイトルコンポーネント）
 at src/components/articles/header/HeaderTitle.tsx */
 .title {
-  padding: 0.3rem 0;
-  font-size: 1.8rem;
-}
-//src/components/articles/header/HeaderImage.tsx
-//HeaderImage コンポーネント
-.image_container {
-  width: 100%;
+  padding-top: 1.2rem;
+  font-size: 2rem;
+  margin-bottom: 25px;
+  //border-bottom: 2px solid var(--text-light-gray);
 }
 /* PubDate and PreDate components （投稿日コンポーネント）
 at src/components/articles/header/ArticleDate.tsx */
 
 .date_container {
-  padding-top: 2rem;
+  padding-top: 0.5rem;
   display: flex;
   align-items: center;
   color: #969fa7;
