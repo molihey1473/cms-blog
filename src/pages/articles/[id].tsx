@@ -1,4 +1,3 @@
-import useWindowDimentions from "@src/hooks/useWindowDimensions";
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 //import { config } from "@blog.config";
 import { PubDate, PreDate } from "@src/components/articles/header/ArticleDate";
@@ -23,20 +22,30 @@ import { ArticleItems, TagItems } from "@src/types";
 //記事内ヘッダー
 import { ArticleHeader } from "@src/components/articles/header/HeaderLayout";
 //header画像コンポーンネント
-import { HeaderImage } from "@src/components/articles/header/HeaderImage";
+//import { HeaderImage } from "@src/components/articles/header/HeaderImage";
 //header 記事タイトルコンポーネント
 import { HeaderTitle } from "@src/components/articles/header/HeaderTitle";
+/* 
+ サイドバー用コンポーネント
+ 削除の可能性
+
+ サイドバーresponsive custom hooks
+ //import useWindowDimentions from "@src/hooks/useWindowDimensions";
 
 //sidebar目次コンポーネント
 import { SidebarTocList } from "@src/components/articles/sidebar/SidebarToc";
 //sidebar 関連タグリストコンポーネント
 import { SidebarTagList } from "@src/components/articles/sidebar/Tag";
-//article body 記事内要コンポーネント
-import { ArticleBody } from "@src/components/articles/ArticleBody";
 //aside用レイアウトコンポーネント
 import { ArticleSidebar } from "@src/components/articles/sidebar/SidebarLayout";
 //aside内sticky要素コンポーネントArticleWrapper
 import { SidebarSticky } from "@src/components/articles/sidebar/SidebarSticky";
+
+*/
+
+//article body 記事内要コンポーネント
+import { ArticleBody } from "@src/components/articles/ArticleBody";
+
 import { ArticleWrapper } from "@src/components/Wrapper";
 //sns icon.svg
 import { TwitterIcon } from "@src/components/icons/TwitterIcon";
@@ -61,7 +70,7 @@ const Blog: NextPage<Props> = (props) => {
     props.blog;
   const { body, category, cl, toc, preview, latestArticles } = props;
   //windowのサイズ用custom hook
-  const { width, height } = useWindowDimentions();
+  //const { width, height } = useWindowDimentions();
   return (
     <>
       <BlogSEO title={title} id={id} image={cl} path={"/articles"} />
@@ -104,16 +113,9 @@ const Blog: NextPage<Props> = (props) => {
                 </div>
               </div>
             </div>
-            {width <= 860 ? (
-              <ArticleSidebar>
-                <SidebarTagList tags={tags} />
-                <SidebarSticky>
-                  <SidebarTocList toc={toc} />
-                </SidebarSticky>
-              </ArticleSidebar>
-            ) : (
-              ""
-            )}
+            <footer>
+              <div>footer</div>
+            </footer>
           </div>
           <div>
             <section className={styles.latestArticles_layout}>
