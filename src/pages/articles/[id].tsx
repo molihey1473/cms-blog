@@ -10,6 +10,8 @@ import { HeaderTags } from "@src/components/articles/header/HeaderTag";
 import { BlogSEO } from "@src/components/BlogSEO";
 //OGP画像生成メソッド
 import { clOverlay } from "@src/lib/cl";
+import { member } from "@src/utils/member";
+import { Profile } from "@src/components/cards/Profile";
 //toc
 import cheerio from "cheerio";
 //シンタックスハイライト　heighlight.js
@@ -111,11 +113,9 @@ const Blog: NextPage<Props> = (props) => {
                     </a>
                   </div>
                 </div>
+                <Profile member={member} />
               </div>
             </div>
-            <footer>
-              <div>footer</div>
-            </footer>
           </div>
           <div>
             <section className={styles.latestArticles_layout}>
