@@ -7,8 +7,8 @@ import styles from "@src/styles/components/profile.module.scss";
 export const Profile: React.FC<{ member: Member }> = (props) => {
   const { avatar, name, bio, twitterName, githubName } = props.member;
   return (
-    <div className={styles.profile_layout}>
-      <div className={styles.profile_content}>
+    <div className={styles.article_author_info}>
+      <div className={styles.profile_container}>
         <img src={avatar} alt={name} className={styles.profile_avatar} />
         <div className={styles.profile_description}>
           <h1 className={styles.profile_member_name}>{name}</h1>
@@ -27,17 +27,19 @@ export const Profile: React.FC<{ member: Member }> = (props) => {
   );
 };
 export const FooterProfile: React.FC<{ member: Member }> = (props) => {
-  const { avatar, name, bio, twitterName } = props.member;
+  const { avatar, name, bio, twitterName, githubName } = props.member;
   return (
-    <div className={styles.md_profile_container}>
-      <div>
-        <img src="" alt="" />
+    <div className={styles.article_author_info}>
+      <div className={styles.profile_container}>
+        <div>
+          <img src={`${avatar}`} alt={`${name}`} />
+        </div>
+        <div>
+          <a href={`${githubName}`}></a>
+          <a href={`${twitterName}`}></a>
+        </div>
+        footer
       </div>
-      <div>
-        <a href=""></a>
-        <a href=""></a>
-      </div>
-      footer
     </div>
   );
 };
