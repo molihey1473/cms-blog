@@ -19,7 +19,7 @@
   //align-items: center;
 }
 .profile_member_name {
-  color: var(--second-text);
+  color: var(--text-base);
   font-size: 40px;
 }
 .profile_member_bio {
@@ -41,9 +41,8 @@
 }
 .md_profile_image {
   width: 80px;
+  border-radius: 50%;
 }
-.md_bio_content {
+.md_profile_content {
   display: flex;
-  flex-direction: column;
-  align-items: center;
 }
