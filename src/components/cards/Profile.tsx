@@ -26,19 +26,25 @@ export const Profile: React.FC<{ member: Member }> = (props) => {
     </div>
   );
 };
-export const FooterProfile: React.FC<{ member: Member }> = (props) => {
+export const AsideProfile: React.FC<{ member: Member }> = (props) => {
   const { avatar, name, bio, twitterName, githubName } = props.member;
   return (
-    <div className={styles.article_author_info}>
-      <div className={styles.profile_container}>
-        <div>
-          <img src={`${avatar}`} alt={`${name}`} />
+    <div className={styles.md_container}>
+      <div className={styles.md_image}>
+        <img src={`${avatar}`} alt={`${name}`} />
+      </div>
+
+      <div className={styles.md_content}>
+        <div className={styles.md_author_name}>{name}</div>
+        <p className={styles.md_bio}>{bio}</p>
+        <div className={styles.md_bio_link_content}>
+          <a className={styles.md_bio_link} href={`${githubName}`}>
+            <GithubIcon />
+          </a>
+          <a className={styles.md_bio_link} href={`${twitterName}`}>
+            <TwitterIcon />
+          </a>
         </div>
-        <div>
-          <a href={`${githubName}`}></a>
-          <a href={`${twitterName}`}></a>
-        </div>
-        footer
       </div>
     </div>
   );
