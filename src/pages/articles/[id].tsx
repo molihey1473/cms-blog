@@ -11,7 +11,7 @@ import { BlogSEO } from "@src/components/BlogSEO";
 //OGP画像生成メソッド
 import { clOverlay } from "@src/lib/cl";
 import { member } from "@src/utils/member";
-import { Profile } from "@src/components/cards/Profile";
+import { Profile, AsideProfile } from "@src/components/cards/Profile";
 //toc
 import cheerio from "cheerio";
 //シンタックスハイライト　heighlight.js
@@ -113,7 +113,9 @@ const Blog: NextPage<Props> = (props) => {
                     </a>
                   </div>
                 </div>
-                <Profile member={member} />
+                <aside className={styles.author_info}>
+                  <AsideProfile member={member} />
+                </aside>
               </div>
             </div>
           </div>
