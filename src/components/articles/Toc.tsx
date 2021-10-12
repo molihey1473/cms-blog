@@ -1,4 +1,3 @@
-import Link from "next/link";
 import styles from "@src/styles/components/articles/Toc.module.scss";
 interface TocList {
   text: string;
@@ -25,7 +24,7 @@ export const TocList: React.FC<{ toc: TocList[] }> = (props) => {
 export const TocItem: React.FC<{ item: TocList }> = (props) => {
   const { id, name, text } = props.item;
   return (
-    <li className={name === "h1" ? styles.heading : styles.second_heading}>
+    <li className={name === "h1" ? styles.heading : styles.sub_heading}>
       <a className={styles.heading_item} href={encodeURI(`#${id}`)}>
         {text}
       </a>
