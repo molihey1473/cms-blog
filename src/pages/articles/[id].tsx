@@ -3,7 +3,7 @@ import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { PubDate, PreDate } from "@src/components/articles/header/ArticleDate";
 //目次　toc
 import { TocList } from "@src/components/articles/Toc";
-import { getBlogs, getPreview } from "@src/lib/blog";
+import { getBlogs, getPreview, sourceHighlight } from "@src/lib/blog";
 import { BlogLink } from "@src/components/BlogList";
 import { HeaderTags } from "@src/components/articles/header/HeaderTag";
 //SEOコンポーネント
@@ -12,11 +12,6 @@ import { BlogSEO } from "@src/components/BlogSEO";
 import { clOverlay } from "@src/lib/cl";
 import { member } from "@src/utils/member";
 import { Profile, AsideProfile } from "@src/components/cards/Profile";
-//toc
-import cheerio from "cheerio";
-//シンタックスハイライト　heighlight.js
-import hljs from "highlight.js";
-import "highlight.js/styles/vs2015.css";
 // scss modules
 import styles from "@src/styles/pages/blog/BlogContent.module.scss";
 //　props型
@@ -101,8 +96,8 @@ const Blog: NextPage<Props> = (props) => {
                 <TocList toc={toc} />
                 <ArticleBody body={body} />
                 <div className={styles.article_share_container}>
-                  <div className={styles.share_title}>Share</div>
                   <div className={styles.share_button_container}>
+                    <div className={styles.share_title}>Share</div>
                     <a
                       className={styles.share_button}
                       href={`http://twitter.com/share?url=https://blog-sage-nine.vercel.app/articles/${id}.tsx&text=${encodeURI(
@@ -137,7 +132,6 @@ const Blog: NextPage<Props> = (props) => {
     </>
   );
 };
-
 //[id].tsx 静的生成用パス
 export const getStaticPaths: GetStaticPaths = async () => {
   const data: { contents: ArticleItems[] } = await getBlogs();
@@ -155,31 +149,16 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const id = context.params?.id as string;
   //下書きpreview記事表示メソッド
   const data = await getPreview(id, draftKey);
+  const highlightData = await sourceHighlight(data.body);
   //最新記事表示data取得(0-5)
   const latestData = await getBlogs();
-  //<h1>タグを目次用に抽出
-  const $ = cheerio.load(data.body);
+  //OGP画像テキスト挿入 for cloudinary
   const clContent = await clOverlay(data.title);
-  $("pre code").each((_, elm) => {
-    const result = hljs.highlightAuto($(elm).text());
-    $(elm).html(result.value);
-    $(elm).addClass("hljs");
-  });
-  //table of content
-  const headings = $("h1, h2, h3").toArray();
-  const tocData: TocList[] = headings.map((element: any): TocList => {
-    return {
-      text: element.children[0].data,
-      id: element.attribs.id,
-      name: element.name,
-    };
-  });
   return {
     props: {
       blog: data,
       category: data.category.name[0],
-      body: $.html(),
-      toc: tocData,
+      body: highlightData,
       preview: context.preview || false,
       latestArticles: latestData.contents,
       cl: clContent,
