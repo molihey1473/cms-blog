@@ -26,7 +26,7 @@ export interface FeedItem {
 export interface ArticleItems {
   id: string;
   title: string;
-  body?: string;
+  body: ArticleBodyItems[];
   publishedAt: string;
   category: { name: string[] };
   createdAt?: string;
@@ -34,6 +34,11 @@ export interface ArticleItems {
   tags?: { name: string; id: string }[];
   //tags?: TagItems[];
   meta?: { image: { url: string } } | null;
+}
+export interface ArticleBodyItems {
+  markdown: string | undefined;
+  language: string | undefined;
+  code: string | undefined;
 }
 /* カテゴリー分けされた記事一覧*/
 //export interface SortedArticleList {
