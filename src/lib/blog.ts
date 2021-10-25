@@ -1,5 +1,6 @@
 import { BLOG_API, TAG_API, CATEGORY_API } from "@src/utils/blogInfo";
-import { ArticleItems } from "@src//types";
+import { ArticleItems, ArticleBodyItems } from "@src//types";
+import { highlight, languages } from "prismjs";
 // microCMS API KEY
 const key = {
   headers: {
@@ -26,7 +27,10 @@ export const getSortedData = async (
   });
 };
 // preview for [id].tsx
-export const getPreview = async (id: string, draftKey?: string) => {
+export const getPreview = async (
+  id: string,
+  draftKey?: string
+): Promise<ArticleItems> => {
   const params = draftKey ? `?draftKey=${draftKey}` : "";
   return await fetch(`${BLOG_API}${id}${params}`, key)
     .then((res) => res.json())
@@ -51,5 +55,46 @@ export const getCategory = async (): Promise<string[]> => {
     .catch((error) => null);
   return data.contents.map((item, i) => {
     return `/category/${item.name[0]}`;
+  });
+};
+//syntax higlight article by prismjs
+export const sourceHighlight = async (body: ArticleBodyItems[]) => {
+  for (const bodyItem of body) {
+    bodyItem.code = highlight(
+      bodyItem.code,
+      languages[bodyItem.language],
+      bodyItem.language
+    );
+    //console.log(body);
+  }
+  //const higlightBody = body.map((item, i) => {
+  //  const higlightCode = highlight(
+  //    item.code,
+  //    languages[item.language],
+  //    item.language
+  //  );
+  //  return {
+  //    markdown: item.markdown,
+  //    language: item.language,
+  //    code: higlightCode,
+  //  };
+  //});
+  //const bodyContent = body ? await hightlightCode(body) : body;
+  //return bodyContent;
+};
+export const hightlightCode = async (
+  code: ArticleBodyItems[]
+): Promise<ArticleBodyItems[]> => {
+  return code.map((item) => {
+    const higlightCode = highlight(
+      item.code,
+      languages[item.language],
+      item.language
+    );
+    return {
+      markdown: item.markdown,
+      language: item.language,
+      code: higlightCode,
+    };
   });
 };
