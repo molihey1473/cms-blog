@@ -32,10 +32,39 @@ export const getPreview = async (
   draftKey?: string
 ): Promise<ArticleItems> => {
   const params = draftKey ? `?draftKey=${draftKey}` : "";
-  return await fetch(`${BLOG_API}${id}${params}`, key)
+  const articleData = await fetch(`${BLOG_API}${id}${params}`, key)
     .then((res) => res.json())
     .catch((error) => null);
+  sourceCodeHighlight(articleData.body);
+  return articleData;
 };
+
+//記事内ソースコートをハイライト処理
+export const sourceCodeHighlight = (body: ArticleBodyItems[]) => {
+  for (const bodyItem of body) {
+    bodyItem.code = highlight(
+      bodyItem.code,
+      languages[bodyItem.language],
+      bodyItem.language
+    );
+  }
+};
+//export const hightlightCode = async (
+//  code: ArticleBodyItems[]
+//): Promise<ArticleBodyItems[]> => {
+//  return code.map((item) => {
+//    const higlightCode = highlight(
+//      item.code,
+//      languages[item.language],
+//      item.language
+//    );
+//    return {
+//      markdown: item.markdown,
+//      language: item.language,
+//      code: higlightCode,
+//    };
+//  });
+//};
 
 //get data for [name].tsx (getCategoryとほぼ同一メソッドなので修正検討中)
 export const getTags = async (name?: string) => {
@@ -58,43 +87,3 @@ export const getCategory = async (): Promise<string[]> => {
   });
 };
 //syntax higlight article by prismjs
-export const sourceHighlight = async (body: ArticleBodyItems[]) => {
-  for (const bodyItem of body) {
-    bodyItem.code = highlight(
-      bodyItem.code,
-      languages[bodyItem.language],
-      bodyItem.language
-    );
-    //console.log(body);
-  }
-  //const higlightBody = body.map((item, i) => {
-  //  const higlightCode = highlight(
-  //    item.code,
-  //    languages[item.language],
-  //    item.language
-  //  );
-  //  return {
-  //    markdown: item.markdown,
-  //    language: item.language,
-  //    code: higlightCode,
-  //  };
-  //});
-  //const bodyContent = body ? await hightlightCode(body) : body;
-  //return bodyContent;
-};
-export const hightlightCode = async (
-  code: ArticleBodyItems[]
-): Promise<ArticleBodyItems[]> => {
-  return code.map((item) => {
-    const higlightCode = highlight(
-      item.code,
-      languages[item.language],
-      item.language
-    );
-    return {
-      markdown: item.markdown,
-      language: item.language,
-      code: higlightCode,
-    };
-  });
-};
