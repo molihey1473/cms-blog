@@ -3,7 +3,7 @@ import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { PubDate, PreDate } from "@src/components/articles/header/ArticleDate";
 //目次　toc
 import { TocList } from "@src/components/articles/Toc";
-import { getBlogs, getPreview, sourceHighlight } from "@src/lib/blog";
+import { getBlogs, getPreview } from "@src/lib/blog";
 import { BlogLink } from "@src/components/BlogList";
 import { HeaderTags } from "@src/components/articles/header/HeaderTag";
 //SEOコンポーネント
@@ -63,9 +63,9 @@ interface TocList {
 }
 
 const Blog: NextPage<Props> = (props) => {
-  const { title, publishedAt, createdAt, updatedAt, tags, id, meta } =
+  const { title, publishedAt, createdAt, updatedAt, tags, id, body, meta } =
     props.blog;
-  const { body, category, cl, toc, preview, latestArticles } = props;
+  const { category, cl, toc, preview, latestArticles } = props;
   //windowのサイズ用custom hook
   //const { width, height } = useWindowDimentions();
   return (
@@ -93,8 +93,7 @@ const Blog: NextPage<Props> = (props) => {
                   <HeaderTitle title={title} />
                   <HeaderTags tags={tags} />
                 </ArticleHeader>
-                <TocList toc={toc} />
-                <ArticleBody body={body} />
+                <ArticleBody articleBody={body} />
                 <div className={styles.article_share_container}>
                   <div className={styles.share_button_container}>
                     <div className={styles.share_title}>Share</div>
@@ -149,7 +148,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const id = context.params?.id as string;
   //下書きpreview記事表示メソッド
   const data = await getPreview(id, draftKey);
-  const highlightData = await sourceHighlight(data.body);
+  console.log(data.body);
+  //console.log(preData.body);
   //最新記事表示data取得(0-5)
   const latestData = await getBlogs();
   //OGP画像テキスト挿入 for cloudinary
@@ -158,7 +158,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       blog: data,
       category: data.category.name[0],
-      body: highlightData,
       preview: context.preview || false,
       latestArticles: latestData.contents,
       cl: clContent,
