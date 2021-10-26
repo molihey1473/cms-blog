@@ -36,9 +36,9 @@ export interface ArticleItems {
   meta?: { image: { url: string } } | null;
 }
 export interface ArticleBodyItems {
-  markdown: string | undefined;
-  language: string | undefined;
-  code: string | undefined;
+  markdown: string | null;
+  language: string | null;
+  code: string | null;
 }
 /* カテゴリー分けされた記事一覧*/
 //export interface SortedArticleList {
