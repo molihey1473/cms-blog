@@ -1,6 +1,7 @@
 import { BLOG_API, TAG_API, CATEGORY_API } from "@src/utils/blogInfo";
 import { ArticleItems, ArticleBodyItems } from "@src//types";
 import { highlight, languages } from "prismjs";
+import { ArticleBody } from "@src/components/articles/ArticleBody";
 // microCMS API KEY
 const key = {
   headers: {
@@ -35,36 +36,24 @@ export const getPreview = async (
   const articleData = await fetch(`${BLOG_API}${id}${params}`, key)
     .then((res) => res.json())
     .catch((error) => null);
-  sourceCodeHighlight(articleData.body);
+  getCodeHighlight(articleData.body);
   return articleData;
 };
 
 //記事内ソースコートをハイライト処理
-export const sourceCodeHighlight = (body: ArticleBodyItems[]) => {
+export const getCodeHighlight = (body: ArticleBodyItems[]) => {
   for (const bodyItem of body) {
-    bodyItem.code = highlight(
-      bodyItem.code,
-      languages[bodyItem.language],
-      bodyItem.language
-    );
+    if (bodyItem.code !== null) {
+      bodyItem.code = highlight(
+        bodyItem.code,
+        languages[bodyItem.language],
+        bodyItem.language
+      );
+    } else {
+      return body;
+    }
   }
 };
-//export const hightlightCode = async (
-//  code: ArticleBodyItems[]
-//): Promise<ArticleBodyItems[]> => {
-//  return code.map((item) => {
-//    const higlightCode = highlight(
-//      item.code,
-//      languages[item.language],
-//      item.language
-//    );
-//    return {
-//      markdown: item.markdown,
-//      language: item.language,
-//      code: higlightCode,
-//    };
-//  });
-//};
 
 //get data for [name].tsx (getCategoryとほぼ同一メソッドなので修正検討中)
 export const getTags = async (name?: string) => {
@@ -86,4 +75,3 @@ export const getCategory = async (): Promise<string[]> => {
     return `/category/${item.name[0]}`;
   });
 };
-//syntax higlight article by prismjs
