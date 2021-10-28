@@ -4,10 +4,7 @@
     [
       "prismjs",
       {
-        "languages": ["css", "html", "javascript", "tsx", "jsx", "ts"],
-        "plugins": ["line-numbers", "show-language"],
-        "theme": "okaidia",
-        "css": true
+        "languages": ["css", "html", "javascript", "tsx", "jsx", "ts"]
       }
     ]
   ]
