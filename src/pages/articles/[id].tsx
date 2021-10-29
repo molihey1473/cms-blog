@@ -11,6 +11,8 @@ import { BlogSEO } from "@src/components/BlogSEO";
 //OGP画像生成メソッド
 import { clOverlay } from "@src/lib/cl";
 import { member } from "@src/utils/member";
+import { isDraft } from "@src/utils/isDraft";
+import { toStringId } from "@src/utils/toStringId";
 import { Profile, AsideProfile } from "@src/components/cards/Profile";
 // scss modules
 import styles from "@src/styles/pages/blog/BlogContent.module.scss";
@@ -63,11 +65,9 @@ interface TocList {
 }
 
 const Blog: NextPage<Props> = (props) => {
-  const { title, publishedAt, createdAt, updatedAt, tags, id, body, meta } =
+  const { title, publishedAt, createdAt, updatedAt, tags, id, body } =
     props.blog;
-  const { category, cl, toc, preview, latestArticles } = props;
-  //windowのサイズ用custom hook
-  //const { width, height } = useWindowDimentions();
+  const { cl, preview, latestArticles } = props;
   return (
     <>
       <BlogSEO title={title} id={id} image={cl} path={"/articles"} />
@@ -134,9 +134,9 @@ const Blog: NextPage<Props> = (props) => {
 //[id].tsx 静的生成用パス
 export const getStaticPaths: GetStaticPaths = async () => {
   const data: { contents: ArticleItems[] } = await getBlogs();
-  const paths =
-    data.contents.map((content: { id: string }) => `/articles/${content.id}`) ??
-    [];
+  const paths = data.contents.map((content) => {
+    return { params: { id: content.id } };
+  });
   return {
     paths,
     fallback: "blocking",
@@ -144,12 +144,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 //静的生成用props
 export const getStaticProps: GetStaticProps = async (context) => {
-  const draftKey = context.previewData?.draftKey as string;
-  const id = context.params?.id as string;
+  const { params, previewData } = context;
+  const draftKey = isDraft(previewData) ? previewData?.draftKey : "";
+  const id = toStringId(params.id);
   //下書きpreview記事表示メソッド
   const data = await getPreview(id, draftKey);
-  console.log(data.body);
-  //console.log(preData.body);
   //最新記事表示data取得(0-5)
   const latestData = await getBlogs();
   //OGP画像テキスト挿入 for cloudinary
@@ -157,7 +156,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       blog: data,
-      category: data.category.name[0],
+      //category: data.category.name[0],
       preview: context.preview || false,
       latestArticles: latestData.contents,
       cl: clContent,
