@@ -2,7 +2,6 @@
 import parse from "html-react-parser";
 //import "@src/styles/codetheme.scss";
 import { ArticleBodyItems } from "@src/types";
-import exp from "constants";
 interface Props {
   markdown: string | undefined;
   language: string;
@@ -42,20 +41,11 @@ export const ArticleBody: React.FC<{ articleBody: ArticleBodyItems[] }> = (
     </>
   );
 };
-export const FixArticleBody: React.FC<{ articleBody: ArticleBodyItems[] }> = (
-  props
-) => {
+export const FixArticleBody: React.FC<{ articleBody: string }> = (props) => {
   const { articleBody } = props;
   return (
     <>
-      {articleBody.map((items, i) => {
-        const { markdown } = items;
-        return (
-          <div key={`body-content-${i}`} className="blog_content_body">
-            {parse(markdown)}
-          </div>
-        );
-      })}
+      <div className="blog_content_body">{parse(articleBody)}</div>
     </>
   );
 };
