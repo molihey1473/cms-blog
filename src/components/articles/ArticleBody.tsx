@@ -1,7 +1,8 @@
-import styles from "@src/styles/components/articles/ArticleBody.module.scss";
+//import styles from "@src/styles/components/articles/ArticleBody.module.scss";
 import parse from "html-react-parser";
 //import "@src/styles/codetheme.scss";
 import { ArticleBodyItems } from "@src/types";
+import exp from "constants";
 interface Props {
   markdown: string | undefined;
   language: string;
@@ -26,26 +27,33 @@ export const ArticleBody: React.FC<{ articleBody: ArticleBodyItems[] }> = (
       {articleBody.map((item, i) => {
         const { markdown, language, code } = item;
         return (
-          <>
-            {item && (
-              <div key={`記事セクション-${i}`} className="blog_content_body">
-                {parse(markdown)}
-                <div className="code-container">
-                  <pre
-                    key={`記事セクション-${i}`}
-                    className={`language-${language}`}
-                  >
-                    <code
-                      key={`記事セクション-${i}`}
-                      className={`language-${language}`}
-                    >
-                      {parse(code)}
-                    </code>
-                  </pre>
-                </div>
+          <div key={`body-content-${i}`} className="blog_content_body">
+            {parse(markdown)}
+            {code && (
+              <div className="code-container">
+                <pre className={`language-${language}`}>
+                  <code className={`language-${language}`}>{parse(code)}</code>
+                </pre>
               </div>
             )}
-          </>
+          </div>
+        );
+      })}
+    </>
+  );
+};
+export const FixArticleBody: React.FC<{ articleBody: ArticleBodyItems[] }> = (
+  props
+) => {
+  const { articleBody } = props;
+  return (
+    <>
+      {articleBody.map((items, i) => {
+        const { markdown } = items;
+        return (
+          <div key={`body-content-${i}`} className="blog_content_body">
+            {parse(markdown)}
+          </div>
         );
       })}
     </>
