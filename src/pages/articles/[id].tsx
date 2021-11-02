@@ -17,7 +17,7 @@ import { Profile, AsideProfile } from "@src/components/cards/Profile";
 // scss modules
 import styles from "@src/styles/pages/blog/BlogContent.module.scss";
 //　props型
-import { ArticleItems, TagItems } from "@src/types";
+import { ArticleItems } from "@src/types";
 //記事内ヘッダー
 import { ArticleHeader } from "@src/components/articles/header/HeaderLayout";
 //header画像コンポーンネント
@@ -43,7 +43,10 @@ import { SidebarSticky } from "@src/components/articles/sidebar/SidebarSticky";
 */
 
 //article body 記事内要コンポーネント
-import { ArticleBody } from "@src/components/articles/ArticleBody";
+import {
+  ArticleBody,
+  FixArticleBody,
+} from "@src/components/articles/ArticleBody";
 
 import { ArticleWrapper } from "@src/components/Wrapper";
 //sns icon.svg
@@ -52,17 +55,21 @@ interface Props {
   blog: ArticleItems;
   category: string;
   body: string;
-  toc: TocList[];
   preview: boolean;
   latestArticles: ArticleItems[];
   cl: string;
   path?: string;
 }
-interface TocList {
-  text: string;
-  id: string;
-  name: string;
+interface ArticleBodyItems {
+  markdown: string;
+  language?: string | undefined;
+  code?: string | undefined;
 }
+//interface TocList {
+//  text: string;
+//  id: string;
+//  name: string;
+//}
 
 const Blog: NextPage<Props> = (props) => {
   const { title, publishedAt, createdAt, updatedAt, tags, id, body } =
@@ -93,7 +100,7 @@ const Blog: NextPage<Props> = (props) => {
                   <HeaderTitle title={title} />
                   <HeaderTags tags={tags} />
                 </ArticleHeader>
-                <ArticleBody articleBody={body} />
+                <FixArticleBody articleBody={body} />
                 <div className={styles.article_share_container}>
                   <div className={styles.share_button_container}>
                     <div className={styles.share_title}>Share</div>
@@ -149,6 +156,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const id = toStringId(params.id);
   //下書きpreview記事表示メソッド
   const data = await getPreview(id, draftKey);
+  console.log(data.id);
   //最新記事表示data取得(0-5)
   const latestData = await getBlogs();
   //OGP画像テキスト挿入 for cloudinary
