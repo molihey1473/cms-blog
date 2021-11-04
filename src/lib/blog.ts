@@ -1,5 +1,4 @@
 import { BLOG_API, TAG_API, CATEGORY_API } from "@src/utils/blogInfo";
-import { isBodyString } from "@src/utils/isCodeString";
 import { ArticleItems, ArticleBodyItems } from "@src//types";
 import { highlight, languages } from "prismjs";
 import { ArticleBody } from "@src/components/articles/ArticleBody";
