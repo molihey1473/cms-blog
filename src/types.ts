@@ -32,7 +32,7 @@ export interface ArticleItems {
   category: { name: string[] };
   createdAt?: string;
   updatedAt?: string;
-  tags?: { name: string; id: string }[];
+  tags?: { name: string; id: string }[] | undefined;
   //tags?: TagItems[];
   meta?: { image: { url: string } } | null;
 }
@@ -49,6 +49,11 @@ export interface ArticleBodyItems {
 //  category: { name: string[] };
 //  tags: string[];
 //}
+
+//タグ付けされたページ getStaticPaths at /tags/[name].tsx
+export interface Taglinks {
+  contents: { name: string }[];
+}
 // 記事内関連記事リンク
 export interface TagItems {
   name: string;
@@ -86,5 +91,5 @@ export interface PublishDate {
 /* 記事投稿前プレビュー*/
 export interface PreviewDate {
   createdAt: string;
-  updatedAt: string;
+  updatedAt: string | undefined;
 }
