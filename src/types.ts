@@ -70,12 +70,10 @@ export interface TaggedBlogs {
   content: TaggedList[];
 }
 export interface TaggedList {
-  content: {
-    id: string;
-    title: string;
-    publishedAt: string;
-    updatedAt: string | undefined;
-  }[];
+  id: string;
+  title: string;
+  publishedAt: string;
+  updatedAt: string | undefined;
 }
 /* 記事一覧Article List */
 export interface ArticleList {
