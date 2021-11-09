@@ -62,8 +62,8 @@ interface Props {
 }
 interface ArticleBodyItems {
   markdown: string;
-  language?: string | undefined;
-  code?: string | undefined;
+  language?: string;
+  code?: string;
 }
 //interface TocList {
 //  text: string;
