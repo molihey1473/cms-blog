@@ -1,5 +1,11 @@
 import { BLOG_API, TAG_API, CATEGORY_API } from "@src/utils/blogInfo";
-import { ArticleItems, ArticleBodyItems } from "@src//types";
+import {
+  ArticleItems,
+  ArticleBodyItems,
+  TaggedList,
+  TagItems,
+  TaggedBlogs,
+} from "@src//types";
 import { highlight, languages } from "prismjs";
 import { ArticleBody } from "@src/components/articles/ArticleBody";
 // microCMS API KEY
@@ -30,7 +36,7 @@ export const getSortedData = async (
 // preview for [id].tsx
 export const getPreview = async (
   id: string,
-  draftKey?: string
+  draftKey: string
 ): Promise<ArticleItems> => {
   const params = draftKey ? `?draftKey=${draftKey}` : "";
   const articleData = await fetch(`${BLOG_API}${id}${params}`, key)
@@ -86,14 +92,19 @@ export const fixArticle = (
 };
 
 //get data for [name].tsx (getCategoryとほぼ同一メソッドなので修正検討中)
-export const getTags = async (name?: string) => {
-  const nameSlug = name
-    ? `?filters=name${encodeURIComponent(`[contains]${name}`)}`
-    : "";
-  const url = name ? `${TAG_API}${nameSlug}` : `${TAG_API}`;
-  return await fetch(url, key)
-    .then((res) => res.json())
-    .catch((error) => null);
+export const getTags = async <T>(name?: string): Promise<T> => {
+  if (typeof name === "string") {
+    const nameSlug = `?filters=name${encodeURIComponent(`[contains]${name}`)}`;
+    const url = `${TAG_API}${nameSlug}`;
+    const preData = await fetch(url, key)
+      .then((res) => res.json())
+      .catch((error) => null);
+    return preData.contents[0]?.content;
+  } else {
+    return await fetch(TAG_API, key)
+      .then((res) => res.json())
+      .catch((error) => null);
+  }
 };
 // get data for /category/[name].tsx (getTagとほぼ同一メソッドなので修正検討中)
 export const getCategory = async (): Promise<string[]> => {
