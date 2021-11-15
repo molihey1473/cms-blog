@@ -7,12 +7,11 @@ interface Props {
   image?: string;
 }
 export const BlogSEO: React.FC<Props> = (props) => {
-  const { title, path, id, image } = props;
-  const pageUrl = `${config.siteRoot}${path}/${id || ""}`;
+  const { title, path, image } = props;
+  const pageUrl = `${config.siteRoot}${path || ""}`;
   return (
     <Head>
       <title>{title}</title>
-      <meta name="robots" content="index, follow" />
       <meta property="og:title" content={title} />
       <meta property="og:type" content="article" />
       <meta property="og:url" content={pageUrl} />
@@ -22,6 +21,7 @@ export const BlogSEO: React.FC<Props> = (props) => {
       />
       <meta property="og:site_name" content="MoliHey" />
       <meta name="twitter:card" content="summary_large_image" />
+      {path && <link ref="canonical" href={pageUrl} />}
     </Head>
   );
 };
