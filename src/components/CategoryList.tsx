@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 interface Props {
   path: string;
-  title: string | null;
+  title: string;
 }
 
 export const CategoryList: React.FC = () => {
@@ -11,8 +11,6 @@ export const CategoryList: React.FC = () => {
     <>
       <nav className={styles.navigation_content}>
         <CategoryItems path="/" title="All" />
-        <CategoryItems path="/category/tech" title="Tech" />
-        <CategoryItems path="/category/diary" title="Diary" />
         <CategoryItems path="/category/others" title="Others" />
       </nav>
     </>
