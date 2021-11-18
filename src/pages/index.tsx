@@ -23,15 +23,7 @@ const Home: NextPage<{ allArticlesData: ArticleItems[]; category: string }> = (
 ) => {
   return (
     <>
-      <Head>
-        <title>Blog</title>
-        <meta property="og:title" content="MoliHey" />
-        <meta property="og:url" content="https://blog-sage-nine.vercel.app/" />
-        <meta property="og:image" content="ogp/home-ogp.png" />
-        <meta property="og:site_name" content="MoliHey" />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
-      <BlogSEO title={"MoliHey"} />
+      <BlogSEO title="MoliHey" path="/" />
       <Wrapper>
         <Profile member={member} />
       </Wrapper>
