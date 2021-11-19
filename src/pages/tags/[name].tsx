@@ -57,7 +57,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       //URL "/tags/[name]"の見た目をよくするため[name]を小文字、"."を消す。
       // [React, Vercel, Next.js]など
       const lowScaleName = items.name.replace(/\./g, "").toLowerCase();
-      return { params: { name: items.name } };
+      return { params: { name: lowScaleName } };
       //return lowScaleName;
       //return `/tags/${content.name.replace(/\./, "").toLowerCase()}`;
     }) || [];
