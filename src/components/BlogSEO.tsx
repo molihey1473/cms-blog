@@ -17,7 +17,7 @@ export const BlogSEO: React.FC<Props> = (props) => {
       <meta property="og:url" content={pageUrl} />
       <meta
         property="og:image"
-        content={image || `${config.siteRoot}/ogp/home-ogp.png`}
+        content={image || `${config.siteRoot}/ogp/home_ogp.png`}
       />
       <meta property="og:site_name" content="MoliHey" />
       <meta name="twitter:card" content="summary_large_image" />
