@@ -38,3 +38,6 @@ yarn-error.log*
 
 # next.config.js
 .next.config.js
+
+# node version
+.node-version
