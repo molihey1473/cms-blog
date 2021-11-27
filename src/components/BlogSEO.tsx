@@ -5,10 +5,10 @@ interface Props {
   path?: string;
   id?: string;
   image?: string;
-  largeImage: boolean;
+  isSummaryLarge?: boolean;
 }
 export const BlogSEO: React.FC<Props> = (props) => {
-  const { title, path, image, largeImage } = props;
+  const { title, path, image, isSummaryLarge } = props;
   const pageUrl = `${config.siteRoot}${path || ""}`;
   return (
     <Head>
@@ -18,7 +18,7 @@ export const BlogSEO: React.FC<Props> = (props) => {
       <meta property="og:url" content={pageUrl} />
 
       <meta property="og:site_name" content="MoliHey" />
-      {largeImage ? (
+      {isSummaryLarge ? (
         <>
           <meta name="twitter:card" content="summary_large_image" />
           <meta
