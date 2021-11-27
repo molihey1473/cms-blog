@@ -77,7 +77,13 @@ const Blog: NextPage<Props> = (props) => {
   const { cl, preview, latestArticles } = props;
   return (
     <>
-      <BlogSEO title={title} id={id} image={cl} path={"/articles"} />
+      <BlogSEO
+        title={title}
+        id={id}
+        image={cl}
+        path={"/articles"}
+        isSummaryLarge={true}
+      />
       <article className={styles.blog_article}>
         <ArticleWrapper>
           <div className={styles.blog_content_main}>
@@ -156,7 +162,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const id = toStringId(params.id);
   //下書きpreview記事表示メソッド
   const data = await getPreview(id, draftKey);
-  console.log(data.id);
   //最新記事表示data取得(0-5)
   const latestData = await getBlogs();
   //OGP画像テキスト挿入 for cloudinary
