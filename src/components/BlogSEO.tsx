@@ -35,7 +35,6 @@ export const BlogSEO: React.FC<Props> = (props) => {
           />
         </>
       )}
-      <meta name="twitter:card" content="summary_large_image" />
       {path && <link ref="canonical" href={pageUrl} />}
     </Head>
   );
