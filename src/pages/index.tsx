@@ -23,7 +23,7 @@ const Home: NextPage<{ allArticlesData: ArticleItems[]; category: string }> = (
 ) => {
   return (
     <>
-      <BlogSEO title="MoliHey" path="/" isSummaryLarge={true} />
+      <BlogSEO title="MoliHey" isSummaryLarge={true} />
       <Wrapper>
         <Profile member={member} />
       </Wrapper>
