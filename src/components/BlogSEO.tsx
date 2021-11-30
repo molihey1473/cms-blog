@@ -35,7 +35,7 @@ export const BlogSEO: React.FC<Props> = (props) => {
           />
         </>
       )}
-      {path && <link ref="canonical" href={pageUrl} />}
+      {path && <link rel="canonical" href={pageUrl} />}
     </Head>
   );
 };
