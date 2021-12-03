@@ -1,4 +1,4 @@
-//import {NextPage} from 'next'
+import Image from "next/image";
 import { ArticleItems, ArticleList } from "@src/types";
 import Link from "next/link";
 import dayjs from "dayjs";
@@ -14,7 +14,7 @@ export const BlogLink: React.FC<{ item: ArticleList }> = (props) => {
       <Link href={`/articles/${id}`}>
         <a className={styles.blog_link_content}>
           <div className={styles.blog_main_image}>
-            <img
+            <Image
               src={meta?.image?.url || "/ogp/home-ogp.png"}
               alt="profileCard"
             />
