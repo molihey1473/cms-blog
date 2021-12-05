@@ -1,4 +1,6 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
+import Link from "next/link";
+import Image from "next/image";
 //import { config } from "@blog.config";
 import { PubDate, PreDate } from "@src/components/articles/header/ArticleDate";
 //目次　toc
@@ -91,12 +93,11 @@ const Blog: NextPage<Props> = (props) => {
               <div className={styles.blog_content_article}>
                 <ArticleHeader>
                   {preview && (
-                    <a
-                      href="/api/clearPreview"
-                      className={styles.clear_preview_mode}
-                    >
-                      ** preview mode　解除 **
-                    </a>
+                    <Link href={"/api/clearPreview"}>
+                      <a className={styles.clear_preview_mode}>
+                        ** preview mode　解除 **
+                      </a>
+                    </Link>
                   )}
                   {preview ? (
                     <PreDate createdAt={createdAt} updatedAt={updatedAt} />
