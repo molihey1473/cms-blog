@@ -14,10 +14,11 @@ export const BlogLink: React.FC<{ item: ArticleList }> = (props) => {
       <Link href={`/articles/${id}`}>
         <a className={styles.blog_link_content}>
           <div className={styles.blog_main_image}>
-            <Image
+            {/**             <Image
+              layout={"fill"}
               src={meta?.image?.url || "/ogp/home-ogp.png"}
               alt="profileCard"
-            />
+            />*/}
           </div>
           <div className={styles.blog_at}>
             <time dateTime={publishedAt}>
