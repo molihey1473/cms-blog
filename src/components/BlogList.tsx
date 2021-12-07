@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { ArticleItems, ArticleList } from "@src/types";
 import Link from "next/link";
 import dayjs from "dayjs";
@@ -13,13 +12,7 @@ export const BlogLink: React.FC<{ item: ArticleList }> = (props) => {
     <article className={styles.blog_link}>
       <Link href={`/articles/${id}`}>
         <a className={styles.blog_link_content}>
-          <div className={styles.blog_main_image}>
-            {/**             <Image
-              layout={"fill"}
-              src={meta?.image?.url || "/ogp/home-ogp.png"}
-              alt="profileCard"
-            />*/}
-          </div>
+          <div className={styles.blog_main_image}></div>
           <div className={styles.blog_at}>
             <time dateTime={publishedAt}>
               {dayjs(publishedAt).format("YYYY/MM/DD")}
