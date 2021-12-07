@@ -26,12 +26,8 @@ const Home: NextPage<{ allArticlesData: ArticleItems[]; category: string }> = (
       <BlogSEO title="MoliHey" isSummaryLarge={true} />
       <Wrapper>
         <Profile member={member} />
-      </Wrapper>
-      <Wrapper>
         <CategoryList />
-      </Wrapper>
-      <div className="all_container">
-        <Wrapper>
+        <div className="all_container">
           <h2 className="all_title">ALL</h2>
           <div className="all_items_container">
             {props.allArticlesData ? (
@@ -40,8 +36,8 @@ const Home: NextPage<{ allArticlesData: ArticleItems[]; category: string }> = (
               <BlogList items={props.allArticlesData} />
             )}
           </div>
-        </Wrapper>
-      </div>
+        </div>
+      </Wrapper>
     </>
   );
 };
