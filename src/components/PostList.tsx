@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { PostItem } from "@src/types";
+import Image from "next/image";
 //import { PostLink } from "@src/components/PostLink";
 import dayjs from "dayjs";
 import styles from "@src/styles/components/PostList.module.scss";
@@ -11,7 +12,12 @@ export const PostLink: React.FC<{ item: PostItem }> = (props) => {
   return (
     <article className={styles.post_link}>
       <a className={styles.post_link_content} href={link}>
-        <img src="/icon/qiita.png" width="30" height="30" alt="qiita" />
+        <Image
+          src={"/icon/qiita.png"}
+          width={30}
+          height={30}
+          alt="qiita_image"
+        />
         <div className={styles.post_link_details}>
           <h2 className={styles.post_link_title}>{title}</h2>
           <time className={styles.post_link_at} dateTime={isoDate}>
