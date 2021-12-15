@@ -1,4 +1,5 @@
 //import { member } from "@src/utils/member";
+import Image from "next/image";
 import { Member } from "@src/types";
 import { TwitterIcon } from "@src/components/icons/TwitterIcon";
 import { GithubIcon } from "@src/components/icons/GithubIcon";
@@ -9,7 +10,12 @@ export const Profile: React.FC<{ member: Member }> = (props) => {
   return (
     <div className={styles.article_author_info}>
       <div className={styles.profile_container}>
-        <img src={avatar} alt={name} className={styles.profile_avatar} />
+        <Image
+          layout={"fill"}
+          src={avatar}
+          alt={name}
+          className={styles.profile_avatar}
+        />
         <div className={styles.profile_description}>
           <h1 className={styles.profile_member_name}>{name}</h1>
           <p className={styles.profile_member_bio}>{bio}</p>
@@ -31,7 +37,7 @@ export const AsideProfile: React.FC<{ member: Member }> = (props) => {
   return (
     <div className={styles.md_container}>
       <div className={styles.md_image}>
-        <img src={`${avatar}`} alt={`${name}`} />
+        <Image layout={"fill"} src={`${avatar}`} alt={`${name}`} />
       </div>
 
       <div className={styles.md_content}>
