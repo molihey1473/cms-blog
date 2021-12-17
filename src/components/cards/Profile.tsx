@@ -11,8 +11,9 @@ export const Profile: React.FC<{ member: Member }> = (props) => {
     <div className={styles.article_author_info}>
       <div className={styles.profile_container}>
         <Image
-          layout={"fill"}
           src={avatar}
+          width={120}
+          height={120}
           alt={name}
           className={styles.profile_avatar}
         />
@@ -37,7 +38,7 @@ export const AsideProfile: React.FC<{ member: Member }> = (props) => {
   return (
     <div className={styles.md_container}>
       <div className={styles.md_image}>
-        <Image layout={"fill"} src={`${avatar}`} alt={`${name}`} />
+        <Image src={`${avatar}`} width={80} height={80} alt={`${name}`} />
       </div>
 
       <div className={styles.md_content}>
