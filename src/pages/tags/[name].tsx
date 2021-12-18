@@ -1,6 +1,6 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { Wrapper } from "@src/components/Wrapper";
-import { BlogLink } from "@src/components/BlogList";
+import { BlogLink, BlogFlatItem } from "@src/components/BlogList";
 //twemoji
 import twemoji from "twemoji";
 import { getTags } from "@src/lib/blog";
@@ -37,7 +37,7 @@ const Page: NextPage<Props> = (props) => {
             {taggedBlogs ? (
               <div className={styles.tagged_blog_list}>
                 {taggedBlogs.map((taggedBlog, i) => (
-                  <BlogLink key={`taggedBlog-${i}`} item={taggedBlog} />
+                  <BlogFlatItem key={`taggedBlog-${i}`} item={taggedBlog} />
                 ))}
               </div>
             ) : (
