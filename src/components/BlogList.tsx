@@ -2,6 +2,7 @@ import { ArticleItems, ArticleList } from "@src/types";
 import Link from "next/link";
 import dayjs from "dayjs";
 import styles from "@src/styles/pages/blog/BlogList.module.scss";
+import { getArticlePath, getTagPath } from "@src/utils/helper";
 
 //interface Props {
 //  item: ArticleList;
@@ -51,22 +52,25 @@ export const BlogFlatList: React.FC<{
 };
 export const BlogFlatItem: React.FC<{ item: ArticleList }> = (props) => {
   const { id, title, publishedAt, tags } = props.item;
+
   return (
     <>
       <article className={styles.flat_link}>
         <time className={styles.flat_link_date} dateTime={publishedAt}>
           {dayjs(publishedAt).format("YYYY/MM/DD")}
         </time>
-        <Link href={`/articles/${id}`}>
+        <Link href={getArticlePath(id)}>
           <a className={styles.flat_link_title}>{title}</a>
         </Link>
-        <div className={styles.flat_link_tags}>
-          {tags.map((item, i) => (
-            <Link key={i} href={`/tags/${item.name.toLowerCase()}`}>
-              <a className={styles.flat_items_tags}>{item.name}</a>
-            </Link>
-          ))}
-        </div>
+        {tags && (
+          <div className={styles.flat_link_tags}>
+            {tags.map((item, i) => (
+              <Link key={i} href={getTagPath(item.name)}>
+                <a className={styles.flat_items_tags}>{item.name}</a>
+              </Link>
+            ))}
+          </div>
+        )}
       </article>
     </>
   );
