@@ -37,7 +37,11 @@ const Page: NextPage<Props> = (props) => {
             {taggedBlogs ? (
               <div className={styles.tagged_blog_list}>
                 {taggedBlogs.map((taggedBlog, i) => (
-                  <BlogFlatItem key={`taggedBlog-${i}`} item={taggedBlog} />
+                  <BlogFlatItem
+                    key={`taggedBlog-${i}`}
+                    item={taggedBlog}
+                    isTagIncluded={true}
+                  />
                 ))}
               </div>
             ) : (
