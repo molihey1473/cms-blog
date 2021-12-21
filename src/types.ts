@@ -36,10 +36,19 @@ export interface ArticleItems {
   //tags?: TagItems[];
   meta?: { image: { url: string } } | null;
 }
+/* 記事の型 */
 export interface ArticleBodyItems {
   markdown: string;
   language: string | undefined;
   code: string | undefined;
+}
+/* 記事一覧Article List */
+export interface ArticleList {
+  id: string;
+  title: string;
+  publishedAt: string;
+  tags?: { name: string }[];
+  //isTagIncluded?: boolean;
 }
 /* カテゴリー分けされた記事一覧*/
 //export interface SortedArticleList {
@@ -74,14 +83,6 @@ export interface TaggedList {
   title: string;
   publishedAt: string;
   updatedAt: string | undefined;
-}
-/* 記事一覧Article List */
-export interface ArticleList {
-  id: string;
-  title: string;
-  publishedAt: string;
-  tags?: { name: string }[];
-  meta?: { image: { url: string } } | null;
 }
 
 /* 記事投稿日 */
