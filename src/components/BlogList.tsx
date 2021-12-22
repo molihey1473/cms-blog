@@ -8,7 +8,7 @@ import { getArticlePath, getTagPath } from "@src/utils/helper";
 //  item: ArticleList;
 //}
 export const BlogLink: React.FC<{ item: ArticleList }> = (props) => {
-  const { id, title, publishedAt, tags, meta } = props.item;
+  const { id, title, publishedAt, tags } = props.item;
   return (
     <article className={styles.blog_link}>
       <Link href={`/articles/${id}`}>
@@ -38,21 +38,28 @@ export const BlogList: React.FC<{ items: ArticleItems[] }> = (props) => {
 };
 
 export const BlogFlatList: React.FC<{
-  items: ArticleItems[];
+  items: ArticleList[];
 }> = (props) => {
   return (
     <>
       <div className={styles.flat_list}>
         {props.items.map((data, i) => (
-          <BlogFlatItem key={`BlogFlat-${i}`} item={data} />
+          <BlogFlatItem
+            key={`BlogFlat-${i}`}
+            item={data}
+            isTagIncluded={true}
+          />
         ))}
       </div>
     </>
   );
 };
-export const BlogFlatItem: React.FC<{ item: ArticleList }> = (props) => {
+export const BlogFlatItem: React.FC<{
+  item: ArticleList;
+  isTagIncluded: boolean;
+}> = (props) => {
   const { id, title, publishedAt, tags } = props.item;
-
+  const isTagIncluded = props.isTagIncluded;
   return (
     <>
       <article className={styles.flat_link}>
@@ -62,7 +69,7 @@ export const BlogFlatItem: React.FC<{ item: ArticleList }> = (props) => {
         <Link href={getArticlePath(id)}>
           <a className={styles.flat_link_title}>{title}</a>
         </Link>
-        {tags && (
+        {isTagIncluded && (
           <div className={styles.flat_link_tags}>
             {tags.map((item, i) => (
               <Link key={i} href={getTagPath(item.name)}>
