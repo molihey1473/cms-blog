@@ -82,7 +82,7 @@ export interface TaggedList {
   id: string;
   title: string;
   publishedAt: string;
-  updatedAt: string | undefined;
+  updatedAt?: string;
 }
 
 /* 記事投稿日 */
@@ -93,5 +93,5 @@ export interface PublishDate {
 /* 記事投稿前プレビュー*/
 export interface PreviewDate {
   createdAt: string;
-  updatedAt: string | undefined;
+  updatedAt?: string;
 }
