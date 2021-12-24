@@ -40,7 +40,7 @@ const Page: NextPage<Props> = (props) => {
                   <BlogFlatItem
                     key={`taggedBlog-${i}`}
                     item={taggedBlog}
-                    isTagIncluded={true}
+                    isTagIncluded={false}
                   />
                 ))}
               </div>
