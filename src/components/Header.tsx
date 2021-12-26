@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { WideWrapper } from "@src/components/Wrapper";
+import { Wrapper } from "@src/components/Wrapper";
 import { TwitterIcon } from "@src/components/icons/TwitterIcon";
 import styles from "@src/styles/components/Header.module.scss";
 export const Header: React.FC = () => {
   return (
     <header className={styles.header_layout}>
-      <WideWrapper>
+      <Wrapper>
         <div className={styles.header_content}>
           <Link href="/">
             <a>
@@ -37,7 +37,7 @@ export const Header: React.FC = () => {
             </Link>
           </div>
         </div>
-      </WideWrapper>
+      </Wrapper>
     </header>
   );
 };
