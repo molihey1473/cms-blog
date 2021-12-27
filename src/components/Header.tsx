@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Wrapper } from "@src/components/Wrapper";
-import { TwitterIcon } from "@src/components/icons/TwitterIcon";
 import styles from "@src/styles/components/Header.module.scss";
 export const Header: React.FC = () => {
   return (
