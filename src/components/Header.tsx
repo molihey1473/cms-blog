@@ -30,11 +30,13 @@ export const Header: React.FC = () => {
               </svg>
             </a>
           </Link>
+          {/*
+          aboutページ内作成していないため一時非表示
           <div className={styles.header_links}>
             <Link href="/about">
               <a className={styles.header_links_item}>About</a>
             </Link>
-          </div>
+          </div>*/}
         </div>
       </Wrapper>
     </header>
