@@ -1,4 +1,5 @@
 .header_layout {
+  position: sticky;
   padding: 1.5rem 0;
   //position: sticky;
   top: 0;
@@ -6,6 +7,7 @@
   background: #fff;
   color: var(--second-text);
   border-bottom: solid 1px rgba(0, 0, 0, 0.08);
+  z-index: 10;
 }
 .header_content {
   display: flex;
