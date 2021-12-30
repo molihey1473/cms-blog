@@ -7,8 +7,9 @@ export const Header: React.FC = () => {
       <Wrapper>
         <div className={styles.header_content}>
           <Link href="/">
-            <a>
-              <svg
+            <a className={styles.header_home_title}>
+              Molohey
+              {/* <svg
                 width="100"
                 height="30"
                 viewBox="0 0 321.6 103.602"
@@ -27,7 +28,7 @@ export const Header: React.FC = () => {
                     vectorEffect="non-scaling-stroke"
                   />
                 </g>
-              </svg>
+              </svg> */}
             </a>
           </Link>
           {/*

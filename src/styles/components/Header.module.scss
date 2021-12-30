@@ -1,6 +1,6 @@
 .header_layout {
   position: sticky;
-  padding: 1.5rem 0;
+  padding: 1.2rem 0;
   //position: sticky;
   top: 0;
   //background: var(--light-blue--bg);
@@ -13,6 +13,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.header_home_title {
+  font-weight: 600;
 }
 /*　header内 page linkのスタイル
 
