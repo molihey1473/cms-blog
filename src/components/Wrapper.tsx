@@ -16,11 +16,11 @@ export const ArticleWrapper: React.FC<{ children: React.ReactNode }> = (
 
 //min-heightを含んだmain view用wrapper
 export const MainViewWrapper: React.FC<{ children: ReactNode }> = (props) => {
-  const widthstyle: { [key: string]: string } = {
-    "min-height": "calc(100vh - 60px)",
-  };
+  //const widthstyle: { [key: string]: string } = {
+  //  "min-height": "calc(100vh - 60px)",
+  //};
   return (
-    <div style={widthstyle}>
+    <div className={styles.main}>
       <div className={styles.default}>{props.children}</div>;
     </div>
   );
