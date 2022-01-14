@@ -1,6 +1,8 @@
 import "@src/styles/globals.scss";
 import { Header } from "@src/components/Header";
 import { Footer } from "@src/components/Footer";
+import { ViewContainer } from "@src/components/View";
+import { Wrapper } from "@src/components/Wrapper";
 import { AppProps } from "next/app";
 import Head from "next/head";
 
@@ -15,7 +17,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="avatar/color_profile.png" />
       </Head>
       <Header />
-      <Component {...pageProps} />
+      <ViewContainer>
+        <Component {...pageProps} />
+      </ViewContainer>
       <Footer />
     </>
   );
