@@ -24,20 +24,18 @@ const Home: NextPage<{ allArticlesData: ArticleItems[]; category: string }> = (
   return (
     <>
       <BlogSEO title="MoliHey" isSummaryLarge={true} />
-      <Wrapper>
-        <Profile member={member} />
-        <CategoryList />
-        <div className="all_container">
-          <h2 className="all_title">ALL</h2>
-          <div className="all_items_container">
-            {props.allArticlesData ? (
-              <BlogFlatList items={props.allArticlesData} />
-            ) : (
-              <BlogList items={props.allArticlesData} />
-            )}
-          </div>
+      <Profile member={member} />
+      <CategoryList />
+      <div className="all_container">
+        <h2 className="all_title">ALL</h2>
+        <div className="all_items_container">
+          {props.allArticlesData ? (
+            <BlogFlatList items={props.allArticlesData} />
+          ) : (
+            <BlogList items={props.allArticlesData} />
+          )}
         </div>
-      </Wrapper>
+      </div>
     </>
   );
 };

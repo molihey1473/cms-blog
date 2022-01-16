@@ -21,34 +21,32 @@ const Page: NextPage<Props> = (props) => {
   return (
     <>
       <section className={styles.tagged_blog_list_layout}>
-        <Wrapper>
-          <div className={styles.tagged_blog_content}>
-            <div className={styles.tag_name_container}>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: twemoji.parse("🏷", {
-                    folder: "svg",
-                    ext: ".svg",
-                  }),
-                }}
-              />
-              <div className={styles.tag_name}>{`#${name}`}</div>
-            </div>
-            {taggedBlogs ? (
-              <div className={styles.tagged_blog_list}>
-                {taggedBlogs.map((taggedBlog, i) => (
-                  <BlogFlatItem
-                    key={`taggedBlog-${i}`}
-                    item={taggedBlog}
-                    isTagIncluded={false}
-                  />
-                ))}
-              </div>
-            ) : (
-              <div>関連した記事がありません</div>
-            )}
+        <div className={styles.tagged_blog_content}>
+          <div className={styles.tag_name_container}>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: twemoji.parse("🏷", {
+                  folder: "svg",
+                  ext: ".svg",
+                }),
+              }}
+            />
+            <div className={styles.tag_name}>{`#${name}`}</div>
           </div>
-        </Wrapper>
+          {taggedBlogs ? (
+            <div className={styles.tagged_blog_list}>
+              {taggedBlogs.map((taggedBlog, i) => (
+                <BlogFlatItem
+                  key={`taggedBlog-${i}`}
+                  item={taggedBlog}
+                  isTagIncluded={false}
+                />
+              ))}
+            </div>
+          ) : (
+            <div>関連した記事がありません</div>
+          )}
+        </div>
       </section>
     </>
   );

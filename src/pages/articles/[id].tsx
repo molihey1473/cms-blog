@@ -87,60 +87,58 @@ const Blog: NextPage<Props> = (props) => {
         isSummaryLarge={true}
       />
       <article className={styles.blog_article}>
-        <ArticleWrapper>
-          <div className={styles.blog_content_main}>
-            <div className={styles.blog_content_layout}>
-              <div className={styles.blog_content_article}>
-                <ArticleHeader>
-                  {preview && (
-                    <Link href={"/api/clearPreview"}>
-                      <a className={styles.clear_preview_mode}>
-                        ** preview mode　解除 **
-                      </a>
-                    </Link>
-                  )}
-                  {preview ? (
-                    <PreDate createdAt={createdAt} updatedAt={updatedAt} />
-                  ) : (
-                    <PubDate publishedAt={publishedAt} updatedAt={updatedAt} />
-                  )}
-                  <HeaderTitle title={title} />
-                  <HeaderTags tags={tags} />
-                </ArticleHeader>
-                <FixArticleBody articleBody={body} />
-                <div className={styles.article_share_container}>
-                  <div className={styles.share_button_container}>
-                    <div className={styles.share_title}>Share</div>
-                    <a
-                      className={styles.share_button}
-                      href={`http://twitter.com/share?url=https://blog-sage-nine.vercel.app/articles/${id}.tsx&text=${encodeURI(
-                        title
-                      )}`}
-                    >
-                      <TwitterIcon />
+        <div className={styles.blog_content_main}>
+          <div className={styles.blog_content_layout}>
+            <div className={styles.blog_content_article}>
+              <ArticleHeader>
+                {preview && (
+                  <Link href={"/api/clearPreview"}>
+                    <a className={styles.clear_preview_mode}>
+                      ** preview mode　解除 **
                     </a>
-                  </div>
+                  </Link>
+                )}
+                {preview ? (
+                  <PreDate createdAt={createdAt} updatedAt={updatedAt} />
+                ) : (
+                  <PubDate publishedAt={publishedAt} updatedAt={updatedAt} />
+                )}
+                <HeaderTitle title={title} />
+                <HeaderTags tags={tags} />
+              </ArticleHeader>
+              <FixArticleBody articleBody={body} />
+              <div className={styles.article_share_container}>
+                <div className={styles.share_button_container}>
+                  <div className={styles.share_title}>Share</div>
+                  <a
+                    className={styles.share_button}
+                    href={`http://twitter.com/share?url=https://blog-sage-nine.vercel.app/articles/${id}.tsx&text=${encodeURI(
+                      title
+                    )}`}
+                  >
+                    <TwitterIcon />
+                  </a>
                 </div>
-                <aside className={styles.author_info}>
-                  <AsideProfile member={member} />
-                </aside>
               </div>
+              <aside className={styles.author_info}>
+                <AsideProfile member={member} />
+              </aside>
             </div>
           </div>
-          <div>
-            <section className={styles.latestArticles_layout}>
-              <div className={styles.latestArticles_title}>最近の記事</div>
-              <div className={styles.latestArticles_list}>
-                {latestArticles &&
-                  latestArticles
-                    .slice(0, 3)
-                    .map((latestBlog, i) => (
-                      <BlogLink key={`latest-blog-${i}`} item={latestBlog} />
-                    ))}
-              </div>
-            </section>
-          </div>
-        </ArticleWrapper>
+        </div>
+        <div>
+          <section className={styles.latestArticles_layout}>
+            <div className={styles.latestArticles_title}>最近の記事</div>
+            <div className={styles.latestArticles_list}>
+              {latestArticles &&
+                latestArticles
+                  .slice(0, 3)
+                  .map((latestBlog, i) => (
+                    <BlogLink key={`latest-blog-${i}`} item={latestBlog} />
+                  ))}
+            </div>
+          </section>
+        </div>
       </article>
     </>
   );
