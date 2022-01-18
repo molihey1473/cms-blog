@@ -126,7 +126,8 @@ const Blog: NextPage<Props> = (props) => {
             </div>
           </div>
         </div>
-        <div>
+
+        {/*<div>
           <section className={styles.latestArticles_layout}>
             <div className={styles.latestArticles_title}>最近の記事</div>
             <div className={styles.latestArticles_list}>
@@ -138,7 +139,7 @@ const Blog: NextPage<Props> = (props) => {
                   ))}
             </div>
           </section>
-        </div>
+                  </div>*/}
       </article>
     </>
   );
