@@ -1,12 +1,8 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
-import Image from "next/image";
 //import { config } from "@blog.config";
 import { PubDate, PreDate } from "@src/components/articles/header/ArticleDate";
-//目次　toc
-import { TocList } from "@src/components/articles/Toc";
 import { getBlogs, getPreview } from "@src/lib/blog";
-import { BlogLink } from "@src/components/BlogList";
 import { HeaderTags } from "@src/components/articles/header/HeaderTag";
 //SEOコンポーネント
 import { BlogSEO } from "@src/components/BlogSEO";
@@ -50,7 +46,6 @@ import {
   FixArticleBody,
 } from "@src/components/articles/ArticleBody";
 
-import { ArticleWrapper } from "@src/components/Wrapper";
 //sns icon.svg
 import { TwitterIcon } from "@src/components/icons/TwitterIcon";
 interface Props {
@@ -62,11 +57,11 @@ interface Props {
   cl: string;
   path?: string;
 }
-interface ArticleBodyItems {
-  markdown: string;
-  language?: string;
-  code?: string;
-}
+//interface ArticleBodyItems {
+//markdown: string;
+//language?: string;
+//  code?: string;
+//}
 //interface TocList {
 //  text: string;
 //  id: string;
