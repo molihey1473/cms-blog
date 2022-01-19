@@ -11,7 +11,8 @@ import { clOverlay } from "@src/lib/cl";
 import { member } from "@src/utils/member";
 import { isDraft } from "@src/utils/isDraft";
 import { toStringId } from "@src/utils/toStringId";
-import { Profile, AsideProfile } from "@src/components/cards/Profile";
+//記事下部のprofile component
+import { AsideProfile } from "@src/components/cards/Profile";
 // scss modules
 import styles from "@src/styles/pages/blog/BlogContent.module.scss";
 //　props型
@@ -41,10 +42,7 @@ import { SidebarSticky } from "@src/components/articles/sidebar/SidebarSticky";
 */
 
 //article body 記事内要コンポーネント
-import {
-  ArticleBody,
-  FixArticleBody,
-} from "@src/components/articles/ArticleBody";
+import { FixArticleBody } from "@src/components/articles/ArticleBody";
 
 //sns icon.svg
 import { TwitterIcon } from "@src/components/icons/TwitterIcon";
