@@ -1,8 +1,4 @@
-import Head from "next/head";
 import { NextPage, GetStaticProps } from "next";
-import posts from ".contents/posts.json";
-import { Wrapper } from "@src/components/Wrapper";
-//import { Wrapper } from "@src/components/Wrapper";
 import { Profile } from "@src/components/cards/Profile";
 import { BlogList, BlogFlatList } from "@src/components/BlogList";
 import { CategoryList } from "@src/components/CategoryList";
