@@ -1,8 +1,6 @@
 import Head from "next/head";
 import { NextPage } from "next";
 import posts from ".contents/posts.json";
-//component
-import { Wrapper } from "@src/components/Wrapper";
 import { Profile } from "@src/components/cards/Profile";
 import { member } from "@src/utils/member";
 import { CategoryList } from "@src/components/CategoryList";
@@ -22,19 +20,13 @@ const Page: NextPage = () => {
         <meta property="og:site_name" content="MoliHey" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <Wrapper>
-        <Profile member={member} />
-      </Wrapper>
-      <Wrapper>
-        <CategoryList />
-      </Wrapper>
+      <Profile member={member} />
+      <CategoryList />
       <div className="others_container">
-        <Wrapper>
-          <h2 className="others_title">Others</h2>
-          <div className="others_items_container">
-            <PostList items={posts} />
-          </div>
-        </Wrapper>
+        <h2 className="others_title">Others</h2>
+        <div className="others_items_container">
+          <PostList items={posts} />
+        </div>
       </div>
     </>
   );
