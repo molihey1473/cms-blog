@@ -10,6 +10,8 @@ import { BlogSEO } from "@src/components/BlogSEO";
 
 //types
 import { ArticleItems } from "@src/types";
+// css style
+import styles from "@src/styles/componentsView.module.scss";
 
 //interface Props {
 //  allArticlesData: ArticleItems[];
@@ -22,9 +24,9 @@ const Home: NextPage<{ allArticlesData: ArticleItems[]; category: string }> = (
       <BlogSEO title="MoliHey" isSummaryLarge={true} />
       <Profile member={member} />
       <CategoryList />
-      <div className="all_container">
-        <h2 className="all_title">ALL</h2>
-        <div className="all_items_container">
+      <div className={styles.article_all_container}>
+        <h2 className={styles.page_content_title}>ALL</h2>
+        <div className={styles.all_items}>
           {props.allArticlesData ? (
             <BlogFlatList items={props.allArticlesData} />
           ) : (

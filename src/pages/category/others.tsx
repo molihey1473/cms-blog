@@ -6,6 +6,8 @@ import { member } from "@src/utils/member";
 import { CategoryList } from "@src/components/CategoryList";
 
 import { PostList } from "@src/components/PostList";
+// css style
+import styles from "@src/styles/components/View.module.scss";
 const Page: NextPage = () => {
   return (
     <>
@@ -22,9 +24,9 @@ const Page: NextPage = () => {
       </Head>
       <Profile member={member} />
       <CategoryList />
-      <div className="others_container">
-        <h2 className="others_title">Others</h2>
-        <div className="others_items_container">
+      <div className={styles.article_others_container}>
+        <h2 className={styles.page_content_title}>Others</h2>
+        <div className={styles.others_items}>
           <PostList items={posts} />
         </div>
       </div>
