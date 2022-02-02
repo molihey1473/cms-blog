@@ -11,7 +11,7 @@ import { BlogSEO } from "@src/components/BlogSEO";
 //types
 import { ArticleItems } from "@src/types";
 // css style
-import styles from "@src/styles/componentsView.module.scss";
+import styles from "@src/styles/components/View.module.scss";
 
 //interface Props {
 //  allArticlesData: ArticleItems[];
