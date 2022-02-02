@@ -23,6 +23,8 @@ import { ArticleHeader } from "@src/components/articles/header/HeaderLayout";
 //import { HeaderImage } from "@src/components/articles/header/HeaderImage";
 //header 記事タイトルコンポーネント
 import { HeaderTitle } from "@src/components/articles/header/HeaderTitle";
+//記事のpath
+import { getArticlePath } from "@src/utils/helper";
 /* 
  サイドバー用コンポーネント
  削除の可能性
@@ -69,14 +71,14 @@ interface Props {
 const Blog: NextPage<Props> = (props) => {
   const { title, publishedAt, createdAt, updatedAt, tags, id, body } =
     props.blog;
-  const { cl, preview, latestArticles } = props;
+  const { cl, preview, latestArticles, path } = props;
   return (
     <>
       <BlogSEO
         title={title}
         id={id}
         image={cl}
-        path={"/articles"}
+        path={path}
         isSummaryLarge={true}
       />
       <article className={styles.blog_article}>
@@ -159,6 +161,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const latestData = await getBlogs();
   //OGP画像テキスト挿入 for cloudinary
   const clContent = await clOverlay(data.title);
+  //記事のpath
+  const path = getArticlePath(id);
   return {
     props: {
       blog: data,
@@ -166,6 +170,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       preview: context.preview || false,
       latestArticles: latestData.contents,
       cl: clContent,
+      path: path,
     },
   };
 };
