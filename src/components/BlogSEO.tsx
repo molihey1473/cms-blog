@@ -3,7 +3,6 @@ import { config } from "@blog.config";
 interface Props {
   title: string;
   path?: string;
-  id?: string;
   image?: string;
   isSummaryLarge?: boolean;
 }

@@ -74,13 +74,7 @@ const Blog: NextPage<Props> = (props) => {
   const { cl, preview, latestArticles, path } = props;
   return (
     <>
-      <BlogSEO
-        title={title}
-        id={id}
-        image={cl}
-        path={path}
-        isSummaryLarge={true}
-      />
+      <BlogSEO title={title} image={cl} path={path} isSummaryLarge={true} />
       <article className={styles.blog_article}>
         <div className={styles.blog_content_main}>
           <div className={styles.blog_content_layout}>
