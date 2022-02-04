@@ -1,15 +1,19 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
-import { Wrapper } from "@src/components/Wrapper";
-import { BlogLink, BlogFlatItem } from "@src/components/BlogList";
+//記事一覧コンポーネント
+import { BlogFlatItem } from "@src/components/BlogList";
+//SEO コンポーネント
+import { BlogSEO } from "@src/components/BlogSEO";
 //twemoji
 import twemoji from "twemoji";
 import { getTags } from "@src/lib/blog";
 //import { TagList } from "@src/components/tags/TagList";
 import { TaggedBlogs, Taglinks, TaggedList } from "@src/types";
 import { toStringName } from "@src/utils/toStringTagName";
+import { getTagPath } from "@src/utils/helper";
 import styles from "@src/styles/pages/blog/BlogList.module.scss";
 interface Props {
   name: string;
+  path: string;
   taggedBlogs: {
     id: string;
     title: string;
@@ -17,37 +21,36 @@ interface Props {
   }[];
 }
 const Page: NextPage<Props> = (props) => {
-  const { taggedBlogs, name } = props;
+  const { taggedBlogs, name, path } = props;
   return (
     <>
-      <section className={styles.tagged_blog_list_layout}>
-        <div className={styles.tagged_blog_content}>
-          <div className={styles.tag_name_container}>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: twemoji.parse("🏷", {
-                  folder: "svg",
-                  ext: ".svg",
-                }),
-              }}
-            />
-            <div className={styles.tag_name}>{`#${name}`}</div>
-          </div>
-          {taggedBlogs ? (
-            <div className={styles.tagged_blog_list}>
-              {taggedBlogs.map((taggedBlog, i) => (
-                <BlogFlatItem
-                  key={`taggedBlog-${i}`}
-                  item={taggedBlog}
-                  isTagIncluded={false}
-                />
-              ))}
-            </div>
-          ) : (
-            <div>関連した記事がありません</div>
-          )}
+      <BlogSEO title={name} path={path} isSummaryLarge={false} />
+      <div className={styles.tagged_blog_content}>
+        <div className={styles.tag_name_container}>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: twemoji.parse("🏷", {
+                folder: "svg",
+                ext: ".svg",
+              }),
+            }}
+          />
+          <div className={styles.tag_name}>{`#${name}`}</div>
         </div>
-      </section>
+        {taggedBlogs ? (
+          <div className={styles.tagged_blog_list}>
+            {taggedBlogs.map((taggedBlog, i) => (
+              <BlogFlatItem
+                key={`taggedBlog-${i}`}
+                item={taggedBlog}
+                isTagIncluded={false}
+              />
+            ))}
+          </div>
+        ) : (
+          <div>関連した記事がありません</div>
+        )}
+      </div>
     </>
   );
 };
@@ -71,13 +74,17 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const rename = name.charAt(0).toUpperCase();
   //idで抽出したデータではなく/tags/reactのようにnameで表示させる
   const data = await getTags<TaggedList[]>(rename);
+  //tags/[name].tsxのpath
+  const path = getTagPath(name);
   //const preData = data.contents[0].content.map((item, i) => {
   //  console.log(item.title, item.publishedAt);
+
   //});
   return {
     props: {
       name: name,
       taggedBlogs: data,
+      path: path,
     },
   };
 };
