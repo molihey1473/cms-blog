@@ -3,7 +3,7 @@ import fs from "fs-extra";
 //  # import { member } from "@src/utils/member" だとError: Cannot find module '@src/utils/member'になる
 import { member } from "../utils/member";
 import { PostItem, FeedItem } from "../types";
-export default {};
+//export default {};
 const parser = new Parser();
 //let allPostItems: PostItem[] = [];
 async function fetchFeedItems(url: string) {
