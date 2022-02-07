@@ -2,6 +2,7 @@ import { NextPage, GetStaticProps } from "next";
 import { Profile } from "@src/components/cards/Profile";
 import { BlogList, BlogFlatList } from "@src/components/BlogList";
 import { CategoryList } from "@src/components/CategoryList";
+import { PageTitle } from "@src/components/PageTitle";
 import { member } from "@src/utils/member";
 // get data methods
 import { getBlogs } from "@src/lib/blog";
@@ -25,6 +26,7 @@ const Home: NextPage<{ allArticlesData: ArticleItems[]; category: string }> = (
       <Profile member={member} />
       <CategoryList />
       <div className={styles.article_all_container}>
+        <PageTitle title={"ALL"} />
         <h2 className={styles.page_content_title}>ALL</h2>
         <div className={styles.all_items}>
           {props.allArticlesData ? (
