@@ -25,7 +25,7 @@ const Home: NextPage<{ allArticlesData: ArticleItems[]; category: string }> = (
       <BlogSEO title="MoliHey" isSummaryLarge={true} />
       <Profile member={member} />
       <CategoryList />
-      <div className={styles.article_all_container}>
+      <div className={styles.page_all_container}>
         <PageTitle title={"ALL"} />
         <h2 className={styles.page_content_title}>ALL</h2>
         <div className={styles.all_items}>

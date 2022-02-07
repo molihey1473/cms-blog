@@ -24,7 +24,7 @@ const Page: NextPage = () => {
       </Head>
       <Profile member={member} />
       <CategoryList />
-      <div className={styles.article_others_container}>
+      <div className={styles.page_others_container}>
         <h2 className={styles.page_content_title}>Others</h2>
         <div className={styles.others_items}>
           <PostList items={posts} />
