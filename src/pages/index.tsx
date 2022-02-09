@@ -27,7 +27,6 @@ const Home: NextPage<{ allArticlesData: ArticleItems[]; category: string }> = (
       <CategoryList />
       <div className={styles.page_all_container}>
         <PageTitle title={"ALL"} />
-        <h2 className={styles.page_content_title}>ALL</h2>
         <div className={styles.all_items}>
           {props.allArticlesData ? (
             <BlogFlatList items={props.allArticlesData} />
