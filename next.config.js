@@ -3,7 +3,7 @@ module.exports = {
     optimizeFonts: true,
   },
   eslint: {
-    dirs: ["src/components/", "src/lib/", "src/pages/"],
+    dirs: ["src/components/", "src/lib/", "src/pages/", "src/utils/"],
     ignoreDuringBuilds: true,
   },
 };
