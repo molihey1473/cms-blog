@@ -22,7 +22,7 @@ const Home: NextPage<{ allArticlesData: ArticleItems[]; category: string }> = (
 ) => {
   return (
     <>
-      <BlogSEO title="MoliHey" isSummaryLarge={true} />
+      <BlogSEO title={"MoliHey"} isSummaryLarge={true} />
       <Profile member={member} />
       <CategoryList />
       <div className={styles.page_all_container}>
