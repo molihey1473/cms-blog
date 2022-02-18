@@ -9,7 +9,7 @@ export const ViewContainer: React.FC<{ children: ReactNode }> = (props) => {
   return <div className={styles.main_container}>{props.children}</div>;
 };
 
-// 記事一覧用View　コンポーネント
+// 記事一覧用View コンポーネント
 export const ViewMainContainer: React.FC<{ children: React.ReactNode }> = (
   props
 ) => {
