@@ -41,3 +41,6 @@ yarn-error.log*
 
 # node version
 .node-version
+
+#vscode/settings.json
+.vscode
