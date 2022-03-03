@@ -1,3 +1,5 @@
+import { GetStaticProps, NextPage } from "next";
+
 import { BlogFlatList, BlogList } from "@src/components/BlogList";
 import { BlogSEO } from "@src/components/BlogSEO";
 import { Profile } from "@src/components/cards/Profile";
@@ -6,13 +8,11 @@ import { PageTitle } from "@src/components/PageTitle";
 
 import { getBlogs } from "@src/lib/blog";
 
+import styles from "@src/styles/components/View.module.scss";
+
 import { member } from "@src/utils/member";
 
 import { ArticleItems } from "@src/types";
-
-import styles from "@src/styles/components/View.module.scss";
-
-import { GetStaticProps, NextPage } from "next";
 
 //interface Props {
 //  allArticlesData: ArticleItems[];
