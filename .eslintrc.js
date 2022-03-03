@@ -54,8 +54,13 @@ module.exports = {
           "type",
         ],
         "newlines-between": "always",
-        pathGroupsExcludedImportTypes: ["builtin"],
+
         pathGroups: [
+          {
+            pattern: "next",
+            group: "internal",
+            position: "before",
+          },
           {
             pattern: "@src/components/**",
             group: "internal",
@@ -69,10 +74,10 @@ module.exports = {
           {
             pattern: "@src/styles/components/*.module.scss",
             group: "internal",
-            position: "after",
+            position: "before",
           },
           {
-            pattern: "@src/types.ts",
+            pattern: "@src/*.ts",
             group: "internal",
             position: "after",
           },
@@ -82,10 +87,12 @@ module.exports = {
             position: "before",
           },
         ],
+
         alphabetize: {
           order: "asc",
           caseInsensitive: true,
         },
+        pathGroupsExcludedImportTypes: ["next"],
       },
     ],
   },
