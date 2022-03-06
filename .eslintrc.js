@@ -5,7 +5,7 @@ module.exports = {
     node: true,
   },
   parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint", "react", "import"],
+  plugins: ["@typescript-eslint", "react", "react-hooks", "import"],
   parserOptions: {
     tsconfigRootDir: __dirname,
     project: ["./tsconfig.json"],
@@ -27,6 +27,7 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:import/typescript",
@@ -38,6 +39,13 @@ module.exports = {
     semi: "off",
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": [
+      "warn",
+      {
+        additionalHooks: "(useMyCustomHook|useMyOtherCustomHook)",
+      },
+    ],
     "@next/next/no-img-element": "off",
     "@next/next/no-html-link-for-pages": "off",
     "import/order": [
