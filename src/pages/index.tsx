@@ -14,9 +14,6 @@ import { member } from "@src/utils/member";
 
 import { ArticleItems } from "@src/types";
 
-//interface Props {
-//  allArticlesData: ArticleItems[];
-//}
 const Home: NextPage<{ allArticlesData: ArticleItems[]; category: string }> = (
   props
 ) => {
