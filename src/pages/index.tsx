@@ -8,11 +8,11 @@ import { PageTitle } from "@src/components/PageTitle";
 
 import { getBlogs } from "@src/lib/blog";
 
-import styles from "@src/styles/components/View.module.scss";
-
 import { member } from "@src/utils/member";
 
 import { ArticleItems } from "@src/types";
+
+import styles from "@src/styles/components/View.module.scss";
 
 const Home: NextPage<{ allArticlesData: ArticleItems[]; category: string }> = (
   props
