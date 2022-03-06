@@ -83,7 +83,7 @@ module.exports = {
           {
             pattern: "@src/*.ts",
             group: "internal",
-            position: "after",
+            position: "before",
           },
           {
             pattern: "@src/utils/**",
@@ -91,9 +91,9 @@ module.exports = {
             position: "before",
           },
           {
-            pattern: "@src/styles/components/*.module.scss",
+            pattern: "@src/styles/components/**/*.module.scss",
             group: "internal",
-            position: "before",
+            position: "after",
           },
         ],
 
