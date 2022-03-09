@@ -46,6 +46,11 @@ module.exports = {
         additionalHooks: "(useMyCustomHook|useMyOtherCustomHook)",
       },
     ],
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { vars: "all", args: "after-used", ignoreRestSiblings: false },
+    ],
     "@next/next/no-img-element": "off",
     "@next/next/no-html-link-for-pages": "off",
     "import/order": [
@@ -101,7 +106,7 @@ module.exports = {
           order: "asc",
           caseInsensitive: true,
         },
-        pathGroupsExcludedImportTypes: ["next"],
+        pathGroupsExcludedImportTypes: ["next", "react"],
       },
     ],
   },
