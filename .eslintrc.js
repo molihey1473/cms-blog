@@ -53,6 +53,7 @@ module.exports = {
     ],
     "@next/next/no-img-element": "off",
     "@next/next/no-html-link-for-pages": "off",
+    "import/no-unresolved": [2, { ignore: ["\\.json$"] }],
     "import/order": [
       "error",
       {
@@ -71,6 +72,13 @@ module.exports = {
         pathGroups: [
           {
             pattern: "next",
+            group: "internal",
+            position: "before",
+          },
+          { pattern: "next/**", group: "internal", position: "before" },
+          { pattern: "react", group: "internal", position: "before" },
+          {
+            pattern: ".contents/*.json",
             group: "internal",
             position: "before",
           },
@@ -100,13 +108,18 @@ module.exports = {
             group: "internal",
             position: "after",
           },
+          {
+            pattern: "@src/styles/*.scss",
+            group: "internal",
+            position: "after",
+          },
         ],
 
         alphabetize: {
           order: "asc",
           caseInsensitive: true,
         },
-        pathGroupsExcludedImportTypes: ["next", "react"],
+        pathGroupsExcludedImportTypes: ["builtin", "next", "react"],
       },
     ],
   },
