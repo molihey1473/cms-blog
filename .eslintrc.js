@@ -23,6 +23,7 @@ module.exports = {
         alwaysTryTypes: true,
       },
     },
+    "import/ignore": ["src/styles/globals.scss"],
   },
   extends: [
     "eslint:recommended",
@@ -53,14 +54,13 @@ module.exports = {
     ],
     "@next/next/no-img-element": "off",
     "@next/next/no-html-link-for-pages": "off",
-    "import/no-unresolved": [2, { ignore: ["\\.json$"] }],
+    "import/no-unresolved": [2, { ignore: ["\\.json$", "@src/"] }],
     "import/order": [
       "error",
       {
         groups: [
           "index",
-          "sibling",
-          "parent",
+          ["parent", "sibling"],
           "internal",
           "external",
           "builtin",
@@ -68,7 +68,6 @@ module.exports = {
           "type",
         ],
         "newlines-between": "always",
-
         pathGroups: [
           {
             pattern: "next",
@@ -76,6 +75,7 @@ module.exports = {
             position: "before",
           },
           { pattern: "next/**", group: "internal", position: "before" },
+
           { pattern: "react", group: "internal", position: "before" },
           {
             pattern: ".contents/*.json",
@@ -94,7 +94,7 @@ module.exports = {
           },
 
           {
-            pattern: "@src/*.ts",
+            pattern: "@src/types/**",
             group: "internal",
             position: "before",
           },
@@ -105,13 +105,8 @@ module.exports = {
           },
           {
             pattern: "@src/styles/components/**/*.module.scss",
-            group: "internal",
-            position: "after",
-          },
-          {
-            pattern: "@src/styles/*.scss",
-            group: "internal",
-            position: "after",
+            group: "index",
+            position: "before",
           },
         ],
 
@@ -119,8 +114,21 @@ module.exports = {
           order: "asc",
           caseInsensitive: true,
         },
-        pathGroupsExcludedImportTypes: ["builtin", "next", "react"],
+        warnOnUnassignedImports: true,
+        pathGroupsExcludedImportTypes: [
+          "builtin",
+          "next",
+          "next/**",
+          "react",
+          "twemoji",
+        ],
       },
     ],
   },
+  //overrides: [
+  //  {
+  //    files: ["src/pages/_app.tsx"],
+  //    rules: { "import/order": "off" },
+  //  },
+  //],
 };
