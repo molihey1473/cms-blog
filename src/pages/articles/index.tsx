@@ -1,11 +1,15 @@
-import { NextPage, GetStaticProps } from "next";
-import { getBlogs } from "@src/lib/blog";
-import { ArticleItems, TagItems } from "@src/types";
-//import Link from "next/link";
-import { Wrapper } from "@src/components/Wrapper";
+import { GetStaticProps, NextPage } from "next";
+
 import { BlogList } from "@src/components/BlogList";
 import { CategoryList } from "@src/components/CategoryList";
+import { Wrapper } from "@src/components/Wrapper";
+
+import { getBlogs } from "@src/lib/blog";
+
+import { ArticleItems } from "@src/types/types";
+
 import styles from "@src/styles/pages/blog/BlogList.module.scss";
+
 interface Props {
   blogs: ArticleItems[];
 }

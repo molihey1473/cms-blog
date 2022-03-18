@@ -1,53 +1,28 @@
-import { NextPage, GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+
 import Link from "next/link";
-//import { config } from "@blog.config";
-import { PubDate, PreDate } from "@src/components/articles/header/ArticleDate";
-import { getBlogs, getPreview } from "@src/lib/blog";
-import { HeaderTags } from "@src/components/articles/header/HeaderTag";
-//SEOコンポーネント
-import { BlogSEO } from "@src/components/BlogSEO";
-//OGP画像生成メソッド
-import { clOverlay } from "@src/lib/cl";
-import { member } from "@src/utils/member";
-import { isDraft } from "@src/utils/isDraft";
-import { toStringId } from "@src/utils/toStringId";
-//記事下部のprofile component
-import { AsideProfile } from "@src/components/cards/Profile";
-// scss modules
-import styles from "@src/styles/pages/blog/BlogContent.module.scss";
-//　props型
-import { ArticleItems } from "@src/types";
-//記事内ヘッダー
-import { ArticleHeader } from "@src/components/articles/header/HeaderLayout";
-//header画像コンポーンネント
-//import { HeaderImage } from "@src/components/articles/header/HeaderImage";
-//header 記事タイトルコンポーネント
-import { HeaderTitle } from "@src/components/articles/header/HeaderTitle";
-//記事のpath
-import { getArticlePath } from "@src/utils/helper";
-/* 
- サイドバー用コンポーネント
- 削除の可能性
 
- サイドバーresponsive custom hooks
- //import useWindowDimentions from "@src/hooks/useWindowDimensions";
-
-//sidebar目次コンポーネント
-import { SidebarTocList } from "@src/components/articles/sidebar/SidebarToc";
-//sidebar 関連タグリストコンポーネント
-import { SidebarTagList } from "@src/components/articles/sidebar/Tag";
-//aside用レイアウトコンポーネント
-import { ArticleSidebar } from "@src/components/articles/sidebar/SidebarLayout";
-//aside内sticky要素コンポーネントArticleWrapper
-import { SidebarSticky } from "@src/components/articles/sidebar/SidebarSticky";
-
-*/
-
-//article body 記事内要コンポーネント
 import { FixArticleBody } from "@src/components/articles/ArticleBody";
-
-//sns icon.svg
+import { PreDate, PubDate } from "@src/components/articles/header/ArticleDate";
+import { ArticleHeader } from "@src/components/articles/header/HeaderLayout";
+import { HeaderTags } from "@src/components/articles/header/HeaderTag";
+import { HeaderTitle } from "@src/components/articles/header/HeaderTitle";
+import { BlogSEO } from "@src/components/BlogSEO";
+import { AsideProfile } from "@src/components/cards/Profile";
 import { TwitterIcon } from "@src/components/icons/TwitterIcon";
+
+import { getBlogs, getPreview } from "@src/lib/blog";
+import { clOverlay } from "@src/lib/cl";
+
+import { ArticleItems } from "@src/types/types";
+
+import { getArticlePath } from "@src/utils/helper";
+import { isDraft } from "@src/utils/isDraft";
+import { member } from "@src/utils/member";
+import { toStringId } from "@src/utils/toStringId";
+
+import styles from "@src/styles/pages/blog/BlogContent.module.scss";
+
 interface Props {
   blog: ArticleItems;
   category: string;
@@ -57,21 +32,11 @@ interface Props {
   cl: string;
   path?: string;
 }
-//interface ArticleBodyItems {
-//markdown: string;
-//language?: string;
-//  code?: string;
-//}
-//interface TocList {
-//  text: string;
-//  id: string;
-//  name: string;
-//}
 
 const Blog: NextPage<Props> = (props) => {
   const { title, publishedAt, createdAt, updatedAt, tags, id, body } =
     props.blog;
-  const { cl, preview, latestArticles, path } = props;
+  const { cl, preview, path } = props;
   return (
     <>
       <BlogSEO title={title} image={cl} path={path} isSummaryLarge={true} />
@@ -83,7 +48,7 @@ const Blog: NextPage<Props> = (props) => {
                 {preview && (
                   <Link href={"/api/clearPreview"}>
                     <a className={styles.clear_preview_mode}>
-                      ** preview mode　解除 **
+                      ** preview mode 解除 **
                     </a>
                   </Link>
                 )}
