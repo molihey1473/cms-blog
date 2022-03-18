@@ -1,16 +1,22 @@
-import { NextPage, GetStaticPaths, GetStaticProps } from "next";
-//記事一覧コンポーネント
+import twemoji from "twemoji";
+
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+
 import { BlogFlatItem } from "@src/components/BlogList";
 //SEO コンポーネント
 import { BlogSEO } from "@src/components/BlogSEO";
+
 //twemoji
-import twemoji from "twemoji";
 import { getTags } from "@src/lib/blog";
+
 //import { TagList } from "@src/components/tags/TagList";
-import { TaggedBlogs, Taglinks, TaggedList } from "@src/types";
-import { toStringName } from "@src/utils/toStringTagName";
+import { TaggedList, Taglinks } from "@src/types/types";
+
 import { getTagPath } from "@src/utils/helper";
+import { toStringName } from "@src/utils/toStringTagName";
+
 import styles from "@src/styles/pages/blog/BlogList.module.scss";
+
 interface Props {
   name: string;
   path: string;
