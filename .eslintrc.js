@@ -59,13 +59,13 @@ module.exports = {
       "error",
       {
         groups: [
-          "index",
-          ["parent", "sibling"],
-          "internal",
-          "external",
           "builtin",
+          "external",
+          "internal",
+          ["parent", "sibling"],
           "object",
           "type",
+          "index",
         ],
         "newlines-between": "always",
         pathGroups: [
@@ -77,6 +77,7 @@ module.exports = {
           { pattern: "next/**", group: "internal", position: "before" },
 
           { pattern: "react", group: "internal", position: "before" },
+          { pattern: "dayjs", group: "internal", position: "before" },
           {
             pattern: ".contents/*.json",
             group: "internal",
@@ -120,6 +121,7 @@ module.exports = {
           "next",
           "next/**",
           "react",
+          "dayjs",
           "twemoji",
         ],
       },
