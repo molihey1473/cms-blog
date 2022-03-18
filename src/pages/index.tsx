@@ -8,9 +8,9 @@ import { PageTitle } from "@src/components/PageTitle";
 
 import { getBlogs } from "@src/lib/blog";
 
-import { member } from "@src/utils/member";
+import { ArticleItems } from "@src/types/types";
 
-import { ArticleItems } from "@src/types";
+import { member } from "@src/utils/member";
 
 import styles from "@src/styles/components/View.module.scss";
 

@@ -1,6 +1,9 @@
 import { NextPage } from "next";
+
 import { Wrapper } from "@src/components/Wrapper";
+
 import styles from "@src/styles/pages/Error.module.scss";
+
 const Error: NextPage = () => {
   return (
     <>

@@ -1,10 +1,12 @@
-import "@src/styles/globals.scss";
-import { Header } from "@src/components/Header";
-import { Footer } from "@src/components/Footer";
-import { ViewContainer } from "@src/components/View";
-import { Wrapper } from "@src/components/Wrapper";
 import { AppProps } from "next/app";
 import Head from "next/head";
+
+import { Footer } from "@src/components/Footer";
+import { Header } from "@src/components/Header";
+import { ViewContainer } from "@src/components/View";
+import { Wrapper } from "@src/components/Wrapper";
+
+import "@src/styles/globals.scss";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
