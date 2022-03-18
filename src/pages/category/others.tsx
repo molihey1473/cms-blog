@@ -1,13 +1,17 @@
-import Head from "next/head";
 import { NextPage } from "next";
-import posts from ".contents/posts.json";
-import { Profile } from "@src/components/cards/Profile";
-import { member } from "@src/utils/member";
-import { CategoryList } from "@src/components/CategoryList";
 
+import Head from "next/head";
+
+import posts from ".contents/posts.json";
+
+import { Profile } from "@src/components/cards/Profile";
+import { CategoryList } from "@src/components/CategoryList";
 import { PostList } from "@src/components/PostList";
-// css style
+
+import { member } from "@src/utils/member";
+
 import styles from "@src/styles/components/View.module.scss";
+
 const Page: NextPage = () => {
   return (
     <>
