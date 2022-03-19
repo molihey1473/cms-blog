@@ -1,5 +1,7 @@
 import fetch from "node-fetch";
+
 import { NextApiRequest, NextApiResponse } from "next";
+
 export default async function preview(
   req: NextApiRequest,
   res: NextApiResponse
@@ -12,7 +14,7 @@ export default async function preview(
     { headers: { "X-API-KEY": process.env.API_KEY || "" } }
   )
     .then((res) => res.json())
-    .catch((error) => null);
+    .catch((error) => console.error(error));
 
   if (!content) {
     return res.status(401).json({ message: "Invalid slug" });
