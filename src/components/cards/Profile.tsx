@@ -1,8 +1,10 @@
-//import { member } from "@src/utils/member";
 import Image from "next/image";
-import { Member } from "@src/types";
-import { TwitterIcon } from "@src/components/icons/TwitterIcon";
+
 import { GithubIcon } from "@src/components/icons/GithubIcon";
+import { TwitterIcon } from "@src/components/icons/TwitterIcon";
+
+import { Member } from "@src/types/types";
+
 import styles from "@src/styles/components/profile.module.scss";
 
 export const Profile: React.FC<{ member: Member }> = (props) => {
