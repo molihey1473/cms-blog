@@ -1,11 +1,13 @@
-import Parser from "rss-parser";
 import fs from "fs-extra";
+import Parser from "rss-parser";
+
+import { FeedItem } from "@src/types/types";
+
+import { member } from "@src/utils/member";
+
 //  # import { member } from "@src/utils/member" だとError: Cannot find module '@src/utils/member'になる
-import { member } from "../utils/member";
-import { PostItem, FeedItem } from "../types";
 //export default {};
 const parser = new Parser();
-//let allPostItems: PostItem[] = [];
 async function fetchFeedItems(url: string) {
   const feed = await parser.parseURL(url);
   if (!feed?.items?.length) return [];
