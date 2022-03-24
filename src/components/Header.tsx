@@ -1,6 +1,10 @@
+
 import Link from "next/link";
+
 import { Wrapper } from "@src/components/Wrapper";
+
 import styles from "@src/styles/components/Header.module.scss";
+
 export const Header: React.FC = () => {
   return (
     <header className={styles.header_layout}>

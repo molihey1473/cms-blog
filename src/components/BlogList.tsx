@@ -1,14 +1,18 @@
-import { ArticleItems, ArticleList } from "@src/types";
 import Link from "next/link";
+
 import dayjs from "dayjs";
-import styles from "@src/styles/pages/blog/BlogList.module.scss";
+
+import { ArticleItems, ArticleList } from "@src/types/types";
+
 import { getArticlePath, getTagPath } from "@src/utils/helper";
+
+import styles from "@src/styles/pages/blog/BlogList.module.scss";
 
 //interface Props {
 //  item: ArticleList;
 //}
 export const BlogLink: React.FC<{ item: ArticleList }> = (props) => {
-  const { id, title, publishedAt, tags } = props.item;
+  const { id, title, publishedAt } = props.item;
   return (
     <article className={styles.blog_link}>
       <Link href={`/articles/${id}`}>

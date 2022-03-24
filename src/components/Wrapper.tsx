@@ -1,5 +1,5 @@
 import styles from "@src/styles/components/Wrapper.module.scss";
-import { ReactNode } from "react";
+
 //ページ共通Warpper
 export const Wrapper: React.FC<{ children: React.ReactNode }> = (props) => {
   return <div className={styles.default}>{props.children}</div>;

@@ -1,5 +1,7 @@
 import dayjs from "dayjs";
-import { PublishDate, PreviewDate } from "@src/types";
+
+import { PreviewDate, PublishDate } from "@src/types/types";
+
 import styles from "@src/styles/components/articles/header/ArticleHeader.module.scss";
 
 export const PreDate: React.FC<PreviewDate> = (props) => {

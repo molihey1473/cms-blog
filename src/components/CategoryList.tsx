@@ -1,6 +1,8 @@
-import styles from "@src/styles/components/CategoryList.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
+
+import styles from "@src/styles/components/CategoryList.module.scss";
+
 interface Props {
   path: string;
   title: string;

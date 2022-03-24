@@ -1,5 +1,7 @@
 import Head from "next/head";
+
 import { config } from "@blog.config";
+
 interface Props {
   title: string;
   path?: string;

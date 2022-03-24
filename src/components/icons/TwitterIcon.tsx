@@ -1,7 +1,3 @@
-interface Props {
-  webUrl: string;
-  test: string;
-}
 export const TwitterIcon: React.FC = () => {
   return (
     <svg

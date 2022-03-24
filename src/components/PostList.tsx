@@ -1,12 +1,16 @@
-import { useState } from "react";
-import { PostItem } from "@src/types";
+
 import Image from "next/image";
-//import { PostLink } from "@src/components/PostLink";
+
+import { useState } from "react";
+
 import dayjs from "dayjs";
+
+import { PostItem } from "@src/types/types";
+
 import styles from "@src/styles/components/PostList.module.scss";
-interface Props {
-  items: PostItem[];
-}
+
+//import { PostLink } from "@src/components/PostLink";
+
 export const PostLink: React.FC<{ item: PostItem }> = (props) => {
   const { title, link, isoDate } = props.item;
   return (
@@ -30,7 +34,7 @@ export const PostLink: React.FC<{ item: PostItem }> = (props) => {
 };
 
 export const PostList: React.FC<{ items: PostItem[] }> = (props) => {
-  const [postItemCount, setPostItemCount] = useState<number>(32);
+  const [postItemCount] = useState<number>(32);
   const totalItemCount = props.items?.length || 0;
   if (!totalItemCount) {
     return <div>記事はありません</div>;
