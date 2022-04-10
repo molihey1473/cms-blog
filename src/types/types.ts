@@ -39,8 +39,8 @@ export interface ArticleItems {
 /* 記事の型 */
 export interface ArticleBodyItems {
   markdown: string;
-  language: string | undefined;
-  code: string | undefined;
+  language: string;
+  code: string;
 }
 /* 記事一覧Article List */
 export interface ArticleList {
@@ -93,5 +93,5 @@ export interface PublishDate {
 /* 記事投稿前プレビュー*/
 export interface PreviewDate {
   createdAt: string;
-  updatedAt?: string;
+  updatedAt: string;
 }
