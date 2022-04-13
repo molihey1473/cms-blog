@@ -30,9 +30,9 @@ export interface ArticleItems {
   body: string;
   publishedAt: string;
   category: { name: string[] };
-  createdAt?: string;
-  updatedAt?: string;
-  tags?: { name: string; id: string }[] | undefined;
+  createdAt: string;
+  updatedAt: string | undefined;
+  tags: { name: string; id: string }[] | undefined;
   //tags?: TagItems[];
   meta?: { image: { url: string } } | null;
 }
@@ -88,10 +88,10 @@ export interface TaggedList {
 /* 記事投稿日 */
 export interface PublishDate {
   publishedAt: string;
-  updatedAt: string;
+  updatedAt: string | undefined;
 }
 /* 記事投稿前プレビュー*/
 export interface PreviewDate {
   createdAt: string;
-  updatedAt: string;
+  updatedAt: string | undefined;
 }
