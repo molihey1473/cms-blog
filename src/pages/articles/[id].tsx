@@ -1,4 +1,11 @@
-import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import { ParsedUrlQuery } from "querystring";
+
+import {
+  GetStaticPaths,
+  GetStaticProps,
+  GetStaticPropsContext,
+  NextPage,
+} from "next";
 
 import Link from "next/link";
 
@@ -19,20 +26,23 @@ import { ArticleItems } from "@src/types/types";
 import { getArticlePath } from "@src/utils/helper";
 import { isDraft } from "@src/utils/isDraft";
 import { member } from "@src/utils/member";
-import { toStringId } from "@src/utils/toStringId";
+//import { toStringId } from "@src/utils/toStringId";
 
 import styles from "@src/styles/pages/blog/BlogContent.module.scss";
 
 interface Props {
   blog: ArticleItems;
-  category: string;
-  body: string;
+  //category: string;
+  //body: string;
   preview: boolean;
   latestArticles: ArticleItems[];
   cl: string;
-  path?: string;
+  path: string;
 }
-
+interface Params extends ParsedUrlQuery {
+  id: string;
+}
+//type Params = Pick<ArticleItems, "id">;
 const Blog: NextPage<Props> = (props) => {
   const { title, publishedAt, createdAt, updatedAt, tags, id, body } =
     props.blog;
@@ -58,7 +68,7 @@ const Blog: NextPage<Props> = (props) => {
                   <PubDate publishedAt={publishedAt} updatedAt={updatedAt} />
                 )}
                 <HeaderTitle title={title} />
-                <HeaderTags tags={tags} />
+                {tags && <HeaderTags tags={tags} />}
               </ArticleHeader>
               <FixArticleBody articleBody={body} />
               <div className={styles.article_share_container}>
@@ -99,7 +109,7 @@ const Blog: NextPage<Props> = (props) => {
   );
 };
 //[id].tsx 静的生成用パス
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const data: { contents: ArticleItems[] } = await getBlogs();
   const paths = data.contents.map((content) => {
     return { params: { id: content.id } };
@@ -110,10 +120,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 //静的生成用props
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps<Props, Params> = async (
+  context: GetStaticPropsContext<Params>
+) => {
   const { params, previewData } = context;
   const draftKey = isDraft(previewData) ? previewData?.draftKey : "";
-  const id = toStringId(params.id);
+  //const id = toStringId(params.id);
+  const { id } = params as Params;
   //下書きpreview記事表示メソッド
   const data = await getPreview(id, draftKey);
   //最新記事表示data取得(0-5)
