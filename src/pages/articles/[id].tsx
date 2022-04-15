@@ -1,11 +1,6 @@
 import { ParsedUrlQuery } from "querystring";
 
-import {
-  GetStaticPaths,
-  GetStaticProps,
-  GetStaticPropsContext,
-  NextPage,
-} from "next";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
 import Link from "next/link";
 
@@ -121,7 +116,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 };
 //静的生成用props
 export const getStaticProps: GetStaticProps<Props, Params> = async (
-  context: GetStaticPropsContext<Params>
+  context
 ) => {
   const { params, previewData } = context;
   const draftKey = isDraft(previewData) ? previewData?.draftKey : "";
