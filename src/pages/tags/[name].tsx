@@ -1,10 +1,11 @@
-import twemoji from "twemoji";
+import { ParsedUrlQuery } from "querystring";
 
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
 import { BlogFlatItem } from "@src/components/BlogList";
 //SEO コンポーネント
 import { BlogSEO } from "@src/components/BlogSEO";
+import { TwemojiP } from "@src/components/icons/Twemoji";
 
 //twemoji
 import { getTags } from "@src/lib/blog";
@@ -13,7 +14,7 @@ import { getTags } from "@src/lib/blog";
 import { TaggedList, Taglinks } from "@src/types/types";
 
 import { getTagPath } from "@src/utils/helper";
-import { toStringName } from "@src/utils/toStringTagName";
+//import { toStringName } from "@src/utils/toStringTagName";
 
 import styles from "@src/styles/pages/blog/BlogList.module.scss";
 
@@ -26,6 +27,9 @@ interface Props {
     publishedAt: string;
   }[];
 }
+interface Params extends ParsedUrlQuery {
+  name: string;
+}
 const Page: NextPage<Props> = (props) => {
   const { taggedBlogs, name, path } = props;
   return (
@@ -33,15 +37,10 @@ const Page: NextPage<Props> = (props) => {
       <BlogSEO title={name} path={path} isSummaryLarge={false} />
       <div className={styles.tagged_blog_content}>
         <div className={styles.tag_name_container}>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: twemoji.parse("🏷", {
-                folder: "svg",
-                ext: ".svg",
-              }),
-            }}
-          />
-          <div className={styles.tag_name}>{`#${name}`}</div>
+          <div className={styles.tag_name}>
+            <TwemojiP emoji={"✊"} />
+            {`#${name}`}
+          </div>
         </div>
         {taggedBlogs ? (
           <div className={styles.tagged_blog_list}>
@@ -60,7 +59,7 @@ const Page: NextPage<Props> = (props) => {
     </>
   );
 };
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const data = await getTags<Taglinks>();
   //paths [name]tsx意外
   const paths =
@@ -74,8 +73,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
     }) || [];
   return { paths, fallback: false };
 };
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const name = toStringName(params.name);
+export const getStaticProps: GetStaticProps<Props, Params> = async (
+  context
+) => {
+  const { params } = context;
+  const { name } = params as Params;
   //tags CMSに関連した記事を抽出するため、再度、頭文字を大文字化
   const rename = name.charAt(0).toUpperCase();
   //idで抽出したデータではなく/tags/reactのようにnameで表示させる
