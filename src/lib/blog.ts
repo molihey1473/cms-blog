@@ -46,27 +46,21 @@ export const getPreview = async (
 };
 
 //記事内ソースコートをハイライト処理
-export const getCodeHighlight = (body: ArticleBodyItems[]) => {
-  for (const bodyItem of body) {
-    if (!bodyItem?.code) {
-      bodyItem.code = null;
-      bodyItem.language = null;
-    } else {
-      bodyItem.code = highlight(
-        bodyItem.code,
-        languages[bodyItem.language],
-        bodyItem.language
-      );
-    }
-  }
-};
-export const fixArticle = (
-  body: {
-    markdown: string;
-    language?: string;
-    code?: string;
-  }[]
-): { body: string } => {
+//export const getCodeHighlight = (body: ArticleBodyItems[]) => {
+//  for (const bodyItem of body) {
+//    if (!bodyItem?.code) {
+//      bodyItem.code = null;
+//      bodyItem.language = null;
+//    } else {
+//      bodyItem.code = highlight(
+//        bodyItem.code,
+//        languages[bodyItem.language],
+//        bodyItem.language
+//      );
+//    }
+//  }
+//};
+export const fixArticle = (body: ArticleBodyItems[]): { body: string } => {
   for (const value of body) {
     if (typeof value.code === "undefined") {
       value.markdown = `<div className="blog_content_body">${value.markdown}</div>`;
