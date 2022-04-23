@@ -1,6 +1,6 @@
-import Cloudinary from "cloudinary";
-// configセットしているがなくてもURL生成できる。
-Cloudinary.v2.config({
+import { v2 as cloudinary } from "cloudinary";
+//configセットしているがなくてもURL生成できる。
+cloudinary.config({
   cloud_name: "dusfum3ze",
   api_key: process.env.CL_API_KEY,
   api_secret: process.env.CL_SECRET_KEY,
@@ -26,5 +26,5 @@ export const clOverlay = async (title: string) => {
       },
     ],
   };
-  return Cloudinary.v2.url("ogp/blog-ogp_oika6p.png", option);
+  return cloudinary.url("ogp/blog-ogp_oika6p.png", option);
 };
