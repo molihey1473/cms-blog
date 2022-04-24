@@ -6,7 +6,7 @@ cloudinary.config({
   api_secret: process.env.CL_SECRET_KEY,
 });
 //cloudinary textパラメータ用メソッド
-export const clOverlay = async (title: string) => {
+export const clOverlay = async (title: string): Promise<string> => {
   const text = encodeURI(title);
   const option = {
     secure: true,
