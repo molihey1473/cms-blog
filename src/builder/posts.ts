@@ -1,4 +1,4 @@
-import fs from "fs-extra";
+import { ensureDirSync, writeJsonSync } from "fs-extra";
 import Parser from "rss-parser";
 
 import { FeedItem } from "@src/types/types";
@@ -35,6 +35,6 @@ async function getFeedItemsFromSources(sources: undefined | string[]) {
 (async function () {
   const items = (await getFeedItemsFromSources(member.sources)) ?? [];
   items.sort((a, b) => b.dateMiliSeconds - a.dateMiliSeconds);
-  fs.ensureDirSync(".contents");
-  fs.writeJsonSync(".contents/posts.json", items);
+  ensureDirSync(".contents");
+  writeJsonSync(".contents/posts.json", items);
 })();
