@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 
 import { Wrapper } from "@src/components/Wrapper";

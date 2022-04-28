@@ -2,7 +2,6 @@ import { WideWrapper } from "@src/components/Wrapper";
 
 import styles from "@src/styles/components/Footer.module.scss";
 
-
 export const Footer: React.FC = () => {
   return (
     <footer className={styles.footer_layout}>
