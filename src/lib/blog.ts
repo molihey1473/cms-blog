@@ -18,7 +18,7 @@ export const getBlogs = async (
   //const url = path ? `${BLOG_API}blog/${path}` : `${BLOG_API}`;
   const allArticle = await fetch(BLOG_API, key)
     .then((res) => res.json())
-    .catch(() => null);
+    .catch((error) => console.error("通信失敗", error));
   return path ? await getSortedData(path, allArticle) : allArticle;
 };
 export const getSortedData = async (
