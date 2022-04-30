@@ -19,7 +19,7 @@ export interface FeedItem {
   link: string;
   contentSnippet?: string;
   isoDate?: string;
-  dateMiliSeconds?: number;
+  dateMiliSeconds: number;
 }
 // /blog/[id].tsx 記事データ
 // tags:TagItemsだとcomponents内で反応しないため。tags:TagItems -> tags?: { name: string; id: string }[];に変更
@@ -47,7 +47,7 @@ export interface ArticleList {
   id: string;
   title: string;
   publishedAt: string;
-  tags?: { name?: string }[];
+  tags: { name: string } | undefined[];
   //isTagIncluded?: boolean;
 }
 /* カテゴリー分けされた記事一覧*/
