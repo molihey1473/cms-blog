@@ -47,7 +47,7 @@ export interface ArticleList {
   id: string;
   title: string;
   publishedAt: string;
-  tags: { name: string } | undefined[];
+  tags: { name: string }[] | undefined;
   //isTagIncluded?: boolean;
 }
 /* カテゴリー分けされた記事一覧*/
