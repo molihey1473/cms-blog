@@ -21,6 +21,7 @@ interface Props {
     id: string;
     title: string;
     publishedAt: string;
+    tags: { name: string }[] | undefined;
   }[];
 }
 interface Params extends ParsedUrlQuery {
@@ -41,11 +42,7 @@ const Page: NextPage<Props> = (props) => {
         {taggedBlogs ? (
           <div className={styles.tagged_blog_list}>
             {taggedBlogs.map((taggedBlog, i) => (
-              <BlogFlatItem
-                key={`taggedBlog-${i}`}
-                item={taggedBlog}
-                isTagIncluded={false}
-              />
+              <BlogFlatItem key={`taggedBlog-${i}`} item={taggedBlog} />
             ))}
           </div>
         ) : (

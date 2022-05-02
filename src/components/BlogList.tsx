@@ -45,11 +45,7 @@ export const BlogFlatList: React.FC<{
     <>
       <div className={styles.flat_list}>
         {props.items.map((data, i) => (
-          <BlogFlatItem
-            key={`BlogFlat-${i}`}
-            item={data}
-            isTagIncluded={true}
-          />
+          <BlogFlatItem key={`BlogFlat-${i}`} item={data} />
         ))}
       </div>
     </>
@@ -57,10 +53,8 @@ export const BlogFlatList: React.FC<{
 };
 export const BlogFlatItem: React.FC<{
   item: ArticleList;
-  isTagIncluded: boolean;
 }> = (props) => {
   const { id, title, publishedAt, tags } = props.item;
-  const isTagIncluded = props.isTagIncluded;
   return (
     <>
       <article className={styles.flat_link}>
@@ -70,7 +64,7 @@ export const BlogFlatItem: React.FC<{
         <Link href={getArticlePath(id)}>
           <a className={styles.flat_link_title}>{title}</a>
         </Link>
-        {isTagIncluded && (
+        {tags && (
           <div className={styles.flat_link_tags}>
             {tags.map((item, i) => (
               <Link key={i} href={getTagPath(item.name)}>
