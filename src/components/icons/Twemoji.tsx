@@ -9,7 +9,7 @@ export const TwemojiP: React.FC<{ emoji: string }> = (props) => {
   console.log(parseEmoji);
   return (
     <>
-      <img src={parseEmoji[0].url} />
+      <img src={parseEmoji[0]?.url} />
     </>
   );
 };
