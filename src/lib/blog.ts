@@ -1,6 +1,6 @@
-import { highlight, languages } from "prismjs";
+import { Grammar, highlight, languages } from "prismjs";
 
-import { ArticleItems, ArticleBodyItems } from "@src/types/types";
+import { ArticleItems } from "@src/types/types";
 
 import { BLOG_API, TAG_API, CATEGORY_API } from "@src/utils/blogInfo";
 
@@ -38,10 +38,12 @@ export const getPreview = async (
   const articleData = await fetch(`${BLOG_API}${id}${params}`, key)
     .then((res) => res.json())
     .catch((error) => console.error("エラーが発生", error));
-  const body = fixArticle(articleData.body);
+  //const body = fixArticle(articleData.body);
   //getCodeHighlight(articleData.body);
-  //console.log(articleData.body);
-  return { ...articleData, ...body };
+  const body = edArticle(articleData.body);
+  console.log(body);
+  //articleData.body = body;
+  return articleData;
   //return articleData;
 };
 
@@ -49,36 +51,69 @@ export const getPreview = async (
 //export const getCodeHighlight = (body: ArticleBodyItems[]) => {
 //  for (const bodyItem of body) {
 //    if (!bodyItem?.code) {
-//      bodyItem.code = null;
-//      bodyItem.language = null;
-//    } else {
 //      bodyItem.code = highlight(
 //        bodyItem.code,
-//        languages[bodyItem.language],
-//        bodyItem.language
+//        languages[bodyItem.lang],
+//        bodyItem.lang
 //      );
+//      console.log(bodyItem.code);
 //    }
 //  }
 //};
-export const fixArticle = (body: ArticleBodyItems[]): { body: string } => {
-  for (const value of body) {
-    if (typeof value.code === "undefined") {
-      value.markdown = `<div className="blog_content_body">${value.markdown}</div>`;
-    } else {
-      value.markdown = `<div className="blog_content_body">${
-        value.markdown
-      }<div className="code-container">
-      <pre className=${`language-${value.language}`}>
-        <code className=${`language-${value.language}`}>${highlight(
-        value.code,
-        languages[value.language],
-        value.language
-      )}</code>
-      </pre>
-    </div></div>`;
-    }
-  }
-  return { body: body[0].markdown };
+interface TestA {
+  type: "ok";
+  markdown: string;
+  lang: string;
+  code: string;
+}
+interface TestB {
+  type: "no";
+  markdown: string;
+}
+//type reduceBody = TestA | TestB;
+//export const fixArticle = (body: reduceBody[]): { body: string } => {
+//  for (const value of body) {
+//    if (value.type === "ok") {
+//      const gura = languages[value.lang];
+//      if (gura) {
+//        const codeHtml = highlight(value.code, gura, value.lang);
+//        value.markdown = `<div className="blog_content_body">${
+//          value.markdown
+//        }<div className="code-container"><pre className=${`language-${value.lang}`}><code className=${`language-${value.lang}`}>${codeHtml}</code></pre></div></div>`;
+//      }
+//    } else {
+//      value.markdown = `<div className="blog_content_body">${value.markdown}</div>`;
+//    }
+//  }
+//  return { body: body[0]?.markdown };
+//};
+export const edArticle = (body: (TestA | TestB)[]): string => {
+  const articleData = body.reduce<string>(
+    (sum: string, item: TestA | TestB) => {
+      if (item.type === "ok") {
+        const codeLang = languages[item.lang];
+        if (codeLang) {
+          const hCode = highlightCode(item.code, codeLang, item.lang);
+          return sum + hCode;
+        }
+        return sum;
+      } else {
+        return sum + item.markdown;
+      }
+    },
+    ""
+  );
+  console.log(articleData);
+  return articleData;
+};
+export const highlightCode = (
+  code: string,
+  grammar: Grammar,
+  lang: string
+): string => {
+  const codeWithStyle = highlight(code, grammar, lang);
+  const markdown = `<div className="code-container"><pre className=${`language-${lang}`}><code className=${`language-${lang}`}>${codeWithStyle}</code></pre></div>`;
+  return markdown;
 };
 
 //get data for [name].tsx (getCategoryとほぼ同一メソッドなので修正検討中)
