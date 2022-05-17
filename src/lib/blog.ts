@@ -40,10 +40,10 @@ export const getPreview = async (
     .catch((error) => console.error("エラーが発生", error));
   //const body = fixArticle(articleData.body);
   //getCodeHighlight(articleData.body);
-  const body = edArticle(articleData.body);
-  console.log(body);
+  const highlightBody = edArticle(articleData.body);
+  console.log(highlightBody);
   //articleData.body = body;
-  return articleData;
+  return { ...articleData, ...highlightBody };
   //return articleData;
 };
 
@@ -87,7 +87,7 @@ interface TestB {
 //  }
 //  return { body: body[0]?.markdown };
 //};
-export const edArticle = (body: (TestA | TestB)[]): string => {
+export const edArticle = (body: (TestA | TestB)[]): { body: string } => {
   const articleData = body.reduce<string>(
     (sum: string, item: TestA | TestB) => {
       if (item.type === "ok") {
@@ -104,7 +104,7 @@ export const edArticle = (body: (TestA | TestB)[]): string => {
     ""
   );
   console.log(articleData);
-  return articleData;
+  return { body: articleData };
 };
 export const highlightCode = (
   code: string,
