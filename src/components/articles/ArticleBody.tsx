@@ -1,4 +1,7 @@
 import parse from "html-react-parser";
+//import { highlight, languages } from "prismjs";
+//
+//import { ArticleBodyItems } from "@src/types/types";
 
 //export const ArticleBody: React.FC<{ articleBody: ArticleBodyItems[] }> = (
 //  props
@@ -24,6 +27,7 @@ import parse from "html-react-parser";
 //    </>
 //  );
 //};
+
 export const FixArticleBody: React.FC<{ articleBody: string }> = (props) => {
   const { articleBody } = props;
   return (
