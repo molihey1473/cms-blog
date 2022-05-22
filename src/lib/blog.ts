@@ -40,10 +40,9 @@ export const getPreview = async (
     .catch((error) => console.error("エラーが発生", error));
   //const body = fixArticle(articleData.body);
   //getCodeHighlight(articleData.body);
-  const highlightBody = edArticle(articleData.body);
-  console.log(highlightBody);
-  //articleData.body = body;
-  return { ...articleData, ...highlightBody };
+  const highlightBody = hArticle(articleData.body);
+  articleData.body = highlightBody;
+  return articleData;
   //return articleData;
 };
 
@@ -60,17 +59,17 @@ export const getPreview = async (
 //    }
 //  }
 //};
-interface TestA {
+type TestA = {
   type: "ok";
   markdown: string;
-  lang: string;
+  language: string;
   code: string;
-}
-interface TestB {
+};
+type TestB = {
   type: "no";
   markdown: string;
-}
-//type reduceBody = TestA | TestB;
+};
+type reduceBody = TestA | TestB;
 //export const fixArticle = (body: reduceBody[]): { body: string } => {
 //  for (const value of body) {
 //    if (value.type === "ok") {
@@ -87,24 +86,24 @@ interface TestB {
 //  }
 //  return { body: body[0]?.markdown };
 //};
-export const edArticle = (body: (TestA | TestB)[]): { body: string } => {
-  const articleData = body.reduce<string>(
-    (sum: string, item: TestA | TestB) => {
-      if (item.type === "ok") {
-        const codeLang = languages[item.lang];
-        if (codeLang) {
-          const hCode = highlightCode(item.code, codeLang, item.lang);
-          return sum + hCode;
-        }
-        return sum;
-      } else {
-        return sum + item.markdown;
+export const hArticle = (body: reduceBody[]): string => {
+  const articleData = body.reduce<string>((sum: string, item: reduceBody) => {
+    if (typeof item.code !== "string" && typeof item.language !== "string") {
+      console.log("コードなし");
+      return sum + item.markdown;
+    } else {
+      const codeLang = languages[item.language];
+      if (codeLang && item.code) {
+        const hCode = highlightCode(item.code, codeLang, item.language);
+        console.log("ハイライト");
+        return sum + hCode;
       }
-    },
-    ""
-  );
-  console.log(articleData);
-  return { body: articleData };
+    }
+    console.log(sum);
+    return sum + "失敗";
+  }, "");
+
+  return articleData;
 };
 export const highlightCode = (
   code: string,
@@ -113,6 +112,7 @@ export const highlightCode = (
 ): string => {
   const codeWithStyle = highlight(code, grammar, lang);
   const markdown = `<div className="code-container"><pre className=${`language-${lang}`}><code className=${`language-${lang}`}>${codeWithStyle}</code></pre></div>`;
+  //console.log(markdown);
   return markdown;
 };
 
