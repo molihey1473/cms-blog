@@ -61,7 +61,7 @@ export const getPreview = async (
 //};
 type TestA = {
   type: "ok";
-  markdown: string;
+  //markdown: string;
   language: string;
   code: string;
 };
