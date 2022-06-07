@@ -60,13 +60,13 @@ export const getPreview = async (
 //  }
 //};
 type TestA = {
-  type: "ok";
+  fieldId: "code";
   //markdown: string;
   language: string;
   code: string;
 };
 type TestB = {
-  type: "no";
+  fieldId: "body";
   markdown: string;
 };
 type reduceBody = TestA | TestB;
