@@ -60,13 +60,13 @@ export const getPreview = async (
 //  }
 //};
 type TestA = {
-  fieldId: "code";
+  fieldId: "codeContent";
   //markdown: string;
   language: string;
   code: string;
 };
 type TestB = {
-  fieldId: "body";
+  fieldId: "markContent";
   markdown: string;
 };
 type reduceBody = TestA | TestB;
@@ -88,8 +88,7 @@ type reduceBody = TestA | TestB;
 //};
 export const hArticle = (body: reduceBody[]): string => {
   const articleData = body.reduce<string>((sum: string, item: reduceBody) => {
-    if (typeof item.code !== "string" && typeof item.language !== "string") {
-      console.log("コードなし");
+    if (item.fieldId === "markContent") {
       return sum + item.markdown;
     } else {
       const codeLang = languages[item.language];
@@ -98,9 +97,21 @@ export const hArticle = (body: reduceBody[]): string => {
         console.log("ハイライト");
         return sum + hCode;
       }
+      return sum;
     }
-    console.log(sum);
-    return sum + "失敗";
+    //if (typeof item.code !== "string" && typeof item.language !== "string") {
+    //  console.log("コードなし");
+    //  return sum + item.markdown;
+    //} else {
+    //  const codeLang = languages[item.language];
+    //  if (codeLang && item.code) {
+    //    const hCode = highlightCode(item.code, codeLang, item.language);
+    //    console.log("ハイライト");
+    //    return sum + hCode;
+    //  }
+    //}
+    //console.log(sum);
+    //return sum + "失敗";
   }, "");
 
   return articleData;
