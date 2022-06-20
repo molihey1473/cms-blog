@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 export default async function clearPreview(
-  req: NextApiRequest,
+  _req: NextApiRequest,
   res: NextApiResponse
 ) {
   // Next.js独自のヘッドレスCMS用プレビュー機能
