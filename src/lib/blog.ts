@@ -87,7 +87,7 @@ type reduceBody = TestA | TestB;
 //  return { body: body[0]?.markdown };
 //};
 export const hArticle = (body: reduceBody[]): string => {
-  const articleData = body.reduce<string>((sum: string, item: reduceBody) => {
+  const articleData = body.reduce((sum: string, item: reduceBody) => {
     if (item.fieldId === "markContent") {
       return sum + item.markdown;
     } else {
