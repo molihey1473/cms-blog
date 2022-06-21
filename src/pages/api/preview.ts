@@ -2,19 +2,17 @@ import fetch from "node-fetch";
 
 import { NextApiRequest, NextApiResponse } from "next";
 
-import { toStringId } from "@src/utils/toStringId";
-
 export default async function preview(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const id = toStringId(req.query.slug);
-  const draftKey = toStringId(req.query.draftKey);
+  const id = req.query.slug;
+  const draftKey = req.query.draftKey;
   if (!id) {
     return res.status(404).end();
   }
   const content = await fetch(
-    `https://roy1473.microcms.io/api/v1/blog/${id}?fields=id&draftKey=${req.query.draftKey}`,
+    `https://roy1473.microcms.io/api/v1/blog/${id}?fields=id&draftKey=${draftKey}`,
     { headers: { "X-API-KEY": process.env.API_KEY || "" } }
   )
     .then((res) => res.json())
