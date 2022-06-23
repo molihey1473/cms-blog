@@ -1,9 +1,12 @@
 import { v2 as cloudinary } from "cloudinary";
 //configセットしているがなくてもURL生成できる。
+
+const API_KEY = process.env.CL_API_KEY ?? "";
+const API_SEC_KEY = process.env.CL_SECRET_KEY ?? "";
 cloudinary.config({
   cloud_name: "dusfum3ze",
-  api_key: process.env.CL_API_KEY,
-  api_secret: process.env.CL_SECRET_KEY,
+  api_key: API_KEY,
+  api_secret: API_SEC_KEY,
 });
 //cloudinary textパラメータ用メソッド
 export const clOverlay = async (title: string): Promise<string> => {
