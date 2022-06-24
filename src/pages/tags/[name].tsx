@@ -54,11 +54,10 @@ const Page: NextPage<Props> = (props) => {
 };
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const data = await getTags<Taglinks>();
-  const paths =
-    data.contents.map((items) => {
-      const lowScaleName = items.name.replace(/\./g, "").toLowerCase();
-      return { params: { name: lowScaleName } };
-    }) || [];
+  const paths = data.contents.map((items) => {
+    const lowScaleName = items.name.replace(/\./g, "").toLowerCase();
+    return { params: { name: lowScaleName } };
+  }); //|| [];
   return { paths, fallback: false };
 };
 export const getStaticProps: GetStaticProps<Props, Params> = async (
