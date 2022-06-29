@@ -12,7 +12,7 @@ export default async function preview(
     return res.status(404).end();
   }
   const content = await fetch(
-    `https://roy1473.microcms.io/api/v1/blog/${id}?fields=id&draftKey=${draftKey}`,
+    `https://roy1473.microcms.io/api/v1/blog/${id}&draftKey=${draftKey}`,
     { headers: { "X-MICROCMS-API-KEY": process.env.API_KEY || "" } }
   )
     .then((res) => res.json())
