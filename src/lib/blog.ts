@@ -7,7 +7,7 @@ import { BLOG_API, TAG_API, CATEGORY_API } from "@src/utils/blogInfo";
 // microCMS API KEY
 const key = {
   headers: {
-    "X-API-KEY": process.env.API_KEY ?? "",
+    "X-MICROCMS-API-KEY": process.env.API_KEY ?? "",
   },
 };
 
