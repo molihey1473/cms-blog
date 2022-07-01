@@ -11,12 +11,16 @@ export default async function preview(
   if (!id) {
     return res.status(404).end();
   }
+
   const content = await fetch(
-    `https://roy1473.microcms.io/api/v1/blog/${id}&draftKey=${draftKey}`,
+    `https://roy1473.microcms.io/api/v1/blog/${id}?draftKey=${draftKey}`,
     { headers: { "X-MICROCMS-API-KEY": process.env.API_KEY || "" } }
   )
     .then((res) => res.json())
     .catch((error) => console.error(error));
+  console.log("データID", id);
+  console.log("データdraftKey", draftKey);
+  console.log("データ内容", content);
 
   if (!content) {
     return res.status(401).json({ message: "Invalid slug" });
@@ -26,6 +30,6 @@ export default async function preview(
     id: id,
     draftKey: draftKey,
   });
-  res.writeHead(307, { Location: `/blog/${id}` });
+  res.writeHead(307, { Location: `/articles/${id}` });
   res.end("Preview mode enabled");
 }
