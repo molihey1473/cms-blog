@@ -18,9 +18,6 @@ export default async function preview(
   )
     .then((res) => res.json())
     .catch((error) => console.error(error));
-  console.log("データID", id);
-  console.log("データdraftKey", draftKey);
-  console.log("データ内容", content);
 
   if (!content) {
     return res.status(401).json({ message: "Invalid slug" });
