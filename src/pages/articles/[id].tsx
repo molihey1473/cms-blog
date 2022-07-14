@@ -3,6 +3,7 @@ import { ParsedUrlQuery } from "querystring";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import { FixArticleBody } from "@src/components/articles/ArticleBody";
 import { PreDate, PubDate } from "@src/components/articles/header/ArticleDate";
@@ -42,6 +43,10 @@ const Blog: NextPage<Props> = (props) => {
   const { title, publishedAt, createdAt, updatedAt, tags, id, body } =
     props.blog;
   const { cl, preview, path } = props;
+  const router = useRouter();
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
       <BlogSEO title={title} image={cl} path={path} isSummaryLarge={true} />
