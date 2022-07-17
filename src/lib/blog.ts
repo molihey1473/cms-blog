@@ -130,7 +130,9 @@ export const highlightCode = (
 //get data for [name].tsx (getCategoryとほぼ同一メソッドなので修正検討中)
 export const getTags = async <T>(name?: string): Promise<T> => {
   if (typeof name === "string") {
-    const nameSlug = `?filters=name${encodeURIComponent(`[contains]${name}`)}`;
+    const nameSlug = `?depth=2&filters=name${encodeURIComponent(
+      `[contains]${name}`
+    )}`;
     const url = `${TAG_API}${nameSlug}`;
     const preData = await fetch(url, key)
       .then((res) => res.json())
