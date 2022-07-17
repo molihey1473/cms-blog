@@ -64,7 +64,7 @@ export const BlogFlatItem: React.FC<{
         <Link href={getArticlePath(id)}>
           <a className={styles.flat_link_title}>{title}</a>
         </Link>
-        {tags?.length && (
+        {!!tags && (
           <div className={styles.flat_link_tags}>
             {tags.map((item, i) => (
               <Link key={i} href={getTagPath(item.name)}>
