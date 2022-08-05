@@ -69,8 +69,8 @@ type TestB = {
   fieldId: "markContent";
   markdown: string;
 };
-type reduceBody = TestA | TestB;
-//export const fixArticle = (body: reduceBody[]): { body: string } => {
+type articleBody = TestA | TestB;
+//export const addHighlight = (body: reduceBody[]): { body: string } => {
 //  for (const value of body) {
 //    if (value.type === "ok") {
 //      const gura = languages[value.lang];
@@ -86,8 +86,8 @@ type reduceBody = TestA | TestB;
 //  }
 //  return { body: body[0]?.markdown };
 //};
-export const hArticle = (body: reduceBody[]): string => {
-  const articleData = body.reduce((sum: string, item: reduceBody) => {
+export const hArticle = (body: articleBody[]): string => {
+  const articleData = body.reduce((sum: string, item: articleBody) => {
     if (item.fieldId === "markContent") {
       return sum + item.markdown;
     } else {
