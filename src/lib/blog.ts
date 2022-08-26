@@ -61,7 +61,6 @@ export const getPreview = async (
 //};
 type TestA = {
   fieldId: "codeContent";
-  //markdown: string;
   language: string;
   code: string;
 };
@@ -70,48 +69,50 @@ type TestB = {
   markdown: string;
 };
 type articleBody = TestA | TestB;
-//export const addHighlight = (body: reduceBody[]): { body: string } => {
-//  for (const value of body) {
-//    if (value.type === "ok") {
+//export const addHighlight = (body: articleBody[]): void => {
+//  for await (const value of body) {
+//    if (value.fieldId === "codeContent") {
 //      const gura = languages[value.lang];
-//      if (gura) {
+//      if (gura && value.fieldId === "codeContent") {
 //        const codeHtml = highlight(value.code, gura, value.lang);
 //        value.markdown = `<div className="blog_content_body">${
 //          value.markdown
 //        }<div className="code-container"><pre className=${`language-${value.lang}`}><code className=${`language-${value.lang}`}>${codeHtml}</code></pre></div></div>`;
 //      }
-//    } else {
 //      value.markdown = `<div className="blog_content_body">${value.markdown}</div>`;
 //    }
+//    //return { body: body[0]?.markdown };
 //  }
-//  return { body: body[0]?.markdown };
 //};
+
+export function isGrammar<T>(val: T): asserts val is NonNullable<T> {
+  if (val === undefined || val === null) {
+    throw new Error(`expected 'val' to be defined, but but val was ${val} `);
+  }
+}
 export const hArticle = (body: articleBody[]): string => {
   const articleData = body.reduce((sum: string, item: articleBody) => {
-    if (item.fieldId === "markContent") {
-      return sum + item.markdown;
-    } else {
+    if (item.fieldId === "codeContent") {
       const codeLang = languages[item.language];
-      if (codeLang && item.code) {
-        const hCode = highlightCode(item.code, codeLang, item.language);
-        console.log("ハイライト");
-        return sum + hCode;
-      }
-      return sum;
+      isGrammar(codeLang);
+      const hCode = highlightCode(item.code, codeLang, item.language);
+      sum + hCode;
+    } else {
+      sum + item.markdown;
     }
-    //if (typeof item.code !== "string" && typeof item.language !== "string") {
-    //  console.log("コードなし");
+    return sum;
+    //if (item.fieldId === "markContent") {
     //  return sum + item.markdown;
     //} else {
     //  const codeLang = languages[item.language];
+    //  console.log(codeLang);
     //  if (codeLang && item.code) {
     //    const hCode = highlightCode(item.code, codeLang, item.language);
     //    console.log("ハイライト");
     //    return sum + hCode;
     //  }
+    //  return sum;
     //}
-    //console.log(sum);
-    //return sum + "失敗";
   }, "");
 
   return articleData;
