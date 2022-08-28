@@ -85,7 +85,7 @@ type articleBody = TestA | TestB;
 //  }
 //};
 
-export function isGrammar<T>(val: T): asserts val is NonNullable<T> {
+export function isDefined<T>(val: T): asserts val is NonNullable<T> {
   if (val === undefined || val === null) {
     throw new Error(`expected 'val' to be defined, but but val was ${val} `);
   }
@@ -94,7 +94,7 @@ export const hArticle = (body: articleBody[]): string => {
   const articleData = body.reduce((sum: string, item: articleBody) => {
     if (item.fieldId === "codeContent") {
       const codeLang = languages[item.language];
-      isGrammar(codeLang);
+      isDefined(codeLang);
       const hCode = highlightCode(item.code, codeLang, item.language);
       sum + hCode;
     } else {
