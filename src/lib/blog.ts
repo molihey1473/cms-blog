@@ -3,6 +3,7 @@ import { Grammar, highlight, languages } from "prismjs";
 import { ArticleItems } from "@src/types/types";
 
 import { BLOG_API, TAG_API, CATEGORY_API } from "@src/utils/blogInfo";
+import { isDefined } from "@src/utils/helper";
 
 // microCMS API KEY
 const key = {
@@ -85,11 +86,6 @@ type articleBody = TestA | TestB;
 //  }
 //};
 
-export function isDefined<T>(val: T): asserts val is NonNullable<T> {
-  if (val === undefined || val === null) {
-    throw new Error(`expected 'val' to be defined, but but val was ${val} `);
-  }
-}
 export const hArticle = (body: articleBody[]): string => {
   const articleData = body.reduce((sum: string, item: articleBody) => {
     if (item.fieldId === "codeContent") {
