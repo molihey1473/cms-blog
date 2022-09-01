@@ -13,15 +13,15 @@ const key = {
 };
 
 //get data for [id].tsx 記事一覧data
-export const getBlogs = async (
+export async function getBlogs(
   path?: string
-): Promise<{ contents: ArticleItems[] }> => {
+): Promise<{ contents: ArticleItems[] }> {
   //const url = path ? `${BLOG_API}blog/${path}` : `${BLOG_API}`;
   const allArticle = await fetch(BLOG_API, key)
     .then((res) => res.json())
     .catch((error) => console.error("通信失敗", error));
   return path ? await getSortedData(path, allArticle) : allArticle;
-};
+}
 export const getSortedData = async (
   path: string,
   allArticle: { contents: ArticleItems[] }
@@ -31,10 +31,10 @@ export const getSortedData = async (
   });
 };
 // preview for [id].tsx
-export const getPreview = async (
+export async function getPreview(
   id: string,
   draftKey: string
-): Promise<ArticleItems> => {
+): Promise<ArticleItems> {
   const params = draftKey ? `?draftKey=${draftKey}` : "";
   const articleData = await fetch(`${BLOG_API}${id}${params}`, key)
     .then((res) => res.json())
@@ -45,7 +45,7 @@ export const getPreview = async (
   articleData.body = highlightBody;
   return articleData;
   //return articleData;
-};
+}
 
 //記事内ソースコートをハイライト処理
 //export const getCodeHighlight = (body: ArticleBodyItems[]) => {
@@ -86,7 +86,7 @@ type articleBody = TestA | TestB;
 //  }
 //};
 
-export const hArticle = (body: articleBody[]): string => {
+export function hArticle(body: articleBody[]): string {
   const articleData = body.reduce((sum: string, item: articleBody) => {
     if (item.fieldId === "codeContent") {
       const codeLang = languages[item.language];
@@ -112,21 +112,21 @@ export const hArticle = (body: articleBody[]): string => {
   }, "");
 
   return articleData;
-};
-export const highlightCode = (
+}
+export function highlightCode(
   code: string,
   grammar: Grammar,
   lang: string
-): string => {
+): string {
   const codeWithStyle = highlight(code, grammar, lang);
   const markdown = `<div className="code-container"><pre className=${`language-${lang}`}><code className=${`language-${lang}`}>${codeWithStyle}</code></pre></div>`;
   //console.log(markdown);
   return markdown;
-};
+}
 
 //get data for [name].tsx (getCategoryとほぼ同一メソッドなので修正検討中)
-export const getTags = async <T>(name?: string): Promise<T> => {
-  if (typeof name === "string") {
+export async function getTags<T>(name?: string): Promise<T> {
+  if (name) {
     const nameSlug = `?depth=2&filters=name${encodeURIComponent(
       `[contains]${name}`
     )}`;
@@ -140,9 +140,9 @@ export const getTags = async <T>(name?: string): Promise<T> => {
       .then((res) => res.json())
       .catch((error) => console.error("エラーが発生", error));
   }
-};
+}
 // get data for /category/[name].tsx (getTagとほぼ同一メソッドなので修正検討中)
-export const getCategory = async (): Promise<string[]> => {
+export async function getCategory(): Promise<string[]> {
   const path = CATEGORY_API;
   const data = await fetch(path, key)
     .then((res) => res.json())
@@ -150,4 +150,4 @@ export const getCategory = async (): Promise<string[]> => {
   return data.contents.map((item: { name: string[] }) => {
     return `/category/${item.name[0]}`;
   });
-};
+}
