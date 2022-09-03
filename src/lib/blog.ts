@@ -33,18 +33,15 @@ export const getSortedData = async (
 // preview for [id].tsx
 export async function getPreview(
   id: string,
-  draftKey: string
+  draftKey: string | undefined
 ): Promise<ArticleItems> {
   const params = draftKey ? `?draftKey=${draftKey}` : "";
   const articleData = await fetch(`${BLOG_API}${id}${params}`, key)
     .then((res) => res.json())
     .catch((error) => console.error("エラーが発生", error));
-  //const body = fixArticle(articleData.body);
-  //getCodeHighlight(articleData.body);
   const highlightBody = hArticle(articleData.body);
   articleData.body = highlightBody;
   return articleData;
-  //return articleData;
 }
 
 //記事内ソースコートをハイライト処理
@@ -92,11 +89,10 @@ export function hArticle(body: articleBody[]): string {
       const codeLang = languages[item.language];
       isDefined(codeLang);
       const hCode = highlightCode(item.code, codeLang, item.language);
-      sum + hCode;
+      return sum + hCode;
     } else {
-      sum + item.markdown;
+      return sum + item.markdown;
     }
-    return sum;
     //if (item.fieldId === "markContent") {
     //  return sum + item.markdown;
     //} else {
@@ -110,7 +106,7 @@ export function hArticle(body: articleBody[]): string {
     //  return sum;
     //}
   }, "");
-
+  console.log("データチェック", articleData);
   return articleData;
 }
 export function highlightCode(
