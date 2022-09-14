@@ -6,7 +6,7 @@ import { Header } from "@src/components/Header";
 import { ViewContainer } from "@src/components/View";
 import { Wrapper } from "@src/components/Wrapper";
 
-import "@src/styles/globals.scss";
+import "@src/styles/globals/index.scss";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
