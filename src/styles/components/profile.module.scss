@@ -1,3 +1,4 @@
+@use "../../styles/globals/responsive" as *;
 .article_author_info {
   padding: 2rem 0;
 }
@@ -21,6 +22,9 @@
 .profile_member_name {
   color: var(--text-base);
   font-size: 40px;
+  @include mq(md) {
+    color: red;
+  }
 }
 .profile_member_bio {
   font-size: 0.9rem;
