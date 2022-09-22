@@ -1,4 +1,4 @@
-@import "../../globals/responsive";
+@use "../../globals/responsive" as responsive;
 
 .blog_list_layout {
   animation: fadeUp 0.4s ease;
@@ -25,7 +25,7 @@
   //display: flex;
   //justify-content: space-between;
   //flex-wrap: wrap;
-  @include mq(md) {
+  @include responsive.mq(md) {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -41,7 +41,7 @@
   font-size: 15px;
   overflow: hidden;
   //border: 2px solid var(--c-primary);
-  @include mq(md) {
+  @include responisve.mq(md) {
     width: 100%;
   }
 }
@@ -173,7 +173,7 @@
   background-color: var(--text-emphathize);
   border-radius: 8px;
   border: 1px solid #d0e4f3;
-  @include mq(xl) {
+  @include responisve.mq(xl) {
     &:hover {
       color: #fff;
       background-color: #d0e4f3;

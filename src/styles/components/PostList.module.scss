@@ -1,4 +1,4 @@
-@import "../../styles/globals/responsive";
+@use "../globals/responsive" as responsive;
 //PostList components.tsx
 .post_list {
   display: flex;
@@ -20,7 +20,7 @@
   &:hover {
     background: #f8f8fa;
   }
-  @include mq(sm) {
+  @include responisve.mq(sm) {
     width: 100%;
   }
 }
