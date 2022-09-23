@@ -1,4 +1,4 @@
-@use "../../globals/responsive" as responsive;
+@use "../../globals/responsive" as mixin;
 .blog_article {
   //background-color: var(--light-blue--bg);
   font-size: 16px;
@@ -10,14 +10,14 @@
   justify-content: center;
   //justify-content: space-between;
   padding-bottom: 3.5rem;
-  @include responsive.mq(lg) {
+  @include mixin.mq(lg) {
     display: block;
   }
 }
 .blog_content_layout {
   //サイドバーがある場合
   //width: calc(100% - 330px);
-  @include responisve.mq(lg) {
+  @include mixin.mq(lg) {
     width: 100%;
   }
 }

@@ -1,4 +1,4 @@
-@use "../globals/responsive" as responsive;
+@use "../globals/responsive" as mixin;
 //PostList components.tsx
 .post_list {
   display: flex;
@@ -20,7 +20,7 @@
   &:hover {
     background: #f8f8fa;
   }
-  @include responisve.mq(sm) {
+  @include mixin.mq(sm) {
     width: 100%;
   }
 }

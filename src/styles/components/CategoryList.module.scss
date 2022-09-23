@@ -1,4 +1,4 @@
-@use "../../styles/globals/responsive" as responsive;
+@use "../../styles/globals/responsive" as mixin;
 .navigation_content {
   display: flex;
   align-items: center;
