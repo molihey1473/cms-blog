@@ -22,6 +22,9 @@
 .profile_member_name {
   color: var(--text-base);
   font-size: 40px;
+  @include mixin.mq(md) {
+    font-size: 20px;
+  }
 }
 .profile_member_bio {
   font-size: 0.9rem;
