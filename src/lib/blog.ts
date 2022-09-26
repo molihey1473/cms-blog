@@ -106,7 +106,6 @@ export function hArticle(body: articleBody[]): string {
     //  return sum;
     //}
   }, "");
-  console.log("データチェック", articleData);
   return articleData;
 }
 export function highlightCode(
