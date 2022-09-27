@@ -31,7 +31,7 @@ export const getSortedData = async (
   });
 };
 // preview for [id].tsx
-export async function getPreview(
+export async function getArticleContent(
   id: string,
   draftKey: string | undefined
 ): Promise<ArticleItems> {

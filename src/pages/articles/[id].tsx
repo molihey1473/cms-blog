@@ -14,7 +14,7 @@ import { BlogSEO } from "@src/components/BlogSEO";
 import { AsideProfile } from "@src/components/cards/Profile";
 import { TwitterIcon } from "@src/components/icons/TwitterIcon";
 
-import { getAllArticles, getPreview } from "@src/lib/blog";
+import { getAllArticles, getArticleContent } from "@src/lib/blog";
 import { clOverlay } from "@src/lib/cl";
 
 import { ArticleItems } from "@src/types/types";
@@ -128,7 +128,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (
   //const id = toStringId(params.id);
   const { id } = params as Params;
   //下書きpreview記事表示メソッド
-  const data = await getPreview(id, draftKey);
+  const data = await getArticleContent(id, draftKey);
   //最新記事表示data取得(0-5)
   const latestData = await getAllArticles();
   //OGP画像テキスト挿入 for cloudinary
