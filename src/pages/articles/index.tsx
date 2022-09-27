@@ -4,7 +4,7 @@ import { BlogList } from "@src/components/BlogList";
 import { CategoryList } from "@src/components/CategoryList";
 import { Wrapper } from "@src/components/Wrapper";
 
-import { getBlogs } from "@src/lib/blog";
+import { getAllArticles } from "@src/lib/blog";
 
 import { ArticleItems } from "@src/types/types";
 
@@ -33,7 +33,7 @@ const page: NextPage<Props> = (props) => {
 export const getStaticProps: GetStaticProps = async () => {
   const data: {
     contents: ArticleItems[];
-  } = await getBlogs();
+  } = await getAllArticles();
   return {
     props: {
       blogs: data.contents,

@@ -6,7 +6,7 @@ import { Profile } from "@src/components/cards/Profile";
 import { CategoryList } from "@src/components/CategoryList";
 import { PageTitle } from "@src/components/PageTitle";
 
-import { getBlogs } from "@src/lib/blog";
+import { getAllArticles } from "@src/lib/blog";
 
 import { ArticleItems } from "@src/types/types";
 
@@ -36,7 +36,7 @@ const Home: NextPage<{ allArticlesData: ArticleItems[]; category: string }> = (
   );
 };
 export const getStaticProps: GetStaticProps = async () => {
-  const data: { contents: ArticleItems[] } = await getBlogs();
+  const data: { contents: ArticleItems[] } = await getAllArticles();
   return {
     props: {
       allArticlesData: data.contents,

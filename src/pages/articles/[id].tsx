@@ -14,7 +14,7 @@ import { BlogSEO } from "@src/components/BlogSEO";
 import { AsideProfile } from "@src/components/cards/Profile";
 import { TwitterIcon } from "@src/components/icons/TwitterIcon";
 
-import { getBlogs, getPreview } from "@src/lib/blog";
+import { getAllArticles, getPreview } from "@src/lib/blog";
 import { clOverlay } from "@src/lib/cl";
 
 import { ArticleItems } from "@src/types/types";
@@ -110,7 +110,7 @@ const Blog: NextPage<Props> = (props) => {
 };
 //[id].tsx 静的生成用パス
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const data: { contents: ArticleItems[] } = await getBlogs();
+  const data: { contents: ArticleItems[] } = await getAllArticles();
   const paths = data.contents.map((content) => {
     return { params: { id: content.id } } || [];
   });
@@ -130,7 +130,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (
   //下書きpreview記事表示メソッド
   const data = await getPreview(id, draftKey);
   //最新記事表示data取得(0-5)
-  const latestData = await getBlogs();
+  const latestData = await getAllArticles();
   //OGP画像テキスト挿入 for cloudinary
   const clContent = await clOverlay(data.title);
   //記事のpath

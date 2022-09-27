@@ -13,7 +13,7 @@ const key = {
 };
 
 //get data for [id].tsx 記事一覧data
-export async function getBlogs(
+export async function getAllArticles(
   path?: string
 ): Promise<{ contents: ArticleItems[] }> {
   //const url = path ? `${BLOG_API}blog/${path}` : `${BLOG_API}`;
