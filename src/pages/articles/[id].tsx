@@ -22,14 +22,11 @@ import { ArticleItems } from "@src/types/types";
 import { getArticlePath } from "@src/utils/helper";
 import { isDraft } from "@src/utils/isDraft";
 import { member } from "@src/utils/member";
-//import { toStringId } from "@src/utils/toStringId";
 
 import styles from "@src/styles/pages/blog/BlogContent.module.scss";
 
 interface Props {
   blog: ArticleItems;
-  //category: string;
-  //body: string;
   preview: boolean;
   latestArticles: ArticleItems[];
   cl: string;
@@ -72,7 +69,7 @@ const Blog: NextPage<Props> = (props) => {
               </ArticleHeader>
               <FixArticleBody articleBody={body} />
               <div className={styles.article_share_container}>
-                <div className={styles.share_button_container}>
+                <div className={styles.share_button_content}>
                   <div className={styles.share_title}>Share</div>
                   <a
                     className={styles.share_button}
