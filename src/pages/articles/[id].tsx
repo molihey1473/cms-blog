@@ -68,18 +68,16 @@ const Blog: NextPage<Props> = (props) => {
                 {tags && <HeaderTags tags={tags} />}
               </ArticleHeader>
               <FixArticleBody articleBody={body} />
-              <div className={styles.article_share_container}>
-                <div className={styles.share_button_content}>
-                  <div className={styles.share_title}>Share</div>
-                  <a
-                    className={styles.share_button}
-                    href={`http://twitter.com/share?url=https://blog-sage-nine.vercel.app/articles/${id}.tsx&text=${encodeURI(
-                      title
-                    )}`}
-                  >
-                    <TwitterIcon />
-                  </a>
-                </div>
+              <div className={styles.share_button_content}>
+                <div className={styles.share_title}>Share</div>
+                <a
+                  className={styles.share_button}
+                  href={`http://twitter.com/share?url=https://blog-sage-nine.vercel.app/articles/${id}.tsx&text=${encodeURI(
+                    title
+                  )}`}
+                >
+                  <TwitterIcon />
+                </a>
               </div>
               <aside className={styles.author_info}>
                 <AsideProfile member={member} />
