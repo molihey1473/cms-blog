@@ -87,7 +87,8 @@
 }
 
 //share buttom section
-.article_share_container {
+.share_button_content {
+  margin-top: 2.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -95,9 +96,6 @@
 .share_title {
   font-weight: 600;
   font-size: 20px;
-}
-.share_button_content {
-  display: flex;
 }
 .share_button {
   display: inline-block;
