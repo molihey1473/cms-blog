@@ -14,6 +14,8 @@ export const ShareArticle: React.FC<{
         href={`http://twitter.com/share?url=https://blog-sage-nine.vercel.app/articles/${id}.tsx&text=${encodeURI(
           title
         )}`}
+        rel="nofollow noopener noreferrer"
+        target="_blank"
       >
         <TwitterIcon />
       </a>
