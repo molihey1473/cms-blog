@@ -11,7 +11,7 @@ export const ShareArticle: React.FC<{
       <div className={styles.share_title}>Share</div>
       <a
         className={styles.share_button}
-        href={`http://twitter.com/share?url=https://blog-sage-nine.vercel.app/articles/${id}.tsx&text=${encodeURI(
+        href={`http://twitter.com/share?url=https://blog-sage-nine.vercel.app/articles/${id}&text=${encodeURIComponent(
           title
         )}`}
         rel="nofollow noopener noreferrer"
