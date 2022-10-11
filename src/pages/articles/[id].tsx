@@ -10,6 +10,7 @@ import { PreDate, PubDate } from "@src/components/articles/header/ArticleDate";
 import { ArticleHeader } from "@src/components/articles/header/HeaderLayout";
 import { HeaderTags } from "@src/components/articles/header/HeaderTag";
 import { HeaderTitle } from "@src/components/articles/header/HeaderTitle";
+import { ShareArticle } from "@src/components/articles/social/ShareArticle";
 import { BlogSEO } from "@src/components/BlogSEO";
 import { AsideProfile } from "@src/components/cards/Profile";
 import { TwitterIcon } from "@src/components/icons/TwitterIcon";
@@ -68,13 +69,16 @@ const Blog: NextPage<Props> = (props) => {
                 {tags && <HeaderTags tags={tags} />}
               </ArticleHeader>
               <FixArticleBody articleBody={body} />
+              <ShareArticle title={title} id={id} />
               <div className={styles.share_button_content}>
                 <div className={styles.share_title}>Share</div>
                 <a
                   className={styles.share_button}
-                  href={`http://twitter.com/share?url=https://blog-sage-nine.vercel.app/articles/${id}.tsx&text=${encodeURI(
+                  href={`http://twitter.com/share?url=https://blog-sage-nine.vercel.app/articles/${id}&text=${encodeURI(
                     title
                   )}`}
+                  rel="nofollow noopener noreferrer"
+                  target="_blank"
                 >
                   <TwitterIcon />
                 </a>
