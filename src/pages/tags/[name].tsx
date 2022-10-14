@@ -4,7 +4,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
 import { BlogFlatItem } from "@src/components/BlogList";
 import { BlogSEO } from "@src/components/BlogSEO";
-import { TwemojiP } from "@src/components/icons/Twemoji";
+import { Twemoji } from "@src/components/icons/Twemoji";
 
 import { getTags } from "@src/lib/blog";
 
@@ -35,7 +35,7 @@ const Page: NextPage<Props> = (props) => {
       <div className={styles.tagged_blog_content}>
         <div className={styles.tag_name_container}>
           <div className={styles.tag_name}>
-            <TwemojiP emoji={"✊"} />
+            <Twemoji emoji={"✊"} />
             {`#${name}`}
           </div>
         </div>
