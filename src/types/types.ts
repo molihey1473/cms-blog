@@ -83,7 +83,7 @@ export interface TaggedList {
   title: string;
   publishedAt: string;
   updatedAt?: string;
-  tags: { name: string }[] | undefined;
+  tags: { name: string }[];
 }
 
 /* 記事投稿日 */
