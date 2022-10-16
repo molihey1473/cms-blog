@@ -2,7 +2,7 @@ import { ParsedUrlQuery } from "querystring";
 
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
-import { BlogFlatItem } from "@src/components/BlogList";
+import { BlogFlatList } from "@src/components/BlogList";
 import { BlogSEO } from "@src/components/BlogSEO";
 import { Twemoji } from "@src/components/icons/Twemoji";
 
@@ -21,7 +21,7 @@ interface Props {
     id: string;
     title: string;
     publishedAt: string;
-    tags: { name: string }[] | undefined;
+    tags: { name: string }[];
   }[];
 }
 interface Params extends ParsedUrlQuery {
@@ -40,11 +40,7 @@ const Page: NextPage<Props> = (props) => {
           </div>
         </div>
         {taggedBlogs ? (
-          <div className={styles.tagged_blog_list}>
-            {taggedBlogs.map((taggedBlog, i) => (
-              <BlogFlatItem key={`taggedBlog-${i}`} item={taggedBlog} />
-            ))}
-          </div>
+          <BlogFlatList items={taggedBlogs} />
         ) : (
           <div>関連した記事がありません</div>
         )}
