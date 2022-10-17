@@ -11,3 +11,8 @@ export function isDefined<T>(val: T): asserts val is NonNullable<T> {
     throw new Error(`expected 'val' to be defined, but but val was ${val} `);
   }
 }
+export function getShareUrlPath(id: string, title: string) {
+  return `http://twitter.com/share?url=https://blog-sage-nine.vercel.app/articles/${id}&text=${encodeURIComponent(
+    title
+  )}`;
+}
