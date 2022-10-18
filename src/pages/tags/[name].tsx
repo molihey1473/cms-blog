@@ -34,10 +34,10 @@ const Page: NextPage<Props> = (props) => {
       <BlogSEO title={name} path={path} isSummaryLarge={false} />
       <div className={styles.tagged_blog_content}>
         <div className={styles.tag_name_container}>
-          <div className={styles.tag_name}>
+          <h1 className={styles.tag_name}>
             <Twemoji emoji={"✊"} />
             {`#${name}`}
-          </div>
+          </h1>
         </div>
         {taggedBlogs ? (
           <BlogFlatList items={taggedBlogs} />
