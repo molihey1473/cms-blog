@@ -1,10 +1,11 @@
+import { title } from "process";
 import { ParsedUrlQuery } from "querystring";
 
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
 import { BlogFlatList } from "@src/components/BlogList";
 import { BlogSEO } from "@src/components/BlogSEO";
-import { Twemoji } from "@src/components/icons/Twemoji";
+import { TagTitle } from "@src/components/TagTitle";
 
 import { getTags } from "@src/lib/blog";
 
@@ -33,12 +34,7 @@ const Page: NextPage<Props> = (props) => {
     <>
       <BlogSEO title={name} path={path} isSummaryLarge={false} />
       <div className={styles.tagged_blog_content}>
-        <div className={styles.tag_name_container}>
-          <h1 className={styles.tag_name}>
-            <Twemoji emoji={"✊"} />
-            {`#${name}`}
-          </h1>
-        </div>
+        <TagTitle title={title} />
         {taggedBlogs ? (
           <BlogFlatList items={taggedBlogs} />
         ) : (
