@@ -2,7 +2,6 @@ import { ParsedUrlQuery } from "querystring";
 
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
-import Link from "next/link";
 import { useRouter } from "next/router";
 
 import { FixArticleBody } from "@src/components/articles/ArticleBody";
@@ -10,6 +9,7 @@ import { PreDate, PubDate } from "@src/components/articles/header/ArticleDate";
 import { ArticleHeader } from "@src/components/articles/header/HeaderLayout";
 import { HeaderTags } from "@src/components/articles/header/HeaderTag";
 import { HeaderTitle } from "@src/components/articles/header/HeaderTitle";
+import { ClearPreviewMode } from "@src/components/articles/preview/clearPreviewMode";
 import { ShareArticle } from "@src/components/articles/social/ShareArticle";
 import { BlogSEO } from "@src/components/BlogSEO";
 import { AsideProfile } from "@src/components/cards/Profile";
@@ -52,13 +52,7 @@ const Blog: NextPage<Props> = (props) => {
           <div className={styles.blog_content_layout}>
             <div className={styles.blog_content_article}>
               <ArticleHeader>
-                {preview && (
-                  <Link href={"/api/clearPreview"}>
-                    <a className={styles.clear_preview_mode}>
-                      ** preview mode 解除 **
-                    </a>
-                  </Link>
-                )}
+                {preview && <ClearPreviewMode />}
                 {preview ? (
                   <PreDate createdAt={createdAt} updatedAt={updatedAt} />
                 ) : (
