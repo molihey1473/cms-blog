@@ -96,3 +96,9 @@ export interface PreviewDate {
   createdAt: string;
   updatedAt: string | undefined;
 }
+export interface ArticleDate {
+  preview: boolean;
+  createdAt: string;
+  publishedAt: string;
+  updatedAt: string | undefined;
+}
