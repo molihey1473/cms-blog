@@ -5,10 +5,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { useRouter } from "next/router";
 
 import { FixArticleBody } from "@src/components/articles/ArticleBody";
-import {
-  PreDate,
-  PubDate,
-} from "@src/components/articles/header/ArticleDate/ArticleDate";
+import { Date } from "@src/components/articles/header/ArticleDate/ArticleDate";
 import { ArticleHeader } from "@src/components/articles/header/HeaderLayout";
 import { HeaderTags } from "@src/components/articles/header/HeaderTag";
 import { HeaderTitle } from "@src/components/articles/header/HeaderTitle";
@@ -56,11 +53,12 @@ const Blog: NextPage<Props> = (props) => {
             <div className={styles.blog_content_article}>
               <ArticleHeader>
                 {preview && <ClearPreviewMode />}
-                {preview ? (
-                  <PreDate createdAt={createdAt} updatedAt={updatedAt} />
-                ) : (
-                  <PubDate publishedAt={publishedAt} updatedAt={updatedAt} />
-                )}
+                <Date
+                  preview={preview}
+                  createdAt={createdAt}
+                  updatedAt={updatedAt}
+                  publishedAt={publishedAt}
+                />
                 <HeaderTitle title={title} />
                 {tags && <HeaderTags tags={tags} />}
               </ArticleHeader>
