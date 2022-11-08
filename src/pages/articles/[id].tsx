@@ -5,7 +5,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { useRouter } from "next/router";
 
 import { FixArticleBody } from "@src/components/articles/ArticleBody";
-import { Date } from "@src/components/articles/header/ArticleDate/ArticleDate";
+import { Date } from "@src/components/articles/header/ArticleDate";
 import { ArticleHeader } from "@src/components/articles/header/HeaderLayout";
 import { HeaderTags } from "@src/components/articles/header/HeaderTag";
 import { HeaderTitle } from "@src/components/articles/header/HeaderTitle";
