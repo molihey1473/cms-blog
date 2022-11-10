@@ -4,7 +4,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
 import { useRouter } from "next/router";
 
-import { FixArticleBody } from "@src/components/articles/ArticleBody";
+import { ArticleBody } from "@src/components/articles/ArticleBody";
 import { Date } from "@src/components/articles/header/ArticleDate";
 import { ArticleHeader } from "@src/components/articles/header/HeaderLayout";
 import { HeaderTags } from "@src/components/articles/header/HeaderTag";
@@ -62,7 +62,7 @@ const Blog: NextPage<Props> = (props) => {
                 <HeaderTitle title={title} />
                 {tags && <HeaderTags tags={tags} />}
               </ArticleHeader>
-              <FixArticleBody articleBody={body} />
+              <ArticleBody articleBody={body} />
               <ShareArticle title={title} id={id} />
               <aside className={styles.author_info}>
                 <AsideProfile member={member} />

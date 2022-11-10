@@ -1,5 +1,5 @@
 import parse from "html-react-parser";
-export const FixArticleBody: React.FC<{ articleBody: string }> = (props) => {
+export const ArticleBody: React.FC<{ articleBody: string }> = (props) => {
   const { articleBody } = props;
   return (
     <>
