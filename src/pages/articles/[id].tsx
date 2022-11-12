@@ -70,20 +70,6 @@ const Blog: NextPage<Props> = (props) => {
             </div>
           </div>
         </div>
-
-        {/*<div>
-          <section className={styles.latestArticles_layout}>
-            <div className={styles.latestArticles_title}>最近の記事</div>
-            <div className={styles.latestArticles_list}>
-              {latestArticles &&
-                latestArticles
-                  .slice(0, 3)
-                  .map((latestBlog, i) => (
-                    <BlogLink key={`latest-blog-${i}`} item={latestBlog} />
-                  ))}
-            </div>
-          </section>
-                  </div>*/}
       </article>
     </>
   );
