@@ -6,9 +6,9 @@ import { useRouter } from "next/router";
 
 import { ArticleBody } from "@src/components/articles/ArticleBody";
 import { Date } from "@src/components/articles/header/ArticleDate";
-import { ArticleHeader } from "@src/components/articles/header/HeaderLayout";
 import { HeaderTags } from "@src/components/articles/header/HeaderTag";
 import { HeaderTitle } from "@src/components/articles/header/HeaderTitle";
+import { ArticleHeader } from "@src/components/articles/layouts/header";
 import { ClearPreviewMode } from "@src/components/articles/preview/clearPreviewMode";
 import { ShareArticle } from "@src/components/articles/social/ShareArticle";
 import { BlogSEO } from "@src/components/BlogSEO";
