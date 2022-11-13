@@ -5,14 +5,8 @@
 }
 .blog_content_main {
   padding-top: 3.5rem;
-  //サイドバーをつけた場合
-  display: flex;
-  justify-content: center;
-  //justify-content: space-between;
+
   padding-bottom: 3.5rem;
-  @include mixin.mq(lg) {
-    display: block;
-  }
 }
 .blog_content_layout {
   //サイドバーがある場合
