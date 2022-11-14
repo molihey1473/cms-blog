@@ -1,11 +1,7 @@
 @use "../../globals/responsive" as mixin;
-.blog_article {
-  //background-color: var(--light-blue--bg);
-  font-size: 16px;
-}
+
 .blog_content_main {
   padding-top: 3.5rem;
-
   padding-bottom: 3.5rem;
 }
 .blog_content_layout {
