@@ -47,7 +47,7 @@ const Blog: NextPage<Props> = (props) => {
   return (
     <>
       <BlogSEO title={title} image={cl} path={path} isSummaryLarge={true} />
-      <article className={styles.blog_article}>
+      <article>
         <div className={styles.blog_content_main}>
           <div className={styles.blog_content_layout}>
             <div className={styles.blog_content_article}>
