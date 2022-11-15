@@ -4,12 +4,3 @@ import styles from "@src/styles/components/Wrapper.module.scss";
 export const Wrapper: React.FC<{ children: React.ReactNode }> = (props) => {
   return <div className={styles.default}>{props.children}</div>;
 };
-//共通よりもwidthが広いWrapper
-export const WideWrapper: React.FC<{ children: React.ReactNode }> = (props) => {
-  return <div className={styles.wide}>{props.children}</div>;
-};
-export const ArticleWrapper: React.FC<{ children: React.ReactNode }> = (
-  props
-) => {
-  return <div className={styles.article}>{props.children}</div>;
-};
