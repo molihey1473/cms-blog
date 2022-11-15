@@ -1,5 +1,7 @@
 import { Wrapper } from "@src/components/Wrapper";
 
+import { member } from "@src/utils/member";
+
 import styles from "@src/styles/components/Footer.module.scss";
 
 export const Footer: React.FC = () => {
@@ -9,7 +11,7 @@ export const Footer: React.FC = () => {
         <div className={styles.footer_content}>
           <div className={styles.footer_author}>
             <p>
-              created by <a href="https://twitter.com/roy1473">@Morihey</a>
+              created by <a href={member.twitterName}>@Morihey</a>
             </p>
             <p>© 2021</p>
           </div>
