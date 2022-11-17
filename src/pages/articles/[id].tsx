@@ -52,7 +52,7 @@ const Blog: NextPage<Props> = (props) => {
           <div className={styles.blog_content_layout}>
             <div className={styles.blog_content_article}>
               <ArticleHeader>
-                {preview && <ClearPreviewMode />}
+                <ClearPreviewMode preview={preview} />
                 <Date
                   preview={preview}
                   createdAt={createdAt}
@@ -60,7 +60,7 @@ const Blog: NextPage<Props> = (props) => {
                   publishedAt={publishedAt}
                 />
                 <HeaderTitle title={title} />
-                {tags && <HeaderTags tags={tags} />}
+                <HeaderTags tags={tags} />
               </ArticleHeader>
               <ArticleBody articleBody={body} />
               <ShareArticle title={title} id={id} />
