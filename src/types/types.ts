@@ -32,7 +32,7 @@ export interface ArticleItems {
   category: { name: string[] };
   createdAt: string;
   updatedAt: string | undefined;
-  tags: { name: string; id: string }[] | undefined;
+  tags: { name: string; id: string }[] | [];
   //tags?: TagItems[];
   meta?: { image: { url: string } } | null;
 }
