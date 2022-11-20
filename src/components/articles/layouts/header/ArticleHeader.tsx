@@ -1,9 +1,12 @@
+import { Wrapper } from "@src/components/Wrapper";
 export const ArticleHeader: React.FC<{ children: React.ReactNode }> = (
   props
 ) => {
   return (
     <>
-      <header>{props.children}</header>
+      <header>
+        <Wrapper>{props.children}</Wrapper>
+      </header>
     </>
   );
 };
