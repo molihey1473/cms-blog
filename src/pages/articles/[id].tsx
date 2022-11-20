@@ -9,6 +9,7 @@ import { Date } from "@src/components/articles/header/ArticleDate";
 import { HeaderTags } from "@src/components/articles/header/HeaderTag";
 import { HeaderTitle } from "@src/components/articles/header/HeaderTitle";
 import { ArticleHeader } from "@src/components/articles/layouts/header";
+import { ArticleMain } from "@src/components/articles/layouts/main";
 import { ClearPreviewMode } from "@src/components/articles/preview/clearPreviewMode";
 import { ShareArticle } from "@src/components/articles/social/ShareArticle";
 import { BlogSEO } from "@src/components/BlogSEO";
@@ -62,11 +63,13 @@ const Blog: NextPage<Props> = (props) => {
                 <HeaderTitle title={title} />
                 <HeaderTags tags={tags} />
               </ArticleHeader>
-              <ArticleBody articleBody={body} />
-              <ShareArticle title={title} id={id} />
-              <aside className={styles.author_info}>
-                <AsideProfile member={member} />
-              </aside>
+              <ArticleMain>
+                <ArticleBody articleBody={body} />
+                <ShareArticle title={title} id={id} />
+                <aside className={styles.author_info}>
+                  <AsideProfile member={member} />
+                </aside>
+              </ArticleMain>
             </div>
           </div>
         </div>
