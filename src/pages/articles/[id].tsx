@@ -48,31 +48,25 @@ const Blog: NextPage<Props> = (props) => {
   return (
     <>
       <BlogSEO title={title} image={cl} path={path} isSummaryLarge={true} />
-      <article>
-        <div className={styles.blog_content_main}>
-          <div className={styles.blog_content_layout}>
-            <div className={styles.blog_content_article}>
-              <ArticleHeader>
-                <ClearPreviewMode preview={preview} />
-                <Date
-                  preview={preview}
-                  createdAt={createdAt}
-                  updatedAt={updatedAt}
-                  publishedAt={publishedAt}
-                />
-                <HeaderTitle title={title} />
-                <HeaderTags tags={tags} />
-              </ArticleHeader>
-              <ArticleMain>
-                <ArticleBody articleBody={body} />
-                <ShareArticle title={title} id={id} />
-                <aside className={styles.author_info}>
-                  <AsideProfile member={member} />
-                </aside>
-              </ArticleMain>
-            </div>
-          </div>
-        </div>
+      <article className={styles.article_container}>
+        <ArticleHeader>
+          <ClearPreviewMode preview={preview} />
+          <Date
+            preview={preview}
+            createdAt={createdAt}
+            updatedAt={updatedAt}
+            publishedAt={publishedAt}
+          />
+          <HeaderTitle title={title} />
+          <HeaderTags tags={tags} />
+        </ArticleHeader>
+        <ArticleMain>
+          <ArticleBody articleBody={body} />
+          <ShareArticle title={title} id={id} />
+          <aside className={styles.author_info}>
+            <AsideProfile member={member} />
+          </aside>
+        </ArticleMain>
       </article>
     </>
   );
