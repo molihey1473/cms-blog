@@ -1,12 +1,8 @@
 @use "../../globals/responsive" as mixin;
 
-.blog_content_main {
-  padding-top: 3.5rem;
+.article_container {
   padding-bottom: 3.5rem;
-}
-.blog_content_layout {
-  //サイドバーがある場合
-  //width: calc(100% - 330px);
+
   @include mixin.mq(lg) {
     width: 100%;
   }
@@ -14,11 +10,6 @@
 .blog_content_title {
   padding: 0.3rem 0;
   font-size: 1.8rem;
-}
-.blog_content_article {
-  background-color: #fff;
-  //padding: 1.5rem 2rem;
-  border-radius: 12px;
 }
 
 .blog_content_tags {
