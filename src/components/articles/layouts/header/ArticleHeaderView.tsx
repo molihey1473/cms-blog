@@ -1,5 +1,5 @@
 import { Wrapper } from "@src/components/Wrapper";
-export const ArticleHeader: React.FC<{ children: React.ReactNode }> = (
+export const ArticleHeaderView: React.FC<{ children: React.ReactNode }> = (
   props
 ) => {
   return (
