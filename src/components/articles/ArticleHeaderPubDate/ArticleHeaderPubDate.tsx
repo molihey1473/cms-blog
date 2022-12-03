@@ -6,7 +6,7 @@ import { ArticleDate } from "@src/types/types";
 
 import styles from "@src/styles/components/articles/header/ArticleHeader.module.scss";
 
-export const Date: React.FC<ArticleDate> = (props) => {
+export const ArticleHeaderPubDate: React.FC<ArticleDate> = (props) => {
   const { createdAt, updatedAt, publishedAt, preview } = props;
   return (
     <>
