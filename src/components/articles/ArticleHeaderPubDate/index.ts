@@ -1,1 +1,1 @@
-export * from "./ArticleDate";
+export * from "./ArticleHeaderPubDate";
