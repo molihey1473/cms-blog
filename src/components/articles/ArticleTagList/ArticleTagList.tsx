@@ -23,7 +23,7 @@ export const Tags: React.FC<{ tagLink: Props }> = (props) => {
 };
 
 //記事内tags component
-export const HeaderTags: React.FC<{ tags: Props[] | [] }> = (props) => {
+export const ArticleTagList: React.FC<{ tags: Props[] | [] }> = (props) => {
   console.log(typeof props.tags);
   console.log(props.tags);
   return (
@@ -44,7 +44,7 @@ export const HeaderTags: React.FC<{ tags: Props[] | [] }> = (props) => {
               </svg>
             </div>
             {props.tags.map((tag, i) => (
-              <HeaderTagItems key={`tag-${i}`} tagItem={tag} />
+              <ArticleTagItems key={`tag-${i}`} tagItem={tag} />
             ))}
           </div>
         </div>
@@ -52,7 +52,7 @@ export const HeaderTags: React.FC<{ tags: Props[] | [] }> = (props) => {
     </>
   );
 };
-export const HeaderTagItems: React.FC<{ tagItem: Props }> = (props) => {
+export const ArticleTagItems: React.FC<{ tagItem: Props }> = (props) => {
   const name = props.tagItem.name;
   return (
     <>
