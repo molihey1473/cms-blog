@@ -3,7 +3,7 @@ import { TwitterIcon } from "@src/components/icons/TwitterIcon";
 import { getShareUrlPath } from "@src/utils/helper";
 
 import styles from "@src/styles/components/articles/social/ShareArticle.module.scss";
-export const ShareArticle: React.FC<{
+export const ArticleShareButton: React.FC<{
   title: string;
   id: string;
 }> = (props) => {
