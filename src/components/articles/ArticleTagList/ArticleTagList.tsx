@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import styles from "@src/styles/pages/blog/BlogContent.module.scss";
+import styles from "./ArticleTagList.module.scss";
 
 interface Props {
   id: string;
