@@ -2,7 +2,7 @@ import { TwitterIcon } from "@src/components/icons/TwitterIcon";
 
 import { getShareUrlPath } from "@src/utils/helper";
 
-import styles from "@src/styles/components/articles/social/ShareArticle.module.scss";
+import styles from "./ArticleShareButton.module.scss";
 export const ArticleShareButton: React.FC<{
   title: string;
   id: string;
