@@ -1,0 +1,23 @@
+.taggedList_container {
+  padding: 1rem 0;
+}
+.taggedItems_container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.tag_list_emoji,
+.page_link_emoji {
+  img {
+    width: 20px;
+  }
+}
+.tagName {
+  padding: 0.3rem;
+  background: #f8f8fa;
+  margin-right: 5px;
+  border: 1px solid var(--border-base);
+  border-radius: 10px;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.6);
+}
