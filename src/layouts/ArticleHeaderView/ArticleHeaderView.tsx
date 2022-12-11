@@ -1,9 +1,9 @@
-export const ArticleHeaderView: React.FC<{ children: React.ReactNode }> = (
-  props
-) => {
+export const ArticleHeaderView: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   return (
     <>
-      <header>{props.children}</header>
+      <header>{children}</header>
     </>
   );
 };
