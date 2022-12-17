@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import styles from "@src/styles/pages/blog/BlogContent.module.scss";
+import styles from "./ArticleClearPreviewMode.module.scss";
 interface Props {
   preview: boolean;
 }
