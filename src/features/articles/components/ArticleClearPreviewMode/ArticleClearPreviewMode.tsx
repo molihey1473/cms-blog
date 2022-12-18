@@ -5,7 +5,7 @@ interface Props {
   preview: boolean;
 }
 
-export const ClearPreviewMode: React.FC<Props> = (props) => {
+export const ArticleClearPreviewMode: React.FC<Props> = (props) => {
   return (
     <>
       {props.preview && (
