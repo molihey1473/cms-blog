@@ -33,8 +33,6 @@ export interface ArticleItems {
   createdAt: string;
   updatedAt: string | undefined;
   tags: { name: string; id: string }[] | [];
-  //tags?: TagItems[];
-  meta?: { image: { url: string } } | null;
 }
 /* 記事の型 */
 export interface ArticleBodyItems {
@@ -47,7 +45,7 @@ export interface ArticleList {
   id: string;
   title: string;
   publishedAt: string;
-  tags: { name: string }[] | undefined;
+  tags: { name: string }[] | [];
   //isTagIncluded?: boolean;
 }
 /* カテゴリー分けされた記事一覧*/
