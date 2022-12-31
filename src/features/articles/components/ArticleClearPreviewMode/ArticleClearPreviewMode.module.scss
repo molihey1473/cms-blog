@@ -1,0 +1,9 @@
+//clear preview mode
+//microCMSからの投稿前プレビュー
+.clear_preview_mode {
+  font-weight: 700;
+  color: red;
+  &:hover {
+    opacity: 1;
+  }
+}
