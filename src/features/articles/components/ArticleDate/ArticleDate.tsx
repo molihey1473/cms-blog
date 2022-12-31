@@ -2,11 +2,15 @@ import dayjs from "dayjs";
 
 import { UpdateIcon, PublishDateIcon } from "@src/components/icons";
 
-import { ArticleDate } from "@src/types/types";
+import styles from "./ArticleDate.module.scss";
+export interface Props {
+  readonly preview: boolean;
+  readonly createdAt: string;
+  readonly publishedAt: string;
+  readonly updatedAt: string | undefined;
+}
 
-import styles from "@src/styles/components/articles/header/ArticleHeader.module.scss";
-
-export const ArticleHeaderPubDate: React.FC<ArticleDate> = (props) => {
+export const ArticleDate: React.FC<Props> = (props) => {
   const { createdAt, updatedAt, publishedAt, preview } = props;
   return (
     <>
