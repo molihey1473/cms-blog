@@ -3,10 +3,11 @@ import { TwitterIcon } from "@src/components/icons/TwitterIcon";
 import { getShareUrlPath } from "@src/utils/helper";
 
 import styles from "./ArticleShareButton.module.scss";
-export const ArticleShareButton: React.FC<{
-  title: string;
-  id: string;
-}> = (props) => {
+export interface Props {
+  readonly title: string;
+  readonly id: string;
+}
+export const ArticleShareButton: React.FC<Props> = (props) => {
   const { title, id } = props;
   return (
     <div className={styles.share_button_content}>
