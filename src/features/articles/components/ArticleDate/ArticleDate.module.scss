@@ -1,0 +1,14 @@
+.date_container {
+  padding-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  color: #969fa7;
+}
+.pub_date,
+.up_date,
+.create_date {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+  font-size: 12px;
+}
