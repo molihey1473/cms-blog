@@ -1,0 +1,25 @@
+.md_container {
+  display: flex;
+  align-items: center;
+}
+.md_image {
+  //width: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.md_content {
+  padding-left: 1rem;
+}
+.md_author_name {
+  font-size: 18px;
+  font-weight: 600;
+}
+.md_bio {
+  //
+}
+.md_bio_link_content {
+  display: flex;
+}
+.md_bio_link {
+  margin-right: 0.5rem;
+}
