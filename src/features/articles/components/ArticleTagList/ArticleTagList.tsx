@@ -3,8 +3,8 @@ import Link from "next/link";
 import styles from "./ArticleTagList.module.scss";
 
 interface Props {
-  id: string;
-  name: string;
+  readonly id: string;
+  readonly name: string;
 }
 export const Tags: React.FC<{ tagLink: Props }> = (props) => {
   const { name } = props.tagLink;
@@ -24,8 +24,6 @@ export const Tags: React.FC<{ tagLink: Props }> = (props) => {
 
 //記事内tags component
 export const ArticleTagList: React.FC<{ tags: Props[] | [] }> = (props) => {
-  console.log(typeof props.tags);
-  console.log(props.tags);
   return (
     <>
       {props.tags.length !== 0 && (
