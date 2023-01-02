@@ -1,55 +1,6 @@
-/* ArticleTitle component　（記事のタイトルコンポーネント）
-at src/components/articles/header/HeaderTitle.tsx */
-.title {
-  padding-top: 1.2rem;
-  font-size: 2rem;
-  margin-bottom: 25px;
-  //border-bottom: 2px solid var(--text-light-gray);
-}
-/* PubDate and PreDate components （投稿日コンポーネント）
-at src/components/articles/header/ArticleDate.tsx */
-
-.date_container {
-  padding-top: 0.5rem;
-  display: flex;
-  align-items: center;
-  color: #969fa7;
-}
 .items {
   padding: 0.5rem 1rem;
   margin-left: 1rem;
   background-color: #e4e4e4;
   border-radius: 11px;
-}
-.pub_date,
-.up_date,
-.create_date {
-  display: flex;
-  align-items: center;
-  margin-right: 15px;
-  font-size: 12px;
-}
-
-/* HeaderTag TagItems component component （記事内タグコンポーネント）
-at src/components/articles/header/HeaderTag.tsx */
-
-//HeaderTag コンポーネント
-.taggedList_container {
-  padding: 1rem 0;
-}
-.taggedItems_container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-}
-.tag_list_emoji {
-  img {
-    width: 20px;
-  }
-}
-//HeaderTagItems コンポーネント
-.tagName {
-  padding: 0.3rem;
-  background: #f8f8fa;
-  margin-right: 5px;
 }
