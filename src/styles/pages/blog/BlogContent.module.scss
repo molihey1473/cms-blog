@@ -1,12 +1,5 @@
 @use "../../globals/responsive" as mixin;
 
-.article_container {
-  padding-bottom: 3.5rem;
-
-  @include mixin.mq(lg) {
-    width: 100%;
-  }
-}
 .blog_content_title {
   padding: 0.3rem 0;
   font-size: 1.8rem;
@@ -16,45 +9,4 @@
   background-color: #e4e4e4;
   padding: 0.5rem 1rem;
   border-radius: 7px;
-}
-
-.taggedList_container {
-  padding: 1rem 0;
-}
-.taggedItems_container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-}
-.tag_list_emoji,
-.page_link_emoji {
-  img {
-    width: 20px;
-  }
-}
-.tagName {
-  padding: 0.3rem;
-  background: #f8f8fa;
-  margin-right: 5px;
-  border: 1px solid var(--border-base);
-  border-radius: 10px;
-  font-size: 12px;
-  color: rgba(0, 0, 0, 0.6);
-}
-
-//clear preview mode
-//microCMSからの投稿前プレビュー
-.clear_preview_mode {
-  font-weight: 700;
-  color: red;
-  &:hover {
-    opacity: 1;
-  }
-}
-
-.author_info {
-  padding: 0.5rem 0;
-  border-top: 1px solid var(--border-base);
-  padding-top: 2rem;
-  margin-top: 50px;
 }
