@@ -127,10 +127,4 @@ module.exports = {
       },
     ],
   },
-  //overrides: [
-  //  {
-  //    files: ["src/pages/_app.tsx"],
-  //    rules: { "import/order": "off" },
-  //  },
-  //],
 };
