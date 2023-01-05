@@ -2,7 +2,7 @@ import { Wrapper } from "@src/components/Wrapper";
 
 import { member } from "@src/utils/member";
 
-import styles from "@src/styles/components/Footer.module.scss";
+import styles from "./Footer.module.scss";
 
 export const Footer: React.FC = () => {
   return (
