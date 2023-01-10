@@ -27,8 +27,8 @@ interface Params extends ParsedUrlQuery {
 }
 //type Params = Pick<ArticleItems, "id">;
 const Blog: NextPage<Props> = (props) => {
-  const { title } = props.articleData;
   const { cl, preview, path, articleData } = props;
+  const { title } = articleData;
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;
