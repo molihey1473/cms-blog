@@ -14,7 +14,7 @@ import { ArticleItems } from "@src/types/types";
 import { getArticlePath } from "@src/utils/helper";
 import { isDraft } from "@src/utils/isDraft";
 
-import { ArticlePage } from "@src/features/articles";
+import { ArticlePage } from "@src/features/Article";
 
 interface Props {
   articleData: Readonly<ArticleItems>;
