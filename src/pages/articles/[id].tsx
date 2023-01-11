@@ -30,9 +30,7 @@ const Blog: NextPage<Props> = (props) => {
   const { cl, preview, path, articleData } = props;
   const { title } = articleData;
   const router = useRouter();
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
+  if (router.isFallback) return <div>Loading...</div>;
   return (
     <>
       <BlogSEO title={title} image={cl} path={path} isSummaryLarge={true} />
