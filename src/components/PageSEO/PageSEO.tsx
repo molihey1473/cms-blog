@@ -8,7 +8,7 @@ interface Props {
   image?: string;
   isSummaryLarge?: boolean;
 }
-export const BlogSEO: React.FC<Props> = (props) => {
+export const PageSEO: React.FC<Props> = (props) => {
   const { title, path, image, isSummaryLarge } = props;
   const pageUrl = `${config.siteRoot}${path || ""}`;
   return (
