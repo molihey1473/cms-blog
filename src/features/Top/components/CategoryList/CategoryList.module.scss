@@ -1,4 +1,10 @@
-@use "../../styles/globals/responsive" as mixin;
+.navigation_content {
+  display: flex;
+  align-items: center;
+  color: var(--second-text);
+  border-bottom: 2px solid;
+  color: #e4e4e4;
+}
 
 .item_name {
   padding: 0.5rem 0.5rem;
