@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 
-import styles from "@src/styles/components/View.module.scss";
+import styles from "./PageView.module.scss";
 
 // 全ページ共通 Viewコンポーネント
 export const PageView: React.FC<{ children: ReactNode }> = (props) => {
