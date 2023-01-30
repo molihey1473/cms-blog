@@ -14,6 +14,7 @@ async function fetchFeedItems(url: string) {
   return feed.items
     .map(({ title, link, contentSnippet, isoDate }) => {
       return {
+        category: "Other",
         title,
         contentSnippet: contentSnippet?.replace(/\n/g, ""),
         link,
@@ -23,7 +24,7 @@ async function fetchFeedItems(url: string) {
     })
     .filter(({ title, link }) => title && link) as FeedItem[];
 }
-async function getFeedItemsFromSources(sources: undefined | string[]) {
+async function getFeedItemsFromSources(sources: undefined | readonly string[]) {
   if (!sources?.length) return [];
   let feedItems: FeedItem[] = [];
   for (const url of sources) {
