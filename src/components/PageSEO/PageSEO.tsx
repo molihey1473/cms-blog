@@ -6,7 +6,7 @@ interface Props {
   title: string;
   path?: string;
   image?: string;
-  isSummaryLarge?: boolean;
+  isSummaryLarge: boolean;
 }
 export const PageSEO: React.FC<Props> = (props) => {
   const { title, path, image, isSummaryLarge } = props;
@@ -32,7 +32,7 @@ export const PageSEO: React.FC<Props> = (props) => {
           <meta name="twitter:card" content="summary" />
           <meta
             property="og:image"
-            content={`${config.siteRoot}/avatar/color_profile.png`}
+            content={`${config.siteRoot}/avatar/molihey_profile.png`}
           />
         </>
       )}
