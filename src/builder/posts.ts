@@ -64,7 +64,6 @@ export async function fetchFromMicroCMS(): Promise<fetchData[]> {
   const data = await fetch(BLOG_API, scriptENV)
     .then((res) => res.json())
     .catch((error) => console.log("通信失敗", error));
-  console.log(data);
   const resultData = data.contents as fetchData[];
   return resultData || [];
 }
