@@ -1,13 +1,13 @@
 import Link from "next/link";
 
-import { Wrapper } from "@src/components/Wrapper";
+import { PageWrapper } from "@src/layouts/PageWrapper";
 
 import styles from "./Header.module.scss";
 
 export const Header: React.FC = () => {
   return (
     <header className={styles.header_layout}>
-      <Wrapper>
+      <PageWrapper>
         <div className={styles.header_content}>
           <Link href="/">
             <a className={styles.header_home_title}>Molohey</a>
@@ -20,7 +20,7 @@ export const Header: React.FC = () => {
             </Link>
           </div>*/}
         </div>
-      </Wrapper>
+      </PageWrapper>
     </header>
   );
 };

@@ -1,13 +1,13 @@
-import { Wrapper } from "@src/components/Wrapper";
-
 import { member } from "@src/utils/member";
+
+import { PageWrapper } from "@src/layouts/PageWrapper";
 
 import styles from "./Footer.module.scss";
 
 export const Footer: React.FC = () => {
   return (
     <footer className={styles.footer_layout}>
-      <Wrapper>
+      <PageWrapper>
         <div className={styles.footer_content}>
           <div className={styles.footer_author}>
             <p>
@@ -16,7 +16,7 @@ export const Footer: React.FC = () => {
             <p>© 2021</p>
           </div>
         </div>
-      </Wrapper>
+      </PageWrapper>
     </footer>
   );
 };
