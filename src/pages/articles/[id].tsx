@@ -4,7 +4,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
 import { useRouter } from "next/router";
 
-import { BlogSEO } from "@src/components/BlogSEO";
+import { PageSEO } from "@src/components/PageSEO";
 
 import { getAllArticles, getArticleContent } from "@src/lib/blog";
 import { clOverlay } from "@src/lib/cl";
@@ -15,6 +15,8 @@ import { getArticlePath } from "@src/utils/helper";
 import { isDraft } from "@src/utils/isDraft";
 
 import { ArticlePage } from "@src/features/Article";
+import { PageView } from "@src/layouts/PageView";
+import { PageWrapper } from "@src/layouts/PageWrapper";
 
 interface Props {
   articleData: Readonly<ArticleItems>;
@@ -33,8 +35,12 @@ const Blog: NextPage<Props> = (props) => {
   if (router.isFallback) return <div>Loading...</div>;
   return (
     <>
-      <BlogSEO title={title} image={cl} path={path} isSummaryLarge={true} />
-      <ArticlePage preview={preview} articleData={articleData} />
+      <PageSEO title={title} image={cl} path={path} isSummaryLarge={true} />
+      <PageView>
+        <PageWrapper>
+          <ArticlePage preview={preview} articleData={articleData} />
+        </PageWrapper>
+      </PageView>
     </>
   );
 };
