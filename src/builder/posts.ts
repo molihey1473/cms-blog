@@ -15,6 +15,7 @@ interface fetchData {
   title: string;
   id: string;
   publishedAt: string;
+  updatedAt: string;
 }
 
 const parser = new Parser();
@@ -49,13 +50,13 @@ export async function getFeedItemsFromSources(
 export async function fetchArticleDataFromMicroCMS(): Promise<FeedItem[]> {
   const data = await fetchFromMicroCMS();
   if (!data?.length) return [];
-  return data.map(({ title, id, publishedAt }) => {
+  return data.map(({ title, id, publishedAt, updatedAt }) => {
     return {
       category: "MicroCMSArticle",
       title,
       contentSnippet: null,
       link: `/articles/${id}`,
-      date: publishedAt,
+      date: updatedAt || publishedAt,
       dateMiliSeconds: publishedAt ? new Date(publishedAt).getTime() : 0,
     };
   });
