@@ -32,6 +32,7 @@ const Blog: NextPage<Props> = (props) => {
   const { cl, preview, path, articleData } = props;
   const { title } = articleData;
   const router = useRouter();
+  console.log(articleData.body);
   if (router.isFallback) return <div>Loading...</div>;
   return (
     <>
@@ -65,6 +66,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (
   const { id } = params as Params;
   //下書きpreview記事表示メソッド
   const data = await getArticleContent(id, draftKey);
+  console.log("データ", draftKey);
   //OGP画像テキスト挿入 for cloudinary
   const clContent = await clOverlay(data.title);
   //記事のpath
