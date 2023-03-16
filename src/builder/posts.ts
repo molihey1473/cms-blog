@@ -16,6 +16,7 @@ interface fetchData {
   id: string;
   publishedAt: string;
   updatedAt: string;
+  tags: { name: string }[];
 }
 
 const parser = new Parser();
@@ -31,6 +32,7 @@ export async function fetchFeedItems(url: string) {
         link,
         date: isoDate,
         dateMiliSeconds: isoDate ? new Date(isoDate).getTime() : 0,
+        tags: [],
       };
     })
     .filter(({ title, link }) => title && link) as FeedItem[];
@@ -50,7 +52,8 @@ export async function getFeedItemsFromSources(
 export async function fetchArticleDataFromMicroCMS(): Promise<FeedItem[]> {
   const data = await fetchFromMicroCMS();
   if (!data?.length) return [];
-  return data.map(({ title, id, publishedAt, updatedAt }) => {
+  return data.map(({ title, id, publishedAt, updatedAt, tags }) => {
+    const tagList = tags?.map((item) => item.name);
     return {
       category: "MicroCMSArticle",
       title,
@@ -58,6 +61,7 @@ export async function fetchArticleDataFromMicroCMS(): Promise<FeedItem[]> {
       link: `/articles/${id}`,
       date: updatedAt || publishedAt,
       dateMiliSeconds: publishedAt ? new Date(publishedAt).getTime() : 0,
+      tags: tagList,
     };
   });
 }
