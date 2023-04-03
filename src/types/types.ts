@@ -79,10 +79,10 @@ export interface TaggedList {
 /* 記事投稿日 */
 export interface PublishDate {
   publishedAt: string;
-  updatedAt: string | null;
+  updatedAt: string;
 }
 /* 記事投稿前プレビュー*/
 export interface PreviewDate {
   createdAt: string;
-  updatedAt: string | null;
+  updatedAt: string;
 }
