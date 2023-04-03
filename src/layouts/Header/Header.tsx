@@ -9,8 +9,8 @@ export const Header: React.FC = () => {
     <header className={styles.header_layout}>
       <PageWrapper>
         <div className={styles.header_content}>
-          <Link href="/">
-            <a className={styles.header_home_title}>Molohey</a>
+          <Link href={"/"} className={styles.header_home_title}>
+            Molohey
           </Link>
           {/*
           aboutページ内作成していないため一時非表示
