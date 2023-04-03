@@ -7,7 +7,7 @@ export interface Props {
   readonly preview: boolean;
   readonly createdAt: string;
   readonly publishedAt: string;
-  readonly updatedAt: string | undefined;
+  readonly updatedAt: string;
 }
 
 export const ArticleDate: React.FC<Props> = (props) => {
