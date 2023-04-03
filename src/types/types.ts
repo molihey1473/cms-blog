@@ -15,9 +15,10 @@ export interface PostItem {
   dateMiliSeconds: number;
 }
 export interface FeedItem {
+  category: string;
   title: string;
   link: string;
-  contentSnippet?: string;
+  contentSnippet: string | null;
   isoDate?: string;
   dateMiliSeconds: number;
 }
@@ -31,7 +32,7 @@ export interface ArticleItems {
   publishedAt: string;
   category: { name: string[] };
   createdAt: string;
-  updatedAt: string | undefined;
+  updatedAt: string | null;
   tags: { name: string; id: string }[] | [];
 }
 /* 記事の型 */
@@ -46,16 +47,7 @@ export interface ArticleList {
   title: string;
   publishedAt: string;
   tags: { name: string }[] | [];
-  //isTagIncluded?: boolean;
 }
-/* カテゴリー分けされた記事一覧*/
-//export interface SortedArticleList {
-//  id: string;
-//  title: string;
-//  publishedAt: string;
-//  category: { name: string[] };
-//  tags: string[];
-//}
 
 //タグ付けされたページ getStaticPaths at /tags/[name].tsx
 export interface Taglinks {
@@ -87,10 +79,10 @@ export interface TaggedList {
 /* 記事投稿日 */
 export interface PublishDate {
   publishedAt: string;
-  updatedAt: string | undefined;
+  updatedAt: string | null;
 }
 /* 記事投稿前プレビュー*/
 export interface PreviewDate {
   createdAt: string;
-  updatedAt: string | undefined;
+  updatedAt: string | null;
 }
