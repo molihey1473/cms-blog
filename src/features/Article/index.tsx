@@ -18,7 +18,7 @@ interface Props {
     readonly publishedAt: string;
     readonly category: { name: string[] };
     readonly createdAt: string;
-    readonly updatedAt: string | undefined;
+    readonly updatedAt: string;
     readonly tags: { name: string; id: string }[] | [];
   };
 }
