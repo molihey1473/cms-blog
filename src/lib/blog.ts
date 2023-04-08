@@ -39,7 +39,6 @@ export async function getArticleContent(
   const articleData = await fetch(`${BLOG_API}${id}${params}`, key)
     .then((res) => res.json())
     .catch((error) => console.error("エラーが発生", error));
-  console.log(articleData);
   console.log("getarticleVontent", articleData.body);
   const highlightBody = hArticle(articleData.body);
   articleData.body = highlightBody;
