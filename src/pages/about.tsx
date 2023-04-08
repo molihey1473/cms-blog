@@ -2,21 +2,18 @@ import { NextPage } from "next";
 
 import Link from "next/link";
 
-import { BlogSEO } from "@src/components/BlogSEO";
-import { CategoryList } from "@src/components/CategoryList";
-import { Wrapper } from "@src/components/Wrapper";
+import { PageSEO } from "@src/components/PageSEO";
+
+import { PageWrapper } from "@src/layouts/PageWrapper";
 
 const About: NextPage = () => {
   return (
     <>
-      <BlogSEO title="About" path="/about" />
-      <Wrapper>
-        <CategoryList />
+      <PageSEO title="About" path="/about" isSummaryLarge={true} />
+      <PageWrapper>
         <h1>about</h1>
-        <Link href="/">
-          <a>back to home</a>
-        </Link>
-      </Wrapper>
+        <Link href="/">back to home</Link>
+      </PageWrapper>
     </>
   );
 };
