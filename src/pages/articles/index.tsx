@@ -1,30 +1,22 @@
 import { GetStaticProps, NextPage } from "next";
 
-import { BlogList } from "@src/components/BlogList";
-import { CategoryList } from "@src/components/CategoryList";
-import { Wrapper } from "@src/components/Wrapper";
-
 import { getAllArticles } from "@src/lib/blog";
 
 import { ArticleItems } from "@src/types/types";
 
-import styles from "@src/styles/pages/blog/BlogList.module.scss";
+import { CategoryList } from "@src/features/Top/components/CategoryList";
+import { PageWrapper } from "@src/layouts/PageWrapper";
 
 interface Props {
   blogs: ArticleItems[];
 }
-const page: NextPage<Props> = (props) => {
+const page: NextPage<Props> = () => {
   return (
     <>
       <main>
-        <Wrapper>
+        <PageWrapper>
           <CategoryList />
-        </Wrapper>
-        <section className={styles.blog_list_layout}>
-          <Wrapper>
-            <BlogList items={props.blogs} />
-          </Wrapper>
-        </section>
+        </PageWrapper>
       </main>
     </>
   );
