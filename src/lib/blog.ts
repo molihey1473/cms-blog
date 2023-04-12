@@ -1,6 +1,6 @@
 import { Grammar, highlight, languages } from "prismjs";
 
-import { ArticleItems } from "@src/types/types";
+import { ArticleItems, FeedItem } from "@src/types/types";
 
 import { BLOG_API, TAG_API, CATEGORY_API } from "@src/utils/blogInfo";
 import { isDefined } from "@src/utils/helper";
@@ -146,4 +146,14 @@ export async function getCategory(): Promise<string[]> {
   return data.contents.map((item: { name: string[] }) => {
     return `/category/${item.name[0]}`;
   });
+}
+export async function getFilterArtilcleList(
+  tagName: string,
+  articleLists: FeedItem[]
+) {
+  const filterList = articleLists.filter((list) => {
+    if (list.tags.length === 0) return;
+    return list.tags.some((item) => item.toLowerCase() === tagName);
+  });
+  return filterList;
 }
