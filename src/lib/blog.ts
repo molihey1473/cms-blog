@@ -147,7 +147,7 @@ export async function getCategory(): Promise<string[]> {
     return `/category/${item.name[0]}`;
   });
 }
-export async function getFilterArtilcleList(
+export async function getFilterArticleList(
   tagName: string,
   articleLists: FeedItem[]
 ) {
