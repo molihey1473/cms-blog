@@ -21,6 +21,7 @@ export interface FeedItem {
   contentSnippet: string | null;
   isoDate?: string;
   dateMiliSeconds: number;
+  tags: string[] | [];
 }
 // /blog/[id].tsx 記事データ
 // tags:TagItemsだとcomponents内で反応しないため。tags:TagItems -> tags?: { name: string; id: string }[];に変更
