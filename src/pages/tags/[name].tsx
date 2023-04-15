@@ -4,7 +4,7 @@ import { ParsedUrlQuery } from "querystring";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
 import { BlogFlatList } from "@src/components/BlogList";
-import { BlogSEO } from "@src/components/BlogSEO";
+import { PageSEO } from "@src/components/PageSEO";
 import { TagTitle } from "@src/components/TagTitle";
 
 import {
@@ -38,7 +38,7 @@ const Page: NextPage<Props> = (props) => {
   const { taggedBlogs, name, path } = props;
   return (
     <>
-      <BlogSEO title={name} path={path} isSummaryLarge={false} />
+      <PageSEO title={name} path={path} isSummaryLarge={false} />
       <div className={styles.tagged_blog_content}>
         <TagTitle title={title} />
         {taggedBlogs ? (
