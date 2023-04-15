@@ -15,6 +15,8 @@ import { getTagPath } from "@src/utils/helper";
 
 import styles from "@src/styles/pages/blog/BlogList.module.scss";
 
+import JsonData from "../../../.contents/posts.json";
+
 interface Props {
   name: string;
   path: string;
