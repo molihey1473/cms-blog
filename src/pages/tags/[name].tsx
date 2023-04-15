@@ -7,7 +7,11 @@ import { BlogFlatList } from "@src/components/BlogList";
 import { BlogSEO } from "@src/components/BlogSEO";
 import { TagTitle } from "@src/components/TagTitle";
 
-import { getTags, getFilterArtilcleList } from "@src/lib/blog";
+import {
+  getTags,
+  getFilterArtilcleList,
+  getFilterArticleList,
+} from "@src/lib/blog";
 
 import { TaggedList, Taglinks } from "@src/types/types";
 
@@ -62,6 +66,8 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (
   const rename = name.charAt(0).toUpperCase();
   const data = await getTags<TaggedList[]>(rename);
   const path = getTagPath(name);
+  const list = await getFilterArticleList(name, JsonData);
+  console.log(list);
   return {
     props: {
       name: name,
