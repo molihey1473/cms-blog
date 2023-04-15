@@ -7,7 +7,7 @@ import { BlogFlatList } from "@src/components/BlogList";
 import { BlogSEO } from "@src/components/BlogSEO";
 import { TagTitle } from "@src/components/TagTitle";
 
-import { getTags } from "@src/lib/blog";
+import { getTags, getFilterArtilcleList } from "@src/lib/blog";
 
 import { TaggedList, Taglinks } from "@src/types/types";
 
