@@ -75,7 +75,7 @@ export const ArticleList: React.FC<{ articleListData: AllProps[] | [] }> = (
             <ArticleListItems key={`BlogFlat-${i}`} listItem={listItem} />
           ))
         ) : (
-          <PostArticleList postListData={PostListData} />
+          <RSSArticleList postListData={PostListData} />
         )}
       </div>
     </>
@@ -99,7 +99,7 @@ export const ArticleListItems: React.FC<{
     </>
   );
 };
-export const PostArticleList: React.FC<{
+export const RSSArticleList: React.FC<{
   postListData: OtherProps[];
 }> = (props) => {
   const { postListData } = props;
@@ -107,13 +107,15 @@ export const PostArticleList: React.FC<{
     <>
       <div className={styles.flat_list}>
         {postListData.map((listItem, i) => (
-          <PostListItems key={`BlogFlat-${i}`} listItem={listItem} />
+          <RSSArticleListItem key={`BlogFlat-${i}`} listItem={listItem} />
         ))}
       </div>
     </>
   );
 };
-export const PostListItems: React.FC<{ listItem: OtherProps }> = (props) => {
+export const RSSArticleListItem: React.FC<{ listItem: OtherProps }> = (
+  props
+) => {
   const { title, link, isoDate } = props.listItem;
   return (
     <>
