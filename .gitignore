@@ -39,6 +39,9 @@ yarn-error.log*
 # next.config.js
 .next.config.js
 
+# env.config.ts
+.env.config.ts
+
 # node version
 .node-version
 
