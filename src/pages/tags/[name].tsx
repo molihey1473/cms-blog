@@ -3,7 +3,7 @@ import { ParsedUrlQuery } from "querystring";
 
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
-import { BlogFlatList } from "@src/components/BlogList";
+import { ArticleList } from "@src/components/ArtcleList";
 import { PageSEO } from "@src/components/PageSEO";
 import { TagTitle } from "@src/components/TagTitle";
 
@@ -38,7 +38,7 @@ const Page: NextPage<Props> = (props) => {
       <div className={styles.tagged_blog_content}>
         <TagTitle title={title} />
         {taggedBlogs ? (
-          <BlogFlatList items={taggedBlogs} />
+          <ArticleList articleListData={taggedBlogs} />
         ) : (
           <div>関連した記事がありません</div>
         )}
