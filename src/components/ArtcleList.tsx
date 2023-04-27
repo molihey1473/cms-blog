@@ -135,7 +135,7 @@ export const RSSArticleListItem: React.FC<{ listItem: OtherProps }> = (
     </>
   );
 };
-export const RenderArticleList: React.FC<{
+export const ClientArticleList: React.FC<{
   tabName: string;
   renderList: RenderProps[];
 }> = ({ tabName, renderList }) => {
@@ -144,13 +144,13 @@ export const RenderArticleList: React.FC<{
     <>
       <div className={styles.flat_list}>
         {listData.map((listItem, i) => (
-          <RenderListItems key={`Rendet-List${i}`} renderListItems={listItem} />
+          <ClientListItems key={`Rendet-List${i}`} renderListItems={listItem} />
         ))}
       </div>
     </>
   );
 };
-export const RenderListItems: React.FC<{ renderListItems: RenderProps }> = (
+export const ClientListItems: React.FC<{ renderListItems: RenderProps }> = (
   props
 ) => {
   const { title, date, link } = props.renderListItems;
