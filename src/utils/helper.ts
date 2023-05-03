@@ -16,3 +16,6 @@ export function getShareUrlPath(id: string, title: string) {
     title
   )}`;
 }
+export function isInsidePath(link: string) {
+  return link.startsWith("/articles/");
+}
