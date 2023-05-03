@@ -1,3 +1,4 @@
+import { config } from "blog.config";
 export function getArticlePath(id: string) {
   return `/articles/${id}`;
 }
@@ -12,9 +13,9 @@ export function isDefined<T>(val: T): asserts val is NonNullable<T> {
   }
 }
 export function getShareUrlPath(id: string, title: string) {
-  return `http://twitter.com/share?url=https://blog-sage-nine.vercel.app/articles/${id}&text=${encodeURIComponent(
-    title
-  )}`;
+  return `http://twitter.com/share?url=${
+    config.siteRoot
+  }/articles/${id}&text=${encodeURIComponent(title)}`;
 }
 export function isInsidePath(link: string) {
   return link.startsWith("/articles/");
