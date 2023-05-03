@@ -111,6 +111,11 @@
     margin-top: 1.5rem;
   }
 }
+.flat_link_date {
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 12px;
+  font-weight: 600;
+}
 
 .flat_link_title {
   position: relative;
@@ -149,11 +154,7 @@
   flex-direction: column;
   align-items: center;
 }
-.flat_link_date {
-  color: rgba(0, 0, 0, 0.3);
-  font-size: 12px;
-  font-weight: 600;
-}
+
 //bloglist タグ情報
 .flat_link_tags {
   display: flex;
