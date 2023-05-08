@@ -24,15 +24,6 @@ interface OtherProps {
   isoDate?: string;
 }
 
-interface RenderProps {
-  readonly category: string;
-  readonly title: string;
-  readonly contentSnippet: string | null;
-  readonly link: string;
-  readonly date: string;
-  readonly dateMiliSeconds: number;
-}
-
 //export const BlogLink: React.FC<{ item: ArticleList }> = (props) => {
 //  const { id, title, publishedAt } = props.item;
 //  return (
@@ -135,49 +126,3 @@ export const RSSArticleListItem: React.FC<{ listItem: OtherProps }> = (
     </>
   );
 };
-export const ClientArticleList: React.FC<{
-  tabName: string;
-  renderList: RenderProps[];
-}> = ({ tabName, renderList }) => {
-  const listData = getList(tabName, renderList);
-  return (
-    <>
-      <div className={styles.flat_list}>
-        {listData.map((listItem, i) => (
-          <ClientListItems key={`Rendet-List${i}`} renderListItems={listItem} />
-        ))}
-      </div>
-    </>
-  );
-};
-export const ClientListItems: React.FC<{ renderListItems: RenderProps }> = (
-  props
-) => {
-  const { title, date, link } = props.renderListItems;
-  return (
-    <>
-      <article className={styles.flat_link}>
-        <time className={styles.flat_link_date} dateTime={date}>
-          {dayjs(date).format("YYYY/MM/DD")}
-        </time>
-        <a
-          className={styles.flat_link_title}
-          href={link}
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          {title}
-        </a>
-      </article>
-    </>
-  );
-};
-export function getList(tabName: string, renderList: RenderProps[]) {
-  if (tabName !== "All") {
-    const data = renderList.filter((list) => {
-      return list.category === tabName;
-    });
-    return data;
-  }
-  return renderList;
-}
