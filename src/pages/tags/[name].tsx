@@ -1,4 +1,3 @@
-import { title } from "process";
 import { ParsedUrlQuery } from "querystring";
 
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
@@ -36,7 +35,7 @@ const Page: NextPage<Props> = (props) => {
     <>
       <PageSEO title={name} path={path} isSummaryLarge={false} />
       <div className={styles.tagged_blog_content}>
-        <TagTitle title={title} />
+        <TagTitle title={name} />
         {taggedBlogs ? (
           <ArticleList articleListData={taggedBlogs} />
         ) : (
