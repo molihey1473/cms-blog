@@ -1,4 +1,4 @@
-import styles from "@src/styles/pages/blog/BlogList.module.scss";
+import styles from "./TagTitle.module.scss";
 
 export const TagTitle: React.FC<{ title: string }> = (props) => {
   return (
