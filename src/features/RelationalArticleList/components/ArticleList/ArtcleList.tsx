@@ -6,9 +6,9 @@ import dayjs from "dayjs";
 
 import { getArticlePath } from "@src/utils/helper";
 
+import PostListData from "@.contents/posts.json";
 import { TagList } from "@src/features/Top/components/TagList";
 
-import PostListData from "../../.contents/posts.json";
 import styles from "./ArticleList.module.scss";
 
 interface AllProps {
