@@ -7,9 +7,9 @@ import dayjs from "dayjs";
 import { getArticlePath } from "@src/utils/helper";
 
 import { TagList } from "@src/features/Top/components/TagList";
-import styles from "@src/styles/pages/blog/BlogList.module.scss";
 
 import PostListData from "../../.contents/posts.json";
+import styles from "./ArticleList.module.scss";
 
 interface AllProps {
   id: string;
