@@ -2,9 +2,7 @@ import { ParsedUrlQuery } from "querystring";
 
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
-import { ArticleList } from "@src/components/ArtcleList";
 import { PageSEO } from "@src/components/PageSEO";
-import { TagTitle } from "@src/components/TagTitle";
 
 import { getTags, getFilterArticleList } from "@src/lib/blog";
 
@@ -12,14 +10,14 @@ import { TaggedList, Taglinks } from "@src/types/types";
 
 import { getTagPath } from "@src/utils/helper";
 
-import styles from "@src/styles/pages/blog/BlogList.module.scss";
+import { RelationalArticleListPage } from "@src/features/RelationalArticleList";
 
 import JsonData from "../../../.contents/posts.json";
 
 interface Props {
   name: string;
   path: string;
-  taggedBlogs: {
+  articleList: {
     id: string;
     title: string;
     publishedAt: string;
@@ -30,18 +28,15 @@ interface Params extends ParsedUrlQuery {
   name: string;
 }
 const Page: NextPage<Props> = (props) => {
-  const { taggedBlogs, name, path } = props;
+  const { articleList, name, path } = props;
   return (
     <>
       <PageSEO title={name} path={path} isSummaryLarge={false} />
-      <div className={styles.tagged_blog_content}>
-        <TagTitle title={name} />
-        {taggedBlogs ? (
-          <ArticleList articleListData={taggedBlogs} />
-        ) : (
-          <div>関連した記事がありません</div>
-        )}
-      </div>
+      <RelationalArticleListPage
+        name={name}
+        path={path}
+        articleList={articleList}
+      />
     </>
   );
 };
@@ -66,7 +61,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (
   return {
     props: {
       name: name,
-      taggedBlogs: data,
+      articleList: data,
       path: path,
     },
   };
