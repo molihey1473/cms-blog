@@ -33,7 +33,7 @@ export interface ArticleItems {
   publishedAt: string;
   category: { name: string[] };
   createdAt: string;
-  updatedAt: string | null;
+  updatedAt: string;
   tags: { name: string; id: string }[] | [];
 }
 /* 記事の型 */
