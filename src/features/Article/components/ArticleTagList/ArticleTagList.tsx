@@ -6,11 +6,15 @@ interface Props {
   readonly id: string;
   readonly name: string;
 }
+
 export const Tags: React.FC<{ tagLink: Props }> = (props) => {
   const { name } = props.tagLink;
   return (
     <>
-      <Link href={`/tags/${name.replace(/\./g, "").toLowerCase()}`}>
+      <Link
+        legacyBehavior
+        href={`/tags/${name.replace(/\./g, "").toLowerCase()}`}
+      >
         <a
           className={styles.blog_sidebar_topic_link}
           aria-label={props.tagLink.name}
@@ -54,8 +58,11 @@ export const ArticleTagItems: React.FC<{ tagItem: Props }> = (props) => {
   const name = props.tagItem.name;
   return (
     <>
-      <Link href={`/tags/${name.replace(/\./g, "").toLowerCase()}`}>
-        <a className={styles.tagName}>{`#${name}`}</a>
+      <Link
+        href={`/tags/${name.replace(/\./g, "").toLowerCase()}`}
+        className={styles.tagName}
+      >
+        {`#${name}`}
       </Link>
     </>
   );
