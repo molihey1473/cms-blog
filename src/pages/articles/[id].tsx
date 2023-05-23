@@ -66,7 +66,6 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (
   const { id } = params as Params;
   //下書きpreview記事表示メソッド
   const data = await getArticleContent(id, draftKey);
-  console.log("データ", draftKey);
   //OGP画像テキスト挿入 for cloudinary
   const clContent = await clOverlay(data.title);
   //記事のpath
