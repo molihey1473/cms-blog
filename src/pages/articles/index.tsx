@@ -5,6 +5,7 @@ import { getAllArticles } from "@src/lib/blog";
 import { ArticleItems } from "@src/types/types";
 
 import { CategoryList } from "@src/features/Top/components/CategoryList";
+import { PageView } from "@src/layouts/PageView";
 import { PageWrapper } from "@src/layouts/PageWrapper";
 
 interface Props {
@@ -14,9 +15,11 @@ const page: NextPage<Props> = () => {
   return (
     <>
       <main>
-        <PageWrapper>
-          <CategoryList />
-        </PageWrapper>
+        <PageView>
+          <PageWrapper>
+            <CategoryList />
+          </PageWrapper>
+        </PageView>
       </main>
     </>
   );
