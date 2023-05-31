@@ -11,6 +11,7 @@ import { TaggedList, Taglinks } from "@src/types/types";
 import { getTagPath } from "@src/utils/helper";
 
 import { RelationalArticleListPage } from "@src/features/RelationalArticleList";
+import { PageView } from "@src/layouts/PageView";
 import { PageWrapper } from "@src/layouts/PageWrapper";
 
 import JsonData from "../../../.contents/posts.json";
@@ -33,13 +34,15 @@ const Page: NextPage<Props> = (props) => {
   return (
     <>
       <PageSEO title={name} path={path} isSummaryLarge={false} />
-      <PageWrapper>
-        <RelationalArticleListPage
-          name={name}
-          path={path}
-          articleList={articleList}
-        />
-      </PageWrapper>
+      <PageView>
+        <PageWrapper>
+          <RelationalArticleListPage
+            name={name}
+            path={path}
+            articleList={articleList}
+          />
+        </PageWrapper>
+      </PageView>
     </>
   );
 };
