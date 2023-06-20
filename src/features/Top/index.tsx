@@ -1,6 +1,10 @@
 import React, { useCallback, useState } from "react";
 
+import { Profile } from "@src/components/cards/Profile";
+
 import { ArticleItems } from "@src/types/types";
+
+import { member } from "@src/utils/member";
 
 import JsonData from "../../../.contents/posts.json";
 import { ArticleList } from "./components/ArticleList";
@@ -19,6 +23,7 @@ export const Top: React.FC<{
   return (
     <>
       <React.StrictMode>
+        <Profile member={member} />
         <PageTitle title={"All"} />
         {pageWithCategory ? (
           <>
