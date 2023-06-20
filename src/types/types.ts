@@ -1,10 +1,10 @@
 export interface Member {
-  name: string;
-  avatar: string;
-  sources: string[];
-  twitterName: string;
-  githubName: string;
-  bio: string;
+  readonly name: string;
+  readonly avatar: string;
+  readonly sources: readonly string[];
+  readonly twitterName: string;
+  readonly githubName: string;
+  readonly bio: string;
 }
 export interface PostItem {
   authorName?: string;
