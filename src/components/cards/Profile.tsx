@@ -23,11 +23,11 @@ export const Profile: React.FC<{ member: Member }> = (props) => {
           <h1 className={styles.profile_member_name}>{name}</h1>
           <p className={styles.profile_member_bio}>{bio}</p>
           <div className={styles.profile_links}>
-            <a className={styles.profile_link_item} href={`${githubName}`}>
-              <GithubIcon />
-            </a>
             <a className={styles.profile_link_item} href={`${twitterName}`}>
               <TwitterIcon />
+            </a>
+            <a className={styles.profile_link_item} href={`${githubName}`}>
+              <GithubIcon />
             </a>
           </div>
         </div>
