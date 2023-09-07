@@ -1,6 +1,6 @@
+import { ArticleList } from "@src/components/ArticleList";
 import { PageSEO } from "@src/components/PageSEO";
 
-import { ArticleList } from "./components/ArticleList";
 import { TagTitle } from "./components/TagTitle";
 import { ListContainerView } from "./layouts/ListContainerView";
 import { TitleContainerView } from "./layouts/TitleContainerView";
