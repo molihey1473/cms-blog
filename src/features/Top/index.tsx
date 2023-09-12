@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from "react";
 
+import { ArticleList } from "@src/components/ArticleList";
 import { Profile } from "@src/components/cards/Profile";
 
 import { ArticleItems } from "@src/types/types";
@@ -7,7 +8,6 @@ import { ArticleItems } from "@src/types/types";
 import { member } from "@src/utils/member";
 
 import JsonData from "../../../.contents/posts.json";
-import { ArticleList } from "./components/ArticleList";
 import { RenderCategoryList, RenderTabName } from "./components/CategoryList";
 import { PageTitle } from "./components/PageTitle";
 import { ListContainerView } from "./layouts/ListContainerView";
