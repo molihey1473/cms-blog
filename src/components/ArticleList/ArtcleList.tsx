@@ -15,7 +15,7 @@ interface AllProps {
   id: string;
   title: string;
   publishedAt: string;
-  tags: { name: string }[] | [];
+  tags: string[] | [];
 }
 interface OtherProps {
   category: string;
@@ -24,51 +24,23 @@ interface OtherProps {
   isoDate?: string;
 }
 
-//export const BlogLink: React.FC<{ item: ArticleList }> = (props) => {
-//  const { id, title, publishedAt } = props.item;
-//  return (
-//    <article className={styles.blog_link}>
-//      <Link href={`/articles/${id}`}>
-//        <a className={styles.blog_link_content}>
-//          <div className={styles.blog_main_image}></div>
-//          <div className={styles.blog_at}>
-//            <time dateTime={publishedAt}>
-//              {dayjs(publishedAt).format("YYYY/MM/DD")}
-//            </time>
-//          </div>
-//          <div className={styles.blog_main_title}>
-//            <h3 className={styles.blog_link_title}>{title}</h3>
-//          </div>
-//        </a>
-//      </Link>
-//    </article>
-//  );
-//};
-//export const BlogList: React.FC<{ items: ArticleItems[] }> = (props) => {
-//  return (
-//    <div className={styles.blog_list}>
-//      {props.items.map((data, i) => (
-//        <BlogLink key={`BlogLink-${i}`} item={data} />
-//      ))}
-//    </div>
-//  );
-//};
-
 export const ArticleList: React.FC<{ renderList: AllProps[] | [] }> = (
   props
 ) => {
   const { renderList } = props;
   return (
     <>
-      <div className={styles.flat_list}>
-        {renderList.length !== 0 ? (
-          renderList.map((listItem, i) => (
-            <ArticleListItems key={`BlogFlat-${i}`} listItem={listItem} />
-          ))
-        ) : (
-          <RSSArticleList postListData={PostListData} />
-        )}
-      </div>
+      {renderList.length !== 0 && (
+        <div className={styles.flat_list}>
+          {renderList.length !== 0 ? (
+            renderList.map((listItem, i) => (
+              <ArticleListItems key={`BlogFlat-${i}`} listItem={listItem} />
+            ))
+          ) : (
+            <RSSArticleList postListData={PostListData} />
+          )}
+        </div>
+      )}
     </>
   );
 };
