@@ -6,10 +6,20 @@ import dayjs from "dayjs";
 
 import { getArticlePath } from "@src/utils/helper";
 
+import JsonData from "@.contents/posts.json";
 import PostListData from "@.contents/posts.json";
 import { TagList } from "@src/features/Top/components/TagList";
 
 import styles from "./ArticleList.module.scss";
+interface JsonProps {
+  readonly category: string;
+  readonly title: string;
+  readonly contentSnippet: string;
+  readonly link: string;
+  readonly date: string;
+  readonly dateMiliSeconds: number;
+  readonly tags: string[];
+}
 
 interface AllProps {
   id: string;
@@ -24,13 +34,15 @@ interface OtherProps {
   isoDate?: string;
 }
 
-export const ArticleList: React.FC<{ renderList: AllProps[] | [] }> = (
-  props
-) => {
+export const ArticleList: React.FC<{
+  tabName: string;
+  renderList: AllProps[] | [];
+}> = (props) => {
   const { renderList } = props;
+  const jsonListData = JsonData as JsonProps[];
   return (
     <>
-      {renderList.length !== 0 && (
+      {jsonListData.length !== 0 && (
         <div className={styles.flat_list}>
           {renderList.length !== 0 ? (
             renderList.map((listItem, i) => (
