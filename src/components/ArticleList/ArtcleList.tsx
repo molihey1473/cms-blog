@@ -39,10 +39,10 @@ export const ArticleList: React.FC<{
   renderList: AllProps[] | [];
 }> = (props) => {
   const { renderList } = props;
-  const jsonListData = JsonData as JsonProps[];
+  const JsonListData = JsonData as JsonProps[];
   return (
     <>
-      {jsonListData.length !== 0 && (
+      {JsonListData.length !== 0 && (
         <div className={styles.flat_list}>
           {renderList.length !== 0 ? (
             renderList.map((listItem, i) => (
