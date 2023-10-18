@@ -7,7 +7,6 @@ import dayjs from "dayjs";
 import { getArticlePath } from "@src/utils/helper";
 
 import JsonData from "@.contents/posts.json";
-import PostListData from "@.contents/posts.json";
 import { TagList } from "@src/features/Top/components/TagList";
 
 import styles from "./ArticleList.module.scss";
@@ -27,12 +26,12 @@ interface AllProps {
   publishedAt: string;
   tags: string[] | [];
 }
-interface OtherProps {
-  category: string;
-  title: string;
-  link: string;
-  isoDate?: string;
-}
+//interface OtherProps {
+//  category: string;
+//  title: string;
+//  link: string;
+//  isoDate?: string;
+//}
 
 export const ArticleList: React.FC<{
   tabName: string;
@@ -49,7 +48,7 @@ export const ArticleList: React.FC<{
               <ArticleListItems key={`BlogFlat-${i}`} listItem={listItem} />
             ))
           ) : (
-            <RSSArticleList postListData={PostListData} />
+            <RSSArticleList JsonListData={JsonListData} />
           )}
         </div>
       )}
@@ -75,28 +74,28 @@ export const ArticleListItems: React.FC<{
   );
 };
 export const RSSArticleList: React.FC<{
-  postListData: OtherProps[];
+  JsonListData: JsonProps[];
 }> = (props) => {
-  const { postListData } = props;
+  const { JsonListData } = props;
   return (
     <>
       <div className={styles.flat_list}>
-        {postListData.map((listItem, i) => (
+        {JsonListData.map((listItem, i) => (
           <RSSArticleListItem key={`BlogFlat-${i}`} listItem={listItem} />
         ))}
       </div>
     </>
   );
 };
-export const RSSArticleListItem: React.FC<{ listItem: OtherProps }> = (
+export const RSSArticleListItem: React.FC<{ listItem: JsonProps }> = (
   props
 ) => {
-  const { title, link, isoDate } = props.listItem;
+  const { title, link, date } = props.listItem;
   return (
     <>
       <article className={styles.flat_link}>
-        <time className={styles.flat_link_date} dateTime={isoDate}>
-          {dayjs(isoDate).format("YYYY/MM/DD")}
+        <time className={styles.flat_link_date} dateTime={date}>
+          {dayjs(date).format("YYYY/MM/DD")}
         </time>
         <a
           className={styles.flat_link_title}
