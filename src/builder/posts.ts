@@ -26,6 +26,7 @@ export async function fetchFeedItems(url: string) {
   return feed.items
     .map(({ title, link, contentSnippet, isoDate }) => {
       return {
+        isInternalLink: false,
         category: "Other",
         title,
         contentSnippet: contentSnippet?.replace(/\n/g, ""),
@@ -55,6 +56,7 @@ export async function fetchArticleDataFromMicroCMS(): Promise<FeedItem[]> {
   return data.map(({ title, id, publishedAt, updatedAt, tags }) => {
     const tagList = tags?.map((item) => item.name);
     return {
+      isInternalLink: true,
       category: "MicroCMSArticle",
       title,
       contentSnippet: null,
