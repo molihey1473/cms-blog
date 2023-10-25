@@ -11,6 +11,7 @@ import { TagList } from "@src/features/Top/components/TagList";
 
 import styles from "./ArticleList.module.scss";
 interface JsonProps {
+  readonly isInternalLink: boolean;
   readonly category: string;
   readonly title: string;
   readonly contentSnippet: string;
@@ -33,39 +34,31 @@ interface AllProps {
 //  isoDate?: string;
 //}
 
-export const ArticleList: React.FC<{
-  tabName: string;
-  renderList: AllProps[] | [];
-}> = (props) => {
-  const { renderList } = props;
+export const ArticleList: React.FC = () => {
   const JsonListData = JsonData as JsonProps[];
   return (
     <>
       {JsonListData.length !== 0 && (
         <div className={styles.flat_list}>
-          {renderList.length !== 0 ? (
-            renderList.map((listItem, i) => (
-              <ArticleListItems key={`BlogFlat-${i}`} listItem={listItem} />
-            ))
-          ) : (
-            <RSSArticleList JsonListData={JsonListData} />
-          )}
+          {JsonListData.map((listItem, i) => (
+            <ArticleListItems key={`BlogFlat-${i}`} listItem={listItem} />
+          ))}
         </div>
       )}
     </>
   );
 };
 export const ArticleListItems: React.FC<{
-  listItem: AllProps;
+  listItem: JsonProps;
 }> = (props) => {
-  const { id, title, publishedAt, tags } = props.listItem;
+  const { link, title, date, tags, isInternalLink } = props.listItem;
   return (
     <>
       <article className={styles.flat_link}>
         <time className={styles.flat_link_date} dateTime={publishedAt}>
-          {dayjs(publishedAt).format("YYYY/MM/DD")}
+          {dayjs(date).format("YYYY/MM/DD")}
         </time>
-        <Link href={getArticlePath(id)} className={styles.flat_link_title}>
+        <Link href={link} className={styles.flat_link_title}>
           {title}
         </Link>
         {tags.length !== 0 && <TagList tags={tags} />}
