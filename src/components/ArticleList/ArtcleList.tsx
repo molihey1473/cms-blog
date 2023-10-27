@@ -4,7 +4,7 @@ import React from "react";
 
 import dayjs from "dayjs";
 
-import { getArticlePath } from "@src/utils/helper";
+//import { getArticlePath } from "@src/utils/helper";
 
 import JsonData from "@.contents/posts.json";
 import { TagList } from "@src/features/Top/components/TagList";
@@ -21,12 +21,13 @@ interface JsonProps {
   readonly tags: string[];
 }
 
-interface AllProps {
-  id: string;
-  title: string;
-  publishedAt: string;
-  tags: string[] | [];
-}
+//interface AllProps {
+//  id: string;
+//  title: string;
+//  publishedAt: string;
+//  tags: string[] | [];
+//}
+
 //interface OtherProps {
 //  category: string;
 //  title: string;
@@ -55,12 +56,23 @@ export const ArticleListItems: React.FC<{
   return (
     <>
       <article className={styles.flat_link}>
-        <time className={styles.flat_link_date} dateTime={publishedAt}>
+        <time className={styles.flat_link_date} dateTime={date}>
           {dayjs(date).format("YYYY/MM/DD")}
         </time>
-        <Link href={link} className={styles.flat_link_title}>
-          {title}
-        </Link>
+        {isInternalLink ? (
+          <Link className={styles.flat_link_title} href={link}>
+            {title}
+          </Link>
+        ) : (
+          <a
+            href={link}
+            target="blank"
+            rel="noreferrer noopener"
+            className={styles.flat_link_title}
+          >
+            {title}
+          </a>
+        )}
         {tags.length !== 0 && <TagList tags={tags} />}
       </article>
     </>
