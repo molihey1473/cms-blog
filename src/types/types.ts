@@ -87,3 +87,14 @@ export interface PreviewDate {
   createdAt: string;
   updatedAt: string;
 }
+/** RSS, microCMSから取得したJsonデータ */
+export interface JsonProps {
+  readonly isInternalLink: boolean;
+  readonly category: string;
+  readonly title: string;
+  readonly contentSnippet: string;
+  readonly link: string;
+  readonly date: string;
+  readonly dateMiliSeconds: number;
+  readonly tags: string[];
+}
