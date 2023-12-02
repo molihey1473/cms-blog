@@ -2,8 +2,6 @@ import { ParsedUrlQuery } from "querystring";
 
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
-import { PageSEO } from "@src/components/PageSEO";
-
 import { getTags } from "@src/lib/blog";
 
 import { Taglinks } from "@src/types/types";
@@ -11,8 +9,6 @@ import { Taglinks } from "@src/types/types";
 import { getTagPath } from "@src/utils/helper";
 
 import { RelationalArticleListPage } from "@src/features/RelationalArticleList";
-import { PageView } from "@src/layouts/PageView";
-import { PageWrapper } from "@src/layouts/PageWrapper";
 
 //import JsonData from "../../../.contents/posts.json";
 
@@ -33,12 +29,7 @@ const Page: NextPage<{ name: string; path: string }> = (props) => {
   const { name, path } = props;
   return (
     <>
-      <PageSEO title={name} path={path} isSummaryLarge={false} />
-      <PageView>
-        <PageWrapper>
-          <RelationalArticleListPage name={name} path={path} />
-        </PageWrapper>
-      </PageView>
+      <RelationalArticleListPage name={name} path={path} />
     </>
   );
 };
