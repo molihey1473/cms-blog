@@ -7,7 +7,6 @@ import { ArticleItems } from "@src/types/types";
 
 import { member } from "@src/utils/member";
 
-import JsonData from "../../../.contents/posts.json";
 import { RenderCategoryList, RenderTabName } from "./components/CategoryList";
 import { PageTitle } from "./components/PageTitle";
 import { ListContainerView } from "./layouts/ListContainerView";
@@ -40,7 +39,7 @@ export const Top: React.FC<{
               />
             </RenderCategoryList>
             <ListContainerView>
-              <ArticleList tabName={tabCategory} renderList={JsonData} />
+              <ArticleList tagName={undefined} />
             </ListContainerView>
           </>
         ) : (
