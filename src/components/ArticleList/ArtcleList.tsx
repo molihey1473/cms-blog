@@ -4,22 +4,24 @@ import React from "react";
 
 import dayjs from "dayjs";
 
-//import { getArticlePath } from "@src/utils/helper";
+import { JsonProps } from "@src/types/types";
+
+import { getFilterList } from "@src/utils/helper";
 
 import JsonData from "@.contents/posts.json";
 import { TagList } from "@src/features/Top/components/TagList";
 
 import styles from "./ArticleList.module.scss";
-interface JsonProps {
-  readonly isInternalLink: boolean;
-  readonly category: string;
-  readonly title: string;
-  readonly contentSnippet: string;
-  readonly link: string;
-  readonly date: string;
-  readonly dateMiliSeconds: number;
-  readonly tags: string[];
-}
+//interface JsonProps {
+//  readonly isInternalLink: boolean;
+//  readonly category: string;
+//  readonly title: string;
+//  readonly contentSnippet: string;
+//  readonly link: string;
+//  readonly date: string;
+//  readonly dateMiliSeconds: number;
+//  readonly tags: string[];
+//}
 
 //interface AllProps {
 //  id: string;
@@ -35,8 +37,12 @@ interface JsonProps {
 //  isoDate?: string;
 //}
 
-export const ArticleList: React.FC = () => {
-  const JsonListData = JsonData as JsonProps[];
+export const ArticleList: React.FC<{ tagName: string | undefined }> = (
+  props
+) => {
+  const { tagName } = props;
+  const preData = JsonData as JsonProps[];
+  const JsonListData = tagName ? getFilterList(tagName, preData) : preData;
   return (
     <>
       {JsonListData.length !== 0 && (
@@ -49,6 +55,7 @@ export const ArticleList: React.FC = () => {
     </>
   );
 };
+
 export const ArticleListItems: React.FC<{
   listItem: JsonProps;
 }> = (props) => {
