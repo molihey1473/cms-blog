@@ -4,12 +4,13 @@ import React from "react";
 
 import dayjs from "dayjs";
 
+import { TagList } from "@src/components/TagList";
+
 import { JsonProps } from "@src/types/types";
 
 import { getFilterList } from "@src/utils/helper";
 
 import JsonData from "@.contents/posts.json";
-import { TagList } from "@src/features/Top/components/TagList";
 
 import styles from "./ArticleList.module.scss";
 //interface JsonProps {
