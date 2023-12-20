@@ -1,0 +1,21 @@
+@use "../../../../styles/globals/responsive" as mixin;
+.flat_link_tags {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+.flat_items_tags {
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 10px;
+  padding: 0.2rem 0.4rem;
+  background-color: var(--text-emphathize);
+  border-radius: 8px;
+  border: 1px solid #d0e4f3;
+  @include mixin.mq(xl) {
+    &:hover {
+      color: #fff;
+      background-color: #d0e4f3;
+    }
+  }
+}
