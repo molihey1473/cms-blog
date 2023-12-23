@@ -5,7 +5,7 @@ import { TwitterIcon } from "@src/components/icons/TwitterIcon";
 
 import { Member } from "@src/types/types";
 
-import styles from "@src/styles/components/profile.module.scss";
+import styles from "./Profile.module.scss";
 
 export const Profile: React.FC<{ member: Member }> = (props) => {
   const { avatar, name, bio, twitterName, githubName } = props.member;
