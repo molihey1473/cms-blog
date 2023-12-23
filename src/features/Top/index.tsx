@@ -1,7 +1,6 @@
 import React from "react";
 
 import { ArticleList } from "@src/components/ArticleList";
-import { Profile } from "@src/components/cards/Profile";
 import { PageSEO } from "@src/components/PageSEO";
 
 import { member } from "@src/utils/member";
@@ -11,6 +10,7 @@ import { PageWrapper } from "@src/layouts/PageWrapper";
 
 //import { RenderCategoryList, RenderTabName } from "./components/CategoryList";
 //import { PageTitle } from "./components/PageTitle";
+import { Profile } from "./components/Profile";
 import { ListContainerView } from "./layouts/ListContainerView";
 //
 //export const Top: React.FC<{
