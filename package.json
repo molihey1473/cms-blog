@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "babel-plugin-prismjs": "^2.1.0",
-    "canvas": "^2.7.0",
     "cloudinary": "^1.25.2",
     "dayjs": "^1.10.4",
     "eslint-config-next": "^13.1.6",
