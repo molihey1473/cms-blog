@@ -1,16 +1,71 @@
 import { Grammar, highlight, languages } from "prismjs";
+import Parser from "rss-parser";
 
 import { ArticleItems, FeedItem } from "@src/types/types";
 
 import { BLOG_API, TAG_API, CATEGORY_API } from "@src/utils/blogInfo";
 import { isDefined } from "@src/utils/helper";
 
+//fetchデータ型
+interface fetchData {
+  title: string;
+  id: string;
+  publishedAt: string;
+  updatedAt: string;
+  tags: { name: string }[];
+}
 // microCMS API KEY
 const key = {
   headers: {
     "X-MICROCMS-API-KEY": process.env.API_KEY ?? "",
   },
 };
+const parser = new Parser();
+// RSSから記事データ取得
+export async function fetchFeedItems(url: string) {
+  const feed = await parser.parseURL(url);
+  if (!feed?.items?.length) return [];
+  return feed.items
+    .map(({ title, link, contentSnippet, isoDate }) => {
+      return {
+        isInternalLink: false,
+        category: "Other",
+        title,
+        contentSnippet: contentSnippet?.replace(/\n/g, ""),
+        link,
+        date: isoDate,
+        dateMiliSeconds: isoDate ? new Date(isoDate).getTime() : 0,
+        tags: [],
+      };
+    })
+    .filter(({ title, link }) => title && link) as FeedItem[];
+}
+//microCMSから取得したデータを形成
+export async function fetchArticleDataFromMicroCMS(): Promise<FeedItem[]> {
+  const data = await fetchFromMicroCMS();
+  if (!data?.length) return [];
+  return data.map(({ title, id, publishedAt, updatedAt, tags }) => {
+    const tagList = tags?.map((item) => item.name);
+    return {
+      isInternalLink: true,
+      category: "MicroCMSArticle",
+      title,
+      contentSnippet: null,
+      link: `/articles/${id}`,
+      date: updatedAt || publishedAt,
+      dateMiliSeconds: publishedAt ? new Date(publishedAt).getTime() : 0,
+      tags: tagList,
+    };
+  });
+}
+//microCMSからデータ取得
+export async function fetchFromMicroCMS(): Promise<fetchData[]> {
+  const data = await fetch(BLOG_API, key)
+    .then((res) => res.json())
+    .catch((error) => console.log("通信失敗", error));
+  const resultData = data.contents as fetchData[];
+  return resultData || [];
+}
 
 //get data for [id].tsx 記事一覧data
 export async function getAllArticles(
