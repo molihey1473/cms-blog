@@ -1,4 +1,4 @@
-import { JsonProps } from "@src/types/types";
+import { FeedItem } from "@src/types/types";
 
 import { config } from "blog.config";
 export function getArticlePath(id: string) {
@@ -22,13 +22,13 @@ export function getShareUrlPath(id: string, title: string) {
 export function isInsidePath(link: string) {
   return link.startsWith("/articles/");
 }
-export function getFilterList<T extends JsonProps>(
+export function getFilterList<T extends FeedItem>(
   name: string,
   list: T[]
 ): T[] {
-  const tagName = name.toLocaleLowerCase();
+  const tagName = name;
   const arrayList = list.filter((item) => {
-    return item.tags.includes(tagName);
+    return item.tags.some((tag) => tag.toLowerCase() === tagName);
   });
   return arrayList;
 }
