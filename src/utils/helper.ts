@@ -28,7 +28,9 @@ export function getFilterList<T extends FeedItem>(
 ): T[] {
   const tagName = name;
   const arrayList = list.filter((item) => {
-    return item.tags.some((tag) => tag.toLowerCase() === tagName);
+    return item.tags.some(
+      (tag) => tag.toLowerCase().replace(/\./g, "") === tagName
+    );
   });
   return arrayList;
 }
