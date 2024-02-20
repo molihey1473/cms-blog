@@ -6,11 +6,11 @@ import dayjs from "dayjs";
 
 import { TagList } from "@src/components/TagList";
 
-import { JsonProps } from "@src/types/types";
+import { JsonProps, FeedItem } from "@src/types/types";
 
 import { getFilterList } from "@src/utils/helper";
 
-import JsonData from "@.contents/posts.json";
+//import JsonData from "@.contents/posts.json";
 
 import styles from "./ArticleList.module.scss";
 //interface JsonProps {
@@ -38,12 +38,13 @@ import styles from "./ArticleList.module.scss";
 //  isoDate?: string;
 //}
 
-export const ArticleList: React.FC<{ tagName: string | undefined }> = (
-  props
-) => {
-  const { tagName } = props;
-  const preData = JsonData as JsonProps[];
-  const JsonListData = tagName ? getFilterList(tagName, preData) : preData;
+export const ArticleList: React.FC<{
+  tagName: string | undefined;
+  allData: FeedItem[];
+}> = (props) => {
+  const { tagName, allData } = props;
+  //const preData = JsonData as JsonProps[];
+  const JsonListData = tagName ? getFilterList(tagName, allData) : allData;
   return (
     <>
       {JsonListData.length !== 0 && (
@@ -58,7 +59,7 @@ export const ArticleList: React.FC<{ tagName: string | undefined }> = (
 };
 
 export const ArticleListItems: React.FC<{
-  listItem: JsonProps;
+  listItem: FeedItem;
 }> = (props) => {
   const { link, title, date, tags, isInternalLink } = props.listItem;
   return (
